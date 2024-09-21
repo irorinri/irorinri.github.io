@@ -1,0 +1,15 @@
+/* 背景色を変更 */
+body {
+    background-color: #f0f0f0;
+}
+
+/* 見出しのスタイル */
+h1 {
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* 画像の幅を指定 */
+img {
+    width: 300px;
+}
