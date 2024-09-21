@@ -33,7 +33,7 @@ h1 {
 
 img {
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(173, 216, 230, 0.4);
     width: 200px;
     height: auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時にアニメーションを追加 */
@@ -41,7 +41,7 @@ img {
 
 img:hover {
     transform: scale(1.1); /* ホバー時に1.1倍に拡大 */
-    box-shadow: 0 8px 16px rgba(0, 0, 255, 0.3); /* 影を強調 */
+    box-shadow: 0 8px 16px rgba(173, 216, 230, 0.4); /* 影を強調 */
 }
 
 
