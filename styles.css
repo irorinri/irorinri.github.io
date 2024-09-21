@@ -12,11 +12,11 @@ h1 {
 
 /* 画像に枠を付ける */
 img {
-    width: 300px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px; !important;
+    height: auto; !important;
+    border-radius: 15px; !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; !important;
 }
 
 img:hover {
@@ -24,6 +24,5 @@ img:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 影を強く */
 }
 img {
-    width: 300px !important;
-    border: 2px solid #000 !important;
+    border: 2px solid #AFDFE4 !important;
 }
