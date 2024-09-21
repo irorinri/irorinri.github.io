@@ -23,3 +23,7 @@ img:hover {
     transform: scale(1.05); /* ホバー時に拡大 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 影を強く */
 }
+img {
+    width: 300px !important;
+    border: 2px solid #000 !important;
+}
