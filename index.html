@@ -9,9 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- 外部CSSファイルをリンク -->
-    <link rel="stylesheet" href="styles.css">
 
     <style>
         /* Gowun Batangのレギュラースタイル */
@@ -31,19 +28,20 @@
         /* h1のスタイルを定義 */
         h1 {
             font-family: "Gowun Batang", serif;
-            font-weight: 700; /* 太字 */
-            font-size: 48px;  /* 大きな見出し */
-            color: #333;  /* 濃いグレーのテキスト */
-            text-align: center;  /* 中央揃え */
+            font-weight: 700;
+            font-size: 48px;
+            color: #333;
+            text-align: center;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 軽い影をつける */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* 画像コンテナのスタイル */
-        div {
+        .image-container {
             display: flex;
-            justify-content: center; /* 画像を中央に揃える */
-            gap: 20px; /* 画像同士の間隔を20pxに設定 */
+            flex-wrap: wrap; /* 小さい画面では折り返す */
+            justify-content: center; /* 画像を中央揃え */
+            gap: 20px; /* 画像同士の間隔を設定 */
         }
 
         img {
@@ -52,12 +50,25 @@
             width: 200px; /* 画像の幅を200pxに統一 */
             height: auto; /* 縦横比を保持して自動調整 */
         }
+
+        /* メディアクエリでスマホ対応 */
+        @media screen and (max-width: 600px) {
+            .image-container {
+                flex-direction: column; /* スマホでは縦に並べる */
+                align-items: center; /* 中央揃え */
+            }
+
+            img {
+                width: 100%; /* スマホでは画像を全幅に広げる */
+                max-width: 300px; /* 最大幅を300pxに制限 */
+            }
+        }
     </style>
 </head>
 <body>
     <h1 class="gowun-batang-bold">Irofilia</h1>
     
-    <div>
+    <div class="image-container">
         <img src="images/imagesphoto1.jpg" alt="Photo 1">
         <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
         <img src="images/IMG_0829.PNG" alt="Photo 3">
