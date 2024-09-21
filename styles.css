@@ -15,7 +15,8 @@ img {
     width: 300px !important;
     height: auto !important;
     border-radius: 15px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3) /* 青い影 */
+ !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
