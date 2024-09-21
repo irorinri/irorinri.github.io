@@ -15,14 +15,16 @@ img {
     width: 300px !important;
     height: auto !important;
     border-radius: 15px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3) /* 青い影 */
+    box-shadow: 0 4px 8px rgba(173, 216, 230, 0.4) /* 薄い青色の影 */
+
  !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 img:hover {
     transform: scale(1.05); /* ホバー時に拡大 */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 影を強く */
+    box-shadow: 0 4px 8px rgba(173, 216, 230, 0.4); /* 薄い青色の影 */
+ /* 影を強く */
 }
 img {
     border: 2px solid #AFDFE4 !important;
