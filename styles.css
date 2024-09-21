@@ -1,15 +1,16 @@
-/* 背景色を変更 */
+/* ボディ全体の背景を変更 */
 body {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
+    color: #444;
 }
 
-/* 見出しのスタイル */
+/* h1タグのスタイル */
 h1 {
-    color: #333;
-    font-family: Arial, sans-serif;
+    font-size: 36px;
+    color: #0055cc;
 }
 
-/* 画像の幅を指定 */
+/* 画像に枠を付ける */
 img {
-    width: 300px;
+    border: 2px solid #000;
 }
