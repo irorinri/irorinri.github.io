@@ -37,6 +37,10 @@ img {
     width: 200px;
     height: auto;
 }
+img:hover {
+    transform: scale(1.05); /* ホバー時に拡大 */
+    box-shadow: 0 0 0 16px rgba(0, 0, 0, 0.5); /* 影を強く */
+}
 
 /* メディアクエリでスマホ対応 */
 @media screen and (max-width: 600px) {
