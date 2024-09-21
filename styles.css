@@ -15,7 +15,7 @@ img {
     width: 300px !important;
     height: auto !important;
     border-radius: 15px !important;
-    box-shadow: 0 4px 8px rgba(173, 216, 230, 0.4) /* 薄い青色の影 */
+    box-shadow: 0 0 10px 5px rgba(173, 216, 230, 0.4) /* 薄い青色の影 */
 
  !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
@@ -23,7 +23,6 @@ img {
 
 img:hover {
     transform: scale(1.05); /* ホバー時に拡大 */
-    box-shadow: 0 4px 8px rgba(173, 216, 230, 0.4); /* 薄い青色の影 */
  /* 影を強く */
 }
 img {
