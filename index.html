@@ -4,22 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Image Blog</title>
+
+    <!-- Google FontsからGowun Batangフォントを読み込む -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     
-        <!-- 外部CSSファイルをリンク -->
+    <!-- 外部CSSファイルをリンク -->
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Gowun Batangのレギュラースタイル */
+        .gowun-batang-regular {
+            font-family: "Gowun Batang", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Gowun Batangのボールドスタイル */
+        .gowun-batang-bold {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* h1のスタイルを定義 */
+        h1 {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700; /* 太字 */
+            font-size: 48px;  /* 大きな見出し */
+            color: #333;  /* 濃いグレーのテキスト */
+            text-align: center;  /* 中央揃え */
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 軽い影をつける */
+        }
+
+        /* 画像コンテナのスタイル */
+        div {
+            display: flex;
+            justify-content: center; /* 画像を中央に揃える */
+            gap: 20px; /* 画像同士の間隔を20pxに設定 */
+        }
+
+        img {
+            border-radius: 10px; /* 画像の角を丸くする */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 画像に影をつける */
+            width: 200px; /* 画像の幅を200pxに統一 */
+            height: auto; /* 縦横比を保持して自動調整 */
+        }
+    </style>
 </head>
 <body>
-    <h1>Irofilia</h1>
+    <h1 class="gowun-batang-bold">Irofilia</h1>
+    
     <div>
-        <img src="images/imagesphoto1.jpg" alt="Photo 3">
-        <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="image" width="300">
-        <img src="images/IMG_0829.PNG" alt="Photo 2">
-        <img src="images/IMG_0852.PNG" alt="Photo 3">
+        <img src="images/imagesphoto1.jpg" alt="Photo 1">
+        <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
+        <img src="images/IMG_0829.PNG" alt="Photo 3">
+        <img src="images/IMG_0852.PNG" alt="Photo 4">
     </div>
-
-
 </body>
 </html>
