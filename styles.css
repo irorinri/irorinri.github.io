@@ -11,8 +11,15 @@ h1 {
 }
 
 /* 画像に枠を付ける */
-
 img {
-    width: 300px;  /* 幅を300ピクセルに指定 */
-    height: 300px;  /* 高さは自動調整して縦横比を維持 */
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05); /* ホバー時に拡大 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* 影を強く */
 }
