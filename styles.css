@@ -1,7 +1,7 @@
 /* ボディ全体の背景を変更 */
 body {
-    background-color: #ffffff;
-    color: #444;
+    background-color: #ffffff !important;
+    color: #444; !important;
 }
 
 /* h1タグのスタイル */
@@ -12,11 +12,11 @@ h1 {
 
 /* 画像に枠を付ける */
 img {
-    width: 300px; !important;
-    height: auto; !important;
-    border-radius: 15px; !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; !important;
+    width: 300px !important;
+    height: auto !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 img:hover {
