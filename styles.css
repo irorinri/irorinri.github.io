@@ -28,7 +28,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 100px;
+    gap: 80px;
 }
 
 img {
