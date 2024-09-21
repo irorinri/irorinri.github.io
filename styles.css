@@ -33,13 +33,13 @@ h1 {
 
 img {
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px 10px rgba(173, 216, 230, 0.4);
     width: 200px;
     height: auto;
 }
 img:hover {
-    transform: scale(1.05); /* ホバー時に拡大 */
-    box-shadow: 0 0 0 16px rgba(0, 0, 0, 0.5); /* 影を強く */
+    transform: scale(1.05) !important; /* ホバー時に拡大 */
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.5) !important; /* 影を強く */
 }
 
 /* メディアクエリでスマホ対応 */
