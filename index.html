@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
+            overflow-x: hidden; /* 横スクロールを防ぐ */
         }
 
         /* Gowun Batangのスタイル */
@@ -37,29 +38,30 @@
             box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
             width: 200px;
             height: auto;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時にアニメーションを追加 */
         }
 
         img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
+            transform: scale(1.1); /* ホバー時に1.1倍に拡大 */
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important; /* 影を強調 */
         }
 
-        /* フッターの修正 */
+        /* フッターのスタイル */
         footer {
             position: fixed;
             bottom: 0;
-            width: 100%;
+            left: 0; /* 左端に固定 */
+            width: 100%; /* 画面全体に広げる */
             text-align: center;
-            background: rgba(0, 0, 0, 0.5); /* 見本と同じ透明度 */
+            background: rgba(0, 0, 0, 0.7);
             color: white;
-            font-size: 14px; /* デフォルトのフォントサイズ */
-            padding: 5px 0; /* フッターの高さ調整 */
-            z-index: 10; /* 他の要素より前面に表示 */
+            font-size: 12px;
+            padding: 3px 0;
+            font-family: sans-serif;
         }
 
-        /* スマホ対応 */
-        @media (max-width: 768px) {
+        /* メディアクエリでスマホ対応 */
+        @media screen and (max-width: 600px) {
             .image-container {
                 flex-direction: column;
                 align-items: center;
@@ -68,11 +70,6 @@
             img {
                 width: 100%;
                 max-width: 300px;
-            }
-
-            footer {
-                font-size: 12px; /* スマホ画面で文字サイズを少し小さく */
-                padding: 4px 0; /* 高さも少しコンパクトに */
             }
         }
     </style>
