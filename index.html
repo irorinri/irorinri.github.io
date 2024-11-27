@@ -71,6 +71,13 @@
             font-family: sans-serif;
         }
 
+        /* 白い余白の調整 */
+        body::after {
+            content: '';
+            display: block;
+            height: 50px; /* 必要な余白の高さ */
+        }
+
         /* メディアクエリでスマホ対応 */
         @media screen and (max-width: 600px) {
             .image-container {
