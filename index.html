@@ -33,6 +33,10 @@
             gap: 60px;
         }
 
+        .image-wrapper {
+            text-align: center;
+        }
+
         img {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
@@ -44,6 +48,13 @@
         img:hover {
             transform: scale(1.1); /* ホバー時に1.1倍に拡大 */
             box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important; /* 影を強調 */
+        }
+
+        .date {
+            font-family: "Gowun Batang", serif;
+            font-size: 16px;
+            color: #AFDFE4;
+            margin-top: 8px;
         }
 
         /* フッターのスタイル */
@@ -77,10 +88,22 @@
 <body>
     <h1>Iroid</h1>
     <div class="image-container">
-        <img src="images/imagesphoto1.jpg" alt="Photo 1">
-        <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
-        <img src="images/IMG_0829.PNG" alt="Photo 3">
-        <img src="images/IMG_0852.PNG" alt="Photo 4">
+        <div class="image-wrapper">
+            <img src="images/imagesphoto1.jpg" alt="Photo 1">
+            <div class="date">2024/02/01</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
+            <div class="date">2024/02/02</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/IMG_0829.PNG" alt="Photo 3">
+            <div class="date">2024/02/03</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/IMG_0852.PNG" alt="Photo 4">
+            <div class="date">2024/02/04</div>
+        </div>
     </div>
     <footer>
         © Irorinri. All Rights Reserved.
