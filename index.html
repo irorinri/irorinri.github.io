@@ -34,7 +34,7 @@
         }
 
         .image-wrapper {
-            position: relative;
+            position: relative; /* 日付の位置を画像内に設定するため */
             text-align: center;
         }
 
@@ -52,16 +52,15 @@
         }
 
         .date {
+            position: absolute; /* 日付を画像上に配置 */
+            bottom: -30px; /* 画像のすぐ下に配置 */
+            left: 50%; /* 水平方向中央揃え */
+            transform: translateX(-50%); /* 水平位置を完全に中央に */
             font-family: "Gowun Batang", serif;
             font-size: 16px;
             color: #5C8C8E; /* 視認性を高めた色 */
-            margin-top: 8px;
             text-shadow: none; /* 影を削除 */
-            position: absolute;
-            bottom: -30px; /* 日付を画像のすぐ下に配置 */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10; /* 日付を画像よりも前面に表示 */
+            z-index: 10; /* 日付を画像の上に表示 */
         }
 
         /* フッターのスタイル */
@@ -96,6 +95,10 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .date {
+                bottom: -20px; /* スマホ用に調整 */
+            }
         }
     </style>
 </head>
@@ -116,7 +119,7 @@
         </div>
         <div class="image-wrapper">
             <img src="images/IMG_0852.PNG" alt="Photo 4">
-            <div class="date">2024/01/04</div>
+            <div class="date">2024/01/03</div>
         </div>
     </div>
     <footer>
