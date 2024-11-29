@@ -26,6 +26,22 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* プルダウンメニューのスタイル */
+        .dropdown-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            font-family: "Gowun Batang", serif;
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
         /* 画像コンテナのスタイル */
         .image-container {
             display: flex;
@@ -77,34 +93,17 @@
             padding: 3px 0;
             font-family: sans-serif;
         }
-
-        /* 白い余白の調整 */
-        body::after {
-            content: '';
-            display: block;
-            height: 70px; /* 必要な余白の高さを少し増やす */
-        }
-
-        /* メディアクエリでスマホ対応 */
-        @media screen and (max-width: 600px) {
-            .image-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            img {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .date {
-                bottom: -20px; /* スマホ用に調整 */
-            }
-        }
     </style>
 </head>
 <body>
     <h1>Iroid</h1>
+    <!-- プルダウンメニューの追加 -->
+    <div class="dropdown-container">
+        <select id="site-selector" onchange="navigateToSite()">
+            <option value="A">サイトA</option>
+            <option value="B">サイトB</option>
+        </select>
+    </div>
     <div class="image-container">
         <div class="image-wrapper">
             <img src="images/imagesphoto1.jpg" alt="Photo 1">
@@ -126,5 +125,16 @@
     <footer>
         © irorinri. All Rights Reserved.
     </footer>
+
+    <script>
+        function navigateToSite() {
+            const selector = document.getElementById('site-selector');
+            const selectedValue = selector.value;
+
+            if (selectedValue === 'B') {
+                window.location.href = 'siteB.html'; // サイトBへのリンク
+            }
+        }
+    </script>
 </body>
 </html>
