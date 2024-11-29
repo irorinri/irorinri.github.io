@@ -70,13 +70,9 @@
     <h1>Iroid</h1>
     <div class="dropdown-container">
         <div class="dropdown">
-            <select id="siteA-selector" onchange="navigateToSite('A')">
-                <option value="A" selected>サイトA</option>
-            </select>
-        </div>
-        <div class="dropdown">
-            <select id="siteB-selector" onchange="navigateToSite('B')">
-                <option value="B">サイトB</option>
+            <select id="site-selector" onchange="navigateToSite(this.value)">
+                <option value="A">サイトA</option>
+                <option value="イラスト">イラスト</option>
             </select>
         </div>
     </div>
