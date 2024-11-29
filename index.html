@@ -26,6 +26,21 @@
         .content.active {
             display: block;
         }
+        .image-container {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 60px;
+        }
+        .image-wrapper {
+            position: relative; text-align: center;
+        }
+        img {
+            border-radius: 10px; box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5); width: 200px; transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.25); box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
+        }
+        .date {
+            position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-family: "Gowun Batang", serif; font-size: 16px; color: #5C8C8E;
+        }
         footer {
             position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; background: rgba(0, 0, 0, 0.5); color: white; font-size: 12px; padding: 3px 0;
         }
@@ -34,23 +49,36 @@
 <body>
     <h1>Iroid</h1>
     <div class="dropdown-container">
-        <select id="page-selector" onchange="switchContent()">
+        <select id="content-selector" onchange="switchContent()">
             <option value="home">ホーム</option>
-            <option value="gallery">ギャラリー</option>
+            <option value="gallery">イラスト</option>
         </select>
     </div>
     
-    <!-- 各ページのコンテンツ -->
     <div id="home" class="content active">
         <h2>ホーム</h2>
-        <p>ここはホームページです。</p>
+        <p>ここはホームページのコンテンツです。</p>
     </div>
+    
     <div id="gallery" class="content">
-        <h2>ギャラリー</h2>
-        <p>ここはギャラリーページです。</p>
-        <div>
-            <img src="images/imagesphoto1.jpg" alt="Photo 1" style="width: 200px; margin: 10px;">
-            <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2" style="width: 200px; margin: 10px;">
+        <h2>イラスト</h2>
+        <div class="image-container">
+            <div class="image-wrapper">
+                <img src="images/imagesphoto1.jpg" alt="Photo 1">
+                <div class="date">2024/09/13</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
+                <div class="date">2024/08/14</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/pukari.png" alt="Photo 3">
+                <div class="date">2024/07/30</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/IMG_0852.PNG" alt="Photo 4">
+                <div class="date">2024/01/03</div>
+            </div>
         </div>
     </div>
 
@@ -58,14 +86,13 @@
 
     <script>
         function switchContent() {
-            const selectedPage = document.getElementById("page-selector").value;
+            const selected = document.getElementById("content-selector").value;
             const contents = document.querySelectorAll(".content");
-
+            
             contents.forEach(content => {
-                if (content.id === selectedPage) {
+                content.classList.remove("active");
+                if (content.id === selected) {
                     content.classList.add("active");
-                } else {
-                    content.classList.remove("active");
                 }
             });
         }
