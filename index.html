@@ -6,103 +6,79 @@
     <title>My Image Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ベースのリセット */
         html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden; /* 横スクロールを防ぐ */
-            background-color: #f8f8f8; /* 非常に薄い灰色を背景色に設定 */
+            margin: 0; padding: 0; width: 100%; background-color: #f8f8f8;
         }
-
-        /* Gowun Batangのスタイル */
         h1 {
-            font-family: "Gowun Batang", serif;
-            font-weight: 700;
-            font-size: 48px;
-            color: #AFDFE4;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: "Gowun Batang", serif; font-size: 48px; color: #AFDFE4; text-align: center; margin-bottom: 30px;
         }
-
-        /* プルダウンメニューのスタイル */
         .dropdown-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            display: flex; justify-content: center; align-items: center; margin-bottom: 20px; gap: 20px;
         }
-
-        select {
-            padding: 10px;
-            font-size: 16px;
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #AFDFE4;
+            color: #fff;
             font-family: "Gowun Batang", serif;
-            margin: 0 10px;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
-
-        /* 画像コンテナのスタイル */
+        .dropdown select:hover {
+            background-color: #88c1c7;
+        }
+        .dropdown::after {
+            content: "▼";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #fff;
+        }
         .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 60px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 60px;
         }
-
         .image-wrapper {
-            position: relative; /* 日付の位置を画像内に設定するため */
-            text-align: center;
+            position: relative; text-align: center;
         }
-
         img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
-            width: 200px;
-            height: auto;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時にアニメーションを追加 */
+            border-radius: 10px; box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5); width: 200px; transition: transform 0.3s;
         }
-
         img:hover {
-            transform: scale(1.25); /* ホバー時に1.25倍に拡大 */
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important; /* 影を強調 */
+            transform: scale(1.25); box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
         }
-
         .date {
-            position: absolute; /* 日付を画像上に配置 */
-            bottom: -30px; /* 画像のすぐ下に配置 */
-            left: 50%; /* 水平方向中央揃え */
-            transform: translateX(-50%); /* 水平位置を完全に中央に */
-            font-family: "Gowun Batang", serif;
-            font-size: 16px;
-            color: #5C8C8E; /* 視認性を高めた色 */
-            text-shadow: none; /* 影を削除 */
-            z-index: 10; /* 日付を画像の上に表示 */
+            position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-family: "Gowun Batang", serif; font-size: 16px; color: #5C8C8E;
         }
-
-        /* フッターのスタイル */
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0; /* 左端に固定 */
-            width: 100%; /* 画面全体に広げる */
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 12px;
-            padding: 3px 0;
-            font-family: sans-serif;
+            position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; background: rgba(0, 0, 0, 0.5); color: white; font-size: 12px; padding: 3px 0;
         }
     </style>
 </head>
 <body>
     <h1>Iroid</h1>
-    <!-- プルダウンメニューの追加 -->
     <div class="dropdown-container">
-        <select id="site-selector" onchange="navigateToSite()">
-            <option value="A">サイトA</option>
-            <option value="B">サイトB</option>
-        </select>
+        <div class="dropdown">
+            <select id="siteA-selector" onchange="navigateToSite('A')">
+                <option value="A" selected>サイトA</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <select id="siteB-selector" onchange="navigateToSite('B')">
+                <option value="B">サイトB</option>
+            </select>
+        </div>
     </div>
     <div class="image-container">
         <div class="image-wrapper">
@@ -122,17 +98,11 @@
             <div class="date">2024/01/03</div>
         </div>
     </div>
-    <footer>
-        © irorinri. All Rights Reserved.
-    </footer>
-
+    <footer>© irorinri. All Rights Reserved.</footer>
     <script>
-        function navigateToSite() {
-            const selector = document.getElementById('site-selector');
-            const selectedValue = selector.value;
-
-            if (selectedValue === 'B') {
-                window.location.href = 'siteB.html'; // サイトBへのリンク
+        function navigateToSite(site) {
+            if (site === 'B') {
+                window.location.href = 'siteB.html';
             }
         }
     </script>
