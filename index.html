@@ -4,47 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Image Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        html, body {
-            margin: 0; padding: 0; width: 100%; background-color: #f8f8f8;
-        }
-        h1 {
-            font-family: "Gowun Batang", serif; font-size: 48px; color: #AFDFE4; text-align: center; margin-bottom: 30px;
-        }
-        .dropdown-container {
-            display: flex; justify-content: center; align-items: center; margin-bottom: 20px; gap: 20px;
-        }
-        .dropdown select {
-            padding: 10px 20px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; font-family: "Gowun Batang", serif;
-        }
-        .content {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        .content.active {
-            display: block;
-        }
-        .image-container {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 60px;
-        }
-        .image-wrapper {
-            position: relative; text-align: center;
-        }
-        img {
-            border-radius: 10px; box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5); width: 200px; transition: transform 0.3s;
-        }
-        img:hover {
-            transform: scale(1.25); box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
-        }
-        .date {
-            position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-family: "Gowun Batang", serif; font-size: 16px; color: #5C8C8E;
-        }
-        footer {
-            position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; background: rgba(0, 0, 0, 0.5); color: white; font-size: 12px; padding: 3px 0;
-        }
-    </style>
+    <!-- CSSファイルのリンク -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Iroid</h1>
@@ -54,32 +15,15 @@
             <option value="gallery">イラスト</option>
         </select>
     </div>
-    
+
     <div id="home" class="content active">
         <h2>ホーム</h2>
         <p>ここはホームページのコンテンツです。</p>
     </div>
-    
+
     <div id="gallery" class="content">
         <h2>イラスト</h2>
-        <div class="image-container">
-            <div class="image-wrapper">
-                <img src="images/imagesphoto1.jpg" alt="Photo 1">
-                <div class="date">2024/09/13</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
-                <div class="date">2024/08/14</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/pukari.png" alt="Photo 3">
-                <div class="date">2024/07/30</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/IMG_0852.PNG" alt="Photo 4">
-                <div class="date">2024/01/03</div>
-            </div>
-        </div>
+        <iframe src="https://irorinri.github.io/gallery/" style="width: 100%; height: 500px; border: none;"></iframe>
     </div>
 
     <footer>© irorinri. All Rights Reserved.</footer>
@@ -88,7 +32,6 @@
         function switchContent() {
             const selected = document.getElementById("content-selector").value;
             const contents = document.querySelectorAll(".content");
-            
             contents.forEach(content => {
                 content.classList.remove("active");
                 if (content.id === selected) {
