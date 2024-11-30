@@ -3,87 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Site</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #444;
-    }
-    nav button {
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    nav button:hover {
-      background-color: #555;
-    }
-    .section {
-      display: none; /* 初期状態では非表示 */
-      padding: 20px;
-      text-align: center;
-    }
-    .section.active {
-      display: block; /* アクティブなセクションのみ表示 */
-    }
-  </style>
+  <title>ギャラリー</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <h1>My Site</h1>
+  <h1>ギャラリー</h1>
 </header>
 
-<!-- ナビゲーションボタン -->
 <nav>
-  <button onclick="showSection('comics')">コミック</button>
-  <button onclick="showSection('illustrations')">イラスト</button>
-  <button onclick="showSection('gallery')">ギャラリー</button>
+  <a href="index.html">コミック</a>
+  <a href="illustrations.html">イラスト</a>
+  <a href="gallery.html">ギャラリー</a>
+  <a href="story.html">ストーリー</a>
+  <a href="blog.html">ブログ</a>
 </nav>
 
-<!-- コミックセクション -->
-<div id="comics" class="section active">
-  <h2>コミック</h2>
-  <p>ここにはコミックのコンテンツが表示されます。</p>
-</div>
+<main>
+  <p>ギャラリーコンテンツをここに追加します。</p>
+</main>
 
-<!-- イラストセクション -->
-<div id="illustrations" class="section">
-  <h2>イラスト</h2>
-  <p>ここにはイラストのコンテンツが表示されます。</p>
-</div>
-
-<!-- ギャラリーセクション -->
-<div id="gallery" class="section">
-  <h2>ギャラリー</h2>
-  <p>ここにはギャラリーのコンテンツが表示されます。</p>
-</div>
-
-<script>
-  function showSection(sectionId) {
-    // すべてのセクションを非表示にする
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.classList.remove('active'));
-
-    // 選択されたセクションを表示する
-    document.getElementById(sectionId).classList.add('active');
-  }
-</script>
+<footer>
+  © irorinri. All Rights Reserved.
+</footer>
 
 </body>
 </html>
