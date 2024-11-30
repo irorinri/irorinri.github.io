@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -152,9 +152,17 @@
     lightbox.init();
 
     // ページ遷移用JavaScript
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      const selector = document.getElementById("page-selector");
+      selector.value = currentPage;
+    });
+
     function navigatePage() {
       const selectedPage = document.getElementById('page-selector').value;
-      window.location.href = `./${selectedPage}`;
+      if (selectedPage !== window.location.pathname.split("/").pop()) {
+        window.location.href = `./${selectedPage}`;
+      }
     }
   </script>
 </body>
