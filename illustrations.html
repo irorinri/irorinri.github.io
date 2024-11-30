@@ -46,16 +46,16 @@
       }
     }
   .pswp__custom-caption {
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    visibility: visible;
-  }
+  color: white !important;
+  text-align: center !important;
+  padding: 15px !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  z-index: 1000 !important; /* 高い値で競合を回避 */
+  visibility: visible !important;
+}
     .pswp__counter {
   display: none;
 }
@@ -120,24 +120,22 @@
 });
 
 lightbox.on('uiRegister', () => {
-  // スライド番号のカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-counter', // ここでカスタム番号を定義
-    order: 5, // デフォルトのcounterと同じ順序（デフォルトを上書き）
-    isButton: false,
-    appendTo: 'bar', // カウンターをバーに追加
-    html: '', // カウンターの内容は動的に設定
-    onInit: (el, pswp) => {
-      pswp.on('change', () => {
-        const totalSlides = pswp.getNumItems(); // 総スライド数
-        const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
-        el.innerHTML = `${reversedIndex}/${totalSlides}`; // カスタム番号を表示
-      });
-    },
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-caption',
+      order: 9,
+      isButton: false,
+      appendTo: 'wrapper',
+      html: '',
+      onInit: (el, pswp) => {
+        pswp.on('change', () => {
+          const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+          el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
+        });
+      }
+    });
   });
-});
 
-lightbox.init();
+  lightbox.init();
 </script>
 
 <footer>
