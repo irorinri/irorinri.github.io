@@ -7,60 +7,71 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 20px;
-    }
+  /* ページ全体の背景色を設定 */
+  body {
+    background-color: #8B0000; /* 深い赤色 */
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
 
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .gallery a {
+    width: 18%;
+    max-width: 100px;
+    text-decoration: none;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
     .gallery a {
-      width: 18%;
-      max-width: 100px;
-      text-decoration: none;
+      width: 24%;
     }
+  }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @media (max-width: 480px) {
+    .gallery a {
+      width: 30%;
     }
+  }
 
-    .gallery img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .gallery a {
-        width: 24%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery a {
-        width: 30%;
-      }
-    }
+  /* 日付キャプションのスタイル */
   .pswp__custom-caption {
-  color: white !important;
-  text-align: center !important;
-  padding: 15px !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  background: rgba(0, 0, 0, 0.6) !important;
-  z-index: 1000 !important;
-  visibility: visible !important;
-}
+    color: white !important;
+    text-align: center !important;
+    padding: 5px !important; /* 背景を細く */
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    z-index: 1000 !important;
+    visibility: visible !important;
+  }
 
-.pswp__counter {
-  display: none;
-}
-  </style>
+  /* カウンター非表示 */
+  .pswp__counter {
+    display: none;
+  }
+</style>
 </head>
 <body>
 
