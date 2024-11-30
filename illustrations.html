@@ -111,28 +111,29 @@
   });
 
   const lightbox = new PhotoSwipeLightbox({
-    gallery: '.gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-  });
+  gallery: '.gallery',
+  children: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+});
 
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-caption',
-      order: 9,
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
-        });
-      }
-    });
+lightbox.on('uiRegister', () => {
+  lightbox.pswp.ui.registerElement({
+    name: 'custom-counter',
+    order: 5, // デフォルトのカウンター要素の順序
+    isButton: false,
+    appendTo: 'wrapper',
+    html: '', // カウンターの内容を動的に設定
+    onInit: (el, pswp) => {
+      pswp.on('change', () => {
+        const totalSlides = pswp.getNumItems(); // 総スライド数
+        const currentIndex = totalSlides - pswp.currIndex; // 番号を逆順に設定
+        el.innerHTML = `${currentIndex}/${totalSlides}`;
+      });
+    },
   });
+});
 
-  lightbox.init();
+lightbox.init();
 </script>
 
 <footer>
