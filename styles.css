@@ -1,24 +1,48 @@
-/* 全体のスタイル */
-html, body {
-    margin: 0; padding: 0; width: 100%; background-color: #f8f8f8;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
-h1 {
-    font-family: "Gowun Batang", serif; font-size: 48px; color: #AFDFE4; text-align: center; margin-bottom: 30px;
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
-.dropdown-container {
-    display: flex; justify-content: center; align-items: center; margin-bottom: 20px; gap: 20px;
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #444;
 }
-.dropdown select {
-    padding: 10px 20px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; font-family: "Gowun Batang", serif;
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #444;
+  border: none;
+  font-size: 16px;
 }
-.content {
-    display: none;
-    text-align: center;
-    padding: 20px;
+nav a:hover {
+  background-color: #555;
 }
-.content.active {
-    display: block;
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* 画像間のスペース */
+  padding: 20px;
 }
-footer {
-    position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; background: rgba(0, 0, 0, 0.5); color: white; font-size: 12px; padding: 3px 0;
+
+.image-gallery img {
+  max-width: 200px; /* 画像の最大幅 */
+  height: auto; /* アスペクト比を維持 */
+  border-radius: 10px; /* 角を丸める */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時のアニメーション */
+}
+
+.image-gallery img:hover {
+  transform: scale(1.1); /* ホバー時に少し拡大 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
 }
