@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Image Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <style>
         html, body {
             margin: 0;
@@ -147,6 +148,8 @@
         © irorinri. All Rights Reserved.
     </footer>
 
+    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.min.js"></script>
+    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-ui-default.min.js"></script>
     <script>
         function toggleContent() {
             const isChecked = document.getElementById("page-switch").checked;
@@ -156,15 +159,30 @@
                 // ギャラリーを表示
                 content.innerHTML = `
                     <div class="gallery">
-                        <img src="images/1.png" alt="Image 1">
-                        <img src="images/2.png" alt="Image 2">
-                        <img src="images/3.png" alt="Image 3">
-                        <img src="images/4.png" alt="Image 4">
-                        <img src="images/5.png" alt="Image 5">
-                        <img src="images/6.png" alt="Image 6">
-                        <img src="images/7.png" alt="Image 7">
+                        <a href="images/1.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/1.png" alt="Image 1">
+                        </a>
+                        <a href="images/2.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/2.png" alt="Image 2">
+                        </a>
+                        <a href="images/3.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/3.png" alt="Image 3">
+                        </a>
+                        <a href="images/4.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/4.png" alt="Image 4">
+                        </a>
+                        <a href="images/5.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/5.png" alt="Image 5">
+                        </a>
+                        <a href="images/6.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/6.png" alt="Image 6">
+                        </a>
+                        <a href="images/7.png" data-pswp-width="800" data-pswp-height="600">
+                            <img src="images/7.png" alt="Image 7">
+                        </a>
                     </div>
                 `;
+                initializePhotoSwipe();
             } else {
                 // ホームを表示
                 content.innerHTML = `
@@ -176,6 +194,28 @@
                     </div>
                 `;
             }
+        }
+
+        function initializePhotoSwipe() {
+            const galleryElements = document.querySelectorAll('.gallery a');
+            const items = Array.from(galleryElements).map((el) => ({
+                src: el.getAttribute('href'),
+                w: parseInt(el.getAttribute('data-pswp-width')),
+                h: parseInt(el.getAttribute('data-pswp-height')),
+            }));
+
+            galleryElements.forEach((el, i) => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const gallery = new PhotoSwipe({
+                        dataSource: items,
+                        index: i,
+                        bgOpacity: 0.8,
+                        pswpModule: PhotoSwipe
+                    });
+                    gallery.init();
+                });
+            });
         }
     </script>
 </body>
