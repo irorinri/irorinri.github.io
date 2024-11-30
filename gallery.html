@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イラストギャラリー</title>
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery a {
+      width: 15%;
+      margin: 0.5%;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+     .pswp__custom-caption {
+      color: white !important;
+      text-align: center !important;
+      padding: 15px !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      background: rgba(0, 0, 0, 0.6) !important;
+      box-sizing: border-box !important;
+    }
+    .copyright {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 14px;
+      padding: 5px 0;
+      z-index: 10;
+    }
+    @media (max-width: 768px) {
+      .gallery a {
+        width: 30%;
+      }
+      .copyright {
+        font-size: 12px;
+        padding: 4px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery"></div>
+
+  <!-- 著作権表記 -->
+  <div class="copyright">
+    © irorinri. All Rights Reserved.
+  </div>
+
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+    const images = [
+      { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-10' },
+      { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-11' },
+      { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-12' },
+      { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-13' },
+      { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-14' },
+      { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-15' },
+      { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-16' },
+      { src: 'images/8.png', width: 1000, height: 1000, date: '2024-11-17' },
+      
+    ];
+
+    const galleryElement = document.querySelector('.gallery');
+
+// ギャラリーを初期化
+galleryElement.innerHTML = '';
+
+// 配列を逆順にする
+const reversedImages = [...images].reverse();
+
+// ギャラリーに画像を逆順で追加
+reversedImages.forEach(({ src, width, height, date }) => {
+  const link = document.createElement('a');
+  link.href = src;
+  link.dataset.pswpWidth = width;
+  link.dataset.pswpHeight = height;
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = 'イラスト';
+
+  const captionSpan = document.createElement('span');
+  captionSpan.className = 'hidden-caption-content';
+  captionSpan.textContent = date;
+  captionSpan.style.display = 'none';
+
+  link.append(img, captionSpan);
+  galleryElement.appendChild(link);
+});
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    });
+
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'wrapper',
+        html: '',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+            el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
+          });
+        }
+      });
+    });
+
+    lightbox.init();
+  </script>
+</body>
+</html>
