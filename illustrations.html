@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,46 @@
   <title>イラストギャラリー</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px; /* 画像間の間隔 */
+      padding: 20px;
+    }
+
+    .gallery a {
+      width: 18%; /* 1行に5枚程度表示 */
+      max-width: 100px; /* 最大幅 */
+      text-decoration: none;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .gallery a {
+        width: 24%; /* スマホでは1行に4枚表示 */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery a {
+        width: 30%; /* スマホでは1行に3枚表示 */
+      }
+    }
+  </style>
 </head>
 <body>
 
