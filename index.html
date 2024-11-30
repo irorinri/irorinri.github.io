@@ -80,40 +80,28 @@
             font-family: "Gowun Batang", serif;
         }
 
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 60px;
+        .content-container {
             padding: 20px;
         }
 
-        .image-wrapper {
-            position: relative;
-            text-align: center;
+        .gallery, .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
+        .gallery img, .image-container img {
             width: 200px;
             height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        img:hover {
+        .gallery img:hover, .image-container img:hover {
             transform: scale(1.25);
             box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
-        }
-
-        .date {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: "Gowun Batang", serif;
-            font-size: 16px;
-            color: #5C8C8E;
         }
 
         footer {
@@ -130,29 +118,28 @@
         <div class="switch-container">
             <span class="label">ホーム</span>
             <label class="switch">
-                <input type="checkbox" id="page-switch" onchange="togglePage()">
+                <input type="checkbox" id="page-switch" onchange="toggleContent()">
                 <span class="slider"></span>
             </label>
             <span class="label">ギャラリー</span>
         </div>
     </header>
 
-    <div class="image-container">
-        <div class="image-wrapper">
-            <img src="images/irori1.PNG" alt="Irori 1">
-            <div class="date">2024/09/13</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/pw2.png" alt="Image PW2">
-            <div class="date">2024/08/14</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/us3.jpg" alt="Image US3">
-            <div class="date">2024/07/30</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/nf4.jpg" alt="Image NF4">
-            <div class="date">2024/01/03</div>
+    <div class="content-container" id="content">
+        <!-- 初期表示はホーム -->
+        <div class="image-container">
+            <div>
+                <img src="images/irori1.PNG" alt="Irori 1">
+            </div>
+            <div>
+                <img src="images/pw2.png" alt="Image PW2">
+            </div>
+            <div>
+                <img src="images/us3.jpg" alt="Image US3">
+            </div>
+            <div>
+                <img src="images/nf4.jpg" alt="Image NF4">
+            </div>
         </div>
     </div>
 
@@ -161,10 +148,33 @@
     </footer>
 
     <script>
-        function togglePage() {
+        function toggleContent() {
             const isChecked = document.getElementById("page-switch").checked;
+            const content = document.getElementById("content");
+
             if (isChecked) {
-                window.location.href = "gallery.html";
+                // ギャラリーを表示
+                content.innerHTML = `
+                    <div class="gallery">
+                        <img src="images/1.png" alt="Image 1">
+                        <img src="images/2.png" alt="Image 2">
+                        <img src="images/3.png" alt="Image 3">
+                        <img src="images/4.png" alt="Image 4">
+                        <img src="images/5.png" alt="Image 5">
+                        <img src="images/6.png" alt="Image 6">
+                        <img src="images/7.png" alt="Image 7">
+                    </div>
+                `;
+            } else {
+                // ホームを表示
+                content.innerHTML = `
+                    <div class="image-container">
+                        <div><img src="images/irori1.PNG" alt="Irori 1"></div>
+                        <div><img src="images/pw2.png" alt="Image PW2"></div>
+                        <div><img src="images/us3.jpg" alt="Image US3"></div>
+                        <div><img src="images/nf4.jpg" alt="Image NF4"></div>
+                    </div>
+                `;
             }
         }
     </script>
