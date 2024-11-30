@@ -89,6 +89,7 @@
 
   const galleryElement = document.querySelector('.gallery');
 
+  // 画像リストを逆順にする
   const reversedImages = [...images].reverse();
 
   reversedImages.forEach(({ src, width, height, date }, index) => {
@@ -103,10 +104,7 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.innerHTML = `
-      <span class="hidden-number">${index + 1}/${reversedImages.length}</span>
-      <span class="date-text"> - ${date}</span>
-    `;
+    captionSpan.textContent = `${index + 1}/${reversedImages.length} - ${date}`;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
@@ -129,13 +127,7 @@
       onInit: (el, pswp) => {
         pswp.on('change', () => {
           const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          if (captionSpan) {
-            el.innerHTML = captionSpan.innerHTML;
-            const hiddenNumber = el.querySelector('.hidden-number');
-            if (hiddenNumber) hiddenNumber.style.display = 'none'; // 番号を非表示に設定
-          } else {
-            el.innerHTML = 'キャプションなし';
-          }
+          el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
         });
       }
     });
