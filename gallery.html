@@ -7,9 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #f8f8f8;
+        }
+
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 10px 20px;
             background-color: #AFDFE4;
@@ -18,17 +25,60 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        header h1 {
-            font-size: 24px;
-            margin: 0;
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        header select {
-            padding: 5px 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
             cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #88c1c7;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .label {
+            font-size: 16px;
+            font-family: "Gowun Batang", serif;
         }
 
         .gallery {
@@ -63,11 +113,14 @@
 </head>
 <body>
     <header>
-        <h1>Gallery</h1>
-        <select id="page-selector" onchange="navigatePage()">
-            <option value="index.html">ホーム</option>
-            <option value="gallery.html" selected>ギャラリー</option>
-        </select>
+        <div class="switch-container">
+            <span class="label">ホーム</span>
+            <label class="switch">
+                <input type="checkbox" id="page-switch" onchange="togglePage()" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="label">ギャラリー</span>
+        </div>
     </header>
 
     <div class="gallery">
@@ -99,9 +152,11 @@
     </footer>
 
     <script>
-        function navigatePage() {
-            const selectedPage = document.getElementById("page-selector").value;
-            window.location.href = selectedPage;
+        function togglePage() {
+            const isChecked = document.getElementById("page-switch").checked;
+            if (!isChecked) {
+                window.location.href = "index.html";
+            }
         }
     </script>
     <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.min.js"></script>
