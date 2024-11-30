@@ -121,30 +121,28 @@
 });
 
 lightbox.on('uiRegister', () => {
-  // スライド番号のカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-counter', // ここでカスタム番号を定義
-    order: 5, // デフォルトのcounterと同じ順序（デフォルトを上書き）
-    isButton: false,
-    appendTo: 'bar', // カウンターをバーに追加
-    html: '', // カウンターの内容は動的に設定
-    onInit: (el, pswp) => {
-      // カスタムカウンターのスタイルを設定
-      el.style.color = 'white';
-      el.style.fontSize = '18px'; // 少し大きく
-      el.style.textShadow = '1px 1px 2px black'; // 黒いフチ
-      el.style.fontWeight = 'bold'; // 太字にする
-      el.style.margin = '0 auto'; // 中央揃え
+    // スライド番号のカスタム要素を登録
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-counter',
+      order: 5,
+      isButton: false,
+      appendTo: 'bar',
+      html: '',
+      onInit: (el, pswp) => {
+        el.style.color = 'white';
+        el.style.fontSize = '18px';
+        el.style.textShadow = '1px 1px 2px black';
+        el.style.fontWeight = 'bold';
+        el.style.margin = '0 auto';
 
-      // スライド変更時にカウンター内容を更新
-      pswp.on('change', () => {
-        const totalSlides = pswp.getNumItems(); // 総スライド数
-        const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
-        el.innerHTML = `${reversedIndex}/${totalSlides}`; // カスタム番号を表示
-      });
-    },
+        pswp.on('change', () => {
+          const totalSlides = pswp.getNumItems();
+          const reversedIndex = totalSlides - pswp.currIndex;
+          el.innerHTML = `${reversedIndex}/${totalSlides}`;
+        });
+      },
+    });
   });
-});
 
   lightbox.init();
 </script>
