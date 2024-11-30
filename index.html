@@ -3,194 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>My Image Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <style>
-        /* CSSはそのまま流用 */
+        /* ベースのリセット */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            background-color: #f8f8f8;
+            overflow-x: hidden; /* 横スクロールを防ぐ */
+            background-color: #f8f8f8; /* 非常に薄い灰色を背景色に設定 */
         }
 
-        header {
+        /* Gowun Batangのスタイル */
+        h1 {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700;
+            font-size: 48px;
+            color: #AFDFE4;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* プルダウンのスタイル */
+        .dropdown-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dropdown select {
             padding: 10px 20px;
-            background-color: #AFDFE4;
-            color: white;
-            font-family: "Gowun Batang", serif;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .switch-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 30px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 24px;
-            width: 24px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: #88c1c7;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-
-        .label {
             font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             font-family: "Gowun Batang", serif;
+            background-color: #fff;
         }
 
-        .gallery {
+        /* 画像コンテナのスタイル */
+        .image-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 60px;
         }
 
-        .gallery img {
-            width: 200px;
-            height: auto;
+        .image-wrapper {
+            position: relative; /* 日付の位置を画像内に設定するため */
+            text-align: center;
+        }
+
+        img {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時にアニメーションを追加 */
         }
 
-        .gallery img:hover {
-            transform: scale(1.25);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
+        img:hover {
+            transform: scale(1.25); /* ホバー時に1.25倍に拡大 */
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important; /* 影を強調 */
         }
 
+        .date {
+            position: absolute; /* 日付を画像上に配置 */
+            bottom: -30px; /* 画像のすぐ下に配置 */
+            left: 50%; /* 水平方向中央揃え */
+            transform: translateX(-50%); /* 水平位置を完全に中央に */
+            font-family: "Gowun Batang", serif;
+            font-size: 16px;
+            color: #5C8C8E; /* 視認性を高めた色 */
+            text-shadow: none; /* 影を削除 */
+            z-index: 10; /* 日付を画像の上に表示 */
+        }
+
+        /* フッターのスタイル */
         footer {
+            position: fixed;
+            bottom: 0;
+            left: 0; /* 左端に固定 */
+            width: 100%; /* 画面全体に広げる */
             text-align: center;
-            padding: 10px 0;
             background: rgba(0, 0, 0, 0.5);
             color: white;
             font-size: 12px;
+            padding: 3px 0;
+            font-family: sans-serif;
+        }
+
+        /* 白い余白の調整 */
+        body::after {
+            content: '';
+            display: block;
+            height: 70px; /* 必要な余白の高さを少し増やす */
+        }
+
+        /* メディアクエリでスマホ対応 */
+        @media screen and (max-width: 600px) {
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .date {
+                bottom: -20px; /* スマホ用に調整 */
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="switch-container">
-            <span class="label">ホーム</span>
-            <label class="switch">
-                <input type="checkbox" id="page-switch" onchange="togglePage()" checked>
-                <span class="slider"></span>
-            </label>
-            <span class="label">ギャラリー</span>
-        </div>
-    </header>
-
-    <div class="gallery">
-        <a href="images/1.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/1.png" alt="Image 1">
-        </a>
-        <a href="images/2.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/2.png" alt="Image 2">
-        </a>
-        <a href="images/3.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/3.png" alt="Image 3">
-        </a>
-        <a href="images/4.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/4.png" alt="Image 4">
-        </a>
-        <a href="images/5.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/5.png" alt="Image 5">
-        </a>
-        <a href="images/6.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/6.png" alt="Image 6">
-        </a>
-        <a href="images/7.png" data-pswp-width="800" data-pswp-height="600">
-            <img src="images/7.png" alt="Image 7">
-        </a>
+    <h1>Iroid</h1>
+    <!-- プルダウンメニュー -->
+    <div class="dropdown-container">
+        <select id="page-selector" onchange="navigatePage()">
+            <option value="index.html">ホーム</option>
+            <option value="gallery.html">ギャラリー</option>
+        </select>
     </div>
 
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img src="images/imagesphoto1.jpg" alt="Photo 1">
+            <div class="date">2024/09/13</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
+            <div class="date">2024/08/14</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/pukari.png" alt="Photo 3">
+            <div class="date">2024/07/30</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/IMG_0852.PNG" alt="Photo 4">
+            <div class="date">2024/01/03</div>
+        </div>
+    </div>
     <footer>
         © irorinri. All Rights Reserved.
     </footer>
-
-    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.min.js"></script>
-    <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-ui-default.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            initializePhotoSwipe();
-        });
-
-        function initializePhotoSwipe() {
-            const galleryElements = document.querySelectorAll('.gallery a');
-
-            const options = {
-                bgOpacity: 0.8,
-                showHideAnimationType: 'fade'
-            };
-
-            galleryElements.forEach((el, index) => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-
-                    const pswp = new PhotoSwipe({
-                        dataSource: Array.from(galleryElements).map(el => ({
-                            src: el.getAttribute('href'),
-                            w: el.getAttribute('data-pswp-width'),
-                            h: el.getAttribute('data-pswp-height')
-                        })),
-                        index: index,
-                        options
-                    });
-
-                    pswp.init();
-                });
-            });
-        }
-
-        function togglePage() {
-            const isChecked = document.getElementById("page-switch").checked;
-            if (!isChecked) {
-                window.location.href = "index.html";
-            }
+        function navigatePage() {
+            const selectedPage = document.getElementById("page-selector").value;
+            window.location.href = selectedPage;
         }
     </script>
 </body>
