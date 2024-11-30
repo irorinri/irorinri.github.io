@@ -128,6 +128,14 @@ lightbox.on('uiRegister', () => {
     appendTo: 'bar', // カウンターをバーに追加
     html: '', // カウンターの内容は動的に設定
     onInit: (el, pswp) => {
+      // カスタムカウンターのスタイルを設定
+      el.style.color = 'white';
+      el.style.fontSize = '18px'; // 少し大きく
+      el.style.textShadow = '1px 1px 2px black'; // 黒いフチ
+      el.style.fontWeight = 'bold'; // 太字にする
+      el.style.margin = '0 auto'; // 中央揃え
+
+      // スライド変更時にカウンター内容を更新
       pswp.on('change', () => {
         const totalSlides = pswp.getNumItems(); // 総スライド数
         const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
