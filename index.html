@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Image Blog</title>
-    <!-- CSSファイルのリンク -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,18 +14,38 @@
             <option value="gallery">イラスト</option>
         </select>
     </div>
-
+    
     <div id="home" class="content active">
         <h2>ホーム</h2>
-        <p>ここはホームページのコンテンツです。</p>
+        <p>こちらはホームページです。</p>
+        <div class="image-container">
+            <div class="image-wrapper">
+                <img src="images/irori1.PNG" alt="Irori 1">
+                <div class="date">2024/09/13</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/natsuyu4.jpg" alt="Natsuyu 4">
+                <div class="date">2024/08/01</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/sayure3.jpg" alt="Sayure 3">
+                <div class="date">2024/07/15</div>
+            </div>
+            <div class="image-wrapper">
+                <img src="images/wakama2.png" alt="Wakama 2">
+                <div class="date">2024/06/20</div>
+            </div>
+        </div>
     </div>
-
+    
     <div id="gallery" class="content">
         <h2>イラスト</h2>
         <iframe src="https://irorinri.github.io/gallery/" style="width: 100%; height: 500px; border: none;"></iframe>
     </div>
 
-    <footer>© irorinri. All Rights Reserved.</footer>
+    <footer>
+        <a href="https://irorinri.github.io/gallery/">© irorinri. All Rights Reserved.</a>
+    </footer>
 
     <script>
         function switchContent() {
