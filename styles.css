@@ -4,7 +4,7 @@ body {
   padding: 0;
   padding-bottom: 25vh;
 }
-
+<header style="display: none;"></header>
 nav {
   display: flex;
   justify-content: center;
