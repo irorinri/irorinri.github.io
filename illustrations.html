@@ -131,22 +131,23 @@ lightbox.on('uiRegister', () => {
     onInit: (el, pswp) => {
       // カスタムカウンターのスタイルを設定
       el.style.color = 'white'; // 白文字
-      el.style.fontSize = '18px'; // フォントサイズを大きめに
-      el.style.fontFamily = 'suns-aries, sans-serif'; // フォントを指定
+      el.style.fontSize = '15px'; // フォントサイズを指定
+      el.style.fontFamily = 'sans-serif'; // フォントをsans-serifに変更
       el.style.fontWeight = 'bold'; // 太字
       el.style.position = 'relative'; // 位置調整用
       el.style.top = '10px'; // 上から10px離す
+      el.style.left = '10px'; // 左から10px離す
       el.style.padding = '2px'; // 黒縁の見た目を調整
 
       // 黒縁のスタイルをCSSで定義
-      el.style.webkitTextStroke = '1px black'; // 黒い縁取り
-      el.style.textStroke = '1px black'; // 他ブラウザ対応用
+      el.style.webkitTextStroke = '1px black'; // 黒い縁取り (Safari用)
+      el.style.textStroke = '1px black'; // 他ブラウザ用
 
       // スライド変更時にカウンター内容を更新
       pswp.on('change', () => {
         const totalSlides = pswp.getNumItems(); // 総スライド数
         const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
-        el.innerHTML = `${reversedIndex}/${totalSlides}`; // カスタム番号を表示
+        el.innerHTML = `${reversedIndex} / ${totalSlides}`; // スラッシュの両端に空白を追加
       });
     },
   });
