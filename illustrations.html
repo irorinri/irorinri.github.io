@@ -7,186 +7,182 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-  /* ページ全体の背景色を設定 */
-  body {
-    background-color: #B81A1A; /* 深い赤色 */
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
-
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-  }
-
-  .gallery a {
-    width: 18%;
-    max-width: 100px;
-    text-decoration: none;
-  }
-
-  .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .gallery img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  @media (max-width: 768px) {
-    .gallery a {
-      width: 24%;
+    /* 全体の背景と余白設定 */
+    body {
+      background-color: #8B0000; /* 深い赤色 */
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-  }
 
-  @media (max-width: 480px) {
-    .gallery a {
-      width: 30%;
+    /* プルダウンメニューを最上部に配置 */
+    .dropdown-container {
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+      padding: 10px 0;
     }
-  }
 
-  /* 日付キャプションのスタイル */
-  .pswp__custom-caption {
-    color: white !important;
-    text-align: center !important;
-    padding: 5px !important; /* 背景を細く */
-    position: absolute !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    background: rgba(0, 0, 0, 0.6) !important;
-    z-index: 1000 !important;
-    visibility: visible !important;
-  }
+    .dropdown select {
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+      background-color: #fff;
+      color: #000;
+      cursor: pointer;
+    }
 
-  /* カウンター非表示 */
-  .pswp__counter {
-    display: none;
-  }
-</style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      flex-grow: 1; /* 余白を調整 */
+    }
+
+    .gallery a {
+      width: 18%;
+      max-width: 100px;
+      text-decoration: none;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .gallery a {
+        width: 24%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery a {
+        width: 30%;
+      }
+    }
+
+    /* 日付キャプションのスタイル */
+    .pswp__custom-caption {
+      color: white !important;
+      text-align: center !important;
+      padding: 5px !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      background: rgba(0, 0, 0, 0.6) !important;
+      z-index: 1000 !important;
+      visibility: visible !important;
+    }
+
+    /* ページ下部に余白を追加 */
+    footer {
+      height: 25vh; /* スマホ画面の1/4程度 */
+      background-color: #8B0000;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>イラストギャラリー</h1>
-</header>
+  <!-- プルダウンメニュー -->
+  <div class="dropdown-container">
+    <select onchange="navigatePage(this.value)">
+      <option value="index.html">コミック</option>
+      <option value="illustrations.html" selected>イラスト</option>
+      <option value="gallery.html">ギャラリー</option>
+      <option value="story.html">ストーリー</option>
+      <option value="blog.html">ブログ</option>
+    </select>
+  </div>
 
-<nav>
-  <a href="index.html">コミック</a>
-  <a href="illustrations.html">イラスト</a>
-  <a href="gallery.html">ギャラリー</a>
-  <a href="story.html">ストーリー</a>
-  <a href="blog.html">ブログ</a>
-</nav>
+  <!-- ギャラリー部分 -->
+  <div class="gallery"></div>
 
-<div class="gallery"></div>
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+    const images = [
+      { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-01' },
+      { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
+      { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
+      { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
+      { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
+      { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
+      { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
+    ];
 
-  const images = [
-    { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-01' },
-    { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
-    { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
-    { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
-    { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
-    { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
-    { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
-  ];
+    const galleryElement = document.querySelector('.gallery');
 
-  const galleryElement = document.querySelector('.gallery');
+    const reversedImages = [...images].reverse();
 
-  const reversedImages = [...images].reverse();
+    reversedImages.forEach((image) => {
+      const link = document.createElement('a');
+      link.href = image.src;
+      link.dataset.pswpWidth = image.width;
+      link.dataset.pswpHeight = image.height;
 
-  reversedImages.forEach((image, index) => {
-    const link = document.createElement('a');
-    link.href = image.src;
-    link.dataset.pswpWidth = image.width;
-    link.dataset.pswpHeight = image.height;
+      const img = document.createElement('img');
+      img.src = image.src;
+      img.alt = 'イラスト';
 
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = 'イラスト';
+      const captionSpan = document.createElement('span');
+      captionSpan.className = 'hidden-caption-content';
+      captionSpan.textContent = image.date;
+      captionSpan.style.display = 'none';
 
-    const captionSpan = document.createElement('span');
-    captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = image.date;
-    captionSpan.style.display = 'none';
+      link.append(img, captionSpan);
+      galleryElement.appendChild(link);
+    });
 
-    link.append(img, captionSpan);
-    galleryElement.appendChild(link);
-  });
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    });
 
-  const lightbox = new PhotoSwipeLightbox({
-  gallery: '.gallery',
-  children: 'a',
-  pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-});
-
-lightbox.on('uiRegister', () => {
-  // スライド番号のカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-counter', // カスタム番号を定義
-    order: 5, // デフォルトのカウンターと同じ順序
-    isButton: false,
-    appendTo: 'bar', // カウンターをバーに追加
-    html: '', // カウンターの内容は動的に設定
-    onInit: (el, pswp) => {
-      // カスタムカウンターのスタイルを設定
-      el.style.color = 'white'; // 白文字
-      el.style.fontSize = '15px'; // フォントサイズを13pxに変更
-      el.style.fontFamily = 'Arial, sans-serif'; // フォントをArialに変更
-      el.style.fontWeight = 'bold'; // 太字
-      el.style.position = 'relative'; // 位置調整用
-      el.style.top = '20px'; // 上から10px離す
-      el.style.left = '30px'; // 左から13px離す（10px + 3px）
-      el.style.padding = '2px'; // 黒縁の見た目を調整
-
-      // 黒縁を70%灰色に設定
-      el.style.webkitTextStroke = '1px rgba(128, 128, 128, 0.8)'; // Safari用
-      el.style.textStroke = '1px rgba(128, 128, 128, 0.8)'; // 他ブラウザ用
-
-      // スライド変更時にカウンター内容を更新
-      pswp.on('change', () => {
-        const totalSlides = pswp.getNumItems(); // 総スライド数
-        const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
-        el.innerHTML = `${reversedIndex} / ${totalSlides}`; // スラッシュの両端に空白を追加
+    lightbox.on('uiRegister', () => {
+      // キャプションカスタム
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'wrapper',
+        html: '',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const currentSlide = pswp.currSlide;
+            const captionSpan = currentSlide?.data.element.querySelector('.hidden-caption-content');
+            el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
+          });
+        },
       });
-    },
-  });
+    });
 
-  // キャプションのカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-caption',
-    order: 9, // カスタムカウンターより後に表示
-    isButton: false,
-    appendTo: 'wrapper',
-    html: '',
-    onInit: (el, pswp) => {
-      pswp.on('change', () => {
-        const currentSlide = pswp.currSlide;
-        const captionSpan = currentSlide?.data.element.querySelector('.hidden-caption-content');
-        const captionText = captionSpan ? captionSpan.textContent : 'キャプションなし';
-        el.innerHTML = captionText;
-      });
-    },
-  });
-});
+    lightbox.init();
 
-  lightbox.init();
-</script>
+    // ページ遷移用のJavaScript
+    function navigatePage(value) {
+      window.location.href = value;
+    }
+  </script>
 
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
+  <footer>
+    <!-- フッターは余白として機能 -->
+  </footer>
 
 </body>
 </html>
