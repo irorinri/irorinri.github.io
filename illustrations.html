@@ -131,17 +131,17 @@ lightbox.on('uiRegister', () => {
     onInit: (el, pswp) => {
       // カスタムカウンターのスタイルを設定
       el.style.color = 'white'; // 白文字
-      el.style.fontSize = '13px'; // フォントサイズを13pxに変更
+      el.style.fontSize = '14px'; // フォントサイズを13pxに変更
       el.style.fontFamily = 'Arial, sans-serif'; // フォントをArialに変更
       el.style.fontWeight = 'bold'; // 太字
       el.style.position = 'relative'; // 位置調整用
       el.style.top = '10px'; // 上から10px離す
-      el.style.left = '13px'; // 左から13px離す（10px + 3px）
+      el.style.left = '15px'; // 左から13px離す（10px + 3px）
       el.style.padding = '2px'; // 黒縁の見た目を調整
 
       // 黒縁を70%灰色に設定
-      el.style.webkitTextStroke = '1px rgba(128, 128, 128, 0.7)'; // Safari用
-      el.style.textStroke = '1px rgba(128, 128, 128, 0.7)'; // 他ブラウザ用
+      el.style.webkitTextStroke = '1px rgba(128, 128, 128, 0.8)'; // Safari用
+      el.style.textStroke = '1px rgba(128, 128, 128, 0.8)'; // 他ブラウザ用
 
       // スライド変更時にカウンター内容を更新
       pswp.on('change', () => {
