@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -198,20 +198,18 @@
 
         function initializePhotoSwipe() {
             const galleryElements = document.querySelectorAll('.gallery a');
-            const items = Array.from(galleryElements).map((el) => ({
-                src: el.getAttribute('href'),
-                w: parseInt(el.getAttribute('data-pswp-width')),
-                h: parseInt(el.getAttribute('data-pswp-height')),
-            }));
+            const options = {
+                bgOpacity: 0.8,
+                showHideAnimationType: 'fade',
+            };
 
             galleryElements.forEach((el, i) => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
                     const gallery = new PhotoSwipe({
-                        dataSource: items,
+                        dataSource: galleryElements,
                         index: i,
-                        bgOpacity: 0.8,
-                        pswpModule: PhotoSwipe
+                        options
                     });
                     gallery.init();
                 });
