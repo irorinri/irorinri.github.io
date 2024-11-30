@@ -21,6 +21,7 @@
             color: #AFDFE4;
             text-align: center;
             margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .dropdown-container {
@@ -59,7 +60,7 @@
 
         img:hover {
             transform: scale(1.25);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important;
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
         }
 
         .date {
@@ -131,13 +132,11 @@
             <div class="date">2024/01/03</div>
         </div>
     </div>
-
     <footer>
         © irorinri. All Rights Reserved.
     </footer>
 
     <script>
-        // ページ遷移用のJavaScript
         function navigatePage() {
             const selectedPage = document.getElementById('page-selector').value;
             window.location.href = selectedPage;
