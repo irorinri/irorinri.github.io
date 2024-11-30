@@ -106,7 +106,7 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = `${reversedImages.length - index}/${reversedImages.length} - ${image.date}`;
+    captionSpan.textContent = date;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
