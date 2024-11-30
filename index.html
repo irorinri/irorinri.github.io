@@ -10,31 +10,30 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden;
             background-color: #f8f8f8;
         }
 
-        h1 {
-            font-family: "Gowun Batang", serif;
-            font-weight: 700;
-            font-size: 48px;
-            color: #AFDFE4;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .dropdown-container {
+        header {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #AFDFE4;
+            color: white;
+            font-family: "Gowun Batang", serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        select {
-            padding: 10px 20px;
-            font-family: "Gowun Batang", serif;
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        header select {
+            padding: 5px 10px;
             font-size: 16px;
+            border: none;
             border-radius: 5px;
-            border: 1px solid #ccc;
             cursor: pointer;
         }
 
@@ -43,6 +42,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 60px;
+            padding: 20px;
         }
 
         .image-wrapper {
@@ -60,7 +60,7 @@
 
         img:hover {
             transform: scale(1.25);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important;
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
         }
 
         .date {
@@ -74,30 +74,23 @@
         }
 
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
             text-align: center;
+            padding: 10px 0;
             background: rgba(0, 0, 0, 0.5);
             color: white;
             font-size: 12px;
-            padding: 3px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Iroid</h1>
-
-    <!-- プルダウンメニュー -->
-    <div class="dropdown-container">
+    <header>
+        <h1>My Image Blog</h1>
         <select id="page-selector" onchange="navigatePage()">
             <option value="index.html" selected>ホーム</option>
             <option value="gallery.html">ギャラリー</option>
         </select>
-    </div>
+    </header>
 
-    <!-- ホームのコンテンツ -->
     <div class="image-container">
         <div class="image-wrapper">
             <img src="images/irori1.PNG" alt="Irori 1">
