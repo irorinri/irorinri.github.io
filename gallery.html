@@ -7,27 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <style>
-        h1 {
-            font-family: "Gowun Batang", serif;
-            font-weight: 700;
-            font-size: 48px;
-            color: #AFDFE4;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .dropdown-container {
+        header {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #AFDFE4;
+            color: white;
+            font-family: "Gowun Batang", serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        select {
-            padding: 10px 20px;
-            font-family: "Gowun Batang", serif;
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        header select {
+            padding: 5px 10px;
             font-size: 16px;
+            border: none;
             border-radius: 5px;
-            border: 1px solid #ccc;
             cursor: pointer;
         }
 
@@ -62,17 +62,14 @@
     </style>
 </head>
 <body>
-    <h1>Gallery</h1>
-
-    <!-- プルダウンメニュー -->
-    <div class="dropdown-container">
+    <header>
+        <h1>Gallery</h1>
         <select id="page-selector" onchange="navigatePage()">
             <option value="index.html">ホーム</option>
             <option value="gallery.html" selected>ギャラリー</option>
         </select>
-    </div>
+    </header>
 
-    <!-- ギャラリーコンテンツ -->
     <div class="gallery">
         <a href="images/1.png" data-pswp-width="800" data-pswp-height="600">
             <img src="images/1.png" alt="Image 1">
@@ -109,25 +106,5 @@
     </script>
     <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.min.js"></script>
     <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-ui-default.min.js"></script>
-    <script>
-        const galleryElements = document.querySelectorAll('.gallery a');
-
-        const items = Array.from(galleryElements).map((el) => {
-            return {
-                src: el.getAttribute('href'),
-                w: parseInt(el.getAttribute('data-pswp-width')),
-                h: parseInt(el.getAttribute('data-pswp-height')),
-            };
-        });
-
-        galleryElements.forEach((el, i) => {
-            el.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pswpElement = document.querySelector('.pswp');
-                const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, { index: i });
-                gallery.init();
-            });
-        });
-    </script>
 </body>
 </html>
