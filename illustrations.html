@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -6,32 +6,6 @@
   <title>イラストギャラリー</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
-  <style>
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px; /* 画像間のスペース */
-      padding: 20px;
-    }
-    .gallery a {
-      width: 18%; /* 横幅を小さめに調整 */
-      max-width: 150px;
-      text-decoration: none;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    @media (max-width: 768px) {
-      .gallery a {
-        width: 30%; /* スマホで2列になるよう調整 */
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -52,21 +26,22 @@
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-  // 画像データのリスト
   const images = [
-    { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
-    { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
-    { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
-    { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
-    { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
-    { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
     { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-01' },
+    { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
+    { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
+    { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
+    { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
+    { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
+    { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
   ];
 
   const galleryElement = document.querySelector('.gallery');
 
-  // ギャラリーの画像を追加
-  images.forEach(({ src, width, height, caption }) => {
+  // 画像リストを逆順にする
+  const reversedImages = [...images].reverse();
+
+  reversedImages.forEach(({ src, width, height, date }) => {
     const link = document.createElement('a');
     link.href = src;
     link.dataset.pswpWidth = width;
@@ -78,14 +53,13 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = caption;
+    captionSpan.textContent = date;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
     galleryElement.appendChild(link);
   });
 
-  // PhotoSwipeの初期化
   const lightbox = new PhotoSwipeLightbox({
     gallery: '.gallery',
     children: 'a',
