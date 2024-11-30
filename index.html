@@ -23,6 +23,21 @@
             margin-bottom: 30px;
         }
 
+        .dropdown-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px 20px;
+            font-family: "Gowun Batang", serif;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
         .image-container {
             display: flex;
             flex-wrap: wrap;
@@ -74,6 +89,15 @@
 <body>
     <h1>Iroid</h1>
 
+    <!-- プルダウンメニュー -->
+    <div class="dropdown-container">
+        <select id="page-selector" onchange="navigatePage()">
+            <option value="index.html" selected>ホーム</option>
+            <option value="gallery.html">ギャラリー</option>
+        </select>
+    </div>
+
+    <!-- ホームのコンテンツ -->
     <div class="image-container">
         <div class="image-wrapper">
             <img src="images/irori1.PNG" alt="Irori 1">
@@ -96,5 +120,12 @@
     <footer>
         © irorinri. All Rights Reserved.
     </footer>
+
+    <script>
+        function navigatePage() {
+            const selectedPage = document.getElementById("page-selector").value;
+            window.location.href = selectedPage;
+        }
+    </script>
 </body>
 </html>
