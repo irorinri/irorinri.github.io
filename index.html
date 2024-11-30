@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +6,16 @@
     <title>My Image Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ベースのリセット */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden;
-            background-color: #f8f8f8;
+            overflow-x: hidden; /* 横スクロールを防ぐ */
+            background-color: #f8f8f8; /* 非常に薄い灰色を背景色に設定 */
         }
 
+        /* Gowun Batangのスタイル */
         h1 {
             font-family: "Gowun Batang", serif;
             font-weight: 700;
@@ -21,133 +23,141 @@
             color: #AFDFE4;
             text-align: center;
             margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* プルダウンメニュー */
         .dropdown-container {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
         }
 
-        .dropdown select {
+        select {
             padding: 10px 20px;
+            font-family: "Gowun Batang", serif;
             font-size: 16px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            font-family: "Gowun Batang", serif;
+            cursor: pointer;
         }
 
-        .content {
-            display: none;
-        }
-
-        .content.active {
-            display: block;
-        }
-
+        /* 画像コンテナのスタイル */
         .image-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
         }
 
         .image-wrapper {
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .image-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
+            position: relative; /* 日付の位置を画像内に設定するため */
+            text-align: center;
         }
 
         img {
-            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
+            width: 200px;
             height: auto;
-            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時にアニメーションを追加 */
+        }
+
+        img:hover {
+            transform: scale(1.25); /* ホバー時に1.25倍に拡大 */
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5) !important; /* 影を強調 */
         }
 
         .date {
-            text-align: center;
-            margin-top: 10px;
+            position: absolute; /* 日付を画像上に配置 */
+            bottom: -30px; /* 画像のすぐ下に配置 */
+            left: 50%; /* 水平方向中央揃え */
+            transform: translateX(-50%); /* 水平位置を完全に中央に */
             font-family: "Gowun Batang", serif;
-            font-size: 14px;
-            color: #5C8C8E;
+            font-size: 16px;
+            color: #5C8C8E; /* 視認性を高めた色 */
+            text-shadow: none; /* 影を削除 */
+            z-index: 10; /* 日付を画像の上に表示 */
         }
 
+        /* フッターのスタイル */
         footer {
+            position: fixed;
+            bottom: 0;
+            left: 0; /* 左端に固定 */
+            width: 100%; /* 画面全体に広げる */
             text-align: center;
-            padding: 10px 0;
             background: rgba(0, 0, 0, 0.5);
             color: white;
             font-size: 12px;
+            padding: 3px 0;
             font-family: sans-serif;
         }
 
+        /* 白い余白の調整 */
+        body::after {
+            content: '';
+            display: block;
+            height: 70px; /* 必要な余白の高さを少し増やす */
+        }
+
+        /* メディアクエリでスマホ対応 */
         @media screen and (max-width: 600px) {
-            h1 {
-                font-size: 32px;
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .date {
+                bottom: -20px; /* スマホ用に調整 */
             }
         }
     </style>
 </head>
 <body>
     <h1>Iroid</h1>
+
+    <!-- プルダウンメニュー -->
     <div class="dropdown-container">
-        <select id="content-selector" onchange="switchContent()">
-            <option value="home">ホーム</option>
-            <option value="gallery">イラスト</option>
+        <select id="page-selector" onchange="navigatePage()">
+            <option value="index.html">ホーム</option>
+            <option value="gallery.html">ギャラリー</option>
         </select>
     </div>
 
-    <div id="home" class="content active">
-        <h2>ホーム</h2>
-        <p>こちらはホームページです。</p>
-        <div class="image-container">
-            <div class="image-wrapper">
-                <img src="images/irori1.PNG" alt="Irori 1">
-                <div class="date">2024/09/13</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/natsuyu4.jpg" alt="Natsuyu 4">
-                <div class="date">2024/08/01</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/sayure3.jpg" alt="Sayure 3">
-                <div class="date">2024/07/15</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/wakama2.png" alt="Wakama 2">
-                <div class="date">2024/06/20</div>
-            </div>
+    <!-- ホームのコンテンツ -->
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img src="images/imagesphoto1.jpg" alt="Photo 1">
+            <div class="date">2024/09/13</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/D31453FB-F9FA-4AF0-BC9D-C5EF4D6F1E50.jpg" alt="Photo 2">
+            <div class="date">2024/08/14</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/pukari.png" alt="Photo 3">
+            <div class="date">2024/07/30</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/IMG_0852.PNG" alt="Photo 4">
+            <div class="date">2024/01/03</div>
         </div>
     </div>
 
-    <div id="gallery" class="content">
-        <h2>イラスト</h2>
-        <iframe src="https://irorinri.github.io/gallery/" style="width: 100%; height: 500px; border: none;"></iframe>
-    </div>
-
     <footer>
-        <a href="https://irorinri.github.io/gallery/">© irorinri. All Rights Reserved.</a>
+        © irorinri. All Rights Reserved.
     </footer>
 
     <script>
-        function switchContent() {
-            const selected = document.getElementById("content-selector").value;
-            const contents = document.querySelectorAll(".content");
-            contents.forEach(content => {
-                if (content.id === selected) {
-                    content.classList.add("active");
-                } else {
-                    content.classList.remove("active");
-                }
-            });
+        function navigatePage() {
+            const selectedPage = document.getElementById("page-selector").value;
+            window.location.href = selectedPage;
         }
     </script>
 </body>
