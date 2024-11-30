@@ -11,13 +11,13 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px; /* 画像間の間隔 */
+      gap: 10px;
       padding: 20px;
     }
 
     .gallery a {
-      width: 18%; /* 1行に5枚程度表示 */
-      max-width: 100px; /* 最大幅 */
+      width: 18%;
+      max-width: 100px;
       text-decoration: none;
     }
 
@@ -36,13 +36,13 @@
 
     @media (max-width: 768px) {
       .gallery a {
-        width: 24%; /* スマホでは1行に4枚表示 */
+        width: 24%;
       }
     }
 
     @media (max-width: 480px) {
       .gallery a {
-        width: 30%; /* スマホでは1行に3枚表示 */
+        width: 30%;
       }
     }
   </style>
@@ -78,7 +78,6 @@
 
   const galleryElement = document.querySelector('.gallery');
 
-  // 画像リストを逆順にする
   const reversedImages = [...images].reverse();
 
   reversedImages.forEach(({ src, width, height, date }) => {
