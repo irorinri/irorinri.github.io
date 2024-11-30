@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Image Blog</title>
+    <title>Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
     <style>
+        /* CSSはそのまま流用 */
         html, body {
             margin: 0;
             padding: 0;
@@ -81,18 +82,15 @@
             font-family: "Gowun Batang", serif;
         }
 
-        .content-container {
-            padding: 20px;
-        }
-
-        .gallery, .image-container {
+        .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            padding: 20px;
         }
 
-        .gallery img, .image-container img {
+        .gallery img {
             width: 200px;
             height: auto;
             border-radius: 10px;
@@ -100,7 +98,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .gallery img:hover, .image-container img:hover {
+        .gallery img:hover {
             transform: scale(1.25);
             box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
         }
@@ -119,29 +117,35 @@
         <div class="switch-container">
             <span class="label">ホーム</span>
             <label class="switch">
-                <input type="checkbox" id="page-switch" onchange="toggleContent()">
+                <input type="checkbox" id="page-switch" onchange="togglePage()" checked>
                 <span class="slider"></span>
             </label>
             <span class="label">ギャラリー</span>
         </div>
     </header>
 
-    <div class="content-container" id="content">
-        <!-- 初期表示はホーム -->
-        <div class="image-container">
-            <div>
-                <img src="images/irori1.PNG" alt="Irori 1">
-            </div>
-            <div>
-                <img src="images/pw2.png" alt="Image PW2">
-            </div>
-            <div>
-                <img src="images/us3.jpg" alt="Image US3">
-            </div>
-            <div>
-                <img src="images/nf4.jpg" alt="Image NF4">
-            </div>
-        </div>
+    <div class="gallery">
+        <a href="images/1.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/1.png" alt="Image 1">
+        </a>
+        <a href="images/2.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/2.png" alt="Image 2">
+        </a>
+        <a href="images/3.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/3.png" alt="Image 3">
+        </a>
+        <a href="images/4.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/4.png" alt="Image 4">
+        </a>
+        <a href="images/5.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/5.png" alt="Image 5">
+        </a>
+        <a href="images/6.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/6.png" alt="Image 6">
+        </a>
+        <a href="images/7.png" data-pswp-width="800" data-pswp-height="600">
+            <img src="images/7.png" alt="Image 7">
+        </a>
     </div>
 
     <footer>
@@ -151,69 +155,42 @@
     <script src="https://unpkg.com/photoswipe@5/dist/photoswipe.min.js"></script>
     <script src="https://unpkg.com/photoswipe@5/dist/photoswipe-ui-default.min.js"></script>
     <script>
-        function toggleContent() {
-            const isChecked = document.getElementById("page-switch").checked;
-            const content = document.getElementById("content");
-
-            if (isChecked) {
-                // ギャラリーを表示
-                content.innerHTML = `
-                    <div class="gallery">
-                        <a href="images/1.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/1.png" alt="Image 1">
-                        </a>
-                        <a href="images/2.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/2.png" alt="Image 2">
-                        </a>
-                        <a href="images/3.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/3.png" alt="Image 3">
-                        </a>
-                        <a href="images/4.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/4.png" alt="Image 4">
-                        </a>
-                        <a href="images/5.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/5.png" alt="Image 5">
-                        </a>
-                        <a href="images/6.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/6.png" alt="Image 6">
-                        </a>
-                        <a href="images/7.png" data-pswp-width="800" data-pswp-height="600">
-                            <img src="images/7.png" alt="Image 7">
-                        </a>
-                    </div>
-                `;
-                initializePhotoSwipe();
-            } else {
-                // ホームを表示
-                content.innerHTML = `
-                    <div class="image-container">
-                        <div><img src="images/irori1.PNG" alt="Irori 1"></div>
-                        <div><img src="images/pw2.png" alt="Image PW2"></div>
-                        <div><img src="images/us3.jpg" alt="Image US3"></div>
-                        <div><img src="images/nf4.jpg" alt="Image NF4"></div>
-                    </div>
-                `;
-            }
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            initializePhotoSwipe();
+        });
 
         function initializePhotoSwipe() {
             const galleryElements = document.querySelectorAll('.gallery a');
+
             const options = {
                 bgOpacity: 0.8,
-                showHideAnimationType: 'fade',
+                showHideAnimationType: 'fade'
             };
 
-            galleryElements.forEach((el, i) => {
+            galleryElements.forEach((el, index) => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const gallery = new PhotoSwipe({
-                        dataSource: galleryElements,
-                        index: i,
+
+                    const pswp = new PhotoSwipe({
+                        dataSource: Array.from(galleryElements).map(el => ({
+                            src: el.getAttribute('href'),
+                            w: el.getAttribute('data-pswp-width'),
+                            h: el.getAttribute('data-pswp-height')
+                        })),
+                        index: index,
                         options
                     });
-                    gallery.init();
+
+                    pswp.init();
                 });
             });
+        }
+
+        function togglePage() {
+            const isChecked = document.getElementById("page-switch").checked;
+            if (!isChecked) {
+                window.location.href = "index.html";
+            }
         }
     </script>
 </body>
