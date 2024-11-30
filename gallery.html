@@ -154,9 +154,7 @@
     // ページ遷移用JavaScript
     function navigatePage() {
       const selectedPage = document.getElementById('page-selector').value;
-      if (selectedPage !== window.location.pathname.split('/').pop()) {
-        window.location.href = selectedPage;
-      }
+      window.location.href = `./${selectedPage}`;
     }
   </script>
 </body>
