@@ -4,60 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Image Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ベースのリセット */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #f8f8f8;
+        }
+
+        /* タイトルのスタイル */
+        h1 {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700;
+            font-size: 48px;
+            color: #AFDFE4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* 画像ギャラリーのスタイル */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image-wrapper {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .date {
+            text-align: center;
+            margin-top: 10px;
+            font-family: "Gowun Batang", serif;
+            font-size: 14px;
+            color: #5C8C8E;
+        }
+
+        /* フッターのスタイル */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+
+        /* メディアクエリでスマホ対応 */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Iroid</h1>
-    <div class="dropdown-container">
-        <select id="content-selector" onchange="switchContent()">
-            <option value="home">ホーム</option>
-            <option value="gallery">イラスト</option>
-        </select>
-    </div>
-    
-    <div id="home" class="content active">
-        <h2>ホーム</h2>
-        <p>こちらはホームページです。</p>
-        <div class="image-container">
-            <div class="image-wrapper">
-                <img src="images/irori1.PNG" alt="Irori 1">
-                <div class="date">2024/09/13</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/natsuyu4.jpg" alt="Natsuyu 4">
-                <div class="date">2024/08/01</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/sayure3.jpg" alt="Sayure 3">
-                <div class="date">2024/07/15</div>
-            </div>
-            <div class="image-wrapper">
-                <img src="images/wakama2.png" alt="Wakama 2">
-                <div class="date">2024/06/20</div>
-            </div>
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img src="images/irori1.PNG" alt="Irori 1">
+            <div class="date">2024/09/13</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/natsuyu4.jpg" alt="Natsuyu 4">
+            <div class="date">2024/08/01</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/sayure3.jpg" alt="Sayure 3">
+            <div class="date">2024/07/15</div>
+        </div>
+        <div class="image-wrapper">
+            <img src="images/wakama2.png" alt="Wakama 2">
+            <div class="date">2024/06/20</div>
         </div>
     </div>
-    
-    <div id="gallery" class="content">
-        <h2>イラスト</h2>
-        <iframe src="https://irorinri.github.io/gallery/" style="width: 100%; height: 500px; border: none;"></iframe>
-    </div>
-
     <footer>
         <a href="https://irorinri.github.io/gallery/">© irorinri. All Rights Reserved.</a>
     </footer>
-
-    <script>
-        function switchContent() {
-            const selected = document.getElementById("content-selector").value;
-            const contents = document.querySelectorAll(".content");
-            contents.forEach(content => {
-                content.classList.remove("active");
-                if (content.id === selected) {
-                    content.classList.add("active");
-                }
-            });
-        }
-    </script>
 </body>
 </html>
