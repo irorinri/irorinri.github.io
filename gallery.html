@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -76,7 +76,7 @@
   <!-- プルダウンメニュー -->
   <div class="dropdown-container">
     <select id="page-selector" onchange="navigatePage()">
-      <option value="index.html">ホーム</option>
+      <option value="https://irorinri.github.io/">ホーム</option>
       <option value="gallery.html" selected>ギャラリー</option>
     </select>
   </div>
@@ -160,9 +160,7 @@
 
     function navigatePage() {
       const selectedPage = document.getElementById('page-selector').value;
-      if (selectedPage !== window.location.pathname.split("/").pop()) {
-        window.location.href = `./${selectedPage}`;
-      }
+      window.location.href = selectedPage;
     }
   </script>
 </body>
