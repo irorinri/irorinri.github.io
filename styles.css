@@ -9,6 +9,9 @@ header {
   padding: 10px;
   text-align: center;
 }
+header {
+  display: none;
+}
 nav {
   display: flex;
   justify-content: center;
