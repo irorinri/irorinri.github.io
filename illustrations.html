@@ -117,17 +117,25 @@
 });
 
 lightbox.on('uiRegister', () => {
+  // キャプションのカスタム要素を登録
   lightbox.pswp.ui.registerElement({
-    name: 'custom-counter',
-    order: 5, // デフォルトのカウンター要素の順序
+    name: 'custom-caption',
+    order: 9,
     isButton: false,
     appendTo: 'wrapper',
-    html: '', // カウンターの内容を動的に設定
+    html: '',
     onInit: (el, pswp) => {
       pswp.on('change', () => {
         const totalSlides = pswp.getNumItems(); // 総スライド数
-        const currentIndex = totalSlides - pswp.currIndex; // 番号を逆順に設定
-        el.innerHTML = `${currentIndex}/${totalSlides}`;
+        const reversedIndex = totalSlides - pswp.currIndex; // 逆順の番号
+        const currentElement = pswp.currSlide?.data.element;
+
+        // キャプション要素を取得
+        const captionSpan = currentElement?.querySelector('.hidden-caption-content');
+        const captionText = captionSpan ? captionSpan.textContent : 'キャプションなし';
+
+        // キャプション内容を更新
+        el.innerHTML = `${reversedIndex}/${totalSlides} - ${captionText}`;
       });
     },
   });
