@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イラストギャラリー</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+</head>
+<body>
+  <header>
+    <h1>イラストギャラリー</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">コミック</a>
+    <a href="illustrations.html">イラスト</a>
+    <a href="gallery.html">ギャラリー</a>
+  </nav>
+
+  <div class="gallery"></div>
+
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+    const images = [
+      { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-01' },
+      { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
+      { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
+      { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
+      { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
+      { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
+      { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
+    ];
+
+    const galleryElement = document.querySelector('.gallery');
+
+    images.forEach(({ src, width, height, date }) => {
+      const link = document.createElement('a');
+      link.href = src;
+      link.dataset.pswpWidth = width;
+      link.dataset.pswpHeight = height;
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'イラスト';
+
+      const captionSpan = document.createElement('span');
+      captionSpan.className = 'hidden-caption-content';
+      captionSpan.textContent = date;
+      captionSpan.style.display = 'none';
+
+      link.append(img, captionSpan);
+      galleryElement.appendChild(link);
+    });
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    });
+
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'wrapper',
+        html: '',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+            el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
+          });
+        }
+      });
+    });
+
+    lightbox.init();
+  </script>
+
+  <div class="copyright">
+    © irorinri. All Rights Reserved.
+  </div>
+</body>
+</html>
