@@ -3,165 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>イラストギャラリー</title>
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <title>My Site</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
-    .dropdown-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      background-color: #f8f8f8;
-      padding: 10px 0;
-    }
-    .dropdown select {
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-family: Arial, sans-serif;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .gallery a {
-      width: 15%;
-      margin: 0.5%;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .pswp__custom-caption {
-      color: white !important;
-      text-align: center !important;
-      padding: 15px !important;
-      position: absolute !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      background: rgba(0, 0, 0, 0.6) !important;
-      box-sizing: border-box !important;
-    }
-    .copyright {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
+    header {
+      background-color: #333;
       color: white;
-      font-size: 14px;
-      padding: 5px 0;
-      z-index: 10;
+      padding: 10px;
+      text-align: center;
     }
-    @media (max-width: 768px) {
-      .gallery a {
-        width: 30%;
-      }
-      .copyright {
-        font-size: 12px;
-        padding: 4px 0;
-      }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #444;
+    }
+    nav button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    nav button:hover {
+      background-color: #555;
+    }
+    .section {
+      display: none; /* 初期状態では非表示 */
+      padding: 20px;
+      text-align: center;
+    }
+    .section.active {
+      display: block; /* アクティブなセクションのみ表示 */
     }
   </style>
 </head>
 <body>
 
-  <!-- プルダウンメニュー -->
-  <div class="dropdown-container">
-    <select id="page-selector" onchange="navigatePage()">
-      <option value="https://irorinri.github.io/">ホーム</option>
-      <option value="gallery.html" selected>ギャラリー</option>
-    </select>
-  </div>
+<header>
+  <h1>My Site</h1>
+</header>
 
-  <div class="gallery"></div>
+<!-- ナビゲーションボタン -->
+<nav>
+  <button onclick="showSection('comics')">コミック</button>
+  <button onclick="showSection('illustrations')">イラスト</button>
+  <button onclick="showSection('gallery')">ギャラリー</button>
+</nav>
 
-  <!-- 著作権表記 -->
-  <div class="copyright">
-    © irorinri. All Rights Reserved.
-  </div>
+<!-- コミックセクション -->
+<div id="comics" class="section active">
+  <h2>コミック</h2>
+  <p>ここにはコミックのコンテンツが表示されます。</p>
+</div>
 
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+<!-- イラストセクション -->
+<div id="illustrations" class="section">
+  <h2>イラスト</h2>
+  <p>ここにはイラストのコンテンツが表示されます。</p>
+</div>
 
-    const images = [
-      { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-10' },
-      { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-11' },
-      { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-12' },
-      { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-13' },
-      { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-14' },
-      { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-15' },
-      { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-16' },
-      { src: 'images/8.png', width: 1000, height: 1000, date: '2024-11-17' },
-    ];
+<!-- ギャラリーセクション -->
+<div id="gallery" class="section">
+  <h2>ギャラリー</h2>
+  <p>ここにはギャラリーのコンテンツが表示されます。</p>
+</div>
 
-    const galleryElement = document.querySelector('.gallery');
+<script>
+  function showSection(sectionId) {
+    // すべてのセクションを非表示にする
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => section.classList.remove('active'));
 
-    galleryElement.innerHTML = '';
+    // 選択されたセクションを表示する
+    document.getElementById(sectionId).classList.add('active');
+  }
+</script>
 
-    const reversedImages = [...images].reverse();
-
-    reversedImages.forEach(({ src, width, height, date }) => {
-      const link = document.createElement('a');
-      link.href = src;
-      link.dataset.pswpWidth = width;
-      link.dataset.pswpHeight = height;
-
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = 'イラスト';
-
-      const captionSpan = document.createElement('span');
-      captionSpan.className = 'hidden-caption-content';
-      captionSpan.textContent = date;
-      captionSpan.style.display = 'none';
-
-      link.append(img, captionSpan);
-      galleryElement.appendChild(link);
-    });
-
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '.gallery',
-      children: 'a',
-      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    });
-
-    lightbox.on('uiRegister', () => {
-      lightbox.pswp.ui.registerElement({
-        name: 'custom-caption',
-        order: 9,
-        isButton: false,
-        appendTo: 'wrapper',
-        html: '',
-        onInit: (el, pswp) => {
-          pswp.on('change', () => {
-            const captionSpan = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-            el.innerHTML = captionSpan ? captionSpan.textContent : 'キャプションなし';
-          });
-        }
-      });
-    });
-
-    lightbox.init();
-
-    // ページ遷移用JavaScript
-    document.addEventListener("DOMContentLoaded", () => {
-      const currentPage = window.location.pathname.split("/").pop();
-      const selector = document.getElementById("page-selector");
-      selector.value = currentPage;
-    });
-
-    function navigatePage() {
-      const selectedPage = document.getElementById('page-selector').value;
-      window.location.href = selectedPage;
-    }
-  </script>
 </body>
 </html>
