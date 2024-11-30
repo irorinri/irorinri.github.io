@@ -9,7 +9,7 @@
   <style>
     /* 全体の背景と余白設定 */
     body {
-      background-color: #8B0000; /* 深い赤色 */
+      background-color: #B81A1A; /* 深い赤色 */
       color: white;
       margin: 0;
       padding: 0;
@@ -92,7 +92,7 @@
     /* ページ下部に余白を追加 */
     footer {
       height: 25vh; /* スマホ画面の1/4程度 */
-      background-color: #8B0000;
+      background-color: #B81A1A;
     }
   </style>
 </head>
@@ -156,6 +156,35 @@
 
     lightbox.on('uiRegister', () => {
       // キャプションカスタム
+      lightbox.pswp.ui.registerElement({
+    name: 'custom-counter', // カスタム番号を定義
+    order: 5, // デフォルトのカウンターと同じ順序
+    isButton: false,
+    appendTo: 'bar', // カウンターをバーに追加
+    html: '', // カウンターの内容は動的に設定
+    onInit: (el, pswp) => {
+      // カスタムカウンターのスタイルを設定
+      el.style.color = 'white'; // 白文字
+      el.style.fontSize = '16px'; // フォントサイズを13pxに変更
+      el.style.fontFamily = 'Arial, sans-serif'; // フォントをArialに変更
+      el.style.fontWeight = 'bold'; // 太字
+      el.style.position = 'relative'; // 位置調整用
+      el.style.top = '20px'; // 上から10px離す
+      el.style.left = '30px'; // 左から13px離す（10px + 3px）
+      el.style.padding = '2px'; // 黒縁の見た目を調整
+
+      // 黒縁を70%灰色に設定
+      el.style.webkitTextStroke = '1px rgba(128, 128, 128, 0.8)'; // Safari用
+      el.style.textStroke = '1px rgba(128, 128, 128, 0.8)'; // 他ブラウザ用
+
+      // スライド変更時にカウンター内容を更新
+      pswp.on('change', () => {
+        const totalSlides = pswp.getNumItems(); // 総スライド数
+        const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
+        el.innerHTML = `${reversedIndex} / ${totalSlides}`; // スラッシュの両端に空白を追加
+      });
+    },
+  });
       lightbox.pswp.ui.registerElement({
         name: 'custom-caption',
         order: 9,
