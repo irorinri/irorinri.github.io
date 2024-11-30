@@ -7,17 +7,28 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px; /* 画像間のスペース */
+      padding: 20px;
+    }
+    .gallery a {
+      width: 18%; /* 横幅を小さめに調整 */
+      max-width: 150px;
+      text-decoration: none;
+    }
     .gallery img {
       width: 100%;
-      max-width: 200px;
       height: auto;
       display: block;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     @media (max-width: 768px) {
-      .gallery img {
-        max-width: 20%; /* スマホで幅を調整 */
+      .gallery a {
+        width: 30%; /* スマホで2列になるよう調整 */
       }
     }
   </style>
@@ -41,15 +52,15 @@
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-  // 画像データのリスト (番号逆順)
+  // 画像データのリスト
   const images = [
-    { src: 'images/1.png', width: 1000, height: 1000, caption: '8/8' },
-    { src: 'images/2.png', width: 1000, height: 1000, caption: '7/8' },
-    { src: 'images/3.png', width: 1000, height: 1000, caption: '6/8' },
-    { src: 'images/4.png', width: 1000, height: 1000, caption: '5/8' },
-    { src: 'images/5.png', width: 1000, height: 1000, caption: '4/8' },
-    { src: 'images/6.png', width: 1000, height: 1000, caption: '3/8' },
-    { src: 'images/7.png', width: 1000, height: 1000, caption: '2/8' },
+    { src: 'images/7.png', width: 1000, height: 1000, caption: '1/8' },
+    { src: 'images/6.png', width: 1000, height: 1000, caption: '2/8' },
+    { src: 'images/5.png', width: 1000, height: 1000, caption: '3/8' },
+    { src: 'images/4.png', width: 1000, height: 1000, caption: '4/8' },
+    { src: 'images/3.png', width: 1000, height: 1000, caption: '5/8' },
+    { src: 'images/2.png', width: 1000, height: 1000, caption: '6/8' },
+    { src: 'images/1.png', width: 1000, height: 1000, caption: '7/8' },
   ];
 
   const galleryElement = document.querySelector('.gallery');
