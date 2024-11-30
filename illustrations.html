@@ -104,7 +104,7 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = `${index + 1}/${reversedImages.length} - ${date}`;
+    captionSpan.textContent = date; // 日付のみを設定
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
