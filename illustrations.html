@@ -6,6 +6,21 @@
   <title>イラストギャラリー</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <style>
+    .gallery img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 768px) {
+      .gallery img {
+        max-width: 90%; /* スマホで幅を調整 */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,19 +41,21 @@
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
+  // 画像データのリスト (番号逆順)
   const images = [
-    { src: 'images/1.png', width: 1000, height: 1000, date: '2024-11-01' },
-    { src: 'images/2.png', width: 1000, height: 1000, date: '2024-11-02' },
-    { src: 'images/3.png', width: 1000, height: 1000, date: '2024-11-03' },
-    { src: 'images/4.png', width: 1000, height: 1000, date: '2024-11-04' },
-    { src: 'images/5.png', width: 1000, height: 1000, date: '2024-11-05' },
-    { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-06' },
-    { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-07' },
+    { src: 'images/1.png', width: 1000, height: 1000, caption: '8/8' },
+    { src: 'images/2.png', width: 1000, height: 1000, caption: '7/8' },
+    { src: 'images/3.png', width: 1000, height: 1000, caption: '6/8' },
+    { src: 'images/4.png', width: 1000, height: 1000, caption: '5/8' },
+    { src: 'images/5.png', width: 1000, height: 1000, caption: '4/8' },
+    { src: 'images/6.png', width: 1000, height: 1000, caption: '3/8' },
+    { src: 'images/7.png', width: 1000, height: 1000, caption: '2/8' },
   ];
 
   const galleryElement = document.querySelector('.gallery');
 
-  images.forEach(({ src, width, height, date }) => {
+  // ギャラリーの画像を追加
+  images.forEach(({ src, width, height, caption }) => {
     const link = document.createElement('a');
     link.href = src;
     link.dataset.pswpWidth = width;
@@ -50,13 +67,14 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = date;
+    captionSpan.textContent = caption;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
     galleryElement.appendChild(link);
   });
 
+  // PhotoSwipeの初期化
   const lightbox = new PhotoSwipeLightbox({
     gallery: '.gallery',
     children: 'a',
