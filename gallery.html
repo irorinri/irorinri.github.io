@@ -11,6 +11,18 @@
       padding: 0;
       font-family: Arial, sans-serif;
     }
+    .dropdown-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .dropdown select {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+    }
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -25,8 +37,7 @@
       height: auto;
       display: block;
     }
-    
-     .pswp__custom-caption {
+    .pswp__custom-caption {
       color: white !important;
       text-align: center !important;
       padding: 15px !important;
@@ -59,6 +70,15 @@
   </style>
 </head>
 <body>
+
+  <!-- プルダウンメニュー -->
+  <div class="dropdown-container">
+    <select id="page-selector" onchange="navigatePage()">
+      <option value="index.html">ホーム</option>
+      <option value="gallery.html" selected>ギャラリー</option>
+    </select>
+  </div>
+
   <div class="gallery"></div>
 
   <!-- 著作権表記 -->
@@ -78,36 +98,33 @@
       { src: 'images/6.png', width: 1000, height: 1000, date: '2024-11-15' },
       { src: 'images/7.png', width: 1000, height: 1000, date: '2024-11-16' },
       { src: 'images/8.png', width: 1000, height: 1000, date: '2024-11-17' },
-      
     ];
 
     const galleryElement = document.querySelector('.gallery');
 
-// ギャラリーを初期化
-galleryElement.innerHTML = '';
+    galleryElement.innerHTML = '';
 
-// 配列を逆順にする
-const reversedImages = [...images].reverse();
+    const reversedImages = [...images].reverse();
 
-// ギャラリーに画像を逆順で追加
-reversedImages.forEach(({ src, width, height, date }) => {
-  const link = document.createElement('a');
-  link.href = src;
-  link.dataset.pswpWidth = width;
-  link.dataset.pswpHeight = height;
+    reversedImages.forEach(({ src, width, height, date }) => {
+      const link = document.createElement('a');
+      link.href = src;
+      link.dataset.pswpWidth = width;
+      link.dataset.pswpHeight = height;
 
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = 'イラスト';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'イラスト';
 
-  const captionSpan = document.createElement('span');
-  captionSpan.className = 'hidden-caption-content';
-  captionSpan.textContent = date;
-  captionSpan.style.display = 'none';
+      const captionSpan = document.createElement('span');
+      captionSpan.className = 'hidden-caption-content';
+      captionSpan.textContent = date;
+      captionSpan.style.display = 'none';
 
-  link.append(img, captionSpan);
-  galleryElement.appendChild(link);
-});
+      link.append(img, captionSpan);
+      galleryElement.appendChild(link);
+    });
+
     const lightbox = new PhotoSwipeLightbox({
       gallery: '.gallery',
       children: 'a',
@@ -131,6 +148,12 @@ reversedImages.forEach(({ src, width, height, date }) => {
     });
 
     lightbox.init();
+
+    // ページ遷移用JavaScript
+    function navigatePage() {
+      const selectedPage = document.getElementById('page-selector').value;
+      window.location.href = selectedPage;
+    }
   </script>
 </body>
 </html>
