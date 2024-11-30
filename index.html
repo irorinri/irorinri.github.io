@@ -1,146 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Image Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            background-color: #f8f8f8;
-        }
-
-        h1 {
-            font-family: "Gowun Batang", serif;
-            font-weight: 700;
-            font-size: 48px;
-            color: #AFDFE4;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .dropdown-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .dropdown select {
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-family: "Gowun Batang", serif;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 60px;
-        }
-
-        .image-wrapper {
-            position: relative;
-            text-align: center;
-        }
-
-        img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(175, 223, 228, 0.5);
-            width: 200px;
-            height: auto;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        img:hover {
-            transform: scale(1.25);
-            box-shadow: 0 8px 16px rgba(175, 223, 228, 0.5);
-        }
-
-        .date {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: "Gowun Batang", serif;
-            font-size: 16px;
-            color: #5C8C8E;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 12px;
-            padding: 3px 0;
-            font-family: sans-serif;
-        }
-
-        @media screen and (max-width: 600px) {
-            .image-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            img {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .date {
-                bottom: -20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コミック</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Iroid</h1>
 
-    <!-- プルダウンメニュー -->
-    <div class="dropdown-container">
-        <select id="page-selector" onchange="navigatePage()">
-            <option value="index.html" selected>ホーム</option>
-            <option value="gallery.html">ギャラリー</option>
-        </select>
-    </div>
+<header>
+  <h1>コミック</h1>
+</header>
 
-    <div class="image-container">
-        <div class="image-wrapper">
-            <img src="images/nf4.jpg" alt="Photo 1">
-            <div class="date">2024/09/13</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/us3.jpg" alt="Photo 2">
-            <div class="date">2024/08/14</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/pw2.png" alt="Photo 3">
-            <div class="date">2024/07/30</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="images/irori1.PNG" alt="Photo 4">
-            <div class="date">2024/01/03</div>
-        </div>
-    </div>
-    <footer>
-        © irorinri. All Rights Reserved.
-    </footer>
+<nav>
+  <a href="index.html">コミック</a>
+  <a href="illustrations.html">イラスト</a>
+  <a href="gallery.html">ギャラリー</a>
+</nav>
 
-    <script>
-        function navigatePage() {
-            const selectedPage = document.getElementById('page-selector').value;
-            window.location.href = selectedPage;
-        }
-    </script>
+<main>
+  <p>ここにはコミックのコンテンツが表示されます。</p>
+
+  <!-- 画像ギャラリー -->
+  <div class="image-gallery">
+    <img src="images/a.png" alt="画像A">
+    <img src="images/b.png" alt="画像B">
+    <img src="images/c.jpg" alt="画像C">
+    <img src="images/d.jpg" alt="画像D">
+  </div>
+</main>
+
 </body>
 </html>
