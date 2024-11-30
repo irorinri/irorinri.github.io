@@ -1,79 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>イラストギャラリー</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
-  <style>
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 20px;
-    }
-
-    .gallery a {
-      width: 18%;
-      max-width: 100px;
-      text-decoration: none;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .gallery a {
-        width: 24%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery a {
-        width: 30%;
-      }
-    }
-  .pswp__custom-caption {
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    visibility: visible;
-  }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>イラストギャラリー</h1>
-</header>
-
-<nav>
-  <a href="index.html">コミック</a>
-  <a href="illustrations.html">イラスト</a>
-  <a href="gallery.html">ギャラリー</a>
-  <a href="story.html">ストーリー</a>
-  <a href="blog.html">ブログ</a>
-</nav>
-
-<div class="gallery"></div>
-
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
@@ -89,9 +13,10 @@
 
   const galleryElement = document.querySelector('.gallery');
 
+  // 画像リストを逆順にする
   const reversedImages = [...images].reverse();
 
-  reversedImages.forEach(({ src, width, height, date }) => {
+  reversedImages.forEach(({ src, width, height, date }, index) => {
     const link = document.createElement('a');
     link.href = src;
     link.dataset.pswpWidth = width;
@@ -103,7 +28,7 @@
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = date;
+    captionSpan.textContent = `${index + 1}/${reversedImages.length} - ${date}`;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
@@ -134,10 +59,3 @@
 
   lightbox.init();
 </script>
-
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
-
-</body>
-</html>
