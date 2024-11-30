@@ -89,22 +89,21 @@
 
   const galleryElement = document.querySelector('.gallery');
 
-  // 画像リストを逆順にする
   const reversedImages = [...images].reverse();
 
-  reversedImages.forEach(({ src, width, height, date }, index) => {
+  reversedImages.forEach((image, index) => {
     const link = document.createElement('a');
-    link.href = src;
-    link.dataset.pswpWidth = width;
-    link.dataset.pswpHeight = height;
+    link.href = image.src;
+    link.dataset.pswpWidth = image.width;
+    link.dataset.pswpHeight = image.height;
 
     const img = document.createElement('img');
-    img.src = src;
+    img.src = image.src;
     img.alt = 'イラスト';
 
     const captionSpan = document.createElement('span');
     captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = `${index + 1}/${reversedImages.length} - ${date}`;
+    captionSpan.textContent = `${reversedImages.length - index}/${reversedImages.length} - ${image.date}`;
     captionSpan.style.display = 'none';
 
     link.append(img, captionSpan);
