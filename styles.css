@@ -1,36 +1,29 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding-bottom: 25vh;
-  background-color: #f0f0f0; /* ページ全体の背景色を薄い灰色に */
-}
-
 nav {
   display: flex;
   justify-content: center;
   gap: 15px; /* メニュー間のスペース */
-  background-color: #444; /* 背景色を暗めのグレーに */
+  background-color: #ffffff; /* 背景色を白に変更 */
   padding: 10px; /* 上下10pxの余白 */
   position: sticky; /* スクロールしても上部に固定 */
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
 }
 
 nav a {
-  color: white; /* 白い文字 */
+  color: #000000; /* 文字色を黒に変更 */
   text-decoration: none; /* 下線を消す */
   padding: 5px 15px; /* 上下5px、左右15pxの余白 */
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
-  background-color: #444; /* 初期背景色 */
+  background-color: transparent; /* 背景を透明に設定 */
   transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
 }
 
 nav a:hover {
-  background-color: #555; /* ホバー時の背景色 */
+  background-color: #f0f0f0; /* ホバー時の背景色を薄い灰色に変更 */
   transform: scale(1.05); /* ホバー時に少し拡大 */
 }
 
@@ -44,34 +37,5 @@ nav a:hover {
   nav a {
     padding: 5px 15px; /* スマホでも同じサイズを維持 */
     font-size: 14px; /* フォントサイズを小さめに調整 */
-  }
-}
-
-/* 画像ギャラリーのスタイル */
-.image-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* 画像間のスペース */
-  padding: 20px;
-}
-
-.image-gallery img {
-  max-width: 200px; /* 画像の最大幅 */
-  height: auto; /* アスペクト比を維持 */
-  border-radius: 10px; /* 角を丸める */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時のアニメーション */
-}
-
-.image-gallery img:hover {
-  transform: scale(1.1); /* ホバー時に少し拡大 */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
-}
-
-/* スマホ: 画像のレイアウト調整 */
-@media (max-width: 480px) {
-  .image-gallery img {
-    max-width: 150px; /* 画像サイズを小さめに */
   }
 }
