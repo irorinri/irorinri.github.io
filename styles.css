@@ -9,6 +9,7 @@ nav {
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
+  font-family: 'Pacifico', cursive; /* 可愛いフォントを適用 */
 }
 
 nav a {
