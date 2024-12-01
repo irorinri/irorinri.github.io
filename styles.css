@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 
 body {
-  font-family: 'Sawarabi Mincho', 'Noto Sans JP', Arial, sans-serif; /* さわらび明朝 or Noto Sans JP */
+  font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントに変更 */
   margin: 0;
   padding-bottom: 25vh;
   background-color: #f0f0f0; /* ページ全体の背景色を薄い灰色に */
@@ -27,7 +27,7 @@ nav a {
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
-  font-family: 'Sawarabi Mincho', 'Noto Sans JP', Arial, sans-serif; /* フォントを可愛く変更 */
+  font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントを適用 */
   background-color: transparent; /* 背景を透明に設定 */
   transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
 }
