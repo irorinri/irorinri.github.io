@@ -7,46 +7,54 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-    /* ギャラリーのスタイル調整 */
+    /* ギャラリー全体のスタイル */
     .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2列 */
+      gap: 10px; /* 画像間のスペース */
+      justify-items: center;
       padding: 20px;
     }
 
+    /* 各画像のリンク */
     .image-gallery a {
       width: 100%;
       max-width: 150px;
       text-decoration: none;
-      display: block;
-      border-radius: 5px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 画像スタイル */
+    .image-gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* 正方形に設定 */
+      object-fit: cover; /* 画像を正方形に収める */
+      border-radius: 5px; /* 角を丸める */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .image-gallery a:hover {
+    .image-gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .image-gallery img {
-      width: 100%;
-      height: auto;
-      display: block;
+    /* 日付スタイル */
+    .image-gallery .date {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #444;
     }
 
     @media (max-width: 768px) {
       .image-gallery a {
-        max-width: 120px;
+        max-width: 120px; /* スマホでの画像サイズ調整 */
       }
     }
 
     @media (max-width: 480px) {
       .image-gallery a {
-        max-width: 100px;
+        max-width: 100px; /* 画像サイズをさらに小さく */
       }
     }
   </style>
@@ -64,17 +72,21 @@
 <main>
   <!-- 画像ギャラリー -->
   <div class="image-gallery">
-    <a href="images/d.jpg" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="images/d.jpg" data-pswp-width="1920" data-pswp-height="1920">
       <img src="images/d.jpg" alt="画像D">
+      <div class="date">2024-11-04</div>
     </a>
-    <a href="images/c.jpg" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="images/c.jpg" data-pswp-width="1920" data-pswp-height="1920">
       <img src="images/c.jpg" alt="画像C">
+      <div class="date">2024-11-03</div>
     </a>
-    <a href="images/b.png" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="images/b.png" data-pswp-width="1920" data-pswp-height="1920">
       <img src="images/b.png" alt="画像B">
+      <div class="date">2024-11-02</div>
     </a>
-    <a href="images/a.png" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="images/a.png" data-pswp-width="1920" data-pswp-height="1920">
       <img src="images/a.png" alt="画像A">
+      <div class="date">2024-11-01</div>
     </a>
   </div>
 </main>
@@ -91,6 +103,22 @@
     gallery: '.image-gallery',
     children: 'a',
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    bgOpacity: 0.9, /* 背景の不透明度を調整 */
+  });
+
+  // フォトスワイプの背景を水色に設定
+  lightbox.on('uiRegister', () => {
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-bg',
+      isButton: false,
+      appendTo: 'wrapper',
+      html: '',
+      onInit: (el, pswp) => {
+        pswp.on('change', () => {
+          document.querySelector('.pswp__bg').style.backgroundColor = '#ADD8E6'; // 水色
+        });
+      },
+    });
   });
 
   lightbox.init();
