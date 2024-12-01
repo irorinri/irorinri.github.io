@@ -165,6 +165,9 @@ lightbox.on('uiRegister', () => {
     appendTo: 'wrapper',
     html: '',
     onInit: (el, pswp) => {
+      .pswp__bg {
+  background-color: #ADD8E6 !important; /* 水色 */
+}
       pswp.on('change', () => {
         const currentSlide = pswp.currSlide;
         const captionSpan = currentSlide?.data.element.querySelector('.hidden-caption-content');
