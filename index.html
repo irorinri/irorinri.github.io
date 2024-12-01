@@ -7,27 +7,34 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-    /* ギャラリー全体のスタイル */
+    /* 全体のスタイル調整 */
+    body {
+      background-color: #f8f8f8; /* 背景色はそのまま */
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      margin-bottom: 20px; /* プルダウンとの間隔を追加 */
+    }
+
     .image-gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* 2列 */
-      gap: 10px; /* 画像間のスペース */
-      justify-items: center;
-      padding: 20px;
+      gap: 20px; /* 画像間隔を広げる */
+      justify-content: center;
+      padding: 20px 40px; /* 左右も余白を持たせる */
     }
 
-    /* 各画像のリンク */
     .image-gallery a {
-      width: 100%;
-      max-width: 150px;
       text-decoration: none;
+      max-width: 200px; /* 画像の最大幅を調整 */
     }
 
-    /* 画像スタイル */
     .image-gallery img {
       width: 100%;
-      aspect-ratio: 1 / 1; /* 正方形に設定 */
-      object-fit: cover; /* 画像を正方形に収める */
+      aspect-ratio: 1 / 1; /* 正方形 */
+      object-fit: cover; /* 中央で画像を切り取る */
       border-radius: 5px; /* 角を丸める */
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -38,7 +45,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    /* 日付スタイル */
     .image-gallery .date {
       text-align: center;
       margin-top: 5px;
@@ -46,15 +52,24 @@
       color: #444;
     }
 
+    footer {
+      margin-top: 20px; /* フッターとの間隔を追加 */
+      text-align: center;
+      padding: 20px;
+      background-color: #444;
+      color: white;
+      font-size: 14px;
+    }
+
     @media (max-width: 768px) {
       .image-gallery a {
-        max-width: 120px; /* スマホでの画像サイズ調整 */
+        max-width: 150px; /* スマホでの画像サイズ調整 */
       }
     }
 
     @media (max-width: 480px) {
       .image-gallery a {
-        max-width: 100px; /* 画像サイズをさらに小さく */
+        max-width: 120px; /* さらに画像サイズを調整 */
       }
     }
   </style>
@@ -103,22 +118,6 @@
     gallery: '.image-gallery',
     children: 'a',
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    bgOpacity: 0.9, /* 背景の不透明度を調整 */
-  });
-
-  // フォトスワイプの背景を水色に設定
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-bg',
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          document.querySelector('.pswp__bg').style.backgroundColor = '#ADD8E6'; // 水色
-        });
-      },
-    });
   });
 
   lightbox.init();
