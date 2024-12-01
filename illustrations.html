@@ -165,9 +165,6 @@ lightbox.on('uiRegister', () => {
     appendTo: 'wrapper',
     html: '',
     onInit: (el, pswp) => {
-      .pswp__bg {
-  background-color: #ADD8E6 !important; /* 水色 */
-}
       pswp.on('change', () => {
         const currentSlide = pswp.currSlide;
         const captionSpan = currentSlide?.data.element.querySelector('.hidden-caption-content');
@@ -175,6 +172,11 @@ lightbox.on('uiRegister', () => {
         el.innerHTML = captionText;
       });
     },
+  });
+
+  // フォトスワイプ背景色の変更を設定
+  lightbox.on('uiRegister', () => {
+    document.documentElement.style.setProperty('--pswp-bg', '#ADD8E6'); // 背景を水色に設定
   });
 });
 
