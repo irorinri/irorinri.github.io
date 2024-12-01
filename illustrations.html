@@ -174,10 +174,17 @@ lightbox.on('uiRegister', () => {
     },
   });
 
-  // フォトスワイプ背景色の変更を設定
-  lightbox.on('uiRegister', () => {
-    document.documentElement.style.setProperty('--pswp-bg', '#ADD8E6'); // 背景を水色に設定
-  });
+  // フォトスワイプの背景色を変更
+lightbox.on('uiRegister', () => {
+    // CSSで直接変更
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .pswp__bg {
+            background-color: #ADD8E6 !important; /* 水色 */
+        }
+    `;
+    document.head.appendChild(style);
+});
 });
 
   lightbox.init();
