@@ -15,11 +15,37 @@
   <a href="story.html">小説</a>
   <a href="blog.html">日記</a>
 </nav>
+<nav>
+    <a href="?id=1">第1章</a>
+    <a href="?id=2">第2章</a>
+    <a href="?id=3">第3章</a>
+  </nav>
 
-<main>
-  <p>ストーリーコンテンツをここに追加します。</p>
-</main>
+  <div id="novel-container">
+    <h1>小説を選んでください</h1>
+  </div>
 
+  <script>
+    const container = document.getElementById('novel-container');
+    const params = new URLSearchParams(window.location.search);
+    const novelId = params.get('id');
+
+    if (novelId) {
+      fetch('data/novels.json')
+        .then(response => response.json())
+        .then(data => {
+          const novel = data.find(n => n.id == novelId);
+          if (novel) {
+            container.innerHTML = `
+              <h1>${novel.title}</h1>
+              <p>${novel.content}</p>
+            `;
+          } else {
+            container.innerHTML = '<p>指定された小説が見つかりません。</p>';
+          }
+        });
+    }
+  </script>
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
