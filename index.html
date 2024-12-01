@@ -5,6 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Characters</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
+  <style>
+    /* ギャラリーのスタイル調整 */
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .image-gallery a {
+      width: 100%;
+      max-width: 150px;
+      text-decoration: none;
+      display: block;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-gallery a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .image-gallery a {
+        max-width: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-gallery a {
+        max-width: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,16 +64,37 @@
 <main>
   <!-- 画像ギャラリー -->
   <div class="image-gallery">
-    <img src="images/d.jpg" alt="画像D">
-    <img src="images/c.jpg" alt="画像C">
-    <img src="images/b.png" alt="画像B">
-    <img src="images/a.png" alt="画像A">
+    <a href="images/d.jpg" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="images/d.jpg" alt="画像D">
+    </a>
+    <a href="images/c.jpg" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="images/c.jpg" alt="画像C">
+    </a>
+    <a href="images/b.png" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="images/b.png" alt="画像B">
+    </a>
+    <a href="images/a.png" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="images/a.png" alt="画像A">
+    </a>
   </div>
 </main>
 
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
+
+<!-- PhotoSwipe Scripts -->
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.image-gallery',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+  });
+
+  lightbox.init();
+</script>
 
 </body>
 </html>
