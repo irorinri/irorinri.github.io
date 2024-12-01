@@ -8,7 +8,6 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap; /* 折り返しを防ぐ */
   gap: 20px; /* メニュー間のスペースを少し広げる */
   background-color: #444; /* 背景色を暗めのグレーに */
   padding: 10px 0; /* 上下の余白を設定 */
@@ -16,6 +15,7 @@ nav {
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
+  flex-wrap: nowrap; /* 折り返しを防ぐ */
 }
 
 nav a {
@@ -34,19 +34,14 @@ nav a:hover {
   transform: scale(1.05); /* ホバー時に少し拡大 */
 }
 
-/* スマホ対応: ナビゲーションを縦に並べる */
+/* スマホでも横並びを維持 */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column; /* ナビゲーションを縦方向に */
-    align-items: center;
-    gap: 10px; /* 縦方向の間隔を調整 */
+    justify-content: flex-start; /* 左寄せまたはcenterに変更可能 */
   }
 
   nav a {
-    width: 90%; /* 幅を調整 */
-    text-align: center;
-    font-size: 14px; /* フォントサイズを小さめに */
-    padding: 8px 0;
+    font-size: 14px; /* フォントサイズを小さく調整（オプション） */
   }
 }
 
