@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+  font-family: 'Sawarabi Mincho', 'Noto Sans JP', Arial, sans-serif; /* さわらび明朝 or Noto Sans JP */
+  margin: 0;
+  padding-bottom: 25vh;
+  background-color: #f0f0f0; /* ページ全体の背景色を薄い灰色に */
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -9,7 +18,6 @@ nav {
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
-  font-family: 'Pacifico', cursive; /* 可愛いフォントを適用 */
 }
 
 nav a {
@@ -19,6 +27,7 @@ nav a {
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
+  font-family: 'Sawarabi Mincho', 'Noto Sans JP', Arial, sans-serif; /* フォントを可愛く変更 */
   background-color: transparent; /* 背景を透明に設定 */
   transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
 }
