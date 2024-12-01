@@ -118,6 +118,22 @@
     gallery: '.image-gallery',
     children: 'a',
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    bgOpacity: 0.9, /* 背景の不透明度を調整 */
+  });
+
+  // フォトスワイプの背景を水色に設定
+  lightbox.on('uiRegister', () => {
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-bg',
+      isButton: false,
+      appendTo: 'wrapper',
+      html: '',
+      onInit: (el, pswp) => {
+        pswp.on('change', () => {
+          document.querySelector('.pswp__bg').style.backgroundColor = '#ADD8E6'; // 水色
+        });
+      },
+    });
   });
 
   lightbox.init();
