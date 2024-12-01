@@ -12,7 +12,6 @@ nav {
   gap: 20px; /* メニュー間のスペース */
   background-color: #444; /* 背景色を暗めのグレーに */
   padding: 10px 20px;
-  position: sticky; /* スクロールしても上部に固定 */
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
