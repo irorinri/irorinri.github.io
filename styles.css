@@ -6,12 +6,13 @@ body {
 }
 
 nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* 2列レイアウト */
+  gap: 20px 40px; /* 縦横の間隔を調整 */
   justify-content: center;
-  flex-wrap: wrap; /* 折り返しを許可 */
-  gap: 20px; /* メニュー間のスペース */
   background-color: #444; /* 背景色を暗めのグレーに */
-  padding: 10px 20px;
+  padding: 20px;
+  position: sticky; /* スクロールしても上部に固定 */
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
@@ -20,18 +21,30 @@ nav {
 nav a {
   color: white; /* 白い文字 */
   text-decoration: none; /* 下線を消す */
-  padding: 10px 30px; /* 上下10px、左右30pxの余白 */
-  margin: 5px;
+  padding: 10px 30px; /* 文字の左右に30px、上下に10pxの幅を設定 */
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
   background-color: #444; /* 初期背景色 */
   transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
+  text-align: center;
 }
 
 nav a:hover {
   background-color: #555; /* ホバー時の背景色 */
   transform: scale(1.05); /* ホバー時に少し拡大 */
+}
+
+/* スマホ対応: ナビゲーションを縦に並べる */
+@media (max-width: 768px) {
+  nav {
+    grid-template-columns: 1fr; /* 縦並びに変更 */
+  }
+
+  nav a {
+    font-size: 14px; /* フォントサイズを小さめに */
+    padding: 10px 20px; /* 幅を調整 */
+  }
 }
 
 .image-gallery {
@@ -53,21 +66,6 @@ nav a:hover {
 .image-gallery img:hover {
   transform: scale(1.1); /* ホバー時に少し拡大 */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
-}
-
-/* スマホ対応: ナビゲーションを縦に並べる */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column; /* ナビゲーションを縦方向に */
-    align-items: center;
-  }
-
-  nav a {
-    width: 90%; /* 幅を調整 */
-    text-align: center;
-    font-size: 14px; /* フォントサイズを小さめに */
-    padding: 8px 0;
-  }
 }
 
 /* スマホ: 画像のレイアウト調整 */
