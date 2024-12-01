@@ -2,24 +2,39 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding-bottom: 25vh;
+  background-color: #f0f0f0; /* ページ全体の背景色を薄い灰色に */
 }
+
 nav {
   display: flex;
   justify-content: center;
-  background-color: #444;
+  flex-wrap: wrap; /* 折り返しを許可 */
+  gap: 15px; /* メニュー間のスペース */
+  background-color: #444; /* 背景色を暗めのグレーに */
+  padding: 10px 20px;
+  position: sticky; /* スクロールしても上部に固定 */
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
 }
+
 nav a {
-  color: white;
-  text-decoration: none;
+  color: white; /* 白い文字 */
+  text-decoration: none; /* 下線を消す */
   padding: 10px 20px;
   margin: 5px;
-  background-color: #444;
   border: none;
+  border-radius: 5px; /* 角を丸める */
   font-size: 16px;
+  background-color: #444; /* 初期背景色 */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
 }
+
 nav a:hover {
-  background-color: #555;
+  background-color: #555; /* ホバー時の背景色 */
+  transform: scale(1.05); /* ホバー時に少し拡大 */
 }
+
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -39,4 +54,26 @@ nav a:hover {
 .image-gallery img:hover {
   transform: scale(1.1); /* ホバー時に少し拡大 */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
+}
+
+/* スマホ対応: ナビゲーションを縦に並べる */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* ナビゲーションを縦方向に */
+    align-items: center;
+  }
+
+  nav a {
+    width: 90%; /* 幅を調整 */
+    text-align: center;
+    font-size: 14px; /* フォントサイズを小さめに */
+    padding: 8px 0;
+  }
+}
+
+/* スマホ: 画像のレイアウト調整 */
+@media (max-width: 480px) {
+  .image-gallery img {
+    max-width: 150px; /* 画像サイズを小さめに */
+  }
 }
