@@ -8,20 +8,20 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px; /* メニュー間のスペースを少し広げる */
+  gap: 15px; /* メニュー間のスペース */
   background-color: #444; /* 背景色を暗めのグレーに */
-  padding: 10px 0; /* 上下の余白を設定 */
+  padding: 10px; /* 上下10pxの余白 */
   position: sticky; /* スクロールしても上部に固定 */
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* シャドウを追加して浮き上がらせる */
-  flex-wrap: nowrap; /* 折り返しを防ぐ */
+  flex-wrap: nowrap; /* 折り返さないようにする */
 }
 
 nav a {
   color: white; /* 白い文字 */
   text-decoration: none; /* 下線を消す */
-  padding: 10px 30px; /* 左右30px、上下10px */
+  padding: 5px 15px; /* 上下5px、左右15pxの余白 */
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
@@ -34,17 +34,20 @@ nav a:hover {
   transform: scale(1.05); /* ホバー時に少し拡大 */
 }
 
-/* スマホでも横並びを維持 */
+/* スマホ対応: ナビゲーションを横一列に */
 @media (max-width: 768px) {
   nav {
-    justify-content: flex-start; /* 左寄せまたはcenterに変更可能 */
+    flex-wrap: wrap; /* 折り返しを許可 */
+    justify-content: center; /* 中央揃え */
   }
 
   nav a {
-    font-size: 14px; /* フォントサイズを小さく調整（オプション） */
+    padding: 5px 15px; /* スマホでも同じサイズを維持 */
+    font-size: 14px; /* フォントサイズを小さめに調整 */
   }
 }
 
+/* 画像ギャラリーのスタイル */
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
