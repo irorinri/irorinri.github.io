@@ -30,6 +30,21 @@
       font-size: 14px;
       margin: 5px 0 0;
     }
+    .back-button {
+      display: none;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -49,6 +64,7 @@
     <a href="?id=3"><img src="comics/a3.png" alt="第3章"><p>第3章</p></a>
   </div>
   <div id="novel-container"><h1>小説を選んでください</h1></div>
+  <button id="back-button" class="back-button">戻る</button>
 </main>
 
 <script>
@@ -56,10 +72,18 @@
   const novelId = params.get('id');
   const container = document.getElementById('novel-container');
   const gallery = document.getElementById('thumbnail-gallery');
+  const backButton = document.getElementById('back-button');
+
+  function showGallery() {
+    gallery.style.display = 'grid';
+    container.innerHTML = '<h1>小説を選んでください</h1>';
+    backButton.style.display = 'none';
+  }
 
   if (novelId) {
     // サムネイルを非表示にする
     gallery.style.display = 'none';
+    backButton.style.display = 'block';
 
     // 小説を取得して表示
     fetch('data/novels.json')
@@ -72,6 +96,9 @@
       })
       .catch(() => container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>');
   }
+
+  // 戻るボタンの動作
+  backButton.addEventListener('click', showGallery);
 </script>
 
 <footer>
