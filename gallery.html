@@ -61,19 +61,19 @@
 
 <main>
   <div class="image-gallery">
-    <a href="comics/2.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="comics/2.jpeg">
       <img src="comics/2.jpeg" alt="画像1">
       <div class="date">2024-11-01</div>
     </a>
-    <a href="comics/3.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="comics/3.jpeg">
       <img src="comics/3.jpeg" alt="画像2">
       <div class="date">2024-11-02</div>
     </a>
-    <a href="comics/4.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="comics/4.jpeg">
       <img src="comics/4.jpeg" alt="画像3">
       <div class="date">2024-11-03</div>
     </a>
-    <a href="comics/comic 1.png" data-pswp-width="1920" data-pswp-height="1080">
+    <a href="comics/comic 1.png">
       <img src="comics/comic 1.png" alt="画像4">
       <div class="date">2024-11-04</div>
     </a>
@@ -88,13 +88,24 @@
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
+  const gallery = document.querySelector('.image-gallery');
+  const links = gallery.querySelectorAll('a');
+
+  // 元画像から比率を取得して設定
+  links.forEach(link => {
+    const img = link.querySelector('img');
+    const image = new Image();
+    image.src = img.src;
+    image.onload = () => {
+      link.dataset.pswpWidth = image.width;
+      link.dataset.pswpHeight = image.height;
+    };
+  });
+
   const lightbox = new PhotoSwipeLightbox({
     gallery: '.image-gallery',
     children: 'a',
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    paddingFn: (viewportSize) => {
-      return { top: 20, bottom: 20, left: 20, right: 20 }; // 余白を追加
-    },
   });
 
   // フォトスワイプの背景色を変更
