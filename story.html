@@ -9,11 +9,12 @@
     .thumbnail-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 自動調整 */
-      gap: 20px; /* 要素間の余白 */
+      gap: 20px;
       padding: 20px;
-      justify-items: center; /* 各アイテムを中央揃え */
+      justify-items: center;
     }
     .thumbnail-gallery a {
+      text-align: center;
       text-decoration: none;
       color: inherit;
     }
@@ -24,6 +25,10 @@
     }
     .thumbnail-gallery img:hover {
       transform: scale(1.1);
+    }
+    .thumbnail-gallery p {
+      font-size: 14px;
+      margin: 5px 0 0;
     }
   </style>
 </head>
@@ -38,10 +43,10 @@
 </nav>
 
 <main>
-  <div class="thumbnail-gallery">
-    <a href="?id=1"><img src="comics/a1.png" alt="第1章"></a>
-    <a href="?id=2"><img src="comics/a2.png" alt="第2章"></a>
-    <a href="?id=3"><img src="comics/a3.png" alt="第3章"></a>
+  <div id="thumbnail-gallery" class="thumbnail-gallery">
+    <a href="?id=1"><img src="comics/a1.png" alt="第1章"><p>第1章</p></a>
+    <a href="?id=2"><img src="comics/a2.png" alt="第2章"><p>第2章</p></a>
+    <a href="?id=3"><img src="comics/a3.png" alt="第3章"><p>第3章</p></a>
   </div>
   <div id="novel-container"><h1>小説を選んでください</h1></div>
 </main>
@@ -50,8 +55,13 @@
   const params = new URLSearchParams(window.location.search);
   const novelId = params.get('id');
   const container = document.getElementById('novel-container');
+  const gallery = document.getElementById('thumbnail-gallery');
 
   if (novelId) {
+    // サムネイルを非表示にする
+    gallery.style.display = 'none';
+
+    // 小説を取得して表示
     fetch('data/novels.json')
       .then(res => res.ok ? res.json() : Promise.reject('ネットワークエラー'))
       .then(data => {
