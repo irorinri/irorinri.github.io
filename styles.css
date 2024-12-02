@@ -54,8 +54,7 @@ footer {
   bottom: 0; /* 画面の一番下に配置 */
   width: 100%; /* 横幅を全画面に広げる */
   text-align: center; /* テキストを中央揃え */
-  background-color: rgba(0, 0, 0, 0.35); /* 30%透明の黒背景 */
-  color: white; /* 白文字 */
+  color: black; /* 白文字 */
   font-size: 10px; /* 小さめの文字サイズ */
   padding: 2px 0; /* 上下の余白 */
   z-index: 1000; /* 他の要素の上に表示 */
