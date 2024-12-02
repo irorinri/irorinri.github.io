@@ -6,26 +6,32 @@
   <title>ストーリー</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* サムネイルギャラリーのスタイル */
     .thumbnail-gallery {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column; /* 縦に並べる */
+      align-items: center;
+      gap: 20px; /* 各要素間の余白 */
       padding: 20px;
     }
     .thumbnail-gallery a {
+      text-align: center; /* 画像とテキストを中央揃え */
       text-decoration: none;
       color: inherit;
     }
     .thumbnail-gallery img {
-      width: 150px;
+      width: 80px; /* 画像を少し小さくする */
       height: auto;
       border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
     .thumbnail-gallery img:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .thumbnail-gallery p {
+      margin-top: 5px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -40,7 +46,6 @@
 </nav>
 
 <main>
-  <!-- サムネイルギャラリー -->
   <div class="thumbnail-gallery">
     <a href="?id=1">
       <img src="comics/a1.png" alt="第1章">
@@ -56,7 +61,6 @@
     </a>
   </div>
 
-  <!-- 小説コンテンツ -->
   <div id="novel-container">
     <h1>小説を選んでください</h1>
   </div>
@@ -69,7 +73,10 @@
 
   if (novelId) {
     fetch('data/novels.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error('ネットワークエラー');
+        return response.json();
+      })
       .then(data => {
         const novel = data.find(n => n.id == novelId);
         if (novel) {
@@ -80,6 +87,10 @@
         } else {
           container.innerHTML = '<p>指定された小説が見つかりません。</p>';
         }
+      })
+      .catch(error => {
+        console.error(error);
+        container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>';
       });
   }
 </script>
