@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ギャラリー</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 画像ギャラリーのスタイル */
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      max-width: 300px; /* 画像の最大幅を設定 */
+      height: auto;
+      border-radius: 10px; /* 角を丸める */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .image-gallery img {
+        max-width: 100%; /* 画面幅に合わせて拡大縮小 */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,7 +48,11 @@
 </nav>
 
 <main>
-  <p>ギャラリーコンテンツをここに追加します。</p>
+  <div class="image-gallery">
+    <img src="comics/2.jpeg" alt="画像1">
+    <img src="comics/3.jpg" alt="画像2">
+    <img src="comics/4.jpeg" alt="画像3">
+  </div>
 </main>
 
 <footer>
