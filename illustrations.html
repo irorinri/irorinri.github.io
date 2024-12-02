@@ -6,72 +6,16 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-  /* ページ全体の背景色を設定 */
-  body {
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
-
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-  }
-
-  .gallery a {
-    width: 18%;
-    max-width: 100px;
-    text-decoration: none;
-  }
-
-  .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .gallery img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-    
-    
-
-  @media (max-width: 768px) {
-    .gallery a {
-      width: 24%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .gallery a {
-      width: 30%;
-    }
-  }
-
-  /* 日付キャプションのスタイル */
-  .pswp__custom-caption {
-    color: white !important;
-    text-align: center !important;
-    padding: 5px !important; /* 背景を細く */
-    position: absolute !important;
-    bottom: 30 !important;
-    width: 100% !important;
-    z-index: 1000 !important;
-    visibility: visible !important;
-  }
-
-  /* カウンター非表示 */
-  .pswp__counter {
-    display: none;
-  }
-</style>
+    body { color: white; margin: 0; padding: 0; }
+    .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 20px; }
+    .gallery a { width: 18%; max-width: 100px; text-decoration: none; }
+    .gallery img { width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: transform 0.3s, box-shadow 0.3s; }
+    .gallery img:hover { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
+    @media (max-width: 768px) { .gallery a { width: 24%; } }
+    @media (max-width: 480px) { .gallery a { width: 30%; } }
+    .pswp__custom-caption { color: white !important; text-align: center !important; padding: 5px; position: absolute; bottom: 30px; width: 100%; z-index: 1000; visibility: visible; }
+    .pswp__counter { display: none; }
+  </style>
 </head>
 <body>
 
@@ -81,7 +25,6 @@
   <a href="gallery.html">漫画</a>
   <a href="story.html">小説</a>
   <a href="blog.html">日記</a>
-  margin-bottom: 20px; /* プルダウンとの間隔を追加 */
 </nav>
 
 <div class="gallery"></div>
@@ -100,98 +43,60 @@
   ];
 
   const galleryElement = document.querySelector('.gallery');
-
-  const reversedImages = [...images].reverse();
-
-  reversedImages.forEach((image, index) => {
-    const link = document.createElement('a');
-    link.href = image.src;
-    link.dataset.pswpWidth = image.width;
-    link.dataset.pswpHeight = image.height;
-
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = 'イラスト';
-
-    const captionSpan = document.createElement('span');
-    captionSpan.className = 'hidden-caption-content';
-    captionSpan.textContent = image.date;
-    captionSpan.style.display = 'none';
-
-    link.append(img, captionSpan);
-    galleryElement.appendChild(link);
+  images.reverse().forEach(({ src, width, height, date }) => {
+    galleryElement.innerHTML += `
+      <a href="${src}" data-pswp-width="${width}" data-pswp-height="${height}">
+        <img src="${src}" alt="イラスト">
+        <span class="hidden-caption-content" style="display:none;">${date}</span>
+      </a>`;
   });
 
   const lightbox = new PhotoSwipeLightbox({
-  gallery: '.gallery',
-  children: 'a',
-  pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-});
-
-lightbox.on('uiRegister', () => {
-  // スライド番号のカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-counter', // カスタム番号を定義
-    order: 5, // デフォルトのカウンターと同じ順序
-    isButton: false,
-    appendTo: 'bar', // カウンターをバーに追加
-    html: '', // カウンターの内容は動的に設定
-    onInit: (el, pswp) => {
-      // カスタムカウンターのスタイルを設定
-      el.style.color = 'white'; // 白文字
-      el.style.fontSize = '15px'; // フォントサイズを13pxに変更
-      el.style.fontFamily = 'Arial, sans-serif'; // フォントをArialに変更
-      el.style.fontWeight = 'bold'; // 太字
-      el.style.position = 'relative'; // 位置調整用
-      el.style.top = '20px'; // 上から10px離す
-      el.style.left = '30px'; // 左から13px離す（10px + 3px）
-      el.style.padding = '2px'; // 黒縁の見た目を調整
-
-      // 黒縁を70%灰色に設定
-      el.style.webkitTextStroke = '1px rgba(128, 128, 128, 0.8)'; // Safari用
-      el.style.textStroke = '1px rgba(128, 128, 128, 0.8)'; // 他ブラウザ用
-
-      // スライド変更時にカウンター内容を更新
-      pswp.on('change', () => {
-        const totalSlides = pswp.getNumItems(); // 総スライド数
-        const reversedIndex = totalSlides - pswp.currIndex; // 番号を逆順に計算
-        el.innerHTML = `${reversedIndex} / ${totalSlides}`; // スラッシュの両端に空白を追加
-      });
-    },
+    gallery: '.gallery',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
   });
 
-  // キャプションのカスタム要素を登録
-  lightbox.pswp.ui.registerElement({
-    name: 'custom-caption',
-    order: 9, // カスタムカウンターより後に表示
-    isButton: false,
-    appendTo: 'wrapper',
-    html: '',
-    onInit: (el, pswp) => {
-      pswp.on('change', () => {
-        const currentSlide = pswp.currSlide;
-        const captionSpan = currentSlide?.data.element.querySelector('.hidden-caption-content');
-        const captionText = captionSpan ? captionSpan.textContent : 'キャプションなし';
-        el.innerHTML = captionText;
-      });
-    },
-  });
+  lightbox.on('uiRegister', () => {
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-counter',
+      order: 5,
+      isButton: false,
+      appendTo: 'bar',
+      html: '',
+      onInit: (el, pswp) => {
+        Object.assign(el.style, {
+          color: 'white', fontSize: '15px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold',
+          position: 'relative', top: '20px', left: '30px', padding: '2px',
+          webkitTextStroke: '1px rgba(128, 128, 128, 0.8)', textStroke: '1px rgba(128, 128, 128, 0.8)',
+        });
+        pswp.on('change', () => {
+          const total = pswp.getNumItems();
+          const index = total - pswp.currIndex;
+          el.innerHTML = `${index} / ${total}`;
+        });
+      },
+    });
 
-  // フォトスワイプの背景色を変更
-lightbox.on('uiRegister', () => {
-  // CSSで直接背景色を変更
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .pswp__bg {
-      background-color: #ADD8E6 !important; /* 水色 */
-    }
-  `;
-  
-  // headにスタイルを追加
-  document.addEventListener('DOMContentLoaded', () => {
+    lightbox.pswp.ui.registerElement({
+      name: 'custom-caption',
+      order: 9,
+      isButton: false,
+      appendTo: 'wrapper',
+      html: '',
+      onInit: (el, pswp) => {
+        pswp.on('change', () => {
+          const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+          el.innerHTML = caption ? caption.textContent : 'キャプションなし';
+        });
+      },
+    });
+
+    const style = document.createElement('style');
+    style.innerHTML = `.pswp__bg { background-color: #ADD8E6 !important; }`;
     document.head.appendChild(style);
   });
-});
+
   lightbox.init();
 </script>
 
