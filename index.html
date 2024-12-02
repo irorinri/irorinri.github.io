@@ -7,65 +7,62 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
-    /* 全体のスタイル調整 */
-    body {
-      background-color: #f8f8f8; /* 背景色はそのまま */
-      margin: 0;
-      padding: 0;
-    }
+  body {
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+  }
 
-    nav {
-      margin-bottom: 10px; /* プルダウンとの間隔を追加 */
-    }
+  nav {
+    margin-bottom: 10px;
+  }
 
-    .image-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2列 */
-      gap: 20px; /* 画像間隔を広げる */
-      justify-content: center;
-      padding: 10px 20px; /* 左右も余白を持たせる */
-    }
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 10px 20px;
+  }
 
+  .image-gallery a {
+    text-decoration: none;
+    max-width: 250px;
+  }
+
+  .image-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .image-gallery .date {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  @media (max-width: 768px) {
     .image-gallery a {
-      text-decoration: none;
-      max-width: 250px; /* 画像の最大幅を調整 */
+      max-width: 180px;
     }
+  }
 
-    .image-gallery img {
-      width: 100%;
-      aspect-ratio: 1 / 1; /* 正方形 */
-      object-fit: cover; /* 中央で画像を切り取る */
-      border-radius: 5px; /* 角を丸める */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @media (max-width: 480px) {
+    .image-gallery a {
+      max-width: 120px;
     }
-
-    .image-gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .image-gallery .date {
-      text-align: center;
-      margin-top: 5px;
-      font-size: 14px;
-      color: #444;
-    }
-
-    
-
-    @media (max-width: 768px) {
-      .image-gallery a {
-        max-width: 180px; /* スマホでの画像サイズ調整 */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .image-gallery a {
-        max-width: 120px; /* さらに画像サイズを調整 */
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
