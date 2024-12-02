@@ -8,23 +8,28 @@
   <style>
     .thumbnail-gallery {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column; /* 縦方向に配置 */
+      align-items: center; /* 中央揃え */
+      gap: 20px; /* 画像間のスペース */
       padding: 20px;
     }
+
     .thumbnail-gallery a {
       text-decoration: none;
       color: inherit;
+      text-align: center;
     }
+
     .thumbnail-gallery img {
-      width: 150px;
+      width: 150px; /* 画像の幅を固定 */
       height: auto;
       border-radius: 5px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .thumbnail-gallery img:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
   </style>
