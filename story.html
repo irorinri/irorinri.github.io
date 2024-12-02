@@ -94,16 +94,19 @@
     backButton.style.display = 'block';
 
     // 小説を取得して表示
-    fetch('data/novels.json')
-      .then(res => res.ok ? res.json() : Promise.reject('ネットワークエラー'))
-      .then(data => {
-        const novel = data.find(n => n.id == novelId);
-        container.innerHTML = novel 
-          ? `<h1>${novel.title}</h1><p>${novel.content}</p>` 
-          : '<p>指定された小説が見つかりません。</p>';
-      })
-      .catch(() => container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>');
-  }
+    fetch(`data/n${novelId}.json`)
+    .then(response => response.json())
+    .then(data => {
+      container.innerHTML = `
+        <h1>${data.title}</h1>
+        <p>${data.content}</p>
+      `;
+    })
+    .catch(error => {
+      console.error(error);
+      container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>';
+    });
+}
 
   // 戻るボタンの動作
   backButton.addEventListener('click', showGallery);
