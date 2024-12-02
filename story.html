@@ -7,28 +7,23 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .thumbnail-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 自動調整 */
+      gap: 20px; /* 要素間の余白 */
       padding: 20px;
+      justify-items: center; /* 各アイテムを中央揃え */
     }
     .thumbnail-gallery a {
-      text-align: center;
       text-decoration: none;
       color: inherit;
     }
     .thumbnail-gallery img {
-      width: 80px;
+      width: 100px;
       border-radius: 5px;
       transition: transform 0.2s;
     }
     .thumbnail-gallery img:hover {
       transform: scale(1.1);
-    }
-    .thumbnail-gallery p {
-      font-size: 14px;
-      margin: 5px 0 0;
     }
   </style>
 </head>
@@ -44,9 +39,9 @@
 
 <main>
   <div class="thumbnail-gallery">
-    <a href="?id=1"><img src="comics/a1.png" alt="第1章"><p>第1章</p></a>
-    <a href="?id=2"><img src="comics/a2.png" alt="第2章"><p>第2章</p></a>
-    <a href="?id=3"><img src="comics/a3.png" alt="第3章"><p>第3章</p></a>
+    <a href="?id=1"><img src="comics/a1.png" alt="第1章"></a>
+    <a href="?id=2"><img src="comics/a2.png" alt="第2章"></a>
+    <a href="?id=3"><img src="comics/a3.png" alt="第3章"></a>
   </div>
   <div id="novel-container"><h1>小説を選んでください</h1></div>
 </main>
