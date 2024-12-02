@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ギャラリー</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <style>
     /* 画像ギャラリーのスタイル */
     .image-gallery {
@@ -13,6 +14,10 @@
       justify-content: center;
       gap: 20px;
       padding: 20px;
+    }
+
+    .image-gallery a {
+      text-decoration: none;
     }
 
     .image-gallery img {
@@ -27,6 +32,13 @@
     .image-gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
+    }
+
+    .image-gallery .date {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #444;
     }
 
     /* スマホ対応 */
@@ -49,16 +61,52 @@
 
 <main>
   <div class="image-gallery">
-    <img src="comics/2.jpeg" alt="画像1">
-    <img src="comics/3.jpeg" alt="画像2">
-    <img src="comics/4.jpeg" alt="画像3">
-    <img src="comics/comic 1.png" alt="画像3">
+    <a href="comics/2.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="comics/2.jpeg" alt="画像1">
+      <div class="date">2024-11-01</div>
+    </a>
+    <a href="comics/3.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="comics/3.jpeg" alt="画像2">
+      <div class="date">2024-11-02</div>
+    </a>
+    <a href="comics/4.jpeg" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="comics/4.jpeg" alt="画像3">
+      <div class="date">2024-11-03</div>
+    </a>
+    <a href="comics/comic 1.png" data-pswp-width="1920" data-pswp-height="1080">
+      <img src="comics/comic 1.png" alt="画像4">
+      <div class="date">2024-11-04</div>
+    </a>
   </div>
 </main>
 
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
+
+<!-- PhotoSwipe Scripts -->
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.image-gallery',
+    children: 'a',
+    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+  });
+
+  // フォトスワイプの背景色を変更
+  lightbox.on('uiRegister', () => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .pswp__bg {
+        background-color: #ADD8E6 !important; /* 水色 */
+      }
+    `;
+    document.head.appendChild(style);
+  });
+
+  lightbox.init();
+</script>
 
 </body>
 </html>
