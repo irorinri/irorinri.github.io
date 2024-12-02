@@ -6,32 +6,29 @@
   <title>ストーリー</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* サムネイルギャラリーのスタイル */
     .thumbnail-gallery {
       display: flex;
-      flex-direction: column; /* 縦に並べる */
+      flex-direction: column;
       align-items: center;
-      gap: 20px; /* 各要素間の余白 */
+      gap: 20px;
       padding: 20px;
     }
     .thumbnail-gallery a {
-      text-align: center; /* 画像とテキストを中央揃え */
+      text-align: center;
       text-decoration: none;
       color: inherit;
     }
     .thumbnail-gallery img {
-      width: 80px; /* 画像を少し小さくする */
-      height: auto;
+      width: 80px;
       border-radius: 5px;
-      cursor: pointer;
       transition: transform 0.2s;
     }
     .thumbnail-gallery img:hover {
       transform: scale(1.1);
     }
     .thumbnail-gallery p {
-      margin-top: 5px;
       font-size: 14px;
+      margin: 5px 0 0;
     }
   </style>
 </head>
@@ -47,51 +44,28 @@
 
 <main>
   <div class="thumbnail-gallery">
-    <a href="?id=1">
-      <img src="comics/a1.png" alt="第1章">
-      <p>第1章</p>
-    </a>
-    <a href="?id=2">
-      <img src="comics/a2.png" alt="第2章">
-      <p>第2章</p>
-    </a>
-    <a href="?id=3">
-      <img src="comics/a3.png" alt="第3章">
-      <p>第3章</p>
-    </a>
+    <a href="?id=1"><img src="comics/a1.png" alt="第1章"><p>第1章</p></a>
+    <a href="?id=2"><img src="comics/a2.png" alt="第2章"><p>第2章</p></a>
+    <a href="?id=3"><img src="comics/a3.png" alt="第3章"><p>第3章</p></a>
   </div>
-
-  <div id="novel-container">
-    <h1>小説を選んでください</h1>
-  </div>
+  <div id="novel-container"><h1>小説を選んでください</h1></div>
 </main>
 
 <script>
-  const container = document.getElementById('novel-container');
   const params = new URLSearchParams(window.location.search);
   const novelId = params.get('id');
+  const container = document.getElementById('novel-container');
 
   if (novelId) {
     fetch('data/novels.json')
-      .then(response => {
-        if (!response.ok) throw new Error('ネットワークエラー');
-        return response.json();
-      })
+      .then(res => res.ok ? res.json() : Promise.reject('ネットワークエラー'))
       .then(data => {
         const novel = data.find(n => n.id == novelId);
-        if (novel) {
-          container.innerHTML = `
-            <h1>${novel.title}</h1>
-            <p>${novel.content}</p>
-          `;
-        } else {
-          container.innerHTML = '<p>指定された小説が見つかりません。</p>';
-        }
+        container.innerHTML = novel 
+          ? `<h1>${novel.title}</h1><p>${novel.content}</p>` 
+          : '<p>指定された小説が見つかりません。</p>';
       })
-      .catch(error => {
-        console.error(error);
-        container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>';
-      });
+      .catch(() => container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>');
   }
 </script>
 
