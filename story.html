@@ -62,6 +62,13 @@
   padding: 0 20px; /* 左右に20pxの余白を追加 */
   box-sizing: border-box; /* パディングを含めて幅を計算 */
 }
+    .novel-title {
+    font-size: 18px; /* 小さめのフォントサイズ */
+    font-weight: bold; /* タイトルを強調する場合 */
+    text-align: center; /* 中央揃えにする場合 */
+    margin-bottom: 15px; /* 本文との間隔を調整 */
+  }
+
   </style>
 </head>
 <body>
@@ -107,7 +114,7 @@
     .then(response => response.json())
     .then(data => {
       container.innerHTML = `
-        <h1>${data.title}</h1>
+        <h1 class="novel-title">${data.title}</h1>
         <p>${data.content}</p>
       `;
     })
