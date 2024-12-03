@@ -117,7 +117,10 @@
 }
 
   // 戻るボタンの動作
-  backButton.addEventListener('click', showGallery);
+backButton.addEventListener('click', () => {
+  showGallery();
+  window.scrollTo(0, 0); // ページのスクロール位置をトップに設定
+});
 </script>
 
 <footer>
