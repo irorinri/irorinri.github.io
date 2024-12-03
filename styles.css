@@ -4,7 +4,7 @@ body {
   font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントに変更 */
   margin: 0;
   padding-bottom: 25vh;
-  background-color: #f0f0f0; /* ページ全体の背景色を薄い灰色に */
+  background-color: #f8f8f8; /* ページ全体の背景色を薄い灰色に */
 }
 
 nav {
