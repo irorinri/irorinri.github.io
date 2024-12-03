@@ -4,40 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ブログ</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
-    .blog-list {
-      list-style: none;
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
       padding: 0;
-      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
     }
-    .blog-list li {
-      margin: 10px 0;
-      font-size: 16px;
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background-color: #444;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
     }
-    .blog-list a {
+
+    nav a {
       text-decoration: none;
-      color: #007bff;
-    }
-    .blog-list a:hover {
-      text-decoration: underline;
-    }
-    .blog-post {
-      margin: 20px;
-      font-size: 16px;
-    }
-    .back-button {
-      margin: 50px auto;
-      padding: 10px 20px;
-      font-size: 16px;
       color: white;
-      background-color: #7991ff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      font-size: 16px;
+      padding: 5px 10px;
     }
-    .back-button:hover {
-      background-color: #0056b3;
+
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-entry {
+      margin-bottom: 30px;
+    }
+
+    .blog-date {
+      font-weight: bold;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .blog-content {
+      font-size: 16px;
+      padding-left: 10px;
+      border-left: 3px solid #7991ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #444;
+      color: white;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -52,64 +82,27 @@
 </nav>
 
 <main>
-  <ul id="blog-list" class="blog-list"></ul>
-  <div id="blog-post" class="blog-post"></div>
-  <button id="back-button" class="back-button" style="display: none;">戻る</button>
+  <div class="blog-entry">
+    <div class="blog-date">2024-11-29</div>
+    <div class="blog-content">
+      今日は新しいブログサイトを作ることにしました。とても楽しかったです。
+    </div>
+  </div>
+
+  <div class="blog-entry">
+    <div class="blog-date">2024-11-28</div>
+    <div class="blog-content">
+      久しぶりに散歩をしました。少し寒かったけど気持ちよかったです。
+    </div>
+  </div>
+
+  <div class="blog-entry">
+    <div class="blog-date">2024-11-27</div>
+    <div class="blog-content">
+      最近読んだ本の感想を書いてみます。本当に感動しました！
+    </div>
+  </div>
 </main>
-
-<script>
-  const blogListElement = document.getElementById('blog-list');
-  const blogPostElement = document.getElementById('blog-post');
-  const backButton = document.getElementById('back-button');
-
-  // JSONファイルを読み込んで処理
-  fetch('diary.json')
-    .then(response => {
-      if (!response.ok) throw new Error('JSONファイルの読み込みに失敗しました');
-      return response.json();
-    })
-    .then(blogs => {
-      // ブログ一覧を表示
-      function showBlogList() {
-        blogListElement.style.display = 'block';
-        blogPostElement.style.display = 'none';
-        backButton.style.display = 'none';
-        blogListElement.innerHTML = blogs
-          .map(blog => `<li><a href="#" data-date="${blog.date}">${blog.date}</a></li>`)
-          .join('');
-      }
-
-      // 日記を表示
-      function showBlogPost(date) {
-        const blog = blogs.find(b => b.date === date);
-        if (blog) {
-          blogListElement.style.display = 'none';
-          blogPostElement.style.display = 'block';
-          backButton.style.display = 'block';
-          blogPostElement.innerHTML = `<h2>${blog.date}</h2><p>${blog.content}</p>`;
-        }
-      }
-
-      // 戻るボタンの動作
-      backButton.addEventListener('click', showBlogList);
-
-      // 日付クリック時の動作
-      blogListElement.addEventListener('click', (event) => {
-        if (event.target.tagName === 'A') {
-          event.preventDefault();
-          const date = event.target.getAttribute('data-date');
-          showBlogPost(date);
-        }
-      });
-
-      // 初期表示
-      showBlogList();
-    })
-    .catch(error => {
-      console.error(error);
-      document.body.innerHTML = '<p>ブログデータの読み込みに失敗しました。</p>';
-    });
-</script>
 
 <footer>
   © irorinri. All Rights Reserved.
