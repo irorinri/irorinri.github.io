@@ -13,13 +13,12 @@
     }
 
     body {
-      padding-top: 0; /* 上部の余白は改行で代替 */
       font-size: 14px; /* 全体のフォントサイズを小さく */
       line-height: 1.6; /* 行間を調整 */
     }
 
     main {
-      padding: 0 20px; /* 左右に余白を追加 */
+      padding: 20px; /* 左右に余白を追加 */
     }
 
     .blog-entry {
@@ -35,12 +34,13 @@
     .blog-entry p {
       margin: 0; /* 日付と本文の余白を削除 */
     }
+
+    .nav-bottom-space {
+      height: 20px; /* ナビゲーション下に余白を追加 */
+    }
   </style>
 </head>
 <body>
-
-<!-- 改行を追加 -->
-<br>
 
 <nav>
   <a href="index.html">キャラ</a>
@@ -49,6 +49,9 @@
   <a href="story.html">小説</a>
   <a href="blog.html">日記</a>
 </nav>
+
+<!-- ナビゲーション下の余白 -->
+<div class="nav-bottom-space"></div>
 
 <main>
   <div class="blog-entry">
@@ -60,7 +63,7 @@
   </div>
 
   <div class="blog-entry">
-    <h2>2024-11-27</h2><p>絶対に自分が世界一不幸だと断言できるポヨ</p>
+    <h2>2024-11-27</h2><p>絶対に自分が世界一不幸ポヨ</p>
   </div>
 </main>
 
