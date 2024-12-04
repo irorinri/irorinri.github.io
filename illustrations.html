@@ -11,7 +11,9 @@
     .gallery a { width: 18%; max-width: 100px; text-decoration: none; }
     .gallery img { width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: transform 0.3s, box-shadow 0.3s; }
     .gallery img:hover { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
-    .image-gallery { margin-bottom: 1000px;}
+    .image-gallery { display: block; /* 要素の正常な表示 */
+                    overflow: auto; /* 親要素の領域確保 */
+                    margin-bottom: 1000px; }
     @media (max-width: 768px) { .gallery a { width: 24%; } }
     @media (max-width: 480px) { .gallery a { width: 30%; } }
     .pswp__custom-caption { color: white !important; text-align: center !important; padding: 5px; position: absolute; bottom: 30px; width: 100%; z-index: 1000; visibility: visible; }
