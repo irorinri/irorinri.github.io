@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding-bottom: 25vh;
   background-color: #f8f8f8; /* ページ全体の背景色を薄い灰色に */
+  overflow: visible; /* スクロールを許可 */
 }
 
 nav {
@@ -15,7 +16,7 @@ nav {
   padding: 10px; /* 上下10pxの余白 */
   position: sticky; /* スクロールしても上部に固定 */
   top: 0;
-  z-index: 1000;
+  z-index: 2000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
 }
