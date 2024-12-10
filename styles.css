@@ -23,6 +23,7 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
   width: 100vw;
+  text-align: center; /* セーフティ設定 */
 }
 
 nav a {
