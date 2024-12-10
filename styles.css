@@ -22,6 +22,7 @@ nav {
   z-index: 2000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* シャドウを薄めに変更 */
   flex-wrap: nowrap; /* 折り返さないようにする */
+  width: 100%;
 }
 
 nav a {
