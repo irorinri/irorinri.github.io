@@ -29,7 +29,7 @@ nav {
 nav a {
   color: #000000; /* 文字色を黒に変更 */
   text-decoration: none; /* 下線を消す */
-  padding: 5px 15px; /* 上下5px、左右15pxの余白 */
+  padding: 5px 10px; /* 上下5px、左右15pxの余白 */
   border: none;
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
