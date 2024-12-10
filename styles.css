@@ -51,7 +51,7 @@ nav a:hover {
   }
 
   nav a {
-    padding: 5px 15px; /* スマホでも同じサイズを維持 */
+    padding: 5px 1px; /* スマホでも同じサイズを維持 */
     font-size: 14px; /* フォントサイズを小さめに調整 */
   }
 }
