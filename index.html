@@ -15,6 +15,14 @@
   margin-top: 80px;
   margin-bottom: 0px;
   font-weight: bold;
+
+  /* 虹色グラデーション */
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;     /* テキストの形状で背景をクリップ */
+  -webkit-text-fill-color: transparent; /* テキスト内を透過して背景表示 */
+  
+  /* 白い縁取り */
+  -webkit-text-stroke: 1px white;    /* テキストストロークを白色で1px */
 }
   .image-gallery {
     display: grid;
