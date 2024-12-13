@@ -149,20 +149,6 @@
         });
       },
     });
-
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-caption',
-      order: 9,
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          el.innerHTML = caption ? caption.textContent : 'キャプションなし';
-        });
-      },
-    });
   });
 
   lightbox.init();
