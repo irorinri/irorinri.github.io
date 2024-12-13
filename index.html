@@ -15,14 +15,16 @@
   margin-top: 80px;
   margin-bottom: 0px;
   font-weight: bold;
-
-  /* 虹色グラデーション */
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;     /* テキストの形状で背景をクリップ */
-  -webkit-text-fill-color: transparent; /* テキスト内を透過して背景表示 */
   
-  /* 白い縁取り */
-  -webkit-text-stroke: 1px white;    /* テキストストロークを白色で1px */
+  /* 虹色のグラデーション背景 */
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  
+  /* テキストをクリップして背景を文字の色として使う */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* 白縁（テキストストローク） */
+  -webkit-text-stroke: 1px white;
 }
   .image-gallery {
     display: grid;
