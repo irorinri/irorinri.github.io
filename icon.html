@@ -1,1 +1,84 @@
-test
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アイコン</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 基本スタイル */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    /* アイコン一覧のスタイル */
+    .icon-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* スマホでは1列、大きな画面では複数列 */
+      gap: 20px; /* アイコン間のスペース */
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .icon-item {
+      text-align: center;
+    }
+
+    .icon-item img {
+      width: 100px; /* 画像の大きさ */
+      height: 100px;
+      border-radius: 50%; /* 画像を丸くする */
+      object-fit: cover; /* アスペクト比を保ちながら表示 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 画像に影を追加 */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .icon-item img:hover {
+      transform: scale(1.1); /* ホバー時に拡大 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* ホバー時の影を強調 */
+    }
+
+    .icon-item .date {
+      margin-top: 10px; /* 画像と日付の間隔 */
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">ホーム</a>
+  <a href="icons.html">アイコン一覧</a>
+</nav>
+
+<main>
+  <div class="icon-gallery">
+    <div class="icon-item">
+      <img src="images/icon1.jpg" alt="アイコン1">
+      <div class="date">2024-01-01</div>
+    </div>
+    <div class="icon-item">
+      <img src="images/icon2.jpg" alt="アイコン2">
+      <div class="date">2024-02-01</div>
+    </div>
+    <div class="icon-item">
+      <img src="images/icon3.jpg" alt="アイコン3">
+      <div class="date">2024-03-01</div>
+    </div>
+    <div class="icon-item">
+      <img src="images/icon4.jpg" alt="アイコン4">
+      <div class="date">2024-04-01</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © irorinri. All Rights Reserved.
+</footer>
+
+</body>
+</html>
