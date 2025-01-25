@@ -16,7 +16,7 @@ nav {
   justify-content: center;
   gap: 10px; /* メニュー間のスペース */
   background-color: #ffffff; /* 背景色を白に変更 */
-  padding: 5px; 0px; /* 上下10pxの余白 */
+  padding: 10px; 0px; /* 上下10pxの余白 */
   margin-left: -10px;
   position: fixed; /* スクロールしても上部に固定 */
   top: 0;
@@ -25,6 +25,7 @@ nav {
   flex-wrap: nowrap; /* 折り返さないようにする */
   width: 100vw;
   text-align: center; /* セーフティ設定 */
+  line-height: 1; /* 行間を狭める */
 }
 
 nav a {
