@@ -25,7 +25,7 @@ nav {
   flex-wrap: nowrap; /* 折り返さないようにする */
   width: 100vw;
   text-align: center; /* セーフティ設定 */
-  line-height: 1; /* 行間を狭める */
+  
 }
 
 nav a {
