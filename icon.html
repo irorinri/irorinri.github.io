@@ -17,29 +17,55 @@
     /* アイコン一覧のスタイル */
     .icon-gallery {
   display: grid;
-  grid-template-columns: 1fr; /* 常に縦一列にする */
-  gap: 20px; /* アイコン間のスペース */
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
+  gap: 20px; /* 列の間隔 */
   justify-content: center;
   padding: 20px;
 }
 
-    .icon-item {
-      text-align: center;
-    }
+/* 左のアイコン画像（丸） */
+.icon-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* 各アイコンの間隔 */
+}
 
-    .icon-item img {
-      width: 100px; /* 画像の大きさ */
-      height: 100px;
-      border-radius: 50%; /* 画像を丸くする */
-      object-fit: cover; /* アスペクト比を保ちながら表示 */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 画像に影を追加 */
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.icon-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* 丸くする */
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .icon-item img:hover {
-      transform: scale(1.1); /* ホバー時に拡大 */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* ホバー時の影を強調 */
-    }
+.icon-item img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 右の画像（四角） */
+.image-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* 各画像の間隔 */
+}
+
+.image-item img {
+  width: 100px; /* サイズ統一 */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0; /* 四角のまま */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-item img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 
     .icon-item .date {
       margin-top: 10px; /* 画像と日付の間隔 */
@@ -56,21 +82,44 @@
 
 <main>
   <div class="icon-gallery">
-    <div class="icon-item">
-      <img src="images/icon1.jpg" alt="アイコン1">
-      <div class="date">2024-01-01</div>
+    <!-- 左側のアイコン（丸） -->
+    <div class="icon-column">
+      <div class="icon-item">
+        <img src="images/icon1.jpg" alt="アイコン1">
+        <div class="date">2024-01-01</div>
+      </div>
+      <div class="icon-item">
+        <img src="images/icon2.jpg" alt="アイコン2">
+        <div class="date">2024-02-01</div>
+      </div>
+      <div class="icon-item">
+        <img src="images/icon3.jpg" alt="アイコン3">
+        <div class="date">2024-03-01</div>
+      </div>
+      <div class="icon-item">
+        <img src="images/icon4.jpg" alt="アイコン4">
+        <div class="date">2024-04-01</div>
+      </div>
     </div>
-    <div class="icon-item">
-      <img src="images/icon2.jpg" alt="アイコン2">
-      <div class="date">2024-02-01</div>
-    </div>
-    <div class="icon-item">
-      <img src="images/icon3.jpg" alt="アイコン3">
-      <div class="date">2024-03-01</div>
-    </div>
-    <div class="icon-item">
-      <img src="images/icon4.jpg" alt="アイコン4">
-      <div class="date">2024-04-01</div>
+
+    <!-- 右側の画像（四角） -->
+    <div class="image-column">
+      <div class="image-item">
+        <img src="images/square1.jpg" alt="画像1">
+        <div class="date">2024-01-01</div>
+      </div>
+      <div class="image-item">
+        <img src="images/square2.jpg" alt="画像2">
+        <div class="date">2024-02-01</div>
+      </div>
+      <div class="image-item">
+        <img src="images/square3.jpg" alt="画像3">
+        <div class="date">2024-03-01</div>
+      </div>
+      <div class="image-item">
+        <img src="images/square4.jpg" alt="画像4">
+        <div class="date">2024-04-01</div>
+      </div>
     </div>
   </div>
 </main>
