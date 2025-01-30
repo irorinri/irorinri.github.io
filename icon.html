@@ -16,12 +16,12 @@
 
     /* アイコン一覧のスタイル */
     .icon-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* スマホでは1列、大きな画面では複数列 */
-      gap: 20px; /* アイコン間のスペース */
-      justify-content: center;
-      padding: 20px;
-    }
+  display: grid;
+  grid-template-columns: 1fr; /* 常に縦一列にする */
+  gap: 20px; /* アイコン間のスペース */
+  justify-content: center;
+  padding: 20px;
+}
 
     .icon-item {
       text-align: center;
