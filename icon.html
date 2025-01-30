@@ -26,54 +26,40 @@
 }
 
 /* 左のアイコン画像（丸） */
-.icon-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px; /* 各アイコンの間隔 */
-}
-
-.icon-item img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; /* 丸くする */
-  object-fit: cover;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.icon-item img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* 右の画像（四角） */
+.icon-column,
 .image-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* 画像と日付を中央揃え */
   gap: 20px; /* 各画像の間隔 */
 }
 
+.icon-item img,
 .image-item img {
-  width: 100px; /* サイズ統一 */
+  width: 100px;
   height: 100px;
   object-fit: cover;
-  border-radius: 0; /* 四角のまま */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-item img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+/* 丸アイコンの設定 */
+.icon-item img {
+  border-radius: 50%; /* 丸くする */
 }
 
-    .icon-item .date {
-      margin-top: 10px; /* 画像と日付の間隔 */
-      font-size: 14px;
-      color: #444;
-    }
+/* 四角画像の設定 */
+.image-item img {
+  border-radius: 0; /* 四角のまま */
+}
+
+/* 日付のデザインを統一 */
+.date {
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+  margin-top: 5px; /* 画像との間隔 */
+}
   </style>
 </head>
 <body>
