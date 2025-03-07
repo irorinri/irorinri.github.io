@@ -22,6 +22,27 @@
     .blog-e p { margin: 0; }
     
     footer { text-align: center; }
+
+    
+    .hidden-content {
+  display: none; /* 初期状態で非表示 */
+}
+.toggle-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #7991ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+    
   </style>
 </head>
 <body class="blog-page">
@@ -54,7 +75,13 @@
   <div class="blog-e"><p style="margin-bottom: 20px;">
       <a href="icon.html" style="text-decoration: none; color: blue;">→過去アイコン等まとめ←</a>
     </p>
-    <h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
+
+
+    <!-- 「日記を表示」ボタン -->
+    <button id="toggle-button" class="toggle-button">日記を表示</button>
+    
+    <div id="hidden-content" class="hidden-content">
+  <div class="blog-e"><h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
   <div class="blog-e"><h2>2024-12-29</h2><p>グレンラガンは山椒魚に見せたら死ぬレベルで面白い</p></div>
   <div class="blog-e"><h2>2024-12-28</h2><p>てかこの前の選挙の「日本をなめるな（ｷﾘｯ」広告あれ自分のX思い出して耳まで赤くなった</p></div>
   <div class="blog-e"><h2>2024-12-27</h2><p>ずっと連鎖して気持ちいい</p></div>
@@ -183,5 +210,21 @@
   © irorinri. All Rights Reserved.
 </footer>
 
+<script>
+  document.getElementById("toggle-button").addEventListener("click", function() {
+    var content = document.getElementById("hidden-content");
+    var button = document.getElementById("toggle-button");
+
+    if (content.style.display === "none" || content.style.display === "") {
+      content.style.display = "block"; // 表示する
+      button.textContent = "日記を非表示"; // ボタンのテキスト変更
+    } else {
+      content.style.display = "none"; // 非表示にする
+      button.textContent = "日記を表示"; // ボタンのテキストを戻す
+    }
+  });
+</script>
+
+      
 </body>
 </html>
