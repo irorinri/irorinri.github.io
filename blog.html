@@ -135,18 +135,26 @@
   var diaryButtons = document.getElementById("diary-buttons");
 
   if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
-  diaryContent.style.display = "block";
-  diaryContent.classList.remove("hidden");
-  diaryButtons.style.display = "grid";
-  diaryButtons.classList.remove("hidden");
-  this.textContent = "→日記を非表示←";
+    diaryContent.style.display = "block";
+    diaryContent.classList.remove("hidden");
+    diaryButtons.style.display = "grid";
+    diaryButtons.classList.remove("hidden");
+    this.textContent = "→日記を非表示←";
 
-  if (diaryButtons.innerHTML.trim() === "") {
-    generateDiaryButtons();
-  }
+    if (diaryButtons.innerHTML.trim() === "") {
+      generateDiaryButtons();
+    }
 
-  // **ボタンが確実に作成された後に1.htmlをロードする**
-  setTimeout(() => loadDiaryEntry(1), 0);
+    // **ボタンが確実に作成された後に1.htmlをロードする**
+    setTimeout(() => {
+      loadDiaryEntry(1);
+
+      // **「1」のボタンを選択状態に**
+      let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+      if (defaultButton) {
+        defaultButton.classList.add("selected");
+      }
+    }, 10);
   } else {
     diaryContent.style.display = "none";
     diaryContent.classList.add("hidden");
@@ -175,10 +183,12 @@ function generateDiaryButtons() {
   }
 
   // **ボタン作成後に1を選択状態に**
-  let defaultButton = document.querySelector('.diary-button[data-id="1"]');
-  if (defaultButton) {
-    defaultButton.classList.add("selected");
-  }
+  setTimeout(() => {
+    let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+    if (defaultButton) {
+      defaultButton.classList.add("selected");
+    }
+  }, 0);
 }
 
 function loadDiaryEntry(id) {
@@ -190,10 +200,10 @@ function loadDiaryEntry(id) {
         diaryTextContainer.innerHTML = html;
       }
 
-      // 他のボタンの選択状態を解除
+      // **ボタンの選択状態をリセット**
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
 
-      // 選択したボタンに selected クラスを追加
+      // **選択したボタンに selected クラスを追加**
       let selectedButton = document.querySelector(`.diary-button[data-id="${id}"]`);
       if (selectedButton) {
         selectedButton.classList.add("selected");
