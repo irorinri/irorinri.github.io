@@ -24,23 +24,18 @@
     footer { text-align: center; }
 
     
-    .hidden-content {
+  .hidden {
   display: none; /* 初期状態で非表示 */
 }
-.toggle-button {
+
+.toggle-link {
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #7991ff;
-  border: none;
-  border-radius: 5px;
+  text-decoration: none;
+  color: blue;
+  font-size: inherit; /* h2と同じサイズ */
+  font-weight: normal;
+  margin-bottom: 20px;
   cursor: pointer;
-  text-align: center;
-}
-.toggle-button:hover {
-  background-color: #7991ff;
 }
     
   </style>
@@ -77,10 +72,11 @@
     </p>
 
 
-    <!-- 「日記を表示」ボタン -->
-    <button id="toggle-button" class="toggle-button">日記を表示</button>
-    
-    <div id="hidden-content" class="hidden-content">
+    <!-- 日記の表示・非表示を切り替えるリンク -->
+<a id="toggle-diary" class="toggle-link">→日記を表示←</a>
+
+<!-- 非表示にする日記部分 -->
+<div id="diary-content" class="hidden">
   <div class="blog-e"><h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
   <div class="blog-e"><h2>2024-12-29</h2><p>グレンラガンは山椒魚に見せたら死ぬレベルで面白い</p></div>
   <div class="blog-e"><h2>2024-12-28</h2><p>てかこの前の選挙の「日本をなめるな（ｷﾘｯ」広告あれ自分のX思い出して耳まで赤くなった</p></div>
@@ -211,16 +207,16 @@
 </footer>
 
 <script>
-  document.getElementById("toggle-button").addEventListener("click", function() {
-    var content = document.getElementById("hidden-content");
-    var button = document.getElementById("toggle-button");
-
-    if (content.style.display === "none" || content.style.display === "") {
-      content.style.display = "block"; // 表示する
-      button.textContent = "日記を非表示"; // ボタンのテキスト変更
+  document.getElementById("toggle-diary").addEventListener("click", function () {
+    var diaryContent = document.getElementById("diary-content");
+    if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
+      diaryContent.style.display = "block";
+      diaryContent.classList.remove("hidden");
+      this.textContent = "→日記を非表示←";
     } else {
-      content.style.display = "none"; // 非表示にする
-      button.textContent = "日記を表示"; // ボタンのテキストを戻す
+      diaryContent.style.display = "none";
+      diaryContent.classList.add("hidden");
+      this.textContent = "→日記を表示←";
     }
   });
 </script>
