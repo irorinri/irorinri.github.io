@@ -238,20 +238,23 @@
   © irorinri. All Rights Reserved.
 </footer>
 
-<script>
 document.getElementById("toggle-diary").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
   var diaryButtons = document.getElementById("diary-buttons");
 
-  if (diaryContent.classList.toggle("hidden")) {
-    this.textContent = "→日記を表示←";
-  } else {
-    this.textContent = "→日記を非表示←";
-    if (!diaryButtons.hasChildNodes()) generateDiaryButtons();
-    loadDiaryEntry(1); // デフォルトで1.htmlを表示
+  var isHidden = diaryContent.classList.contains("hidden");
+
+  diaryContent.classList.toggle("hidden", !isHidden);
+  diaryButtons.classList.toggle("hidden", !isHidden);
+  this.textContent = isHidden ? "→日記を非表示←" : "→日記を表示←";
+
+  if (isHidden && diaryButtons.innerHTML.trim() === "") {
+    generateDiaryButtons();
+    loadDiaryEntry(1); // デフォルトで1.htmlを読み込む
   }
 });
 
+// ボタンを動的に生成
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
   for (let i = 1; i <= 30; i++) {
@@ -260,21 +263,27 @@ function generateDiaryButtons() {
     button.textContent = i;
     button.dataset.id = i;
     button.addEventListener("click", function () {
-      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      this.classList.add("selected");
       loadDiaryEntry(this.dataset.id);
     });
     diaryButtons.appendChild(button);
   }
 }
 
+// Ajaxで日記のHTMLを取得して表示
 function loadDiaryEntry(id) {
   fetch(`https://irorinri.github.io/diary/${id}.html`)
     .then(response => response.text())
-    .then(html => document.getElementById("diary-text").innerHTML = html)
-    .catch(error => console.error("Error fetching diary entry:", error));
+    .then(html => {
+      let diaryTextContainer = document.getElementById("diary-text");
+      if (diaryTextContainer) {
+        diaryTextContainer.innerHTML = html;
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching diary entry:", error);
+      document.getElementById("diary-text").innerHTML = `<p>日記データの取得に失敗しました。</p>`;
+    });
 }
-</script>
       
 </body>
 </html>
