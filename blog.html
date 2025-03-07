@@ -62,7 +62,9 @@
 .diary-button:hover {
   background-color: #d0d0d0;
 }
-
+.hidden {
+  display: none;
+}
     
   </style>
 </head>
@@ -243,6 +245,7 @@
     if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
       diaryContent.style.display = "block";
       diaryContent.classList.remove("hidden");
+      diaryButtons.style.display = "grid"; // ボタンも表示
       diaryButtons.classList.remove("hidden");
       this.textContent = "→日記を非表示←";
 
@@ -253,10 +256,11 @@
     } else {
       diaryContent.style.display = "none";
       diaryContent.classList.add("hidden");
+      diaryButtons.style.display = "none"; // ボタンも非表示
       diaryButtons.classList.add("hidden");
       this.textContent = "→日記を表示←";
     }
-  });
+});
 
   // ボタンを動的に生成
   function generateDiaryButtons() {
