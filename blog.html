@@ -135,18 +135,18 @@
   var diaryButtons = document.getElementById("diary-buttons");
 
   if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
-    diaryContent.style.display = "block";
-    diaryContent.classList.remove("hidden");
-    diaryButtons.style.display = "grid";
-    diaryButtons.classList.remove("hidden");
-    this.textContent = "→日記を非表示←";
+  diaryContent.style.display = "block";
+  diaryContent.classList.remove("hidden");
+  diaryButtons.style.display = "grid";
+  diaryButtons.classList.remove("hidden");
+  this.textContent = "→日記を非表示←";
 
-    if (diaryButtons.innerHTML.trim() === "") {
-      generateDiaryButtons();
-    }
+  if (diaryButtons.innerHTML.trim() === "") {
+    generateDiaryButtons();
+  }
 
-    // デフォルトで1.htmlを読み込む
-    loadDiaryEntry(1);
+  // **ボタンが確実に作成された後に1.htmlをロードする**
+  setTimeout(() => loadDiaryEntry(1), 0);
   } else {
     diaryContent.style.display = "none";
     diaryContent.classList.add("hidden");
