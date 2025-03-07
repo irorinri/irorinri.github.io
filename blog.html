@@ -62,8 +62,8 @@
 .diary-button:hover {
   background-color: #d0d0d0;
 }
-.hidden {
-  display: none;
+#diary-content {
+  display: none; /* 初期状態で非表示 */
 }
     
   </style>
@@ -95,7 +95,7 @@
     
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
-  <div id="diary-buttons" class="diary-buttons hidden"></div>
+  <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
   <div class="blog-e"><h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
   <div class="blog-e"><h2>2024-12-29</h2><p>グレンラガンは山椒魚に見せたら死ぬレベルで面白い</p></div>
   <div class="blog-e"><h2>2024-12-28</h2><p>てかこの前の選挙の「日本をなめるな（ｷﾘｯ」広告あれ自分のX思い出して耳まで赤くなった</p></div>
@@ -272,7 +272,10 @@
         document.getElementById("diary-text").innerHTML = html; // HTMLを直接挿入
       })
       .catch(error => {
-        document.getElementById("diary-text").innerHTML = <p>日記データの取得に失敗しました。</p>;
+        let diaryTextContainer = document.getElementById("diary-text");
+if (diaryTextContainer) {
+  diaryTextContainer.innerHTML = html;
+}
         console.error("Error fetching diary entry:", error);
       });
   }
