@@ -62,8 +62,8 @@
 .diary-button:hover {
   background-color: #d0d0d0;
 }
-#diary-content {
-  display: none; /* 初期状態で非表示 */
+.hidden {
+  display: none;
 }
     
   </style>
@@ -80,17 +80,6 @@
 <div class="nav-bottom-space"></div>
 <main>
 
-
-
-
-
-
-
-
-
-
-
-
 <div class="blog-e"><p style="margin-bottom: 20px;">
       <a href="soft.html" style="text-decoration: none; color: blue;">→使用ソフト等まとめ←</a>
     </p>
@@ -99,17 +88,14 @@
       <a href="icon.html" style="text-decoration: none; color: blue;">→過去アイコン等まとめ←</a>
     </p>
 
-
     <!-- 日記の表示・非表示を切り替えるリンク -->
 <a id="toggle-diary" class="toggle-link">→日記を表示←</a>
-
 
     <div id="diary-buttons" class="diary-buttons hidden"></div>
     
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
-  
-  <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
+  <div id="diary-buttons" class="diary-buttons hidden"></div>
   <div class="blog-e"><h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
   <div class="blog-e"><h2>2024-12-29</h2><p>グレンラガンは山椒魚に見せたら死ぬレベルで面白い</p></div>
   <div class="blog-e"><h2>2024-12-28</h2><p>てかこの前の選挙の「日本をなめるな（ｷﾘｯ」広告あれ自分のX思い出して耳まで赤くなった</p></div>
@@ -237,54 +223,60 @@
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
-  <script>
 
-document.getElementById("toggle-diary").addEventListener("click", function () {
-  var diaryContent = document.getElementById("diary-content");
-  var diaryButtons = document.getElementById("diary-buttons");
+<script>
+  document.getElementById("toggle-diary").addEventListener("click", function () {
+    var diaryContent = document.getElementById("diary-content");
+    var diaryButtons = document.getElementById("diary-buttons");
 
-  var isHidden = diaryContent.classList.contains("hidden");
+    if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
+      diaryContent.style.display = "block";
+      diaryContent.classList.remove("hidden");
+      diaryButtons.style.display = "grid"; // ボタンも表示
+      diaryButtons.classList.remove("hidden");
+      this.textContent = "→日記を非表示←";
 
-  diaryContent.classList.toggle("hidden", !isHidden);
-  diaryButtons.classList.toggle("hidden", !isHidden);
-  this.textContent = isHidden ? "→日記を非表示←" : "→日記を表示←";
-
-  if (isHidden && diaryButtons.innerHTML.trim() === "") {
-    generateDiaryButtons();
-    loadDiaryEntry(1); // デフォルトで1.htmlを読み込む
-  }
+      // まだボタンが生成されていない場合は作成
+      if (diaryButtons.innerHTML.trim() === "") {
+        generateDiaryButtons();
+      }
+    } else {
+      diaryContent.style.display = "none";
+      diaryContent.classList.add("hidden");
+      diaryButtons.style.display = "none"; // ボタンも非表示
+      diaryButtons.classList.add("hidden");
+      this.textContent = "→日記を表示←";
+    }
 });
 
-// ボタンを動的に生成
-function generateDiaryButtons() {
-  var diaryButtons = document.getElementById("diary-buttons");
-  for (let i = 1; i <= 30; i++) {
-    let button = document.createElement("div");
-    button.classList.add("diary-button");
-    button.textContent = i;
-    button.dataset.id = i;
-    button.addEventListener("click", function () {
-      loadDiaryEntry(this.dataset.id);
-    });
-    diaryButtons.appendChild(button);
+  // ボタンを動的に生成
+  function generateDiaryButtons() {
+    var diaryButtons = document.getElementById("diary-buttons");
+    for (let i = 1; i <= 30; i++) {
+      let button = document.createElement("div");
+      button.classList.add("diary-button");
+      button.textContent = i;
+      button.dataset.id = i;
+      button.addEventListener("click", function () {
+        loadDiaryEntry(this.dataset.id);
+      });
+      diaryButtons.appendChild(button);
+    }
   }
-}
 
-// Ajaxで日記のHTMLを取得して表示
-function loadDiaryEntry(id) {
-  fetch(`https://irorinri.github.io/diary/${id}.html`)
-    .then(response => response.text())
-    .then(html => {
-      let diaryTextContainer = document.getElementById("diary-text");
-      if (diaryTextContainer) {
-        diaryTextContainer.innerHTML = html;
-      }
-    })
-    .catch(error => {
-      console.error("Error fetching diary entry:", error);
-      document.getElementById("diary-text").innerHTML = `<p>日記データの取得に失敗しました。</p>`;
-    });
-}
+      // Ajaxで日記のHTMLを取得して表示
+  function loadDiaryEntry(id) {
+    fetch(https://irorinri.github.io/diary/${id}.html)
+      .then(response => response.text())  // HTMLをそのまま取得
+      .then(html => {
+        document.getElementById("diary-text").innerHTML = html; // HTMLを直接挿入
+      })
+      .catch(error => {
+        document.getElementById("diary-text").innerHTML = <p>日記データの取得に失敗しました。</p>;
+        console.error("Error fetching diary entry:", error);
+      });
+  }
+</script>
       
 </body>
 </html>
