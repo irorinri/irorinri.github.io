@@ -59,6 +59,7 @@
 
 .diary-grid button:hover {
   background-color: #bbb;
+  }
     
   </style>
 </head>
@@ -202,7 +203,8 @@
 
 
 
-
+<!-- 3×15 のグリッドボタン -->
+    <div id="diary-grid" class="diary-grid hidden"></div>
 
 
 
@@ -231,16 +233,46 @@
 <script>
   document.getElementById("toggle-diary").addEventListener("click", function () {
     var diaryContent = document.getElementById("diary-content");
+    var diaryGrid = document.getElementById("diary-grid");
+
     if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
       diaryContent.style.display = "block";
       diaryContent.classList.remove("hidden");
+      diaryGrid.classList.remove("hidden"); // グリッドも表示
       this.textContent = "→日記を非表示←";
     } else {
       diaryContent.style.display = "none";
       diaryContent.classList.add("hidden");
+      diaryGrid.classList.add("hidden"); // グリッドも非表示
       this.textContent = "→日記を表示←";
     }
   });
+
+  // 3×15のグリッドボタンを生成
+  function createDiaryGrid() {
+    var diaryGrid = document.getElementById("diary-grid");
+
+    for (let i = 1; i <= 45; i++) {
+      let button = document.createElement("button");
+      button.textContent = i; // ボタンに番号を付ける
+      button.addEventListener("click", function () {
+        loadDiaryEntry(i); // クリックしたら日記を読み込む
+      });
+      diaryGrid.appendChild(button);
+    }
+  }
+
+  // 日記のエントリーを読み込む
+  function loadDiaryEntry(entryNumber) {
+    fetch(`diary/diary${entryNumber}.html`) // 各日記を別HTMLから読み込む
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("diary-text").innerHTML = data; // 既存の日記を置き換え
+      })
+      .catch(error => console.error("日記を読み込めませんでした", error));
+  }
+
+  createDiaryGrid(); // ページロード時にグリッドを作成
 </script>
 
       
