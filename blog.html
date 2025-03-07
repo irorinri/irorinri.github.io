@@ -145,16 +145,14 @@
       generateDiaryButtons();
     }
 
-    // **ボタンが確実に作成された後に1.htmlをロードする**
+    // **「日記を表示」を押した後に 1.html をロード**
     setTimeout(() => {
       loadDiaryEntry(1);
-
-      // **「1」のボタンを選択状態に**
       let defaultButton = document.querySelector('.diary-button[data-id="1"]');
       if (defaultButton) {
         defaultButton.classList.add("selected");
       }
-    }, 10);
+    }, 200);
   } else {
     diaryContent.style.display = "none";
     diaryContent.classList.add("hidden");
