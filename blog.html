@@ -37,6 +37,28 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
+
+/* 日記のボタン（グリッド） */
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr); /* 横15列 */
+  grid-template-rows: repeat(3, auto); /* 縦3列 */
+  gap: 5px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.diary-grid button {
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.diary-grid button:hover {
+  background-color: #bbb;
     
   </style>
 </head>
