@@ -158,7 +158,9 @@
 
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
-  for (let i = 1; i <= 20; i++) {
+  diaryButtons.innerHTML = ""; // 既存のボタンを削除
+
+  for (let i = 1; i <= 30; i++) {
     let button = document.createElement("div");
     button.classList.add("diary-button");
     button.textContent = i;
@@ -166,13 +168,16 @@ function generateDiaryButtons() {
     button.addEventListener("click", function () {
       loadDiaryEntry(this.dataset.id);
 
-      // 他のボタンの選択状態を解除
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-
-      // 選択したボタンに selected クラスを追加
       this.classList.add("selected");
     });
     diaryButtons.appendChild(button);
+  }
+
+  // **ボタン作成後に1を選択状態に**
+  let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+  if (defaultButton) {
+    defaultButton.classList.add("selected");
   }
 }
 
