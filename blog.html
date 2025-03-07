@@ -279,7 +279,7 @@
 
   // Ajaxで日記を取得して表示
   function loadDiaryEntry(id) {
-    fetch(`https://irorinri.github.io/diary/${id}.txt`)
+    fetch(`https://irorinri.github.io/diary/${id}`)
       .then(response => response.text())
       .then(text => {
         document.getElementById("diary-text").innerHTML = `<div class="blog-e"><h2>日記 ${id}</h2><p>${text}</p></div>`;
