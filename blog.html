@@ -32,34 +32,36 @@
   display: block;
   text-decoration: none;
   color: blue;
-  font-size: inherit; /* h2と同じサイズ */
+  font-size: inherit;
   font-weight: normal;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
-/* 日記のボタン（グリッド） */
-.diary-grid {
+/* 日記選択ボタンのスタイル */
+.diary-buttons {
   display: grid;
-  grid-template-columns: repeat(15, 1fr); /* 横15列 */
-  grid-template-rows: repeat(3, auto); /* 縦3列 */
+  grid-template-columns: repeat(10, 1fr); /* 10列 */
+  grid-template-rows: repeat(3, auto); /* 3行 */
   gap: 5px;
   margin-top: 10px;
-  justify-content: center;
 }
 
-.diary-grid button {
-  width: 30px;
-  height: 30px;
-  background-color: #ddd;
-  border: 1px solid #aaa;
+.diary-button {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
-.diary-grid button:hover {
-  background-color: #bbb;
-  }
+.diary-button:hover {
+  background-color: #d0d0d0;
+}
     
   </style>
 </head>
@@ -98,6 +100,9 @@
     <!-- 日記の表示・非表示を切り替えるリンク -->
 <a id="toggle-diary" class="toggle-link">→日記を表示←</a>
 
+
+    <div id="diary-buttons" class="diary-buttons hidden"></div>
+    
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div class="blog-e"><h2>2024-12-30</h2><p>なんか，いろりん飽きてきちゃったな</p></div>
@@ -203,8 +208,6 @@
 
 
 
-<!-- 3×15 のグリッドボタン -->
-    <div id="diary-grid" class="diary-grid hidden"></div>
 
 
 
@@ -233,48 +236,54 @@
 <script>
   document.getElementById("toggle-diary").addEventListener("click", function () {
     var diaryContent = document.getElementById("diary-content");
-    var diaryGrid = document.getElementById("diary-grid");
+    var diaryButtons = document.getElementById("diary-buttons");
 
     if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
       diaryContent.style.display = "block";
       diaryContent.classList.remove("hidden");
-      diaryGrid.classList.remove("hidden"); // グリッドも表示
+      diaryButtons.classList.remove("hidden");
       this.textContent = "→日記を非表示←";
+
+      // まだボタンが生成されていない場合は作成
+      if (diaryButtons.innerHTML.trim() === "") {
+        generateDiaryButtons();
+      }
     } else {
       diaryContent.style.display = "none";
       diaryContent.classList.add("hidden");
-      diaryGrid.classList.add("hidden"); // グリッドも非表示
+      diaryButtons.classList.add("hidden");
       this.textContent = "→日記を表示←";
     }
   });
 
-  // 3×15のグリッドボタンを生成
-  function createDiaryGrid() {
-    var diaryGrid = document.getElementById("diary-grid");
-
-    for (let i = 1; i <= 45; i++) {
-      let button = document.createElement("button");
-      button.textContent = i; // ボタンに番号を付ける
+  // ボタンを動的に生成
+  function generateDiaryButtons() {
+    var diaryButtons = document.getElementById("diary-buttons");
+    for (let i = 1; i <= 30; i++) {
+      let button = document.createElement("div");
+      button.classList.add("diary-button");
+      button.textContent = i;
+      button.dataset.id = i;
       button.addEventListener("click", function () {
-        loadDiaryEntry(i); // クリックしたら日記を読み込む
+        loadDiaryEntry(this.dataset.id);
       });
-      diaryGrid.appendChild(button);
+      diaryButtons.appendChild(button);
     }
   }
 
-  // 日記のエントリーを読み込む
-  function loadDiaryEntry(entryNumber) {
-    fetch(`diary/diary${entryNumber}.html`) // 各日記を別HTMLから読み込む
+  // Ajaxで日記を取得して表示
+  function loadDiaryEntry(id) {
+    fetch(`https://irorinri.github.io/diary/${id}.txt`)
       .then(response => response.text())
-      .then(data => {
-        document.getElementById("diary-text").innerHTML = data; // 既存の日記を置き換え
+      .then(text => {
+        document.getElementById("diary-text").innerHTML = `<div class="blog-e"><h2>日記 ${id}</h2><p>${text}</p></div>`;
       })
-      .catch(error => console.error("日記を読み込めませんでした", error));
+      .catch(error => {
+        document.getElementById("diary-text").innerHTML = `<p>日記データの取得に失敗しました。</p>`;
+        console.error("Error fetching diary entry:", error);
+      });
   }
-
-  createDiaryGrid(); // ページロード時にグリッドを作成
 </script>
-
       
 </body>
 </html>
