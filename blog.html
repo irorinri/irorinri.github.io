@@ -283,7 +283,10 @@
     fetch(`https://irorinri.github.io/diary/${id}.html`)
       .then(response => response.text())  // HTMLをそのまま取得
       .then(html => {
-        document.getElementById("diary-text").innerHTML = html; // HTMLを直接挿入
+        let diaryTextContainer = document.getElementById("diary-text");
+if (diaryTextContainer) {
+  diaryTextContainer.innerHTML = html;
+}
       })
       .catch(error => {
         document.getElementById("diary-text").innerHTML = `<p>日記データの取得に失敗しました。</p>`;
