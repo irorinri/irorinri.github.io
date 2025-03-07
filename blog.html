@@ -277,12 +277,12 @@
     }
   }
 
-  // Ajaxで日記を取得して表示
+    // Ajaxで日記のHTMLを取得して表示
   function loadDiaryEntry(id) {
-    fetch(`https://irorinri.github.io/diary/${id}`)
-      .then(response => response.text())
-      .then(text => {
-        document.getElementById("diary-text").innerHTML = `<div class="blog-e"><h2>日記 ${id}</h2><p>${text}</p></div>`;
+    fetch(`https://irorinri.github.io/diary/${id}.html`)
+      .then(response => response.text())  // HTMLをそのまま取得
+      .then(html => {
+        document.getElementById("diary-text").innerHTML = html; // HTMLを直接挿入
       })
       .catch(error => {
         document.getElementById("diary-text").innerHTML = `<p>日記データの取得に失敗しました。</p>`;
