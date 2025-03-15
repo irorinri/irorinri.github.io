@@ -183,10 +183,10 @@ function generateDiaryButtons() {
     button.addEventListener("click", function () {
       loadDiaryEntry(this.dataset.id);
 
-      // すべてのボタンから "selected" クラスを削除
-      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      // クリックしたボタンに "selected" クラスを追加
-      this.classList.add("selected");
+      // すべてのボタンから "diary-selected" クラスを削除
+      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("diary-selected"));
+      // クリックしたボタンに "diary-selected" クラスを追加
+      this.classList.add("diary-selected");
     });
     diaryButtons.appendChild(button);
   }
@@ -195,7 +195,7 @@ function generateDiaryButtons() {
   setTimeout(() => {
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) {
-      defaultButton.classList.add("selected");
+      defaultButton.classList.add("diary-selected");
     }
   }, 50); // 少し遅延をつけて確実に適用
 }
