@@ -167,6 +167,8 @@
   }
 });
 
+
+  const diaryCount = 2; // 表示するボタン数を制限
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
   diaryButtons.innerHTML = ""; // 既存のボタンを削除
@@ -193,7 +195,7 @@ function generateDiaryButtons() {
     if (defaultButton) {
       defaultButton.classList.add("selected");
     }
-  }, 100); // 少し遅延をつけて確実に適用
+  }, 50); // 少し遅延をつけて確実に適用
 }
 
 function loadDiaryEntry(id) {
