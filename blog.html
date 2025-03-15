@@ -168,7 +168,7 @@
 });
 
 
-  const diaryCount = 2; // 表示するボタン数を制限
+  
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
   diaryButtons.innerHTML = ""; // 既存のボタンを削除
@@ -176,7 +176,7 @@ function generateDiaryButtons() {
   for (let i = 1; i <= 20; i++) {
     let button = document.createElement("div");
     button.classList.add("diary-button");
-    button.textContent = i;
+    button.textContent = i <= 2 ? i : ""; // 1と2は数字、それ以降は空白
     button.dataset.id = i;
     button.addEventListener("click", function () {
       loadDiaryEntry(this.dataset.id);
@@ -197,7 +197,6 @@ function generateDiaryButtons() {
     }
   }, 50); // 少し遅延をつけて確実に適用
 }
-
 function loadDiaryEntry(id) {
   fetch(`https://irorinri.github.io/diary/${id}.html`)
     .then(response => response.text())
