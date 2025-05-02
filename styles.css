@@ -15,7 +15,7 @@ nav {
   justify-content: center;
   gap: 5px; /* メニュー間のスペース */
   background-color: #ffffff; /* 背景色を白に変更 */
-  padding: 10px; 0px; /* 上下10pxの余白 */
+  padding: 15px; 0px; /* 上下10pxの余白 */
   margin-left: -10px;
   position: fixed; /* スクロールしても上部に固定 */
   top: 0;
