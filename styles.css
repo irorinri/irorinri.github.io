@@ -7,7 +7,6 @@ body {
   background-color: #f8f8f8; /* ページ全体の背景色を薄い灰色に */
   overflow: visible; /* スクロールを許可 */
 }
-
 main {
   position: relative; /* 親要素が相対的な位置を基準にする */
 }
