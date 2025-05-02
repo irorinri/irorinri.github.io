@@ -87,15 +87,15 @@
 <main>
 
 <div class="blog-e"><p style="margin-bottom: 20px;">
-      <a href="soft.html" style="text-decoration: none; color: blue;">→使用ソフト等まとめ←</a>
+      <a href="soft.html" style="text-decoration: none; color: blue;">→uses←</a>
     </p>
 
   <div class="blog-e"><p style="margin-bottom: 20px;">
-      <a href="icon.html" style="text-decoration: none; color: blue;">→過去アイコン等まとめ←</a>
+      <a href="icon.html" style="text-decoration: none; color: blue;">→snapshots←</a>
     </p>
 
     <!-- 日記の表示・非表示を切り替えるリンク -->
-<a id="toggle-diary" class="toggle-link">→日記を表示←</a>
+<a id="toggle-diary" class="toggle-link">→show log←</a>
 
     <div id="diary-buttons" class="diary-buttons hidden"></div>
     
@@ -144,7 +144,7 @@
     diaryContent.classList.remove("hidden");
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
-    this.textContent = "→日記を非表示←";
+    this.textContent = "→hide log←";
 
     if (diaryButtons.innerHTML.trim() === "") {
       generateDiaryButtons();
