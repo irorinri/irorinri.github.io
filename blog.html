@@ -127,6 +127,9 @@
   © irorinri. All Rights Reserved.
 </footer>
 
+
+
+    
 <script>
   document.getElementById("toggle-diary").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
@@ -140,7 +143,8 @@
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
     this.textContent = "→hide log←";
-document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
+
+    document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
 
     if (diaryButtons.innerHTML.trim() === "") {
       generateDiaryButtons();
@@ -291,9 +295,15 @@ function loadDiaryEntry2(id) {
     });
 }
 
+
+document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
+  document.getElementById("toggle-diary").click();
+});
+  
 document.getElementById("toggle-diary-bottom2").addEventListener("click", function () {
   document.getElementById("toggle-diary2").click();
 });
+  
 </script>
       
 </body>
