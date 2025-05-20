@@ -102,9 +102,13 @@
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
-  
-  
 
+<!-- 2つ目のログ表示リンク -->
+<a id="toggle-diary2" class="toggle-link">→show log2←</a>
+<div id="diary-buttons2" class="diary-buttons hidden"></div>
+<div id="diary-content2" class="hidden">
+  <div id="diary-text2"></div>
+</div>
 
 
 
@@ -218,6 +222,72 @@ function loadDiaryEntry(id) {
       }
     })
     .catch(error => console.error("Error fetching diary entry:", error));
+}
+
+
+
+// diary2の表示切り替え
+document.getElementById("toggle-diary2").addEventListener("click", function () {
+  const content = document.getElementById("diary-content2");
+  const buttons = document.getElementById("diary-buttons2");
+
+  if (content.classList.contains("hidden")) {
+    content.classList.remove("hidden");
+    content.style.display = "block";
+    buttons.classList.remove("hidden");
+    buttons.style.display = "grid";
+    this.textContent = "→hide log2←";
+
+    if (buttons.innerHTML.trim() === "") {
+      generateDiaryButtons2();
+    }
+
+    setTimeout(() => {
+      loadDiaryEntry2(1);
+      const btn = document.querySelector('.diary-button2[data-id="1"]');
+      if (btn) btn.classList.add("selected");
+    }, 200);
+  } else {
+    content.classList.add("hidden");
+    content.style.display = "none";
+    buttons.classList.add("hidden");
+    buttons.style.display = "none";
+    this.textContent = "→show log2←";
+  }
+});
+
+// diary2のボタン生成
+function generateDiaryButtons2() {
+  const container = document.getElementById("diary-buttons2");
+  container.innerHTML = "";
+  for (let i = 1; i <= 20; i++) {
+    const btn = document.createElement("div");
+    btn.classList.add("diary-button", "diary-button2");
+    btn.dataset.id = i;
+    btn.textContent = i <= 2 ? i : "";
+    btn.addEventListener("click", function () {
+      loadDiaryEntry2(this.dataset.id);
+      document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
+      this.classList.add("selected");
+    });
+    container.appendChild(btn);
+  }
+}
+
+// diary2の読み込み
+function loadDiaryEntry2(id) {
+  fetch(`https://irorinri.github.io/diary2/${id}.html`)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("diary-text2").innerHTML = html;
+      document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
+      const selected = document.querySelector(`.diary-button2[data-id="${id}"]`);
+      if (selected) selected.classList.add("selected");
+    })
+    .catch(err => {
+      document.getElementById("diary-text2").innerHTML = "<p>読み込み失敗</p>";
+      console.error(err);
+    });
 }
 </script>
       
