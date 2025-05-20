@@ -264,7 +264,7 @@ function generateDiaryButtons2() {
     const btn = document.createElement("div");
     btn.classList.add("diary-button", "diary-button2");
     btn.dataset.id = i;
-    btn.textContent = i <= 2 ? i : "";
+    btn.textContent = i <= 1 ? i : "";
     btn.addEventListener("click", function () {
       loadDiaryEntry2(this.dataset.id);
       document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
