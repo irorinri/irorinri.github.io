@@ -143,6 +143,8 @@
   if (diaryContent.style.display === "none" || diaryContent.classList.contains("hidden")) {
     diaryContent.style.display = "block";
     diaryContent.classList.remove("hidden");
+
+    diaryButtons.innerHTML = ""; // ←追加！これで空白削除
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
     this.textContent = "→hide log←";
