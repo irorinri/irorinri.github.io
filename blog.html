@@ -168,7 +168,9 @@
   }
 });
 
-
+document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
+  document.getElementById("toggle-diary").click(); // 上のボタンを擬似的に押す
+});
   
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
