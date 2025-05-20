@@ -226,7 +226,6 @@ function loadDiaryEntry(id) {
 }
 
 
-
 // diary2の表示切り替え
 document.getElementById("toggle-diary2").addEventListener("click", function () {
   const content = document.getElementById("diary-content2");
@@ -238,6 +237,7 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     buttons.classList.remove("hidden");
     buttons.style.display = "grid";
     this.textContent = "→hide log2←";
+document.getElementById("toggle-diary-bottom2").style.display = "block"; // ←追加！
 
     if (buttons.innerHTML.trim() === "") {
       generateDiaryButtons2();
