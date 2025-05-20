@@ -166,6 +166,8 @@
     diaryContent.classList.add("hidden");
     diaryButtons.style.display = "none";
     diaryButtons.classList.add("hidden");
+
+    diaryButtons.innerHTML = ""; // ← これをここに追加！！
     this.textContent = "→show log←";
   }
 });
