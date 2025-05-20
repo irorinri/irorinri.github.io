@@ -105,6 +105,7 @@
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
+  <a id="toggle-diary-bottom" class="toggle-link">→hide log←</a>
 </div>
 
 
@@ -117,7 +118,7 @@
 </div>
 
 
-<a id="toggle-diary-bottom" class="toggle-link">→hide log←</a>
+
 <a id="toggle-diary-bottom2" class="toggle-link">→hide log2←</a>
 
 </main>
@@ -188,14 +189,11 @@ function generateDiaryButtons() {
 
       // すべてのボタンから "selected" クラスを削除
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      
       // クリックしたボタンに "selected" クラスを追加
       this.classList.add("selected");
     });
-
     diaryButtons.appendChild(button);
   }
-
   // **デフォルトで1番のボタンを選択**
   setTimeout(() => {
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
@@ -212,10 +210,8 @@ function loadDiaryEntry(id) {
       if (diaryTextContainer) {
         diaryTextContainer.innerHTML = html;
       }
-
       // **ボタンの選択状態をリセット**
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-
       // **選択したボタンに selected クラスを追加**
       let selectedButton = document.querySelector(`.diary-button[data-id="${id}"]`);
       if (selectedButton) {
