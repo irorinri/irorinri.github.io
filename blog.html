@@ -136,7 +136,7 @@
     diaryButtons.innerHTML = ""; // ←追加！これで空白削除
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
-    this.textContent = "→ hide log";
+    this.textContent = "↓ hide log";
 
     document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
 
@@ -228,7 +228,7 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     content.style.display = "block";
     buttons.classList.remove("hidden");
     buttons.style.display = "grid";
-    this.textContent = "→ hide chatter";
+    this.textContent = "↓ hide chatter";
 document.getElementById("toggle-diary-bottom2").style.display = "block"; // ←追加！
 
     if (buttons.innerHTML.trim() === "") {
