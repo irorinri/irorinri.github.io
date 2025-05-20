@@ -245,10 +245,8 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     }
 
     setTimeout(() => {
-      loadDiaryEntry2(1);
-      const btn = document.querySelector('.diary-button2[data-id="1"]');
-      if (btn) btn.classList.add("selected");
-    }, 200);
+  loadDiaryEntry2(1); // この1行だけにする
+}, 200);
   } else {
     content.classList.add("hidden");
     content.style.display = "none";
