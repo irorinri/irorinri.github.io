@@ -298,10 +298,12 @@ function loadDiaryEntry2(id) {
 
 document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
   document.getElementById("toggle-diary").click();
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // 先頭にスムーズスクロール
 });
   
 document.getElementById("toggle-diary-bottom2").addEventListener("click", function () {
   document.getElementById("toggle-diary2").click();
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // 先頭にスムーズスクロール
 });
   
 </script>
