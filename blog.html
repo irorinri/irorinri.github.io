@@ -139,6 +139,7 @@
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
     this.textContent = "→hide log←";
+document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
 
     if (diaryButtons.innerHTML.trim() === "") {
       generateDiaryButtons();
@@ -160,6 +161,8 @@
 
     diaryButtons.innerHTML = ""; // ← これをここに追加！！
     this.textContent = "→show log←";
+
+    
   }
 });
 
