@@ -110,7 +110,7 @@
 
 
 <!-- 2つ目のログ表示リンク -->
-<a id="toggle-diary2" class="toggle-link">→ show log2 ←</a>
+<a id="toggle-diary2" class="toggle-link">→ show chatter ←</a>
 <div id="diary-buttons2" class="diary-buttons hidden"></div>
 <div id="diary-content2" class="hidden">
   <div id="diary-text2"></div>
@@ -137,7 +137,7 @@
     diaryButtons.innerHTML = ""; // ←追加！これで空白削除
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
-    this.textContent = "→hide log←";
+    this.textContent = "→ hide log ←";
 
     document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
 
@@ -160,7 +160,7 @@
     diaryButtons.classList.add("hidden");
 
     diaryButtons.innerHTML = ""; // ← これをここに追加！！
-    this.textContent = "→show log←";
+    this.textContent = "→ show log ←";
 document.getElementById("toggle-diary-bottom").style.display = "none"; // ← これ追加
 
     
@@ -229,7 +229,7 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     content.style.display = "block";
     buttons.classList.remove("hidden");
     buttons.style.display = "grid";
-    this.textContent = "→hide log2←";
+    this.textContent = "→ hide chatter ←";
 document.getElementById("toggle-diary-bottom2").style.display = "block"; // ←追加！
 
     if (buttons.innerHTML.trim() === "") {
