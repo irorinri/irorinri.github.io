@@ -62,11 +62,10 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
 .diary-button:hover {
   background-color: #d0d0d0;
 }
-    .diary-button.selected {
+.diary-button.selected {
   background-color: #dfdfdf;
   color: white;
   font-weight: bold;
@@ -93,28 +92,28 @@
 <main>
 
 <div class="blog-e"><p style="margin-bottom: 20px;">
-      <a href="soft.html" style="text-decoration: none; color: blue;">→ uses ←</a>
+      <a href="soft.html" style="text-decoration: none; color: blue;">→ uses</a>
     </p>
   <div class="blog-e"><p style="margin-bottom: 20px;">
-      <a href="icon.html" style="text-decoration: none; color: blue;">→ snapshots ←</a>
+      <a href="icon.html" style="text-decoration: none; color: blue;">→ snapshots</a>
     </p>
 
     <!-- 日記の表示・非表示を切り替えるリンク -->
-<a id="toggle-diary" class="toggle-link">→ show log ←</a>
+<a id="toggle-diary" class="toggle-link">→ show log</a>
   <div id="diary-buttons" class="diary-buttons hidden"></div>
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
-  <a id="toggle-diary-bottom" class="toggle-link">↑ hide log ↑</a>
+  <a id="toggle-diary-bottom" class="toggle-link">↑ hide log</a>
 </div>
 
 
 <!-- 2つ目のログ表示リンク -->
-<a id="toggle-diary2" class="toggle-link">→ show chatter ←</a>
+<a id="toggle-diary2" class="toggle-link">→ show chatter</a>
 <div id="diary-buttons2" class="diary-buttons hidden"></div>
 <div id="diary-content2" class="hidden">
   <div id="diary-text2"></div>
-  <a id="toggle-diary-bottom2" class="toggle-link">↑ hide log2 ↑</a>
+  <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
 </div>
 
 
@@ -137,7 +136,7 @@
     diaryButtons.innerHTML = ""; // ←追加！これで空白削除
     diaryButtons.style.display = "grid";
     diaryButtons.classList.remove("hidden");
-    this.textContent = "→ hide log ←";
+    this.textContent = "→ hide log";
 
     document.getElementById("toggle-diary-bottom").style.display = "block"; // ← これ追加
 
@@ -160,7 +159,7 @@
     diaryButtons.classList.add("hidden");
 
     diaryButtons.innerHTML = ""; // ← これをここに追加！！
-    this.textContent = "→ show log ←";
+    this.textContent = "→ show log";
 document.getElementById("toggle-diary-bottom").style.display = "none"; // ← これ追加
 
     
@@ -229,7 +228,7 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     content.style.display = "block";
     buttons.classList.remove("hidden");
     buttons.style.display = "grid";
-    this.textContent = "→ hide chatter ←";
+    this.textContent = "→ hide chatter";
 document.getElementById("toggle-diary-bottom2").style.display = "block"; // ←追加！
 
     if (buttons.innerHTML.trim() === "") {
@@ -244,7 +243,7 @@ document.getElementById("toggle-diary-bottom2").style.display = "block"; // ←�
     content.style.display = "none";
     buttons.classList.add("hidden");
     buttons.style.display = "none";
-    this.textContent = "→show log2←";
+    this.textContent = "→ show chatter";
 document.getElementById("toggle-diary-bottom2").style.display = "none"; // ←追加！
   }
 });
