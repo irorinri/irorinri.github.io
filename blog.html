@@ -258,6 +258,11 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
   }
 });
 
+document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
+  document.getElementById("toggle-diary").click(); // 上のボタンを擬似的に押す
+});
+
+  
 // diary2のボタン生成
 function generateDiaryButtons2() {
   const container = document.getElementById("diary-buttons2");
