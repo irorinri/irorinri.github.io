@@ -124,7 +124,7 @@ main {
 
 .card p, .card ul {
   color: var(--text-main);
-  font-size: 1.09rem;
+  font-size: 0.98rem;
   line-height: 1.65;
   margin: 0;
 }
