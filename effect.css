@@ -111,7 +111,7 @@ main, .schedule-main {
 .schedule-coming {
   font-size: clamp(1.05rem, 4vw, 1.25rem);
   color: var(--text-main);
-  margin-bottom: 2em;
+  margin-bottom: 3.1em;
 }
 .schedule-back {
   display: inline-block;
