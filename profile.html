@@ -76,7 +76,7 @@
     <span data-lang="hi" style="display:none;">&copy; 2025 hueryn</span>
   </footer>
   <script>
-    function setLang(lang) {
+    function setLang('en') {
       // 全要素を非表示→指定言語のみ表示
       document.querySelectorAll('[data-lang]').forEach(el => {
         el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
