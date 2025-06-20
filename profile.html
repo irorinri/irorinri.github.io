@@ -9,37 +9,81 @@
 </head>
 <body>
   <div class="glow-bg"></div>
+  <!-- 言語切替ボタン -->
+  <div class="lang-switcher">
+    <button onclick="setLang('ja')">日本語</button>
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('hi')">हिंदी</button>
+  </div>
   <header>
     <img src="profile.png" alt="hueryn icon" class="avatar">
     <h1>hueryn</h1>
-    <p class="subtitle">Virtual Streamer | Creator | Explorer</p>
+    <p class="subtitle" data-lang="ja">バーチャルストリーマー | クリエイター | 探索者</p>
+    <p class="subtitle" data-lang="en" style="display:none;">Virtual Streamer | Creator | Explorer</p>
+    <p class="subtitle" data-lang="hi" style="display:none;">वर्चुअल स्ट्रीमर | क्रिएटर | खोजकर्ता</p>
     <nav class="socials">
-      <a href="#" aria-label="X"><img src="x.svg" alt="X"></a>
-      <a href="#" aria-label="YouTube"><img src="youtube.svg" alt="YouTube"></a>
-      <a href="#" aria-label="Twitch"><img src="twitch.svg" alt="Twitch"></a>
-      <a href="#" aria-label="GitHub"><img src="github.svg" alt="GitHub"></a>
+      <a href="#"><img src="x.svg" alt="X"></a>
+      <a href="#"><img src="youtube.svg" alt="YouTube"></a>
+      <a href="#"><img src="twitch.svg" alt="Twitch"></a>
+      <a href="#"><img src="github.svg" alt="GitHub"></a>
     </nav>
   </header>
   <main>
     <section class="card">
-      <h2>About Me</h2>
-      <p>
-        はじめまして、Vtuberのhuerynです。歌・おしゃべり・お絵描き・ゲーム配信など自由気ままに活動中。  
-        好きなこと：空想・デザイン・夜ふかし。  
+      <h2 data-lang="ja">自己紹介</h2>
+      <h2 data-lang="en" style="display:none;">About Me</h2>
+      <h2 data-lang="hi" style="display:none;">मेरे बारे में</h2>
+      <p data-lang="ja">
+        はじめまして、Vtuberのhuerynです。歌・おしゃべり・お絵描き・ゲーム配信など自由気ままに活動中。<br>
+        好きなこと：空想・デザイン・夜ふかし。<br>
         夢：バーチャルとリアルの境界を超えてみたい！
+      </p>
+      <p data-lang="en" style="display:none;">
+        Hi, I'm hueryn, a Vtuber. I stream, sing, draw, chat, and play games as I like.<br>
+        I love imagination, design, and staying up late.<br>
+        Dream: To cross the border between virtual and real worlds!
+      </p>
+      <p data-lang="hi" style="display:none;">
+        नमस्ते, मैं hueryn हूँ, एक Vtuber. मैं गाना, बात करना, चित्र बनाना, और गेम स्ट्रीमिंग करती हूँ।<br>
+        पसंदीदा चीज़ें: कल्पना, डिज़ाइन, देर रात तक जागना।<br>
+        सपना: वर्चुअल और असली दुनिया के बीच की सीमा पार करना!
       </p>
     </section>
     <section class="card">
-      <h2>Links</h2>
-      <ul>
+      <h2 data-lang="ja">リンク</h2>
+      <h2 data-lang="en" style="display:none;">Links</h2>
+      <h2 data-lang="hi" style="display:none;">लिंक</h2>
+      <ul data-lang="ja">
         <li><a href="#">配信スケジュール</a></li>
         <li><a href="#">イラストギャラリー</a></li>
         <li><a href="#">お問い合わせ</a></li>
       </ul>
+      <ul data-lang="en" style="display:none;">
+        <li><a href="#">Stream Schedule</a></li>
+        <li><a href="#">Art Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul data-lang="hi" style="display:none;">
+        <li><a href="#">स्ट्रीम शेड्यूल</a></li>
+        <li><a href="#">चित्र गैलरी</a></li>
+        <li><a href="#">संपर्क करें</a></li>
+      </ul>
     </section>
   </main>
   <footer>
-    &copy; 2025 hueryn
+    <span data-lang="ja">&copy; 2025 hueryn</span>
+    <span data-lang="en" style="display:none;">&copy; 2025 hueryn</span>
+    <span data-lang="hi" style="display:none;">&copy; 2025 hueryn</span>
   </footer>
+  <script>
+    function setLang(lang) {
+      // 全要素を非表示→指定言語のみ表示
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+      // html lang属性も切替
+      document.documentElement.lang = lang;
+    }
+  </script>
 </body>
 </html>
