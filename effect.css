@@ -34,6 +34,7 @@ body {
   background: radial-gradient(circle, #e6f0ff88 40%, #fff0 80%);
   animation: sparkle 3s infinite alternate;
   filter: blur(16px);
+  max-width: 95vw; /* 追加！ */
 }
 @keyframes sparkle {
   0% { opacity: .8; filter: blur(20px);}
