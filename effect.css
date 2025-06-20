@@ -129,6 +129,17 @@ main {
   margin: 0;
 }
 
+/* サブページのタイトルを統一して大きく */
+h1, .section-title {
+  font-size: 2rem;
+  color: var(--accent2);
+  margin-bottom: 1em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+
+
 .card ul {
   padding-left: 1.1em;
   list-style-type: circle;
