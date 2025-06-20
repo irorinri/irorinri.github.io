@@ -154,6 +154,7 @@ main, .schedule-main {
 }
 
 .card p, .card ul {
+  color: #3e4767;  /* おしゃれな青みグレー */
   color: var(--text-main);
   font-size: 0.98rem;
   line-height: 1.65;
