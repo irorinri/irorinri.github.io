@@ -9,6 +9,12 @@
   --radius: 2.2rem;
 }
 
+
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   padding: 0;
