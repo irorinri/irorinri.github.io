@@ -163,4 +163,13 @@ footer {
   .avatar { width: 90px; height: 90px; }
   main { padding: 1rem; }
   .card { padding: 1.2rem 1rem 1rem 1rem;}
+
+    /* ここを追加！ */
+  .card p, .card ul {
+    font-size: 1.01rem;
+  }
+  h1, .section-title {
+    font-size: 1.35rem;
+  }
+
 }
