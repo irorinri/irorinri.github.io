@@ -66,12 +66,9 @@
 
 
     .back-home-wrap {
-      position: absolute;
-  left: 0;
-  right: 0;
-  /* ギャラリーの直後、下に30pxくらい（必要なら調整） */
-  top: calc(65px + 500px * 2 + 30px); /* 例：2行分の画像＋余白。画像数によって要調整！ */
-  
+   position: absolute;
+  left: 0; right: 0;
+  bottom: 950px; /* 1000px余白の上部あたりにボタンがくる。調整OK */
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
@@ -144,13 +141,16 @@
       <div class="date">2024-01-03</div>
     </a>
   </div>
-</main>
-
 
 <!-- mainのすぐ下に追加 -->
 <div class="back-home-wrap">
   <a class="back-home-btn" href="profile.html">Back to Home</a>
 </div>
+
+  
+</main>
+
+
 
   
 <footer>
