@@ -66,6 +66,12 @@
 
 
     .back-home-wrap {
+      position: absolute;
+  left: 0;
+  right: 0;
+  /* ギャラリーの直後、下に30pxくらい（必要なら調整） */
+  top: calc(65px + 500px * 2 + 30px); /* 例：2行分の画像＋余白。画像数によって要調整！ */
+  
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
