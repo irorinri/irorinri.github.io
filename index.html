@@ -173,10 +173,10 @@
     gallery: '.image-gallery',
     children: 'a',
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    bgOpacity: 0.9, /* 背景の不透明度を調整 */
+    bgOpacity: 0.9, /* 背景の不透明度 */
   });
 
-  // フォトスワイプの背景を水色に設定
+  // フォトスワイプの背景を水色に
   lightbox.on('uiRegister', () => {
     lightbox.pswp.ui.registerElement({
       name: 'custom-bg',
