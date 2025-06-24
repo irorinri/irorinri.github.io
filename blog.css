@@ -1,49 +1,80 @@
 :root {
-  --main-bg: #f9fafd;
-  --accent: #a6d0fe;
-  --accent2: #eec3ff;
-  --text-main: #1d2335;
-  --text-sub: #73788b;
-  --card-bg: rgba(255,255,255,0.92);
-  --radius: 1.5rem;
-  --shadow: 0 2px 24px 0 rgba(60,70,140,0.08);
+  --main-bg: #f7f8fa;
+  --accent: #9dc4f6;
+  --accent2: #e7bfff;
+  --text-main: #23263a;
+  --text-sub: #767b8c;
+  --card-bg: #eceff3; /* ←日記カード用薄いグレー */
+  --radius: 1.35rem;
+  --shadow: 0 1.5px 18px 0 rgba(60,70,140,0.06);
+}
+
+html {
+  font-size: 15px; /* ←全体をやや小さく */
 }
 
 body {
   margin: 0;
   font-family: "Noto Sans JP", "Inter", sans-serif;
-  background: linear-gradient(110deg, var(--accent) 0%, var(--main-bg) 80%, var(--accent2) 100%);
+  background: linear-gradient(110deg, var(--accent) 0%, var(--main-bg) 85%, var(--accent2) 100%);
   color: var(--text-main);
   min-height: 100vh;
 }
 
 header {
-  text-align: center;
-  padding: 2.4rem 1rem 1.3rem 1rem;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2.1rem;
+  background: #f9fafd;
+  box-shadow: 0 1px 16px 0 rgba(120,120,180,0.05);
 }
-header h1 {
+
+.header-img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid var(--accent);
+}
+
+.header-text {
+  position: absolute;
+  left: 2rem;
+  bottom: 1.1rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 0.75em;
+  padding: 0.6em 1.3em 0.4em 1.3em;
+  box-shadow: 0 2px 12px 0 rgba(180,160,220,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-text h1 {
+  margin: 0 0 0.3em 0;
   font-family: "Inter", "Noto Sans JP", sans-serif;
-  margin: 0 0 0.4em 0;
-  font-size: 2.2rem;
-  letter-spacing: 0.02em;
-}
-header nav a {
-  color: var(--accent);
-  text-decoration: none;
-  margin: 0 0.8em;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
   font-weight: 700;
-  font-size: 1.08em;
-  transition: color .18s;
+  color: var(--accent);
+  text-shadow: 0 1px 6px #fff8;
 }
-header nav a:hover {
+.header-text nav a {
   color: var(--accent2);
-  text-decoration: underline;
+  text-decoration: none;
+  font-size: 1.03rem;
+  font-weight: 700;
+  margin-right: 1em;
+  transition: color .16s;
+}
+.header-text nav a:hover {
+  color: var(--accent);
 }
 
 main {
   max-width: 540px;
   margin: 0 auto;
-  padding: 1.2rem 1.2rem 2.2rem 1.2rem;
+  padding: 1.2rem 0.7rem 2.2rem 0.7rem;
 }
 
 .blog-list {
@@ -55,15 +86,16 @@ details {
   background: var(--card-bg);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
-  margin: 1.2rem 0;
-  padding: 0.7rem 1.2rem;
-  border: 1.1px solid #e6ebf8;
+  margin: 1.15rem 0;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid #e5e7ef;
   transition: box-shadow .15s, border .12s;
   position: relative;
   overflow: hidden;
+  font-size: 0.97rem; /* 本文さらに少し小さく */
 }
 details[open] {
-  box-shadow: 0 8px 40px 0 rgba(140,80,230,0.12);
+  box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10);
   border-color: var(--accent2);
 }
 
@@ -73,12 +105,13 @@ summary {
   outline: none;
   display: flex;
   align-items: center;
-  gap: 1.3em;
-  font-size: 1.13rem;
+  gap: 1.0em;
+  font-size: 1.05rem;
   font-weight: 600;
-  padding: 0.7em 0;
+  padding: 0.65em 0;
   color: var(--text-main);
   transition: color .14s;
+  user-select: none;
 }
 summary::-webkit-details-marker,
 summary::marker {
@@ -87,12 +120,12 @@ summary::marker {
 
 .date {
   color: var(--text-sub);
-  font-size: 0.99em;
-  min-width: 7.5em;
+  font-size: 0.95em;
+  min-width: 7.1em;
   letter-spacing: 0.06em;
 }
 .title {
-  font-size: 1.14em;
+  font-size: 1.08em;
   font-weight: 700;
   color: var(--accent2);
   letter-spacing: 0.05em;
@@ -102,43 +135,50 @@ summary::marker {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1.3em 0 0.5em 0;
-  gap: 0.9em;
+  padding: 1.0em 0 0.5em 0;
+  gap: 0.7em;
   animation: fadein 0.5s;
 }
 
 .blog-content img {
   max-width: 100%;
-  border-radius: 0.9rem;
-  box-shadow: 0 2px 14px 0 rgba(160,120,240,0.10);
-  margin-bottom: 0.3em;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5px 10px 0 rgba(160,120,240,0.10);
+  margin-bottom: 0.2em;
 }
 
 .blog-content p {
   color: var(--text-main);
-  font-size: 1.09em;
+  font-size: 0.98em;
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.65;
   font-weight: 400;
 }
 
 footer {
   text-align: center;
   color: var(--text-sub);
-  font-size: 0.97rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.90rem;
+  margin-bottom: 1.3rem;
   margin-top: 2rem;
 }
 
 /* モバイル対応 */
 @media (max-width: 600px) {
-  main { padding: 1.1rem 0.2rem; }
-  .blog-content { font-size: 1em; }
-  details { padding: 0.6rem 0.4rem; }
+  main { padding: 1.0rem 0.2rem; }
+  .header-img { max-height: 120px; }
+  .header-text {
+    position: static;
+    margin: 0.7em 0 0 0;
+    padding: 0.4em 0.7em 0.2em 0.7em;
+    border-radius: 0.45em;
+    box-shadow: none;
+    background: #fff9;
+    align-items: flex-start;
+  }
 }
 
-/* アニメーション */
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(25px);}
+  from { opacity: 0; transform: translateY(20px);}
   to { opacity: 1; transform: translateY(0);}
 }
