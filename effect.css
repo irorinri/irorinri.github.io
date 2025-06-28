@@ -95,6 +95,7 @@ main, .schedule-main {
   padding: 2rem 1rem 2.5rem 1rem;
   z-index: 1;
   position: relative;
+  margin-top: 3.5rem;  /* ここで上部余白を調整 */
 }
 
 /* Stream Scheduleページ用 */
