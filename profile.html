@@ -9,15 +9,8 @@
 </head>
 <body>
   <div class="glow-bg"></div>
-  <!-- 言語切替ボタン -->
-  <div class="lang-switcher">
-    <button onclick="setLang('ja')">日本語</button>
-    <button onclick="setLang('en')">English</button>
-    <button onclick="setLang('hi')">हिंदी</button>
-  </div>
+
   <header>
-  
-    
     <nav class="socials">
       <a href="https://sketchfab.com/irorinri"><img src="sketchfab.svg" alt="sketchfab"></a>
       <a href="https://www.youtube.com/@irorinri"><img src="youtube.svg" alt="YouTube"></a>
@@ -25,55 +18,21 @@
       <a href="https://github.com/irorinri"><img src="github.svg" alt="GitHub"></a>
     </nav>
   </header>
+
   <main>
-
-
-    
-  <!-- リンク集など続く -->
     <section class="card">
-  <h2 data-lang="ja">リンク</h2>
-  <h2 data-lang="en" style="display:none;">Links</h2>
-  <h2 data-lang="hi" style="display:none;">लिंक</h2>
-  <ul data-lang="ja">
-    <li><a href="blog2.html">ブログ</a></li>
-    <li><a href="schedule.html">配信スケジュール</a></li>
-    <li><a href="index.html">イラストギャラリー</a></li>
-    <li><a href="contact.html">お問い合わせ</a></li>
-    
-  </ul>
-  <ul data-lang="en" style="display:none;">
-    <li><a href="blog2.html">Blog</a></li>
-    <li><a href="schedule.html">Stream Schedule</a></li>
-    <li><a href="index.html">Art Gallery</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    
-  </ul>
-  <ul data-lang="hi" style="display:none;">
-    <li><a href="blog2.html">ब्लॉग</a></li>
-    <li><a href="schedule.html">स्ट्रीम शेड्यूल</a></li>
-    <li><a href="index.html">चित्र गैलरी</a></li>
-    <li><a href="contact.html">संपर्क करें</a></li>
-    
-  </ul>
-</section>
+      <h2>リンク</h2>
+      <ul>
+        <li><a href="blog2.html">ブログ</a></li>
+        <li><a href="schedule.html">配信スケジュール</a></li>
+        <li><a href="index.html">イラストギャラリー</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </section>
   </main>
-  <footer>
-    <span data-lang="ja">&copy; 2025 irorinri</span>
-    <span data-lang="en" style="display:none;">&copy; 2025 irorinri</span>
-    <span data-lang="hi" style="display:none;">&copy; 2025 irorinri</span>
-  </footer>
-  <script>
-    function setLang(lang) {
-      // 全要素を非表示→指定言語のみ表示
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
-      });
-      // html lang属性も切替
-      document.documentElement.lang = lang;
-    }
 
-// 初期言語を英語に
-    setLang('en');
-  </script>
+  <footer>
+    <span>&copy; 2025 irorinri</span>
+  </footer>
 </body>
 </html>
