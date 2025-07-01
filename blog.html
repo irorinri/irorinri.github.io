@@ -107,8 +107,6 @@
   <a id="toggle-diary-bottom" class="toggle-link">↑ hide log</a>
 </div>
 
-
-<!-- 2つ目のログ表示リンク -->
 <a id="toggle-diary2" class="toggle-link">→ show chatter</a>
 <div id="diary-buttons2" class="diary-buttons hidden"></div>
 <div id="diary-content2" class="hidden">
@@ -178,19 +176,19 @@ function generateDiaryButtons() {
     let button = document.createElement("div");
     button.classList.add("diary-button");
     button.dataset.id = i;
-    // **2までの数字は表示、それ以降は空白**
-    button.textContent = i <= 2 ? i : "";
+    // **3までの数字は表示、それ以降は空白**
+    button.textContent = i <= 3 ? i : "";
     button.addEventListener("click", function () {
       loadDiaryEntry(this.dataset.id);
 
-      // すべてのボタンから "selected" クラスを削除
+      
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      // クリックしたボタンに "selected" クラスを追加
+      
       this.classList.add("selected");
     });
     diaryButtons.appendChild(button);
   }
-  // **デフォルトで1番のボタンを選択**
+  
   setTimeout(() => {
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) {
