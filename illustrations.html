@@ -217,18 +217,19 @@
   });
 
   lightbox.init();
+
+
+
+window.addEventListener('pageshow', function() {
+    // フォーカスされたボタンがあれば解除
+    document.activeElement && document.activeElement.blur();
+  });
+
+
+  
 </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.suzuri-btn');
-    if(btn){
-      btn.addEventListener('mouseup', function() {
-        btn.blur();
-      });
-    }
-  });
-</script>
+
 
   
 <footer>
