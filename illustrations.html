@@ -226,6 +226,15 @@ window.addEventListener('pageshow', function() {
   });
 
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.suzuri-btn');
+    if(btn){
+      btn.addEventListener('mouseup', function() {
+        btn.blur();
+      });
+    }
+  });
+
   
 </script>
 
