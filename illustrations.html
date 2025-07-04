@@ -99,25 +99,19 @@
   border-radius: 22px;
   padding: 0.5em 1.4em;
   text-decoration: none;
-  
   transition: background 0.18s, transform 0.12s;
   letter-spacing: 0.05em;
   cursor: pointer;
+}
+.suzuri-btn:focus {
+  outline: none;    /* ←色は変えない！ */
 }
 .suzuri-btn:hover {
   background: #23a2d7;
   transform: translateY(-2px) scale(1.04);
 }
-/* activeだけ色を変えたい場合も明示的に */
 .suzuri-btn:active {
   background: #18b2d0;
-  color: white;
-}
-
-.suzuri-btn:focus,
-.suzuri-btn:active {
-  outline: none;
-  background: #9be3ff;
   color: white;
 }
     
