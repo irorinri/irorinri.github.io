@@ -228,12 +228,13 @@
 
 
 // ページ復元（戻る・進む）時にもblurさせる
-window.addEventListener('pageshow', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.blur();
-  });
+window.addEventListener('pageshow', function(event) {
+  // bfcacheからの復元（persisted=true）の場合は強制リロード
+  if (event.persisted) {
+    window.location.reload();
+  }
 });
-
+  
 // 念のため、クリック時にもblur
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
