@@ -220,21 +220,21 @@
 
 
 
+// ページ復元（戻る・進む）時にもblurさせる
 window.addEventListener('pageshow', function() {
-    // フォーカスされたボタンがあれば解除
-    document.activeElement && document.activeElement.blur();
+  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
+    btn.blur();
   });
+});
 
-
-  document.addEventListener('DOMContentLoaded', function() {
-  // 複数でも対応
+// 念のため、クリック時にもblur
+document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
     btn.addEventListener('mouseup', function() {
       btn.blur();
     });
   });
 });
-
   
 
 </script>
