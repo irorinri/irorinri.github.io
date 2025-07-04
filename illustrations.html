@@ -227,15 +227,16 @@ window.addEventListener('pageshow', function() {
 
 
   document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.suzuri-btn');
-    if(btn){
-      btn.addEventListener('mouseup', function() {
-        btn.blur();
-      });
-    }
+  // 複数でも対応
+  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
+    btn.addEventListener('mouseup', function() {
+      btn.blur();
+    });
   });
+});
 
   
+
 </script>
 
 
