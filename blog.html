@@ -57,8 +57,8 @@
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   text-align: center;
-  line-height: 30px; /* テキストを中央に */
-  font-size: 12px; /* 文字を小さく */
+  line-height: 30px;
+  font-size: 12px; 
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -71,7 +71,7 @@
   font-weight: bold;
 }
 #diary-content {
-  display: none; /* 初期状態で非表示 */
+  display: none; /* 初期は非表示 */
 }
 #toggle-diary-bottom,
 #toggle-diary-bottom2 {
@@ -99,14 +99,14 @@
     </p>
 
     <!-- 日記の表示・非表示を切り替えるリンク -->
-<a id="toggle-diary" class="toggle-link">→ show log</a>
+<a id="toggle-diary" class="toggle-link">→ show diary</a>
     <a id="toggle-diary-confirm" class="toggle-link" style="display: none;">private room. enter?</a>
-    <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide log</a>
+    <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
   <div id="diary-buttons" class="diary-buttons hidden"></div>
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
-  <a id="toggle-diary-bottom" class="toggle-link">↑ hide log</a>
+  <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
 </div>
 
 <a id="toggle-diary2" class="toggle-link">→ show chatter</a>
@@ -123,15 +123,15 @@
 </footer>
 
 <script>
-/* ------ diary（show log）の二段階確認UI ------ */
 
-// 1段階目：「show log」→確認ボタンだけ表示
+
+// 1段階目：「show diary」→確認ボタンだけ表示
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
   document.getElementById("toggle-diary-confirm").style.display = "block";
 });
 
-// 2段階目：「本当に開けますか？」で本体展開
+// 2段階目：本体展開
 document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
   var diaryButtons = document.getElementById("diary-buttons");
@@ -154,7 +154,7 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
   document.getElementById("toggle-diary").style.display = "none";
 });
 
-// hide logで全部閉じてshow log復活
+
 document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
@@ -166,7 +166,7 @@ document.getElementById("toggle-diary-bottom").addEventListener("click", functio
   document.getElementById("toggle-diary").style.display = "block";
 });
 
-// ★上のhide logにも同じ処理を追加
+
 document.getElementById("toggle-diary-top").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
