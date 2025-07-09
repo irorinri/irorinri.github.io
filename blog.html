@@ -141,6 +141,7 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
   diaryButtons.style.display = "grid";
   diaryButtons.classList.remove("hidden");
   document.getElementById("toggle-diary-bottom").style.display = "block";
+  document.getElementById("toggle-diary-top").style.display = "block";
   if (diaryButtons.innerHTML.trim() === "") {
     generateDiaryButtons();
   }
