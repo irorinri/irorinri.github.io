@@ -51,8 +51,6 @@
   margin-bottom: 30px; /* ボタンと日記の間にスペースを追加 */
 }
 
-    
-
 .diary-button {
   width: 30px;
   height: 30px;
@@ -103,15 +101,6 @@
     <!-- 日記の表示・非表示を切り替えるリンク -->
 <a id="toggle-diary" class="toggle-link">→ show log</a>
   <div id="diary-buttons" class="diary-buttons hidden"></div>
-
-<div id="diary1-confirm" class="hidden" style="margin:16px 0;">
-  <div style="padding:16px; border:1px solid #ccc; background:#fff; border-radius:8px; text-align:center;">
-    <p style="margin-bottom:12px;">本当にあけますか？</p>
-    <button id="confirm-diary1" class="diary-button" style="width:auto;">あける</button>
-  </div>
-</div>
-
-    
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
@@ -125,15 +114,11 @@
   <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
 </div>
 
-
-    
-
 </main>
 
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
-
 
 <script>
   document.getElementById("toggle-diary").addEventListener("click", function () {
@@ -155,8 +140,14 @@
       generateDiaryButtons();
     }
 
-   
-    
+    // **「日記を表示」を押した後に 1.html をロード**
+    setTimeout(() => {
+      loadDiaryEntry(1);
+      let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+      if (defaultButton) {
+        defaultButton.classList.add("selected");
+      }
+    }, 200);
   } else {
     diaryContent.style.display = "none";
     diaryContent.classList.add("hidden");
@@ -185,33 +176,17 @@ function generateDiaryButtons() {
     button.dataset.id = i;
     // **3までの数字は表示、それ以降は空白**
     button.textContent = i <= 3 ? i : "";
-
-    // ★ここからクリック処理
     button.addEventListener("click", function () {
-      if (this.dataset.id === "1") {
-        // 確認パネルを表示
-        document.getElementById("diary1-confirm").classList.remove("hidden");
-        // 他ボタン押せなく（任意、なくても可）
-        diaryButtons.querySelectorAll(".diary-button").forEach(b => b.style.pointerEvents = "none");
-        // 「あける」ボタンにイベント設定
-        document.getElementById("confirm-diary1").onclick = () => {
-          loadDiaryEntry("1");
-          document.getElementById("diary1-confirm").classList.add("hidden");
-          diaryButtons.querySelectorAll(".diary-button").forEach(b => b.style.pointerEvents = "");
-          document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-          this.classList.add("selected");
-        };
-      } else {
-        // 普通のボタン
-        document.getElementById("diary1-confirm").classList.add("hidden");
-        loadDiaryEntry(this.dataset.id);
-        document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-        this.classList.add("selected");
-      }
+      loadDiaryEntry(this.dataset.id);
+
+      
+      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
+      
+      this.classList.add("selected");
     });
-    // ★ここまで
     diaryButtons.appendChild(button);
   }
+  
   setTimeout(() => {
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) {
@@ -220,7 +195,7 @@ function generateDiaryButtons() {
   }, 100);
 }
 function loadDiaryEntry(id) {
-  fetch(`https://irorinri.github.io/diary/${id}.html`)
+  fetch(https://irorinri.github.io/diary/${id}.html)
     .then(response => response.text())
     .then(html => {
       let diaryTextContainer = document.getElementById("diary-text");
@@ -230,14 +205,13 @@ function loadDiaryEntry(id) {
       // **ボタンの選択状態をリセット**
       document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
       // **選択したボタンに selected クラスを追加**
-      let selectedButton = document.querySelector(`.diary-button[data-id="${id}"]`);
+      let selectedButton = document.querySelector(.diary-button[data-id="${id}"]);
       if (selectedButton) {
         selectedButton.classList.add("selected");
       }
     })
     .catch(error => console.error("Error fetching diary entry:", error));
 }
-
 
 // diary2の表示切り替え
 document.getElementById("toggle-diary2").addEventListener("click", function () {
@@ -294,12 +268,12 @@ function generateDiaryButtons2() {
 
 // diary2の読み込み
 function loadDiaryEntry2(id) {
-  fetch(`https://irorinri.github.io/diary2/${id}.html`)
+  fetch(https://irorinri.github.io/diary2/${id}.html)
     .then(res => res.text())
     .then(html => {
       document.getElementById("diary-text2").innerHTML = html;
       document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
-      const selected = document.querySelector(`.diary-button2[data-id="${id}"]`);
+      const selected = document.querySelector(.diary-button2[data-id="${id}"]);
       if (selected) selected.classList.add("selected");
     })
     .catch(err => {
@@ -307,7 +281,6 @@ function loadDiaryEntry2(id) {
       console.error(err);
     });
 }
-
 
 document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
   document.getElementById("toggle-diary").click();
