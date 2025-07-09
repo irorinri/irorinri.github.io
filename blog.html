@@ -187,17 +187,32 @@ function generateDiaryButtons() {
     button.dataset.id = i;
     // **3までの数字は表示、それ以降は空白**
     button.textContent = i <= 3 ? i : "";
-    button.addEventListener("click", function () {
-      loadDiaryEntry(this.dataset.id);
 
-      
-      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      
-      this.classList.add("selected");
+    // ★ここからクリック処理
+    button.addEventListener("click", function () {
+      if (this.dataset.id === "1") {
+        // 確認パネルを表示
+        document.getElementById("diary1-confirm").classList.remove("hidden");
+        // 他ボタン押せなく（任意、なくても可）
+        diaryButtons.querySelectorAll(".diary-button").forEach(b => b.style.pointerEvents = "none");
+        // 「あける」ボタンにイベント設定
+        document.getElementById("confirm-diary1").onclick = () => {
+          loadDiaryEntry("1");
+          document.getElementById("diary1-confirm").classList.add("hidden");
+          diaryButtons.querySelectorAll(".diary-button").forEach(b => b.style.pointerEvents = "");
+          document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
+          this.classList.add("selected");
+        };
+      } else {
+        // 普通のボタン
+        loadDiaryEntry(this.dataset.id);
+        document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
+        this.classList.add("selected");
+      }
     });
+    // ★ここまで
     diaryButtons.appendChild(button);
   }
-  
   setTimeout(() => {
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) {
