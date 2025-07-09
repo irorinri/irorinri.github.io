@@ -209,6 +209,7 @@ function generateDiaryButtons() {
         };
       } else {
         // 普通のボタン
+        document.getElementById("diary1-confirm").classList.add("hidden");
         loadDiaryEntry(this.dataset.id);
         document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
         this.classList.add("selected");
