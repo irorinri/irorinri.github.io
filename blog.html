@@ -134,10 +134,11 @@
 </footer>
 
 <script>
-// show diaryを押したら確認行だけ表示
+// show diaryを押したら確認行＆空白だけ表示
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "flex";
+  document.getElementById("toggle-diary-confirm-gap").style.display = "block";
 });
 
 // 「Private Room. Enter?」で本体展開
@@ -160,12 +161,14 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
     if (defaultButton) defaultButton.classList.add("selected");
   }, 200);
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
+  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "none";
 });
 
 // 「Back」で前画面（show diaryだけ）に戻る
 document.getElementById("toggle-diary-back").addEventListener("click", function () {
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
+  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
 
@@ -178,6 +181,7 @@ document.getElementById("toggle-diary-bottom").addEventListener("click", functio
   document.getElementById("toggle-diary-bottom").style.display = "none";
   document.getElementById("toggle-diary-top").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
+  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
 
@@ -190,6 +194,7 @@ document.getElementById("toggle-diary-top").addEventListener("click", function (
   document.getElementById("toggle-diary-bottom").style.display = "none";
   document.getElementById("toggle-diary-top").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
+  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
 
