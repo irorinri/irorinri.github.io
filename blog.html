@@ -133,13 +133,13 @@
 </footer>
 
 <script>
-// 1段階目：「show diary」→確認ボタンだけ表示
+// show diaryを押したら確認行だけ表示
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
-  document.getElementById("toggle-diary-confirm").style.display = "block";
+  document.getElementById("toggle-diary-confirm-row").style.display = "flex";
 });
 
-// 2段階目：本体展開
+// 「Private Room. Enter?」で本体展開
 document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
   var diaryButtons = document.getElementById("diary-buttons");
@@ -158,17 +158,17 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) defaultButton.classList.add("selected");
   }, 200);
-  document.getElementById("toggle-diary-confirm").style.display = "none";
+  document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary").style.display = "none";
 });
 
-// Backボタン
+// 「Back」で前画面（show diaryだけ）に戻る
 document.getElementById("toggle-diary-back").addEventListener("click", function () {
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
 
-
+// hide diary（下）で全部閉じてshow diary復活
 document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
@@ -176,11 +176,11 @@ document.getElementById("toggle-diary-bottom").addEventListener("click", functio
   document.getElementById("diary-buttons").classList.add("hidden");
   document.getElementById("toggle-diary-bottom").style.display = "none";
   document.getElementById("toggle-diary-top").style.display = "none";
-  document.getElementById("toggle-diary-confirm").style.display = "none";
+  document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
 
-
+// hide diary（上）も同じ
 document.getElementById("toggle-diary-top").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
@@ -188,11 +188,9 @@ document.getElementById("toggle-diary-top").addEventListener("click", function (
   document.getElementById("diary-buttons").classList.add("hidden");
   document.getElementById("toggle-diary-bottom").style.display = "none";
   document.getElementById("toggle-diary-top").style.display = "none";
-  document.getElementById("toggle-diary-confirm").style.display = "none";
+  document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
-
-  
 
 // diaryのボタン生成
 function generateDiaryButtons() {
@@ -234,6 +232,7 @@ function loadDiaryEntry(id) {
     .catch(error => console.error("Error fetching diary entry:", error));
 }
 
+/* --- diary2以下はそのまま --- */
 document.getElementById("toggle-diary2").addEventListener("click", function () {
   const content = document.getElementById("diary-content2");
   const buttons = document.getElementById("diary-buttons2");
