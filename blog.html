@@ -126,14 +126,13 @@
 
 <script>
 
-
-// 1段階目：「show diary」→確認ボタンだけ表示
+// show diaryを押したら確認行だけ表示
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
-  document.getElementById("toggle-diary-confirm").style.display = "block";
+  document.getElementById("toggle-diary-confirm-row").style.display = "flex";
 });
 
-// 2段階目：本体展開
+// Private Room. Enter?で本体展開
 document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
   var diaryButtons = document.getElementById("diary-buttons");
@@ -152,8 +151,14 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
     let defaultButton = document.querySelector('.diary-button[data-id="1"]');
     if (defaultButton) defaultButton.classList.add("selected");
   }, 200);
-  document.getElementById("toggle-diary-confirm").style.display = "none";
+  document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary").style.display = "none";
+});
+
+// Backボタン
+document.getElementById("toggle-diary-back").addEventListener("click", function () {
+  document.getElementById("toggle-diary-confirm-row").style.display = "none";
+  document.getElementById("toggle-diary").style.display = "block";
 });
 
 
