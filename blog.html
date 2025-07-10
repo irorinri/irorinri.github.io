@@ -100,9 +100,11 @@
 
     <!-- 日記の表示・非表示を切り替えるリンク -->
 <a id="toggle-diary" class="toggle-link">→ show diary</a>
-    <a id="toggle-diary-confirm" class="toggle-link" style="display: none;">Private Room. Enter?</a>
-    <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
-  <div id="diary-buttons" class="diary-buttons hidden"></div>
+<div id="toggle-diary-confirm-row" style="display: none; display: flex; gap: 16px;">
+  <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">Private Room. Enter?</a>
+  <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">Back</a>
+</div>
+<a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
 <!-- 非表示にする日記部分 -->
 <div id="diary-content" class="hidden">
   <div id="diary-text"></div> <!-- 日記の表示領域を追加 -->
