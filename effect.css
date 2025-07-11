@@ -1,4 +1,4 @@
-:root {
+なんかYouTubeとichioのだけアイコンでかい。:root {
   --main-bg: #fafaff;
   --accent: #a6d0fe;
   --accent2: #a6d0fe;
@@ -67,7 +67,6 @@ header {
   background: #f4f7ff;
 }
 
-
 h1 {
   margin: 0.2em 0 0.1em 0;
   font-size: 2.7rem;
@@ -92,13 +91,8 @@ h1 {
 .socials a img {
   width: 2.1rem;
   height: 2.1rem;
-  display: inline-block;
-  object-fit: contain;      /* 画像の縦横比を維持して内側に収める */
-  aspect-ratio: 1 / 1;      /* 強制的に正方形の枠 */
-  vertical-align: middle;
   opacity: 0.84;
   transition: transform .19s cubic-bezier(.55,.06,.68,.19), opacity .13s;
-  padding: 0.18rem;  /* ← 追加。全アイコンに同じ余白をつける */
 }
 .socials a:hover img {
   opacity: 1;
@@ -216,3 +210,44 @@ footer {
   }
   .card { padding: 1.2rem 1rem 1rem 1rem;}
 }
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hueryn | Vtuber Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="effect.css">
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <header>
+    <div class="avatar-wrap">
+    <img src="profile.png" alt="hueryn icon" class="avatar">
+  </div>
+      <a href="https://sketchfab.com/irorinri"><img src="sketchfab.svg" alt="sketchfab"></a>
+      <a href="https://www.youtube.com/@irorinri"><img src="youtube.svg" alt="YouTube"></a>
+      <a href="https://irorinri.itch.io"><img src="itchio.svg" alt="Itch.io"></a>
+      <a href="https://github.com/irorinri"><img src="github.svg" alt="GitHub"></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>リンク</h2>
+      <ul>
+        <li><a href="blog2.html">Blog</a></li>
+        <li><a href="schedule.html">Stream Schedule</a></li>
+        <li><a href="index.html">Art Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2025 irorinri</span>
+  </footer>
+</body>
+</html>
