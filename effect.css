@@ -46,14 +46,24 @@ header {
   z-index: 1;
 }
 
+.avatar-wrap {
+  display: inline-block;
+  padding: 4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #7ee8fa, #eec3ff, #a6d0fe, #ffdfc1, #ffd6e0, #a6d0fe, #7ee8fa
+  );
+  box-shadow: 0 0 0 6px #fff, 0 2px 32px 0 rgba(60,70,140,0.07);
+  margin-bottom: 1rem;
+  /* 中央揃え用はheaderのtext-align:center;でOK */
+}
 .avatar {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid #fff;
-  box-shadow: var(--shadow);
-  margin-bottom: 1rem;
+  border: 6px solid #fff; /* 白縁で内側を抜け感に */
+  display: block;
   background: #f4f7ff;
 }
 
