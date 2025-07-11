@@ -144,7 +144,7 @@ main, .schedule-main {
 .card {
   background: var(--card-bg);
   box-shadow: var(--shadow);
-  border-radius: var(--radius);
+  border-radius: 0;
   margin: 1.3rem 0;
   padding: 2.1rem 2rem 1.5rem 2rem;
   transition: box-shadow 0.2s, transform 0.18s;
