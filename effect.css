@@ -92,6 +92,10 @@ h1 {
 .socials a img {
   width: 2.1rem;
   height: 2.1rem;
+  display: inline-block;
+  object-fit: contain;      /* 画像の縦横比を維持して内側に収める */
+  aspect-ratio: 1 / 1;      /* 強制的に正方形の枠 */
+  vertical-align: middle;
   opacity: 0.84;
   transition: transform .19s cubic-bezier(.55,.06,.68,.19), opacity .13s;
 }
