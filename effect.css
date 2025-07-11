@@ -98,6 +98,7 @@ h1 {
   vertical-align: middle;
   opacity: 0.84;
   transition: transform .19s cubic-bezier(.55,.06,.68,.19), opacity .13s;
+  padding: 0.18rem;  /* ← 追加。全アイコンに同じ余白をつける */
 }
 .socials a:hover img {
   opacity: 1;
