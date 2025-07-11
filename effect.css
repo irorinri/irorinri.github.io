@@ -204,6 +204,7 @@ footer {
 @media (max-width: 600px) {
   header { padding-top: 2rem; }
   .avatar { width: 90px; height: 90px; }
+  .avatar-wrap { padding: 2.5px; }
   main, .schedule-main { 
     max-width: 98vw;
     padding: 1rem 0.3em;
