@@ -147,6 +147,16 @@ summary::marker {
   margin-bottom: 0.2em;
 }
 
+.avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 2px 32px 0 rgba(60,70,140,0.06);
+  margin-bottom: 1rem;
+  background: #f4f7ff;
+}
 .blog-content p {
   color: var(--text-main);
   font-size: 0.98em;
