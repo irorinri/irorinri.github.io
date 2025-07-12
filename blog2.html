@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -19,49 +19,60 @@
   </header>
   <main>
     <section class="blog-list">
-      <!-- 投稿1 -->
-      <details>
-        <summary>
-          <span class="date">2025-06-25</span>
-          <span class="title">活動を振り返って</span>
-        </summary>
-        <div class="blog-content">
-          <img src="blog1.jpg" alt="活動の様子">
-          <p>
-            今日は活動1周年を迎えました。たくさんの方々と出会い、多くの経験ができました。これからもよろしくお願いします！
-          </p>
-        </div>
-      </details>
-      <!-- 投稿2 -->
-      <details>
-        <summary>
-          <span class="date">2025-06-21</span>
-          <span class="title">新しい配信機材を導入</span>
-        </summary>
-        <div class="blog-content">
-          <img src="blog2.jpg" alt="新しい配信機材">
-          <p>
-            新しく導入したマイクの音質がとても良くなりました。配信でみなさんにお届けできるのが楽しみです。
-          </p>
-        </div>
-      </details>
-      <!-- 投稿3 -->
-      <details>
-        <summary>
-          <span class="date">2025-06-10</span>
-          <span class="title">初めてのイラスト展示</span>
-        </summary>
-        <div class="blog-content">
-          <img src="blog3.jpg" alt="イラスト展示">
-          <p>
-            先日、オンライン展示会に出展しました。自分の作品をたくさんの方に見てもらえてうれしかったです。
-          </p>
-        </div>
-      </details>
+      <div id="blog-buttons" class="blog-buttons"></div>
+      <div id="blog-content" class="blog-content-ajax"></div>
     </section>
   </main>
   <footer>
     &copy; 2025 irorinri
   </footer>
+  <script>
+    // --- 記事データ定義（順番、タイトル、日付、ファイル名） ---
+    const blogPosts = [
+      { id: 1, date: "2025-06-25", title: "活動を振り返って", file: "blog/2025-06-25.html" },
+      { id: 2, date: "2025-06-21", title: "新しい配信機材を導入", file: "blog/2025-06-21.html" },
+      { id: 3, date: "2025-06-10", title: "初めてのイラスト展示", file: "blog/2025-06-10.html" }
+      // ここに記事を追加していく
+    ];
+
+    // --- ボタン生成 ---
+    function generateBlogButtons() {
+      const container = document.getElementById("blog-buttons");
+      container.innerHTML = "";
+      blogPosts.forEach(post => {
+        const btn = document.createElement("button");
+        btn.className = "blog-button";
+        btn.innerHTML = `<span class="date">${post.date}</span> <span class="title">${post.title}</span>`;
+        btn.addEventListener("click", function() {
+          loadBlogContent(post.id, post.file);
+          document.querySelectorAll(".blog-button").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    // --- 記事の読み込み ---
+    function loadBlogContent(id, file) {
+      fetch(file)
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("blog-content").innerHTML = html;
+        })
+        .catch(err => {
+          document.getElementById("blog-content").innerHTML = "<p>記事の読み込みに失敗しました。</p>";
+        });
+    }
+
+    // --- 初期化 ---
+    document.addEventListener("DOMContentLoaded", function() {
+      generateBlogButtons();
+      if(blogPosts.length > 0) {
+        // 1記事目をデフォルト表示
+        loadBlogContent(blogPosts[0].id, blogPosts[0].file);
+        document.querySelectorAll(".blog-button")[0].classList.add("selected");
+      }
+    });
+  </script>
 </body>
 </html>
