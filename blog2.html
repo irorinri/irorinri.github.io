@@ -2,66 +2,90 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>hueryn Blog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
+  <style>
+    /* --- 必要なCSS（最小のみ、あとは今までのを活用してOK） --- */
+    .blog-list { max-width: 540px; margin: 0 auto; padding: 2rem 1rem 2.5rem 1rem; }
+    .accordion { background: #eceff3; border-radius: 1.2rem; margin: 1rem 0; box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07); }
+    .accordion summary { cursor: pointer; padding: 1rem 1.4rem; font-size: 1.07rem; font-weight: 600; outline: none; display: flex; align-items: center; gap: 1em;}
+    .accordion .date { color: #767b8c; font-size: 0.97em; min-width: 7em; }
+    .accordion .title { color: #9dc4f6; font-weight: 700; }
+    .accordion[open] { box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10); }
+    .accordion-content { padding: 1.1em 2.1em 1.2em 2.1em; display: none; font-size: 0.97em; animation: fadein .5s; }
+    .accordion.opened .accordion-content { display: block; }
+    @keyframes fadein { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+  </style>
 </head>
 <body>
   <header>
-    <img src="header-image.jpg" alt="hueryn header" class="header-img">
+    <img src="header-image.jpg" alt="header" class="header-img">
     <div class="header-text">
       <h1>hueryn Blog</h1>
       <nav>
-        <a href="profile.html">Home</a>
+        <a href="index.html">Home</a>
       </nav>
     </div>
   </header>
   <main>
     <section class="blog-list">
-      <!-- 投稿1 -->
-      <details>
+
+      <!-- ↓記事ごとに追加。data-fileに本文HTMLへのパスを記述 -->
+      <div class="accordion" data-file="blog/2025-06-25.html">
         <summary>
           <span class="date">2025-06-25</span>
           <span class="title">活動を振り返って</span>
         </summary>
-        <div class="blog-content">
-          <img src="blog1.jpg" alt="活動の様子">
-          <p>
-            今日は活動1周年を迎えました。たくさんの方々と出会い、多くの経験ができました。これからもよろしくお願いします！
-          </p>
-        </div>
-      </details>
-      <!-- 投稿2 -->
-      <details>
+        <div class="accordion-content"></div>
+      </div>
+      <div class="accordion" data-file="blog/2025-06-21.html">
         <summary>
           <span class="date">2025-06-21</span>
           <span class="title">新しい配信機材を導入</span>
         </summary>
-        <div class="blog-content">
-          <img src="blog2.jpg" alt="新しい配信機材">
-          <p>
-            新しく導入したマイクの音質がとても良くなりました。配信でみなさんにお届けできるのが楽しみです。
-          </p>
-        </div>
-      </details>
-      <!-- 投稿3 -->
-      <details>
-        <summary>
-          <span class="date">2025-06-10</span>
-          <span class="title">初めてのイラスト展示</span>
-        </summary>
-        <div class="blog-content">
-          <img src="blog3.jpg" alt="イラスト展示">
-          <p>
-            先日、オンライン展示会に出展しました。自分の作品をたくさんの方に見てもらえてうれしかったです。
-          </p>
-        </div>
-      </details>
+        <div class="accordion-content"></div>
+      </div>
+      <!-- ...どんどん追加してOK -->
+
     </section>
   </main>
   <footer>
-    &copy; 2025 irorinri
+    &copy; 2025 hueryn
   </footer>
+  <script>
+    // JSアコーディオン＋外部ファイル読み込み
+    document.querySelectorAll('.accordion').forEach(acc => {
+      const summary = acc.querySelector('summary');
+      summary.addEventListener('click', async function(e) {
+        e.preventDefault();
+        // すでに開いていたら閉じる
+        if(acc.classList.contains('opened')) {
+          acc.classList.remove('opened');
+          acc.querySelector('.accordion-content').innerHTML = '';
+          return;
+        }
+        // 他のアコーディオンを閉じる
+        document.querySelectorAll('.accordion.opened').forEach(a => {
+          a.classList.remove('opened');
+          a.querySelector('.accordion-content').innerHTML = '';
+        });
+        // 外部HTML/TXTを取得・挿入
+        const file = acc.dataset.file;
+        const content = acc.querySelector('.accordion-content');
+        content.innerHTML = '読み込み中...';
+        acc.classList.add('opened');
+        try {
+          const res = await fetch(file);
+          if(!res.ok) throw new Error('Not Found');
+          const text = await res.text();
+          content.innerHTML = text;
+        } catch {
+          content.innerHTML = '<p style="color:#c22;">記事の読み込みに失敗しました。</p>';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
