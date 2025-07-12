@@ -85,7 +85,7 @@ main {
 details {
   background: var(--card-bg);
   box-shadow: var(--shadow);
-  border-radius: var(--radius);
+  border-radius: 0;
   margin: 1.15rem 0;
   padding: 0.5rem 1.05rem;
   border: 1px solid #e5e7ef;
