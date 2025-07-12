@@ -82,6 +82,58 @@ main {
   padding: 0;
 }
 
+
+.blog-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  margin-bottom: 1.5em;
+}
+.blog-button {
+  background: #eceff3;
+  border: none;
+  border-radius: 0.7em;
+  padding: 0.75em 1.3em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: left;
+  color: #23263a;
+  cursor: pointer;
+  transition: background 0.18s, color 0.13s;
+  outline: none;
+  display: flex;
+  gap: 1.1em;
+  align-items: center;
+}
+.blog-button .date {
+  color: #767b8c;
+  font-size: 0.95em;
+  min-width: 7em;
+}
+.blog-button .title {
+  color: #9dc4f6;
+  font-size: 1.07em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.blog-button.selected,
+.blog-button:hover {
+  background: #f7f9fd;
+  color: #e7bfff;
+}
+.blog-content-ajax {
+  background: #eceff3;
+  border-radius: 1.0em;
+  padding: 2em 1.2em 1.2em 1.2em;
+  min-height: 7em;
+  box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07);
+  font-size: 0.98em;
+  margin-bottom: 1.5em;
+}
+
+
+
 details {
   background: var(--card-bg);
   box-shadow: var(--shadow);
