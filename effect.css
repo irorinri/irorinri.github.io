@@ -142,12 +142,12 @@ main, .schedule-main {
 }
 .schedule-back {
   display: inline-block;
-  background: var(--accent);
+  background: #b0b0b0;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
   padding: 0.4em 1em;
-  border-radius: 0em;
+  border-radius: 0.4em;
   transition: background .2s;
   font-size: 1.08em;
 }
