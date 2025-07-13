@@ -68,7 +68,7 @@ header {
   transition: color .16s;
 }
 .header-text nav a:hover {
-  color: var(--accent);
+  color: #5174a0;
 }
 
 main {
