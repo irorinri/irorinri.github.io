@@ -4,7 +4,7 @@
   --accent2: #b0b0b0;
   --text-main: #23263a;
   --text-sub: #767b8c;
-  --card-bg: #eceff3; /* ←日記カード用薄いグレー */
+  --card-bg: #fdfdfd; /* ←日記カード用薄いグレー */
   --radius: 1.35rem;
   --shadow: 0 1.5px 18px 0 rgba(60,70,140,0.06);
 }
