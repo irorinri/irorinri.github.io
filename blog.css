@@ -128,7 +128,7 @@ summary::marker {
 }
 .title {
   font-size: 1em;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent2);
   letter-spacing: 0.05em;
 }
