@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <style>
-    /* --- 必要なCSS（最小のみ、あとは今までのを活用してOK） --- */
     .blog-list { max-width: 540px; margin: 0 auto; padding: 2rem 1rem 2.5rem 1rem; }
     .accordion { background: #eceff3; border-radius: 0; margin: 1rem 0; box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07); }
     .accordion summary { cursor: pointer; padding: 1rem 1.4rem; font-size: 1.07rem; font-weight: 600; outline: none; display: flex; align-items: center; gap: 1em;}
@@ -32,10 +31,10 @@
   <main>
     <section class="blog-list">
 
-      <!-- ↓記事ごとに追加。data-fileに本文HTMLへのパスを記述 -->
+      
 <div class="accordion" data-file="blog/2025-06-25.html"><summary><span class="date">2025-06-25</span><span class="title">AItuber Kachess Design</span></summary><div class="accordion-content"></div></div>
 <div class="accordion" data-file="blog/2025-06-21.html"><summary><span class="date">2025-06-21</span><span class="title">Shogi board under construction in Unity</span></summary><div class="accordion-content"></div></div>
-      <!-- ...どんどん追加してOK -->
+      
 
     </section>
   </main>
@@ -62,7 +61,7 @@
         // 外部HTML/TXTを取得・挿入
         const file = acc.dataset.file;
         const content = acc.querySelector('.accordion-content');
-        content.innerHTML = '読み込み中...';
+        content.innerHTML = 'Loading...';
         acc.classList.add('opened');
         try {
           const res = await fetch(file);
