@@ -20,73 +20,70 @@
       font-size: inherit;
       margin: 0; }
     .blog-e p { margin: 0; }
-    
     footer { text-align: center; }
 
-  .hidden {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
+    .hidden {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
 
-.toggle-link {
-  display: block;
-  text-decoration: none;
-  color: blue;
-  font-size: inherit;
-  font-weight: normal;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
+    .toggle-link {
+      display: block;
+      text-decoration: none;
+      color: blue;
+      font-size: inherit;
+      font-weight: normal;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
 
-/* 日記選択ボタンのスタイル */
-.diary-buttons {
-  display: grid;
-  grid-template-columns: repeat(10, 28px); /* 10列 */
-  grid-template-rows: repeat(2, 28px); /* 3行 */
-  gap: 0; /* 隙間をなくす */
-  margin-top: 10px;
-  margin-bottom: 30px; /* ボタンと日記の間にスペースを追加 */
-}
+    .diary-buttons {
+      display: grid;
+      grid-template-columns: repeat(10, 28px); 
+      grid-template-rows: repeat(2, 28px); 
+      gap: 0;
+      margin-top: 10px;
+      margin-bottom: 30px; 
+    }
 
-.diary-button {
-  width: 30px;
-  height: 30px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  text-align: center;
-  line-height: 30px;
-  font-size: 12px; 
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.diary-button:hover {
-  background-color: #d0d0d0;
-}
-.diary-button.selected {
-  background-color: #dfdfdf;
-  color: white;
-  font-weight: bold;
-}
+    .diary-button {
+      width: 30px;
+      height: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 30px;
+      font-size: 12px; 
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .diary-button:hover {
+      background-color: #d0d0d0;
+    }
+    .diary-button.selected {
+      background-color: #dfdfdf;
+      color: white;
+      font-weight: bold;
+    }
 
+    #diary-content {
+      display: none; 
+    }
+    #toggle-diary-bottom,
+    #toggle-diary-bottom2 {
+      display: none; 
+    }
+    #toggle-diary-confirm-row {
+      gap: 16px;
+      align-items: center;
+    }
 
-    
-#diary-content {
-  display: none; /* 初期は非表示 */
-}
-#toggle-diary-bottom,
-#toggle-diary-bottom2 {
-  display: none; /* 初期は非表示 */
-}
+    /* snapshots本体の初期非表示 */
+    #snapshot-main { display: none; }
 
-#toggle-diary-confirm-row {
-  gap: 16px;
-  align-items: center;
-}
-
-    
   </style>
 </head>
 <body class="blog-page">
@@ -101,34 +98,50 @@
 <div class="nav-bottom-space"></div>
 <main>
 
-<div class="blog-e"><p style="margin-bottom: 20px;">
+  <div class="blog-e">
+    <p style="margin-bottom: 20px;">
       <a href="soft.html" style="text-decoration: none; color: blue;">→ uses</a>
     </p>
-  <div class="blog-e"><p style="margin-bottom: 20px;">
+
+    <p style="margin-bottom: 20px;">
       <a href="icon.html" style="text-decoration: none; color: blue;">→ snapshots</a>
     </p>
 
-    <!-- 日記の表示・非表示を切り替えるリンク -->
-<a id="toggle-diary" class="toggle-link">→ show diary</a>
-<div id="toggle-diary-confirm-row" style="display: none; gap: 16px;">
-  <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
-  <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
-</div>
-<div id="toggle-diary-confirm-gap" style="display: none; height: 20px;"></div>
-<a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
-    <div id="diary-buttons" class="diary-buttons hidden"></div>
-<!-- 非表示にする日記部分 -->
-<div id="diary-content" class="hidden">
-  <div id="diary-text"></div> 
-  <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
-</div>
+    <!-- snapshots用ワンクッション -->
+    <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
+    <div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
+      <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
+      <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+    </div>
+    <div id="toggle-snapshot-gap" style="display: none; height: 20px;"></div>
+    <div id="snapshot-main" class="hidden">
+      <!-- ここにsnapshot本体。iframeやdivでも可 -->
+      <iframe src="icon.html" width="100%" height="400" style="border:none;"></iframe>
+      <a id="toggle-snapshot-hide" class="toggle-link">↑ hide snapshot</a>
+    </div>
+  </div>
 
-<a id="toggle-diary2" class="toggle-link">→ show chatter</a>
-<div id="diary-buttons2" class="diary-buttons hidden"></div>
-<div id="diary-content2" class="hidden">
-  <div id="diary-text2"></div>
-  <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
-</div>
+  <!-- 日記表示・非表示 -->
+  <a id="toggle-diary" class="toggle-link">→ show diary</a>
+  <div id="toggle-diary-confirm-row" style="display: none; gap: 16px;">
+    <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
+    <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+  </div>
+  <div id="toggle-diary-confirm-gap" style="display: none; height: 20px;"></div>
+  <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
+  <div id="diary-buttons" class="diary-buttons hidden"></div>
+  <div id="diary-content" class="hidden">
+    <div id="diary-text"></div> 
+    <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
+  </div>
+
+  <!-- chatter表示・非表示 -->
+  <a id="toggle-diary2" class="toggle-link">→ show chatter</a>
+  <div id="diary-buttons2" class="diary-buttons hidden"></div>
+  <div id="diary-content2" class="hidden">
+    <div id="diary-text2"></div>
+    <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
+  </div>
 
 </main>
 
@@ -137,14 +150,40 @@
 </footer>
 
 <script>
-// show diaryを押したら確認行＆空白だけ表示
+// --- snapshots用ワンクッション ---
+document.getElementById("toggle-snapshot").addEventListener("click", function () {
+  this.style.display = "none";
+  document.getElementById("toggle-snapshot-confirm-row").style.display = "flex";
+  document.getElementById("toggle-snapshot-gap").style.display = "block";
+});
+document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
+  document.getElementById("snapshot-main").style.display = "block";
+  document.getElementById("snapshot-main").classList.remove("hidden");
+  document.getElementById("toggle-snapshot-hide").style.display = "block";
+  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+  document.getElementById("toggle-snapshot-gap").style.display = "none";
+  document.getElementById("toggle-snapshot").style.display = "none";
+});
+document.getElementById("toggle-snapshot-back").addEventListener("click", function () {
+  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+  document.getElementById("toggle-snapshot-gap").style.display = "none";
+  document.getElementById("toggle-snapshot").style.display = "block";
+});
+document.getElementById("toggle-snapshot-hide").addEventListener("click", function () {
+  document.getElementById("snapshot-main").style.display = "none";
+  document.getElementById("snapshot-main").classList.add("hidden");
+  document.getElementById("toggle-snapshot-hide").style.display = "none";
+  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+  document.getElementById("toggle-snapshot-gap").style.display = "none";
+  document.getElementById("toggle-snapshot").style.display = "block";
+});
+
+// --- diary部（元のまま） ---
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "flex";
   document.getElementById("toggle-diary-confirm-gap").style.display = "block";
 });
-
-// 「Private Room. Enter?」で本体展開
 document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary-content");
   var diaryButtons = document.getElementById("diary-buttons");
@@ -167,15 +206,11 @@ document.getElementById("toggle-diary-confirm").addEventListener("click", functi
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "none";
 });
-
-// 「Back」で前画面（show diaryだけ）に戻る
 document.getElementById("toggle-diary-back").addEventListener("click", function () {
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
-
-// hide diary（下）で全部閉じてshow diary復活
 document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
@@ -187,8 +222,6 @@ document.getElementById("toggle-diary-bottom").addEventListener("click", functio
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
-
-// hide diary（上）も同じ
 document.getElementById("toggle-diary-top").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
   document.getElementById("diary-content").classList.add("hidden");
@@ -200,8 +233,6 @@ document.getElementById("toggle-diary-top").addEventListener("click", function (
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
-
-// diaryのボタン生成
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
   diaryButtons.innerHTML = "";
@@ -222,8 +253,6 @@ function generateDiaryButtons() {
     if (defaultButton) defaultButton.classList.add("selected");
   }, 100);
 }
-
-// diaryのエントリ読み込み
 function loadDiaryEntry(id) {
   fetch(`https://irorinri.github.io/diary/${id}.html`)
     .then(response => response.text())
@@ -241,11 +270,10 @@ function loadDiaryEntry(id) {
     .catch(error => console.error("Error fetching diary entry:", error));
 }
 
-/* --- diary2以下はそのまま --- */
+// --- chatter部（元のまま） ---
 document.getElementById("toggle-diary2").addEventListener("click", function () {
   const content = document.getElementById("diary-content2");
   const buttons = document.getElementById("diary-buttons2");
-
   if (content.classList.contains("hidden")) {
     content.classList.remove("hidden");
     content.style.display = "block";
@@ -253,11 +281,9 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     buttons.style.display = "grid";
     this.textContent = "↓ hide chatter";
     document.getElementById("toggle-diary-bottom2").style.display = "block";
-
     if (buttons.innerHTML.trim() === "") {
       generateDiaryButtons2();
     }
-
     setTimeout(() => {
       loadDiaryEntry2(1);
     }, 200);
@@ -270,7 +296,6 @@ document.getElementById("toggle-diary2").addEventListener("click", function () {
     document.getElementById("toggle-diary-bottom2").style.display = "none";
   }
 });
-
 function generateDiaryButtons2() {
   const container = document.getElementById("diary-buttons2");
   container.innerHTML = "";
@@ -287,7 +312,6 @@ function generateDiaryButtons2() {
     container.appendChild(btn);
   }
 }
-
 function loadDiaryEntry2(id) {
   fetch(`https://irorinri.github.io/diary2/${id}.html`)
     .then(res => res.text())
@@ -302,12 +326,10 @@ function loadDiaryEntry2(id) {
       console.error(err);
     });
 }
-
 document.getElementById("toggle-diary-bottom2").addEventListener("click", function () {
   document.getElementById("toggle-diary2").click();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
-      
 </body>
 </html>
