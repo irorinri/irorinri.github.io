@@ -157,11 +157,23 @@ document.getElementById("toggle-snapshot").addEventListener("click", function ()
   document.getElementById("toggle-snapshot-gap").style.display = "block";
 });
 document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
+  // 本体表示
   document.getElementById("snapshot-main").style.display = "block";
   document.getElementById("snapshot-main").classList.remove("hidden");
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
   document.getElementById("toggle-snapshot-gap").style.display = "none";
   document.getElementById("toggle-snapshot").style.display = "none";
+
+  // 直貼りfetch
+  fetch("icon.html")
+    .then(res => res.text())
+    .then(html => {
+      // 必要ならmain部分だけ抽出
+      const div = document.createElement("div");
+      div.innerHTML = html;
+      const main = div.querySelector("main") || div;
+      document.getElementById("snapshot-inner").innerHTML = main.innerHTML;
+    });
 });
 document.getElementById("toggle-snapshot-back").addEventListener("click", function () {
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
@@ -175,11 +187,19 @@ function hideSnapshot() {
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
   document.getElementById("toggle-snapshot-gap").style.display = "none";
   document.getElementById("toggle-snapshot").style.display = "block";
+  // ★ 下ボタン時のみ先頭へ
+  if (hideSnapshot.scrollToTop) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    hideSnapshot.scrollToTop = false;
+  }
 }
 document.getElementById("toggle-snapshot-hide-top").addEventListener("click", hideSnapshot);
-document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click", hideSnapshot);
+document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click", function(){
+  hideSnapshot.scrollToTop = true;
+  hideSnapshot();
+});
 
-// --- diary部（元のまま） ---
+// --- diary部 ---
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "flex";
@@ -222,6 +242,8 @@ document.getElementById("toggle-diary-bottom").addEventListener("click", functio
   document.getElementById("toggle-diary-confirm-row").style.display = "none";
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
+  // ここで先頭へ
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 document.getElementById("toggle-diary-top").addEventListener("click", function () {
   document.getElementById("diary-content").style.display = "none";
@@ -234,6 +256,7 @@ document.getElementById("toggle-diary-top").addEventListener("click", function (
   document.getElementById("toggle-diary-confirm-gap").style.display = "none";
   document.getElementById("toggle-diary").style.display = "block";
 });
+// diaryのボタン生成
 function generateDiaryButtons() {
   var diaryButtons = document.getElementById("diary-buttons");
   diaryButtons.innerHTML = "";
@@ -271,7 +294,7 @@ function loadDiaryEntry(id) {
     .catch(error => console.error("Error fetching diary entry:", error));
 }
 
-// --- chatter部（元のまま） ---
+// --- chatter部 ---
 document.getElementById("toggle-diary2").addEventListener("click", function () {
   const content = document.getElementById("diary-content2");
   const buttons = document.getElementById("diary-buttons2");
@@ -331,31 +354,6 @@ document.getElementById("toggle-diary-bottom2").addEventListener("click", functi
   document.getElementById("toggle-diary2").click();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-  
-document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
-  // 本体表示
-  document.getElementById("snapshot-main").style.display = "block";
-  document.getElementById("snapshot-main").classList.remove("hidden");
-  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
-  document.getElementById("toggle-snapshot-gap").style.display = "none";
-  document.getElementById("toggle-snapshot").style.display = "none";
-  
-  // 直貼り
-  fetch("icon.html")
-    .then(res => res.text())
-    .then(html => {
-      // 必要ならbodyやheadを除去し、main部分のみ貼ると良い
-      // 仮にmainタグを使っている場合はこんな感じ
-      const div = document.createElement("div");
-      div.innerHTML = html;
-      // mainタグのみ抽出（無ければbody全体でもOK）
-      const main = div.querySelector("main") || div;
-      document.getElementById("snapshot-inner").innerHTML = main.innerHTML;
-      // スクリプト再実行が必要な場合（jQuery等の動的ページ）、evalや再importが必要なケースもあり
-    });
-});
-
-  
 </script>
 </body>
 </html>
