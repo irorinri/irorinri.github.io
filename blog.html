@@ -107,21 +107,18 @@
       <a href="icon.html" style="text-decoration: none; color: blue;">→ snapshots</a>
     </p>
 
-    <!-- snapshots用ワンクッション -->
-    <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
-    <div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
-      <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
-      <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
-    </div>
-    <div id="toggle-snapshot-gap" style="display: none; height: 20px;"></div>
-    <div id="snapshot-main" class="hidden">
-      <!-- 上部ボタンを追加 -->
-      <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
-      <!-- ここにsnapshot本体。iframeやdivでも可 -->
-      <iframe src="icon.html" width="100%" height="400" style="border:none;"></iframe>
-      <!-- 下部ボタンを追加 -->
-      <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
-    </div>
+    <!-- show snapshotボタン/ワンクッションなど同じ -->
+<a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
+<div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
+  <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
+  <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+</div>
+<div id="toggle-snapshot-gap" style="display: none; height: 20px;"></div>
+<div id="snapshot-main" class="hidden">
+  <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
+  <div id="snapshot-inner"></div>  <!-- ここにfetchした内容を直貼りする -->
+  <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
+</div>
   </div>
 
   <!-- 日記表示・非表示 -->
@@ -334,6 +331,31 @@ document.getElementById("toggle-diary-bottom2").addEventListener("click", functi
   document.getElementById("toggle-diary2").click();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+  
+document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
+  // 本体表示
+  document.getElementById("snapshot-main").style.display = "block";
+  document.getElementById("snapshot-main").classList.remove("hidden");
+  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+  document.getElementById("toggle-snapshot-gap").style.display = "none";
+  document.getElementById("toggle-snapshot").style.display = "none";
+  
+  // 直貼り
+  fetch("icon.html")
+    .then(res => res.text())
+    .then(html => {
+      // 必要ならbodyやheadを除去し、main部分のみ貼ると良い
+      // 仮にmainタグを使っている場合はこんな感じ
+      const div = document.createElement("div");
+      div.innerHTML = html;
+      // mainタグのみ抽出（無ければbody全体でもOK）
+      const main = div.querySelector("main") || div;
+      document.getElementById("snapshot-inner").innerHTML = main.innerHTML;
+      // スクリプト再実行が必要な場合（jQuery等の動的ページ）、evalや再importが必要なケースもあり
+    });
+});
+
+  
 </script>
 </body>
 </html>
