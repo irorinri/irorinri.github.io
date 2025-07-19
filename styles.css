@@ -66,3 +66,35 @@ footer {
   padding: 2px 0; /* 上下の余白 */
   z-index: 1000; /* 他の要素の上に表示 */
 }
+
+.icon-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列 */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+.icon-column,
+.image-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.icon-item img,
+.image-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.icon-item img { border-radius: 50%; }
+.image-item img { border-radius: 0; }
+.date {
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+  margin-top: 5px;｝
+
+
