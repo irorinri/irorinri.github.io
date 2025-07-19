@@ -115,9 +115,12 @@
     </div>
     <div id="toggle-snapshot-gap" style="display: none; height: 20px;"></div>
     <div id="snapshot-main" class="hidden">
+      <!-- 上部ボタンを追加 -->
+      <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
       <!-- ここにsnapshot本体。iframeやdivでも可 -->
       <iframe src="icon.html" width="100%" height="400" style="border:none;"></iframe>
-      <a id="toggle-snapshot-hide" class="toggle-link">↑ hide snapshot</a>
+      <!-- 下部ボタンを追加 -->
+      <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
     </div>
   </div>
 
@@ -159,7 +162,6 @@ document.getElementById("toggle-snapshot").addEventListener("click", function ()
 document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
   document.getElementById("snapshot-main").style.display = "block";
   document.getElementById("snapshot-main").classList.remove("hidden");
-  document.getElementById("toggle-snapshot-hide").style.display = "block";
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
   document.getElementById("toggle-snapshot-gap").style.display = "none";
   document.getElementById("toggle-snapshot").style.display = "none";
@@ -169,14 +171,16 @@ document.getElementById("toggle-snapshot-back").addEventListener("click", functi
   document.getElementById("toggle-snapshot-gap").style.display = "none";
   document.getElementById("toggle-snapshot").style.display = "block";
 });
-document.getElementById("toggle-snapshot-hide").addEventListener("click", function () {
+// 上下両方のhide snapshotボタンで閉じる
+function hideSnapshot() {
   document.getElementById("snapshot-main").style.display = "none";
   document.getElementById("snapshot-main").classList.add("hidden");
-  document.getElementById("toggle-snapshot-hide").style.display = "none";
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
   document.getElementById("toggle-snapshot-gap").style.display = "none";
   document.getElementById("toggle-snapshot").style.display = "block";
-});
+}
+document.getElementById("toggle-snapshot-hide-top").addEventListener("click", hideSnapshot);
+document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click", hideSnapshot);
 
 // --- diary部（元のまま） ---
 document.getElementById("toggle-diary").addEventListener("click", function () {
