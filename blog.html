@@ -353,13 +353,13 @@ document.getElementById("toggle-diary-bottom2").addEventListener("click", functi
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-  // usesアコーディオン
+  // usesアコーディオン（ボタン重ね表示でガックン防止）
 document.getElementById("toggle-uses").addEventListener("click", function () {
   this.style.display = "none";
+  document.getElementById("toggle-uses-hide-top").style.display = "block";
   document.getElementById("uses-main").style.display = "block";
   document.getElementById("uses-main").classList.remove("hidden");
 
-  // fetchして直貼り
   fetch("soft.html")
     .then(res => res.text())
     .then(html => {
@@ -369,10 +369,12 @@ document.getElementById("toggle-uses").addEventListener("click", function () {
       document.getElementById("uses-inner").innerHTML = main.innerHTML;
     });
 });
+
 function hideUses() {
   document.getElementById("uses-main").style.display = "none";
   document.getElementById("uses-main").classList.add("hidden");
   document.getElementById("toggle-uses").style.display = "block";
+  document.getElementById("toggle-uses-hide-top").style.display = "none";
 }
 document.getElementById("toggle-uses-hide-top").addEventListener("click", hideUses);
 document.getElementById("toggle-uses-hide-bottom").addEventListener("click", function(){
