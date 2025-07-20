@@ -55,7 +55,7 @@ header {
   font-family: "Inter", "Noto Sans JP", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 0.04em;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--accent);
   text-shadow: 0 1px 6px #fff8;
 }
@@ -63,7 +63,7 @@ header {
   color: var(--accent2);
   text-decoration: none;
   font-size: 1.03rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-right: 1em;
   transition: color .16s;
 }
