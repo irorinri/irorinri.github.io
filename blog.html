@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+なんか、間隔がぐちゃぐちゃだよ。直したい。<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -12,17 +12,13 @@
     body.blog-page {
       font-size: 12px;
       margin-top:300px;
-      line-height: 1.6;
-    }
+      line-height: 1.6; }
     main { padding: 20px; }
-    .blog-e {
-      margin-bottom: 36px; /* ←まとめブロックの間隔 */
-    }
+    .blog-e { margin-bottom: 20px; }
     .blog-e h2 {
       font-weight: normal;
       font-size: inherit;
-      margin: 0;
-    }
+      margin: 0; }
     .blog-e p { margin: 0; }
     footer { text-align: center; }
 
@@ -34,47 +30,63 @@
       overflow: hidden !important;
     }
 
-    /* ボタン群下マージン統一 */
-    .diary-buttons,
-    #diary-buttons2 {
-      margin-bottom: 16px;
-    }
-
     .toggle-link {
       display: block;
       text-decoration: none;
       color: blue;
       font-size: inherit;
       font-weight: normal;
-      margin-bottom: 16px; /* ボタン間を全て揃える */
+      margin-bottom: 20px;
       cursor: pointer;
     }
-
-    /* usesトグルwrapの調整 */
-    .uses-toggle-wrap {
-      position: relative;
-      min-height: 24px;
-      margin-bottom: 16px;
+    .diary-buttons {
+      display: grid;
+      grid-template-columns: repeat(10, 28px); 
+      grid-template-rows: repeat(2, 28px); 
+      gap: 0;
+      margin-top: 10px;
+      margin-bottom: 30px; 
     }
-    .uses-toggle-wrap .toggle-link {
-      margin-bottom: 0;
+    .diary-button {
+      width: 30px;
+      height: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 30px;
+      font-size: 12px; 
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
-
-    /* uses本体と他との間をきちんと取る */
-    #uses-main {
-      margin-bottom: 24px;
+    .diary-button:hover {
+      background-color: #d0d0d0;
     }
-
-    #snapshot-main {
-      margin-bottom: 24px;
+    .diary-button.selected {
+      background-color: #dfdfdf;
+      color: white;
+      font-weight: bold;
     }
-
-    /* diary/chatter間もmargin-bottomを統一 */
-    #diary-content, #diary-content2 {
-      margin-bottom: 24px;
+    #diary-content {
+      display: none; 
     }
-
-    .nav-bottom-space { height: 20px; }
+    #toggle-diary-bottom,
+    #toggle-diary-bottom2 {
+      display: none; 
+    }
+    #toggle-diary-confirm-row {
+      gap: 16px;
+      align-items: center;
+    }
+    #snapshot-main { display: none; }
+  .toggle-link { 
+  margin-bottom: 15px; /* すべてのtoggle-linkに下20px */
+}
+.uses-toggle-wrap .toggle-link {
+  margin-bottom: 0;    /* usesトグルは0 */
+}
+.uses-toggle-wrap {
+  margin-bottom: 15px; /* uses自体の下も必ず20px */
+}
   </style>
 </head>
 <body class="blog-page">
@@ -90,27 +102,26 @@
 <main>
 
   <div class="blog-e">
-    <!-- uses toggle -->
-    <div class="uses-toggle-wrap">
-      <a id="toggle-uses" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0;">→ show uses</a>
-      <a id="toggle-uses-hide-top" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0; display: none;">↓ hide uses</a>
-    </div>
-    <div id="uses-main" class="hidden">
-      <div id="uses-inner"></div>
-      <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
-    </div>
+    <p style="margin-bottom: 20px;">
 
-    <!-- snapshot toggle -->
-    <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
-    <div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
-      <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
-      <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
-    </div>
-    <div id="snapshot-main" class="hidden">
-      <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
-      <div id="snapshot-inner"></div>
-      <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
-    </div>
+<div class="uses-toggle-wrap" style="position: relative; min-height: 24px;">
+  <a id="toggle-uses" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0;">→ show uses</a>
+  <a id="toggle-uses-hide-top" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0; display: none;">↓ hide uses</a>
+</div>
+<div id="uses-main" class="hidden">
+  <div id="uses-inner"></div>
+  <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
+</div>
+<a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
+<div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
+  <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
+  <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+</div>
+<div id="snapshot-main" class="hidden">
+  <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
+  <div id="snapshot-inner"></div>  <!-- ここにfetchした内容を直貼りする -->
+  <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
+</div>
   </div>
 
   <!-- 日記 -->
@@ -123,7 +134,7 @@
   <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
   <div id="diary-buttons" class="diary-buttons hidden"></div>
   <div id="diary-content" class="hidden">
-    <div id="diary-text"></div>
+    <div id="diary-text"></div> 
     <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
   </div>
 
@@ -142,19 +153,24 @@
 </footer>
 
 <script>
-// snapshot部分
+
 document.getElementById("toggle-snapshot").addEventListener("click", function () {
   this.style.display = "none";
   document.getElementById("toggle-snapshot-confirm-row").style.display = "flex";
+  
 });
 document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
+  // 本体表示
   document.getElementById("snapshot-main").style.display = "block";
   document.getElementById("snapshot-main").classList.remove("hidden");
   document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+  
   document.getElementById("toggle-snapshot").style.display = "none";
+
   fetch("icon.html")
     .then(res => res.text())
     .then(html => {
+
       const div = document.createElement("div");
       div.innerHTML = html;
       const main = div.querySelector("main") || div;
@@ -181,7 +197,7 @@ document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click",
   hideSnapshot();
 });
 
-// diary部分
+// --- diary ---
 document.getElementById("toggle-diary").addEventListener("click", function () {
   document.getElementById("toggle-diary").style.display = "none";
   document.getElementById("toggle-diary-confirm-row").style.display = "flex";
@@ -275,7 +291,7 @@ function loadDiaryEntry(id) {
     .catch(error => console.error("Error fetching diary entry:", error));
 }
 
-// chatter
+// --- chatter ---
 document.getElementById("toggle-diary2").addEventListener("click", function () {
   const content = document.getElementById("diary-content2");
   const buttons = document.getElementById("diary-buttons2");
@@ -336,12 +352,12 @@ document.getElementById("toggle-diary-bottom2").addEventListener("click", functi
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// uses toggle
 document.getElementById("toggle-uses").addEventListener("click", function () {
   this.style.display = "none";
   document.getElementById("toggle-uses-hide-top").style.display = "block";
   document.getElementById("uses-main").style.display = "block";
   document.getElementById("uses-main").classList.remove("hidden");
+
   fetch("soft.html")
     .then(res => res.text())
     .then(html => {
@@ -351,6 +367,7 @@ document.getElementById("toggle-uses").addEventListener("click", function () {
       document.getElementById("uses-inner").innerHTML = main.innerHTML;
     });
 });
+
 function hideUses() {
   document.getElementById("uses-main").style.display = "none";
   document.getElementById("uses-main").classList.add("hidden");
@@ -362,6 +379,7 @@ document.getElementById("toggle-uses-hide-bottom").addEventListener("click", fun
   hideUses();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+  
 </script>
 </body>
 </html>
