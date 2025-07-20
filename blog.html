@@ -84,11 +84,14 @@
     /* snapshots本体の初期非表示 */
     #snapshot-main { display: none; }
 
-    .toggle-link { 
-  margin-bottom: 20px; 
+  .toggle-link { 
+  margin-bottom: 20px; /* すべてのtoggle-linkに下20px */
 }
 .uses-toggle-wrap .toggle-link {
-  margin-bottom: 0;    /* usesトグルだけmarginなし */
+  margin-bottom: 0;    /* usesトグルは0 */
+}
+.uses-toggle-wrap {
+  margin-bottom: 20px; /* uses自体の下も必ず20px */
 }
   </style>
 </head>
