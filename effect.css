@@ -78,7 +78,7 @@ header {
   text-shadow: 0 2px 10px #e7f3ff80;
   user-select: none;
   line-height: 1.1;
-  margin-bottom: 1.1em;
+  margin-bottom: 0.1em;
 }
 
 
@@ -209,7 +209,7 @@ main, .schedule-main {
   margin-top: 0.02em;
   text-align: center;
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #767b8c; /* サブカラーで上品に */
   letter-spacing: 0.07em;
   font-weight: 400;
