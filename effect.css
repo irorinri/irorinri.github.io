@@ -206,10 +206,10 @@ main, .schedule-main {
 }
 
 .subtitle {
-  margin-top: 0.2em;
+  margin-top: 0.02em;
   text-align: center;
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  font-size: 1.08rem;
+  font-size: 0.7rem;
   color: #767b8c; /* サブカラーで上品に */
   letter-spacing: 0.07em;
   font-weight: 400;
