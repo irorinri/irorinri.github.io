@@ -100,12 +100,15 @@
 
   <div class="blog-e">
     <p style="margin-bottom: 20px;">
-      <a href="soft.html" style="text-decoration: none; color: blue;">→ uses</a>
-    </p>
 
-    
+   <!-- 「→ uses」をaタグからtoggle-linkに変更 -->
+<a id="toggle-uses" class="toggle-link">→ show uses</a>
+<div id="uses-main" class="hidden">
+  <a id="toggle-uses-hide-top" class="toggle-link">↓ hide uses</a>
+  <div id="uses-inner"></div> <!-- ここにsoft.htmlのmain部を直貼り -->
+  <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
+</div> 
 
-    <!-- show snapshotボタン/ワンクッションなど同じ -->
 <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
 <div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
   <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
