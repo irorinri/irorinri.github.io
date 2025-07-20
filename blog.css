@@ -63,7 +63,7 @@ header {
   color: var(--accent2);
   text-decoration: none;
   font-size: 1.03rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-right: 1em;
   transition: color .16s;
 }
@@ -109,7 +109,7 @@ summary {
   align-items: center;
   gap: 1.0em;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 400;
   padding: 0.65em 0;
   color: var(--text-main);
   transition: color .14s;
@@ -128,7 +128,7 @@ summary::marker {
 }
 .title {
   font-size: 1em;
-  font-weight: 400;
+  font-weight: 200;
   color: var(--accent2);
   letter-spacing: 0.05em;
 }
