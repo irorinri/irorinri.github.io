@@ -8,92 +8,93 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <style>
-    body.blog-page {
-      font-size: 12px;
-      margin-top:300px;
-      line-height: 1.6; }
-    main { padding: 20px; }
-    .blog-e { margin-bottom: 20px; }
-    .blog-e h2 {
-      font-weight: normal;
-      font-size: inherit;
-      margin: 0; }
-    .blog-e p { margin: 0; }
-    footer { text-align: center; }
-
-    .hidden {
-      display: none !important;
-      height: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow: hidden !important;
-    }
-
-    .toggle-link {
-      display: block;
-      text-decoration: none;
-      color: blue;
-      font-size: inherit;
-      font-weight: normal;
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-    .diary-buttons {
-      display: grid;
-      grid-template-columns: repeat(10, 28px); 
-      grid-template-rows: repeat(2, 28px); 
-      gap: 0;
-      margin-top: 10px;
-      margin-bottom: 30px; 
-    }
-    .diary-button {
-      width: 30px;
-      height: 30px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      text-align: center;
-      line-height: 30px;
-      font-size: 12px; 
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-    .diary-button:hover {
-      background-color: #d0d0d0;
-    }
-    .diary-button.selected {
-      background-color: #dfdfdf;
-      color: white;
-      font-weight: bold;
-    }
-    #diary-content {
-      display: none; 
-    }
-    #toggle-diary-bottom,
-    #toggle-diary-bottom2 {
-      display: none; 
-    }
-    #toggle-diary-confirm-row {
-      gap: 18px;
-      align-items: center;
-    }
-    #snapshot-main { display: none; }
-  .toggle-link { 
-  margin-bottom: 15px; /* すべてのtoggle-linkに下20px */
+  body.blog-page {
+  font-size: 12px;
+  margin-top: 300px;
+  line-height: 1.6;
 }
-    #toggle-snapshot-confirm-row {
-  gap: 16px;
+main {
+  padding: 20px;
+}
+.blog-e {
+  margin-bottom: 20px;
+}
+.blog-e h2 {
+  font-weight: normal;
+  font-size: inherit;
+  margin: 0;
+}
+.blog-e p {
+  margin: 0;
+}
+footer {
+  text-align: center;
+}
+.hidden {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+.toggle-link {
+  display: block;
+  text-decoration: none;
+  color: blue;
+  font-size: inherit;
+  font-weight: normal;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+.diary-buttons {
+  display: grid;
+  grid-template-columns: repeat(10, 28px);
+  grid-template-rows: repeat(2, 28px);
+  gap: 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.diary-button {
+  width: 30px;
+  height: 30px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.diary-button:hover {
+  background-color: #d0d0d0;
+}
+.diary-button.selected {
+  background-color: #dfdfdf;
+  color: white;
+  font-weight: bold;
+}
+#diary-content {
+  display: none;
+}
+#toggle-diary-bottom,
+#toggle-diary-bottom2 {
+  display: none;
+}
+#toggle-diary-confirm-row,
+#toggle-snapshot-confirm-row {
+  gap: 18px;
   align-items: center;
-  margin-bottom: 18px; /* ←追加！好きな値でOK */
+  margin-bottom: 18px;
 }
-    .uses-toggle-wrap .toggle-link {
-  margin-bottom: 0;    /* usesトグルは0 */
+#snapshot-main {
+  display: none;
+}
+.uses-toggle-wrap .toggle-link {
+  margin-bottom: 0;
 }
 .uses-toggle-wrap {
-  margin-bottom: 8px; /* uses自体の下も必ず20px */
+  margin-bottom: 8px;
 }
-
-  </style>
 </head>
 <body class="blog-page">
 
