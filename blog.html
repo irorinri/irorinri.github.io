@@ -101,14 +101,14 @@
   <div class="blog-e">
     <p style="margin-bottom: 20px;">
 
-   <!-- 「→ uses」をaタグからtoggle-linkに変更 -->
-<a id="toggle-uses" class="toggle-link">→ show uses</a>
+<div class="uses-toggle-wrap" style="position: relative; min-height: 24px;">
+  <a id="toggle-uses" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0;">→ show uses</a>
+  <a id="toggle-uses-hide-top" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0; display: none;">↓ hide uses</a>
+</div>
 <div id="uses-main" class="hidden">
-  <a id="toggle-uses-hide-top" class="toggle-link">↓ hide uses</a>
-  <div id="uses-inner"></div> <!-- ここにsoft.htmlのmain部を直貼り -->
+  <div id="uses-inner"></div>
   <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
-</div> 
-
+</div>
 <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
 <div id="toggle-snapshot-confirm-row" style="display: none; gap: 16px;">
   <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
