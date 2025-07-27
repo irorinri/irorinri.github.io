@@ -39,7 +39,7 @@ See you in the next diary!
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
 <script>
-  // Firebase config
+  // Firebase設定
   const firebaseConfig = {
     apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
     authDomain: "like-counter-blog.firebaseapp.com",
@@ -50,21 +50,29 @@ See you in the next diary!
     measurementId: "G-S14T0V9VC0"
   };
 
-  // Init Firebase
+  // 初期化
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
   const blogId = "2025-06-25";
   const docRef = db.collection("blogLikes").doc(blogId);
 
-  // ページが完全に読み込まれてから実行
+  // localStorageのキー
+  const localKey = `liked-${blogId}`;
+
   document.addEventListener("DOMContentLoaded", () => {
+    // 現在のいいね数を表示
     docRef.get().then((doc) => {
       if (doc.exists) {
         document.getElementById("like-number").textContent = doc.data().count;
       } else {
         docRef.set({ count: 0 });
         document.getElementById("like-number").textContent = "0";
+      }
+
+      // すでにいいね済みならボタン無効化
+      if (localStorage.getItem(localKey) === "true") {
+        disableLikeButton();
       }
     }).catch((e) => {
       document.getElementById("like-number").textContent = "Error";
@@ -73,15 +81,28 @@ See you in the next diary!
   });
 
   function addLike() {
+    // 二重防止
+    if (localStorage.getItem(localKey) === "true") return;
+
     docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
       .then(() => {
         return docRef.get();
       })
       .then((doc) => {
         document.getElementById("like-number").textContent = doc.data().count;
+        localStorage.setItem(localKey, "true");
+        disableLikeButton();
       })
       .catch((e) => {
         console.error("Like failed:", e);
       });
+  }
+
+  function disableLikeButton() {
+    const btn = document.querySelector("button[onclick='addLike()']");
+    btn.disabled = true;
+    btn.textContent = "❤️ Liked!";
+    btn.style.opacity = 0.6;
+    btn.style.cursor = "default";
   }
 </script>
