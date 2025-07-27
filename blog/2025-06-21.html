@@ -9,37 +9,89 @@ I’ve loved shogi ever since I was a kid. There’s just something magical abou
 So even though I’m still just getting started, creating my own “living shogi” feels genuinely fun and meaningful. One day, I hope I’ll be able to play a match with all of you on this AI-powered board!<br>
 I’m going to keep moving forward at my own pace—thanks so much for cheering me on!
 </p>
+
 <img src="blog/2025-06-21.webp" alt="Shogi board under construction in Unity" style="max-width:100%;border-radius:0.7em;margin-top:1.2em;margin-bottom:0.7em;">
 
-<!-- いいねボタン埋め込みここから -->
-<div style="text-align:center; margin-top: 1.2em;">
-  <button onclick="addLike()" style="padding:0.6em 1.2em; font-size:1em; border-radius:0.5em; border:none; background:#fa5c5c; color:white; cursor:pointer;">
-    ❤️ このブログに「いいね」する！
+<!-- ❤️ Like Button Area -->
+<div id="like-area" style="text-align:center; margin-top: 1.5em; font-family: sans-serif;">
+  <button onclick="addLike()" style="
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(4px);
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s;
+  " onmouseover="this.style.background='#eee'" onmouseout="this.style.background='rgba(255,255,255,0.4)'">
+    ❤️ Like this post
   </button>
-  <p style="margin-top:0.4em; color:#555;">いいね数：<span id="like-number">読み込み中…</span></p>
+  <p id="like-count" style="margin-top: 0.5em; font-size: 0.85em; color: #666;">
+    Likes: <span id="like-number">...</span>
+  </p>
 </div>
 
-<script type="module">
-  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-  const db = getFirestore();
-  const blogId = "2025-06-21"; //このファイル名に合わせる！
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
-  const docRef = doc(db, "blogLikes", blogId);
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
+    authDomain: "like-counter-blog.firebaseapp.com",
+    projectId: "like-counter-blog",
+    storageBucket: "like-counter-blog.appspot.com",
+    messagingSenderId: "571743964148",
+    appId: "1:571743964148:web:423ef8234b2b89e2841b3",
+    measurementId: "G-S14T0V9VC0"
+  };
 
-  getDoc(docRef).then((snap) => {
-    if (snap.exists()) {
-      document.getElementById("like-number").textContent = snap.data().count;
-    } else {
-      setDoc(docRef, { count: 0 });
-      document.getElementById("like-number").textContent = "0";
-    }
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const blogId = "2025-06-21"; // ←このページ専用のID
+  const docRef = db.collection("blogLikes").doc(blogId);
+  const localKey = `liked-${blogId}`;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        document.getElementById("like-number").textContent = doc.data().count;
+      } else {
+        docRef.set({ count: 0 });
+        document.getElementById("like-number").textContent = "0";
+      }
+
+      if (localStorage.getItem(localKey) === "true") {
+        disableLikeButton();
+      }
+    }).catch((e) => {
+      document.getElementById("like-number").textContent = "Error";
+      console.error("Get failed:", e);
+    });
   });
 
-  window.addLike = async function () {
-    await updateDoc(docRef, { count: increment(1) });
-    const updated = await getDoc(docRef);
-    document.getElementById("like-number").textContent = updated.data().count;
-  };
-</script>
-<!-- ❤いいねボタン埋め込みここまで -->
+  function addLike() {
+    if (localStorage.getItem(localKey) === "true") return;
 
+    docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
+      .then(() => docRef.get())
+      .then((doc) => {
+        document.getElementById("like-number").textContent = doc.data().count;
+        localStorage.setItem(localKey, "true");
+        disableLikeButton();
+      })
+      .catch((e) => {
+        console.error("Like failed:", e);
+      });
+  }
+
+  function disableLikeButton() {
+    const btn = document.querySelector("button[onclick='addLike()']");
+    btn.disabled = true;
+    btn.textContent = "❤️ Liked!";
+    btn.style.opacity = 0.6;
+    btn.style.cursor = "default";
+  }
+</script>
