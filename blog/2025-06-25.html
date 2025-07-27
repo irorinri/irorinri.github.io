@@ -1,18 +1,22 @@
-<p>
-Hey everyone!<br>
-Today felt a little special—I spent some real, focused time designing a new AItuber character named Kachess. It was so much fun coming up with ideas and actually turning them into something on the page.<br>
-<br>
-I’m used to making content and streaming, but building up an AI character’s whole personality and vibe from scratch is a totally different kind of creative challenge. I kept imagining what traits would suit Kachess, what sort of voice would make people smile, and played around with lots of possibilities.<br>
-<br>
-Honestly, after finishing the illustration, I found myself wishing I could have a real conversation with this character!<br>
-Next up, I want to give Kachess some visual intelligence—so it can actually recognize its surroundings and interact in real time. That’s my new goal.<br>
-<br>
-There’s still so much left to experiment with and figure out, but I really love the process of turning fresh ideas into something real.  
-I hope I can keep taking on new challenges together with all of you.<br>
-See you in the next diary!
-</p>
-
-<img src="blog/2025-06-25.webp" alt="AItuber Kachess Design" style="max-width:100%;border-radius:0.7em;margin-bottom:0.7em;">
+<!-- Like Button Area -->
+<div id="like-area" style="text-align:center; margin-top: 1.5em; font-family: sans-serif;">
+  <button onclick="addLike()" style="
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(4px);
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s;
+  " onmouseover="this.style.background='#eee'" onmouseout="this.style.background='rgba(255,255,255,0.4)'">
+    👍 Like this post
+  </button>
+  <p id="like-count" style="margin-top: 0.5em; font-size: 0.85em; color: #666;">
+    Likes: <span id="like-number">...</span>
+  </p>
+</div>
 
 <!-- Firebase SDK -->
 <script type="module">
@@ -32,33 +36,35 @@ See you in the next diary!
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // ブログ記事IDをここで指定（他と被らないように！）
-  const blogId = "2025-06-25";
+  // Unique blog ID for this post
+  const blogId = "2025-06-25";  // ← ここだけ毎記事変える！
 
   const docRef = doc(db, "blogLikes", blogId);
 
-  getDoc(docRef).then((docSnap) => {
-    if (docSnap.exists()) {
-      document.getElementById("like-number").textContent = docSnap.data().count;
-    } else {
-      setDoc(docRef, { count: 0 });
-      document.getElementById("like-number").textContent = "0";
+  // Safe DOM access after load
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        document.getElementById("like-number").textContent = docSnap.data().count;
+      } else {
+        await setDoc(docRef, { count: 0 });
+        document.getElementById("like-number").textContent = "0";
+      }
+    } catch (e) {
+      document.getElementById("like-number").textContent = "Error";
+      console.error("Firestore read error:", e);
     }
   });
 
+  // Like button function
   window.addLike = async function () {
-    await updateDoc(docRef, {
-      count: increment(1)
-    });
-    const newSnap = await getDoc(docRef);
-    document.getElementById("like-number").textContent = newSnap.data().count;
+    try {
+      await updateDoc(docRef, { count: increment(1) });
+      const newSnap = await getDoc(docRef);
+      document.getElementById("like-number").textContent = newSnap.data().count;
+    } catch (e) {
+      console.error("Like failed:", e);
+    }
   };
 </script>
-
-<!-- いいねボタン -->
-<div style="text-align:center; margin-top: 1.2em;">
-  <button onclick="addLike()" style="padding:0.6em 1.2em; font-size:1em; border-radius:0.5em; border:none; background:#fa5c5c; color:white; cursor:pointer;">
-    ❤️ このブログに「いいね」する！
-  </button>
-  <p style="margin-top:0.4em; color:#555;">いいね数：<span id="like-number">読み込み中…</span></p>
-</div>
