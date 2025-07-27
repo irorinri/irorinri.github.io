@@ -48,13 +48,30 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
 <img src="blog/2025-06-21.webp" alt="Shogi board under construction in Unity" style="max-width:100%;border-radius:0.7em;margin: 1.2em 0;">
 
 <!-- ❤️ Like Button -->
+<!-- ❤️ Like ボタン本体 -->
 <div style="text-align:center; margin-top:1.5em;">
-  <button id="like-btn" class="like-button">❤️ Like this post</button>
+  <button onclick="addLike()" id="like-btn" style="
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(4px);
+    color: #333;
+    cursor: pointer;
+  ">
+    ❤️ Like this post
+  </button>
   <p style="margin-top:0.5em; font-size: 0.85em; color: #666;">
     Likes: <span id="like-number">...</span>
   </p>
 </div>
 
+<!-- Firebase SDK（このHTML内に含める） -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<!-- スクリプト：グローバル定義でonclickに対応 -->
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
@@ -62,10 +79,8 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
     projectId: "like-counter-blog",
     storageBucket: "like-counter-blog.appspot.com",
     messagingSenderId: "571743964148",
-    appId: "1:571743964148:web:423ef8234b2b89e2841b3",
-    measurementId: "G-S14T0V9VC0"
+    appId: "1:571743964148:web:423ef8234b2b89e2841b3"
   };
-
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
@@ -73,8 +88,8 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
   const localKey = `liked-${blogId}`;
   const docRef = db.collection("blogLikes").doc(blogId);
 
+  // ページ読み込み時に表示更新＆ボタン制御
   document.addEventListener("DOMContentLoaded", () => {
-    // いいね数取得
     docRef.get().then((doc) => {
       if (doc.exists) {
         document.getElementById("like-number").textContent = doc.data().count;
@@ -83,35 +98,37 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
         document.getElementById("like-number").textContent = "0";
       }
 
-      // すでに押したら無効化
       if (localStorage.getItem(localKey) === "true") {
         disableLikeButton();
       }
     });
-
-    // ❤️クリックイベント登録
-    document.getElementById("like-btn").addEventListener("click", () => {
-      if (localStorage.getItem(localKey) === "true") return;
-
-      docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
-        .then(() => docRef.get())
-        .then((doc) => {
-          document.getElementById("like-number").textContent = doc.data().count;
-          localStorage.setItem(localKey, "true");
-          disableLikeButton();
-        })
-        .catch((e) => {
-          console.error("Like failed:", e);
-        });
-    });
-
-    function disableLikeButton() {
-      const btn = document.getElementById("like-btn");
-      btn.disabled = true;
-      btn.textContent = "❤️ Liked!";
-    }
   });
+
+  // ✅ ここが重要！グローバル定義
+  window.addLike = function () {
+    if (localStorage.getItem(localKey) === "true") return;
+
+    docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
+      .then(() => docRef.get())
+      .then((doc) => {
+        document.getElementById("like-number").textContent = doc.data().count;
+        localStorage.setItem(localKey, "true");
+        disableLikeButton();
+      })
+      .catch((e) => {
+        console.error("Like failed:", e);
+      });
+  };
+
+  function disableLikeButton() {
+    const btn = document.getElementById("like-btn");
+    btn.disabled = true;
+    btn.textContent = "❤️ Liked!";
+    btn.style.opacity = 0.6;
+    btn.style.cursor = "default";
+  }
 </script>
+
 
 </body>
 </html>
