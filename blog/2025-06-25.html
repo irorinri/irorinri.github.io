@@ -1,43 +1,15 @@
-<p>
-Hey everyone!<br>
-Today felt a little special—I spent some real, focused time designing a new AItuber character named Kachess. It was so much fun coming up with ideas and actually turning them into something on the page.<br>
-<br>
-I’m used to making content and streaming, but building up an AI character’s whole personality and vibe from scratch is a totally different kind of creative challenge. I kept imagining what traits would suit Kachess, what sort of voice would make people smile, and played around with lots of possibilities.<br>
-<br>
-Honestly, after finishing the illustration, I found myself wishing I could have a real conversation with this character!<br>
-Next up, I want to give Kachess some visual intelligence—so it can actually recognize its surroundings and interact in real time. That’s my new goal.<br>
-<br>
-There’s still so much left to experiment with and figure out, but I really love the process of turning fresh ideas into something real.  
-I hope I can keep taking on new challenges together with all of you.<br>
-See you in the next diary!
-</p>
+<!-- このテストだけで、Firestore接続＆addLike定義＆ボタン表示が全部動くか分かる -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Like Test</title></head>
+<body>
 
-<img src="blog/2025-06-25.webp" alt="AItuber Kachess Design" style="max-width:100%;border-radius:0.7em;margin-bottom:0.7em;">
+<h1>Test Like Button</h1>
+<button onclick="addLike()">❤️ Like</button>
+<p>Likes: <span id="like-count">...</span></p>
 
-<!-- Like Button Area -->
-<div id="like-area" style="text-align:center; margin-top: 1.5em; font-family: sans-serif;">
-  <button onclick="addLike()" style="
-    padding: 0.4em 1em;
-    font-size: 0.9em;
-    border-radius: 999px;
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(4px);
-    color: #333;
-    cursor: pointer;
-    transition: background 0.3s;
-  " onmouseover="this.style.background='#eee'" onmouseout="this.style.background='rgba(255,255,255,0.4)'">
-    ❤️ Like this post
-  </button>
-  <p id="like-count" style="margin-top: 0.5em; font-size: 0.85em; color: #666;">
-    Likes: <span id="like-number">...</span>
-  </p>
-</div>
-
-<!-- Firebase SDKs (non-module, browser compatible) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
@@ -51,50 +23,30 @@ See you in the next diary!
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+  const docRef = db.collection("blogLikes").doc("test-post");
 
-  const blogId = "2025-06-25";
-  const docRef = db.collection("blogLikes").doc(blogId);
-  const localKey = `liked-${blogId}`;
-
-  document.addEventListener("DOMContentLoaded", () => {
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        document.getElementById("like-number").textContent = doc.data().count;
-      } else {
-        docRef.set({ count: 0 });
-        document.getElementById("like-number").textContent = "0";
-      }
-
-      if (localStorage.getItem(localKey) === "true") {
-        disableLikeButton();
-      }
-    }).catch((e) => {
-      document.getElementById("like-number").textContent = "Error";
-      console.error("Get failed:", e);
-    });
-  });
-
-  // ← 修正ポイント（グローバル関数化）
-  window.addLike = function () {
-    if (localStorage.getItem(localKey) === "true") return;
-
-    docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
-      .then(() => docRef.get())
-      .then((doc) => {
-        document.getElementById("like-number").textContent = doc.data().count;
-        localStorage.setItem(localKey, "true");
-        disableLikeButton();
-      })
-      .catch((e) => {
-        console.error("Like failed:", e);
-      });
+  // 定義はwindowに
+  window.addLike = async function () {
+    try {
+      await docRef.update({ count: firebase.firestore.FieldValue.increment(1) });
+      const snap = await docRef.get();
+      document.getElementById("like-count").textContent = snap.data().count;
+    } catch (e) {
+      console.error("Like failed:", e);
+      document.getElementById("like-count").textContent = "ERR";
+    }
   };
 
-  function disableLikeButton() {
-    const btn = document.querySelector("button[onclick='addLike()']");
-    btn.disabled = true;
-    btn.textContent = "❤️ Liked!";
-    btn.style.opacity = 0.6;
-    btn.style.cursor = "default";
-  }
+  // 初期表示
+  docRef.get().then((snap) => {
+    if (snap.exists) {
+      document.getElementById("like-count").textContent = snap.data().count;
+    } else {
+      docRef.set({ count: 0 });
+      document.getElementById("like-count").textContent = "0";
+    }
+  });
 </script>
+
+</body>
+</html>
