@@ -50,7 +50,7 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  const blogId = "2025-06-21"; // ←このページ専用のID
+  const blogId = "2025-06-21";
   const docRef = db.collection("blogLikes").doc(blogId);
   const localKey = `liked-${blogId}`;
 
@@ -72,7 +72,8 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
     });
   });
 
-  function addLike() {
+  // ✅ グローバル関数に変更
+  window.addLike = function () {
     if (localStorage.getItem(localKey) === "true") return;
 
     docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
@@ -85,7 +86,7 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
       .catch((e) => {
         console.error("Like failed:", e);
       });
-  }
+  };
 
   function disableLikeButton() {
     const btn = document.querySelector("button[onclick='addLike()']");
