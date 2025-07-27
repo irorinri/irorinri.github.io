@@ -1,40 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shogi Like Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 600px;
+      margin: auto;
+    }
+    button.like-button {
+      padding: 0.4em 1em;
+      font-size: 0.9em;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(4px);
+      color: #333;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button.like-button:hover {
+      background: #eee;
+    }
+    button.like-button:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+
 <p>
 Hey everyone!<br>
-Today I finally took the first real step toward a dream I’ve had for ages—playing shogi against an AI! I started building my own shogi app in Unity.<br>
-<br>
-To be honest, the pieces can’t even move yet. But just setting up the board and placing each piece by hand gave me this little spark of excitement—like, “This is where it all begins.”<br>
-<br>
-I’ve loved shogi ever since I was a kid. There’s just something magical about the sound of the pieces landing on the board, the tension at the start of a match, and those wild moments when a single move turns the whole game upside down. I love everything about it.<br>
-<br>
+Today I finally took the first real step toward a dream I’ve had for ages—playing shogi against an AI! I started building my own shogi app in Unity.<br><br>
+To be honest, the pieces can’t even move yet. But just setting up the board and placing each piece by hand gave me this little spark of excitement—like, “This is where it all begins.”<br><br>
+I’ve loved shogi ever since I was a kid. There’s just something magical about the sound of the pieces landing on the board, the tension at the start of a match, and those wild moments when a single move turns the whole game upside down. I love everything about it.<br><br>
 So even though I’m still just getting started, creating my own “living shogi” feels genuinely fun and meaningful. One day, I hope I’ll be able to play a match with all of you on this AI-powered board!<br>
 I’m going to keep moving forward at my own pace—thanks so much for cheering me on!
 </p>
 
-<img src="blog/2025-06-21.webp" alt="Shogi board under construction in Unity" style="max-width:100%;border-radius:0.7em;margin-top:1.2em;margin-bottom:0.7em;">
+<img src="blog/2025-06-21.webp" alt="Shogi board under construction in Unity" style="max-width:100%;border-radius:0.7em;margin: 1.2em 0;">
 
-<!-- ❤️ Like Button Area -->
-<div id="like-area" style="text-align:center; margin-top: 1.5em; font-family: sans-serif;">
-  <button onclick="addLike()" style="
-    padding: 0.4em 1em;
-    font-size: 0.9em;
-    border-radius: 999px;
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(4px);
-    color: #333;
-    cursor: pointer;
-    transition: background 0.3s;
-  " onmouseover="this.style.background='#eee'" onmouseout="this.style.background='rgba(255,255,255,0.4)'">
-    ❤️ Like this post
-  </button>
-  <p id="like-count" style="margin-top: 0.5em; font-size: 0.85em; color: #666;">
+<!-- ❤️ Like Button -->
+<div style="text-align:center; margin-top:1.5em;">
+  <button id="like-btn" class="like-button">❤️ Like this post</button>
+  <p style="margin-top:0.5em; font-size: 0.85em; color: #666;">
     Likes: <span id="like-number">...</span>
   </p>
 </div>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
 <script>
   const firebaseConfig = {
@@ -51,10 +70,11 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
   const db = firebase.firestore();
 
   const blogId = "2025-06-21";
-  const docRef = db.collection("blogLikes").doc(blogId);
   const localKey = `liked-${blogId}`;
+  const docRef = db.collection("blogLikes").doc(blogId);
 
   document.addEventListener("DOMContentLoaded", () => {
+    // いいね数取得
     docRef.get().then((doc) => {
       if (doc.exists) {
         document.getElementById("like-number").textContent = doc.data().count;
@@ -63,36 +83,35 @@ I’m going to keep moving forward at my own pace—thanks so much for cheering 
         document.getElementById("like-number").textContent = "0";
       }
 
+      // すでに押したら無効化
       if (localStorage.getItem(localKey) === "true") {
         disableLikeButton();
       }
-    }).catch((e) => {
-      document.getElementById("like-number").textContent = "Error";
-      console.error("Get failed:", e);
     });
+
+    // ❤️クリックイベント登録
+    document.getElementById("like-btn").addEventListener("click", () => {
+      if (localStorage.getItem(localKey) === "true") return;
+
+      docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
+        .then(() => docRef.get())
+        .then((doc) => {
+          document.getElementById("like-number").textContent = doc.data().count;
+          localStorage.setItem(localKey, "true");
+          disableLikeButton();
+        })
+        .catch((e) => {
+          console.error("Like failed:", e);
+        });
+    });
+
+    function disableLikeButton() {
+      const btn = document.getElementById("like-btn");
+      btn.disabled = true;
+      btn.textContent = "❤️ Liked!";
+    }
   });
-
-  // ✅ グローバル関数に変更
-  window.addLike = function () {
-    if (localStorage.getItem(localKey) === "true") return;
-
-    docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
-      .then(() => docRef.get())
-      .then((doc) => {
-        document.getElementById("like-number").textContent = doc.data().count;
-        localStorage.setItem(localKey, "true");
-        disableLikeButton();
-      })
-      .catch((e) => {
-        console.error("Like failed:", e);
-      });
-  };
-
-  function disableLikeButton() {
-    const btn = document.querySelector("button[onclick='addLike()']");
-    btn.disabled = true;
-    btn.textContent = "❤️ Liked!";
-    btn.style.opacity = 0.6;
-    btn.style.cursor = "default";
-  }
 </script>
+
+</body>
+</html>
