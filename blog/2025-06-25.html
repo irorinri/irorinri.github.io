@@ -13,3 +13,52 @@ See you in the next diary!
 </p>
 
 <img src="blog/2025-06-25.webp" alt="AItuber Kachess Design" style="max-width:100%;border-radius:0.7em;margin-bottom:0.7em;">
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
+    authDomain: "like-counter-blog.firebaseapp.com",
+    projectId: "like-counter-blog",
+    storageBucket: "like-counter-blog.appspot.com",
+    messagingSenderId: "571743964148",
+    appId: "1:571743964148:web:423ef8234b2b89e2841b3",
+    measurementId: "G-S14T0V9VC0"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ブログ記事IDをここで指定（他と被らないように！）
+  const blogId = "2025-06-25";
+
+  const docRef = doc(db, "blogLikes", blogId);
+
+  getDoc(docRef).then((docSnap) => {
+    if (docSnap.exists()) {
+      document.getElementById("like-number").textContent = docSnap.data().count;
+    } else {
+      setDoc(docRef, { count: 0 });
+      document.getElementById("like-number").textContent = "0";
+    }
+  });
+
+  window.addLike = async function () {
+    await updateDoc(docRef, {
+      count: increment(1)
+    });
+    const newSnap = await getDoc(docRef);
+    document.getElementById("like-number").textContent = newSnap.data().count;
+  };
+</script>
+
+<!-- いいねボタン -->
+<div style="text-align:center; margin-top: 1.2em;">
+  <button onclick="addLike()" style="padding:0.6em 1.2em; font-size:1em; border-radius:0.5em; border:none; background:#fa5c5c; color:white; cursor:pointer;">
+    ❤️ このブログに「いいね」する！
+  </button>
+  <p style="margin-top:0.4em; color:#555;">いいね数：<span id="like-number">読み込み中…</span></p>
+</div>
