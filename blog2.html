@@ -23,17 +23,20 @@
 }
 .home-btn {
   display: inline-block;
-  background: #5174a0;
-  color: #fff;
+  background: #fff;         /* 白背景 */
+  color: #767b8c;           /* 灰色文字 */
   font-size: 1.13em;
   padding: 0.8em 2em;
   border-radius: 2em;
   text-decoration: none;
   box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
-  transition: background 0.2s;
+  border: 1px solid #d7dbe2;  /* 薄い枠線でボタン感アップ */
+  transition: background 0.2s, color 0.2s;
 }
-.home-btn:hover, .home-btn:active {
-  background: #365478;
+.home-btn:hover,
+.home-btn:active {
+  background: #eceff3;    /* うすいグレー背景に変化 */
+  color: #5174a0;         /* ホバー時は青みグレーに変化 */
 }
 /* スマホでもボタン上下が被りにくい */
 @media (max-width: 600px) {
