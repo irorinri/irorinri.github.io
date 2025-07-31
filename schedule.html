@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huelin | Stream Schedule</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="effect.css">
   <style>
-    /* schedule card design */
+    body {
+      background: #f5f6fa;
+      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      color: #35374b;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
     .schedule-card {
       background: #fff;
       max-width: 420px;
-      margin: 40px auto 32px auto;
+      margin: 54px auto 32px auto;
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(50,60,100,0.07);
       padding: 2rem 1.4rem 1.3rem 1.4rem;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      font-family: inherit;
     }
     .schedule-title {
       font-size: 1.32rem;
@@ -132,70 +138,34 @@
   </style>
 </head>
 <body>
-  <div class="glow-bg"></div>
-
-  <header>
-    <div class="avatar-wrap">
-      <img src="profile.jpeg" alt="hueryn icon" class="avatar">
+  <section class="schedule-card">
+    <div class="home-btn-wrap">
+      <a href="index.html" class="home-btn">Back to home</a>
     </div>
-    <div class="username">Huelin!</div>
-    <div class="subtitle">
-      streamer / developer / designer<br>
-      <span class="location">Based in Japan</span>
+    <h1 class="schedule-title">Weekly Stream Schedule</h1>
+    <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
+    <ul class="week-list">
+      <li><span class="day-label mon">Monday</span> Study</li>
+      <li><span class="day-label tue">Tuesday</span> Music</li>
+      <li><span class="day-label wed">Wednesday</span> Drawing</li>
+      <li><span class="day-label thu">Thursday</span> Shogi Software</li>
+      <li><span class="day-label fri">Friday</span> 3D Modeling</li>
+      <li><span class="day-label sat">Saturday</span> Manga</li>
+      <li><span class="day-label sun">Sunday</span> Animation</li>
+    </ul>
+    <div class="games-section">
+      <h2>Daily Game Streams</h2>
+      <div class="game-note">One of these at random:</div>
+      <ul class="game-list">
+        <li>Genshin Impact</li>
+        <li>APEX</li>
+        <li>Elden Ring</li>
+        <li>Duel Masters Play's</li>
+        <li>Honkai Impact 3rd</li>
+        <li>Honkai: Star Rail</li>
+        <li>Zenless Zone Zero</li>
+      </ul>
     </div>
-    <nav class="socials">
-      <a href="https://irorinri.bandcamp.com/"><img src="bandcamp.svg" alt="bandcamp"></a>
-      <a href="https://sketchfab.com/irorinri"><img src="sketchfab.svg" alt="sketchfab"></a>
-      <a href="https://www.youtube.com/@irorinri"><img src="youtube.svg" alt="YouTube"></a>
-      <a href="https://irorinri.itch.io"><img src="itchio.svg" alt="Itch.io"></a>
-      <a href="https://github.com/irorinri"><img src="github.svg" alt="GitHub"></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="card">
-      <ul>
-        <li><a href="blog2.html">Blog</a></li>
-        <li><a href="schedule.html">Stream Schedule</a></li>
-        <li><a href="index.html">Art Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </section>
-
-    <!-- スケジュールカード -->
-    <section class="schedule-card">
-      <div class="home-btn-wrap">
-        <a href="index.html" class="home-btn">Back to home</a>
-      </div>
-      <h1 class="schedule-title">Weekly Stream Schedule</h1>
-      <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
-      <ul class="week-list">
-        <li><span class="day-label mon">Monday</span> Study</li>
-        <li><span class="day-label tue">Tuesday</span> Music</li>
-        <li><span class="day-label wed">Wednesday</span> Drawing</li>
-        <li><span class="day-label thu">Thursday</span> Shogi Software</li>
-        <li><span class="day-label fri">Friday</span> 3D Modeling</li>
-        <li><span class="day-label sat">Saturday</span> Manga</li>
-        <li><span class="day-label sun">Sunday</span> Animation</li>
-      </ul>
-      <div class="games-section">
-        <h2>Daily Game Streams</h2>
-        <div class="game-note">One of these at random:</div>
-        <ul class="game-list">
-          <li>Genshin Impact</li>
-          <li>APEX</li>
-          <li>Elden Ring</li>
-          <li>Duel Masters Play's</li>
-          <li>Honkai Impact 3rd</li>
-          <li>Honkai: Star Rail</li>
-          <li>Zenless Zone Zero</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>&copy; 2025 irorinri</span>
-  </footer>
+  </section>
 </body>
 </html>
