@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="effect.css">
   <style>
-    /* スケジュールカード専用 */
+    /* schedule card design */
     .schedule-card {
       background: #fff;
       max-width: 420px;
@@ -98,11 +98,36 @@
       font-size: 1.01rem;
       box-shadow: 0 1px 2px rgba(100,130,200,0.03);
     }
+    /* Back to home button style */
+    .home-btn-wrap {
+      text-align: center;
+      margin: 0.5em 0 0.7em 0;
+    }
+    .home-btn {
+      display: inline-block;
+      background: #eceff3;
+      color: #767b8c;
+      font-size: 1em;               
+      padding: 0.55em 1.3em;        
+      border-radius: 0.7em;       
+      text-decoration: none;
+      box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
+      border: 1px solid #d7dbe2;
+      transition: background 0.2s, color 0.2s;
+    }
+    .home-btn:hover,
+    .home-btn:active {
+      background: #d7dbe2; 
+      color: #5174a0;
+    }
     @media (max-width: 600px) {
       .schedule-card { padding: 1.1rem 0.2rem 1.1rem 0.2rem; }
       .schedule-title { font-size: 1.07rem; }
       .week-list li { font-size: 0.95rem; }
       .games-section h2 { font-size: 0.98rem; }
+      .home-btn-wrap {
+        margin: 0.7em 0 0.7em 0;
+      }
     }
   </style>
 </head>
@@ -137,8 +162,11 @@
       </ul>
     </section>
 
-    <!-- ここがスケジュールカード本体 -->
+    <!-- スケジュールカード -->
     <section class="schedule-card">
+      <div class="home-btn-wrap">
+        <a href="index.html" class="home-btn">Back to home</a>
+      </div>
       <h1 class="schedule-title">Weekly Stream Schedule</h1>
       <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
       <ul class="week-list">
