@@ -2,68 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>VTuber Weekly Schedule</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts -->
+  <title>Huelin | Stream Schedule</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="effect.css">
   <style>
-    body {
-      background: #f5f6fa;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
-      color: #35374b;
-      margin: 0;
-      padding: 0;
-    }
+    /* スケジュールカード専用 */
     .schedule-card {
       background: #fff;
       max-width: 420px;
-      margin: 44px auto;
+      margin: 40px auto 32px auto;
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(50,60,100,0.07);
-      padding: 2.3rem 1.6rem 1.8rem 1.6rem;
+      padding: 2rem 1.4rem 1.3rem 1.4rem;
+      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
     }
     .schedule-title {
-      font-size: 1.5rem;
+      font-size: 1.32rem;
       font-weight: 700;
       text-align: center;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.1rem;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      margin-bottom: 1.0rem;
+      letter-spacing: 0.07em;
     }
     .schedule-note {
       text-align: center;
-      font-size: 1.04rem;
+      font-size: 1.01rem;
       color: #888da3;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.2rem;
       font-weight: 500;
-      letter-spacing: 0.01em;
     }
     .week-list {
       list-style: none;
-      margin: 0 0 1.8rem 0;
+      margin: 0 0 1.5rem 0;
       padding: 0;
     }
     .week-list li {
       display: flex;
       align-items: center;
-      margin-bottom: 0.72rem;
+      margin-bottom: 0.65rem;
       font-size: 1.06rem;
-      letter-spacing: 0.01em;
     }
     .day-label {
-      min-width: 80px;
+      min-width: 78px;
       display: inline-block;
       font-weight: 600;
-      padding: 0.28em 0.85em;
+      padding: 0.25em 0.85em;
       border-radius: 7px;
-      margin-right: 0.9em;
-      font-size: 1rem;
-      background: #f0f2f7;
+      margin-right: 0.8em;
+      font-size: 0.97rem;
+      background: #f2f3f8;
       color: #546e7a;
       text-align: center;
-      transition: background 0.3s;
     }
-    /* 淡い色で曜日を少し区別 */
     .mon { background: #e3edfa; }
     .tue { background: #e9f7ea; }
     .wed { background: #fdf3e7; }
@@ -74,75 +64,110 @@
     .games-section {
       background: #f7faff;
       border-radius: 10px;
-      padding: 1.15em 1em 1em 1em;
-      box-shadow: 0 2px 8px rgba(150,180,220,0.05);
+      padding: 1em 1em 0.9em 1em;
+      margin-top: 0.7em;
+      box-shadow: 0 1px 4px rgba(150,180,220,0.06);
       text-align: center;
     }
     .games-section h2 {
-      font-size: 1.1rem;
+      font-size: 1.07rem;
       font-weight: 600;
       margin: 0 0 0.6em 0;
-      letter-spacing: 0.08em;
       color: #427fa6;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      letter-spacing: 0.08em;
     }
     .game-note {
-      font-size: 0.97rem;
+      font-size: 0.95rem;
       color: #8ea2be;
       margin: 0 0 0.6em 0;
-      font-weight: 400;
     }
     .game-list {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.7em;
+      gap: 0.6em;
       padding: 0;
       margin: 0;
     }
     .game-list li {
       background: #fff;
       border-radius: 6px;
-      padding: 0.28em 0.85em;
+      padding: 0.23em 0.7em;
       border: 1px solid #e0e6ef;
-      font-size: 1.02rem;
+      font-size: 1.01rem;
       box-shadow: 0 1px 2px rgba(100,130,200,0.03);
     }
     @media (max-width: 600px) {
-      .schedule-card { padding: 1.2rem 0.2rem 1.2rem 0.2rem; }
+      .schedule-card { padding: 1.1rem 0.2rem 1.1rem 0.2rem; }
       .schedule-title { font-size: 1.07rem; }
       .week-list li { font-size: 0.95rem; }
-      .games-section h2 { font-size: 1rem; }
+      .games-section h2 { font-size: 0.98rem; }
     }
   </style>
 </head>
 <body>
-  <section class="schedule-card">
-    <h1 class="schedule-title">Weekly VTuber Schedule</h1>
-    <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
-    <ul class="week-list">
-      <li><span class="day-label mon">Monday</span> Study</li>
-      <li><span class="day-label tue">Tuesday</span> Music</li>
-      <li><span class="day-label wed">Wednesday</span> Drawing</li>
-      <li><span class="day-label thu">Thursday</span> Shogi Software</li>
-      <li><span class="day-label fri">Friday</span> 3D Modeling</li>
-      <li><span class="day-label sat">Saturday</span> Manga</li>
-      <li><span class="day-label sun">Sunday</span> Animation</li>
-    </ul>
-    <div class="games-section">
-      <h2>Daily Game Streams</h2>
-      <div class="game-note">One of these at random:</div>
-      <ul class="game-list">
-        <li>Genshin Impact</li>
-        <li>APEX</li>
-        <li>Elden Ring</li>
-        <li>Duel Masters Play's</li>
-        <li>Honkai Impact 3rd</li>
-        <li>Honkai: Star Rail</li>
-        <li>Zenless Zone Zero</li>
-      </ul>
+  <div class="glow-bg"></div>
+
+  <header>
+    <div class="avatar-wrap">
+      <img src="profile.jpeg" alt="hueryn icon" class="avatar">
     </div>
-  </section>
+    <div class="username">Huelin!</div>
+    <div class="subtitle">
+      streamer / developer / designer<br>
+      <span class="location">Based in Japan</span>
+    </div>
+    <nav class="socials">
+      <a href="https://irorinri.bandcamp.com/"><img src="bandcamp.svg" alt="bandcamp"></a>
+      <a href="https://sketchfab.com/irorinri"><img src="sketchfab.svg" alt="sketchfab"></a>
+      <a href="https://www.youtube.com/@irorinri"><img src="youtube.svg" alt="YouTube"></a>
+      <a href="https://irorinri.itch.io"><img src="itchio.svg" alt="Itch.io"></a>
+      <a href="https://github.com/irorinri"><img src="github.svg" alt="GitHub"></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <ul>
+        <li><a href="blog2.html">Blog</a></li>
+        <li><a href="schedule.html">Stream Schedule</a></li>
+        <li><a href="index.html">Art Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </section>
+
+    <!-- ここがスケジュールカード本体 -->
+    <section class="schedule-card">
+      <h1 class="schedule-title">Weekly Stream Schedule</h1>
+      <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
+      <ul class="week-list">
+        <li><span class="day-label mon">Monday</span> Study</li>
+        <li><span class="day-label tue">Tuesday</span> Music</li>
+        <li><span class="day-label wed">Wednesday</span> Drawing</li>
+        <li><span class="day-label thu">Thursday</span> Shogi Software</li>
+        <li><span class="day-label fri">Friday</span> 3D Modeling</li>
+        <li><span class="day-label sat">Saturday</span> Manga</li>
+        <li><span class="day-label sun">Sunday</span> Animation</li>
+      </ul>
+      <div class="games-section">
+        <h2>Daily Game Streams</h2>
+        <div class="game-note">One of these at random:</div>
+        <ul class="game-list">
+          <li>Genshin Impact</li>
+          <li>APEX</li>
+          <li>Elden Ring</li>
+          <li>Duel Masters Play's</li>
+          <li>Honkai Impact 3rd</li>
+          <li>Honkai: Star Rail</li>
+          <li>Zenless Zone Zero</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2025 irorinri</span>
+  </footer>
 </body>
 </html>
