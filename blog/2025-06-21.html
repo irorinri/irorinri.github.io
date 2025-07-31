@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Shogi Like Counter</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <title>Shogi board under construction in Unity - Hueryn Blog</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Google Fonts（親と統一） -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 共通のblog.css（親と同じもの。無い場合は親からコピペして作る） -->
+  <link rel="stylesheet" href="../blog.css">
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: auto; }
+    /* 記事単体の装飾も、親ページに合わせて必要ならここで追加 */
+    body {
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      background: #f9fafb;
+      color: #222;
+    }
+    .article-main {
+      max-width: 540px;
+      margin: 2.5em auto;
+      background: #fff;
+      border-radius: 1.3em;
+      box-shadow: 0 4px 24px 0 rgba(100,120,160,0.09);
+      padding: 2.2em 1.3em 2.5em 1.3em;
+      font-size: 1.06em;
+    }
+    .like-wrap {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .like-count {
+      margin-top: 0.5em;
+      font-size: 0.97em;
+      color: #666;
+    }
+    /* 必要に応じて画像やボタンの装飾も親ページCSSと合わせる */
+    img {
+      max-width: 100%;
+      border-radius: 0.7em;
+      margin: 1.2em 0;
+      display: block;
+    }
     button.like-button {
       padding: 0.4em 1em;
-      font-size: 0.9em;
+      font-size: 0.97em;
       border-radius: 999px;
       border: 1px solid #ccc;
       background: rgba(255,255,255,0.4);
@@ -19,82 +51,83 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-    button.like-button:hover { background: #eee; }
+    button.like-button:hover { background: #eceff3; }
     button.like-button:disabled { opacity: 0.6; cursor: default; }
   </style>
 </head>
 <body>
-<p>
-Hey everyone!<br>
-Today I finally took the first real step toward a dream I’ve had for ages—playing shogi against an AI! ...
-</p>
-<img src="blog/2025-06-21.webp" alt="Shogi board" style="max-width:100%;border-radius:0.7em;margin:1.2em 0;">
-<div style="text-align:center; margin-top:1.5em;">
-  <button onclick="addLike()" id="like-btn" class="like-button">❤️ Like this post</button>
-  <p style="margin-top:0.5em; font-size:0.85em; color:#666;">
-    Likes: <span id="like-number">...</span>
-  </p>
-</div>
+  <main class="article-main">
+    <h1>Shogi board under construction in Unity</h1>
+    <p>
+      Hey everyone!<br>
+      Today I finally took the first real step toward a dream I’ve had for ages—playing shogi against an AI! ...
+    </p>
+    <img src="2025-06-21.webp" alt="Shogi board">
 
-<!-- 👇この位置に<script>を置くのが一番確実！！ -->
-<script>
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
-    authDomain: "like-counter-blog.firebaseapp.com",
-    projectId: "like-counter-blog",
-    storageBucket: "like-counter-blog.appspot.com",
-    messagingSenderId: "571743964148",
-    appId: "1:571743964148:web:423ef8234b2b89e2841b3"
-  };
-  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+    <div class="like-wrap">
+      <button onclick="addLike()" id="like-btn" class="like-button">❤️ Like this post</button>
+      <p class="like-count">
+        Likes: <span id="like-number">...</span>
+      </p>
+    </div>
+  </main>
+  <footer style="text-align:center;margin:2em 0 0 0; color:#aaa;">&copy; 2025 irorinri</footer>
 
-  const blogId = "2025-06-21";
-  const localKey = `liked-${blogId}`;
-  const docRef = db.collection("blogLikes").doc(blogId);
+  <!-- Firebaseスクリプト（親と同じ） -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtBvct6BKEazVzERc-FNAY8w3hCO8rNU",
+      authDomain: "like-counter-blog.firebaseapp.com",
+      projectId: "like-counter-blog",
+      storageBucket: "like-counter-blog.appspot.com",
+      messagingSenderId: "571743964148",
+      appId: "1:571743964148:web:423ef8234b2b89e2841b3"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-  // 初期表示
-  docRef.get().then((doc) => {
-    if (doc.exists) {
-      document.getElementById("like-number").textContent = doc.data().count;
-    } else {
-      document.getElementById("like-number").textContent = "0";
-    }
-    if (localStorage.getItem(localKey) === "true") disableLikeButton();
-  }).catch((e) => {
-    document.getElementById("like-number").textContent = "Error";
-    console.error(e);
-  });
+    const blogId = "2025-06-21";
+    const localKey = `liked-${blogId}`;
+    const docRef = db.collection("blogLikes").doc(blogId);
 
-  // グローバル定義（これがonclickで絶対呼ばれる！）
-  function addLike() {
-    if (localStorage.getItem(localKey) === "true") return;
+    // 初期表示
     docRef.get().then((doc) => {
-      if (!doc.exists) {
-        return docRef.set({ count: 1 });
-      } else {
-        return docRef.update({ count: doc.data().count + 1 });
-      }
-    }).then(() => {
-      return docRef.get();
-    }).then((doc) => {
-      document.getElementById("like-number").textContent = doc.data().count;
-      localStorage.setItem(localKey, "true");
-      disableLikeButton();
+      document.getElementById("like-number").textContent = doc.exists ? doc.data().count : "0";
+      if (localStorage.getItem(localKey) === "true") disableLikeButton();
     }).catch((e) => {
-      console.error("Like failed:", e);
-      alert("Failed to Like. See console for details.");
+      document.getElementById("like-number").textContent = "Error";
+      console.error(e);
     });
-  }
 
-  function disableLikeButton() {
-    const btn = document.getElementById("like-btn");
-    btn.disabled = true;
-    btn.textContent = "❤️ Liked!";
-    btn.style.opacity = 0.6;
-    btn.style.cursor = "default";
-  }
-</script>
+    function addLike() {
+      if (localStorage.getItem(localKey) === "true") return;
+      docRef.get().then((doc) => {
+        if (!doc.exists) {
+          return docRef.set({ count: 1 });
+        } else {
+          return docRef.update({ count: doc.data().count + 1 });
+        }
+      }).then(() => {
+        return docRef.get();
+      }).then((doc) => {
+        document.getElementById("like-number").textContent = doc.data().count;
+        localStorage.setItem(localKey, "true");
+        disableLikeButton();
+      }).catch((e) => {
+        console.error("Like failed:", e);
+        alert("Failed to Like. See console for details.");
+      });
+    }
+
+    function disableLikeButton() {
+      const btn = document.getElementById("like-btn");
+      btn.disabled = true;
+      btn.textContent = "❤️ Liked!";
+      btn.style.opacity = 0.6;
+      btn.style.cursor = "default";
+    }
+  </script>
 </body>
 </html>
