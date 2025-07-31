@@ -1,18 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <title>Hueryn VTuber Schedule</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule | hueryn</title>
-  <link rel="stylesheet" href="effect.css">
+  <!-- Google Fonts: Inter for English, Noto Sans JP for Japanese -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f4f6fb;
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .schedule-card {
+      max-width: 450px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(30,40,80,0.10), 0 1.5px 8px rgba(120,140,170,0.04);
+      padding: 2.2rem 2rem 1.5rem 2rem;
+      box-sizing: border-box;
+    }
+    .schedule-title {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      font-size: 1.55rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.3rem;
+      text-align: center;
+      color: #3b3c4e;
+      text-shadow: 0 1px 0 #f4f6fb, 0 2px 8px #eee;
+    }
+    .week-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+    .week-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.9rem;
+      font-size: 1.08rem;
+      padding-left: 4px;
+    }
+    .day-label {
+      display: inline-block;
+      min-width: 54px;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.3em 0.9em;
+      border-radius: 8px;
+      margin-right: 0.9em;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(100,120,180,0.07);
+      letter-spacing: 0.1em;
+    }
+    /* 曜日ごとのカラー */
+    .mon { background: #80b2ff; }
+    .tue { background: #b7ff98; color: #387844; }
+    .wed { background: #ffd180; color: #b27100; }
+    .thu { background: #ff8bb6; }
+    .fri { background: #9b95ff; }
+    .sat { background: #ffb09e; color: #8f2c0f; }
+    .sun { background: #ffd6e3; color: #b13872; }
+    /* ゲーム配信帯 */
+    .games-section {
+      margin: 1.4em 0 0 0;
+      background: linear-gradient(90deg, #88e3f2 10%, #cae5fd 90%);
+      border-radius: 13px;
+      box-shadow: 0 2px 8px rgba(100,150,190,0.12);
+      padding: 1.2em 1em 1em 1em;
+      text-align: center;
+    }
+    .games-section h2 {
+      font-size: 1.14rem;
+      font-weight: bold;
+      margin: 0 0 0.7em 0;
+      color: #34799e;
+      letter-spacing: 0.13em;
+    }
+    .game-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7em;
+      justify-content: center;
+      margin: 0.2em 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .game-list li {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.28em 0.88em;
+      font-size: 1.02rem;
+      border: 1.7px solid #d0eafd;
+      margin: 0;
+      box-shadow: 0 1px 3px rgba(100,180,220,0.07);
+    }
+    @media (max-width: 520px) {
+      .schedule-card { padding: 1.1rem 0.3rem 1.3rem 0.3rem; }
+      .schedule-title { font-size: 1.13rem; }
+      .week-list li { font-size: 0.96rem; }
+    }
+  </style>
 </head>
 <body>
-  <main class="schedule-main">
-    <section class="card" style="text-align: center;">
-      <h1 class="schedule-title">Stream Schedule</h1>
-      <p class="schedule-coming">Coming soon!</p>
-      <a href="profile.html" class="schedule-back">Back to Home</a>
-    </section>
-  </main>
+  <div class="schedule-card">
+    <div class="schedule-title">Hueryn’s Weekly VTuber Schedule</div>
+    <ul class="week-list">
+      <li><span class="day-label mon">月曜</span> 勉強</li>
+      <li><span class="day-label tue">火曜</span> 作曲</li>
+      <li><span class="day-label wed">水曜</span> 絵</li>
+      <li><span class="day-label thu">木曜</span> 将棋ソフト作る</li>
+      <li><span class="day-label fri">金曜</span> モデリング</li>
+      <li><span class="day-label sat">土曜</span> マンガ描く</li>
+      <li><span class="day-label sun">日曜</span> アニメ描く</li>
+    </ul>
+    <div class="games-section">
+      <h2>🎮 ゲーム配信は毎日！</h2>
+      <ul class="game-list">
+        <li>原神</li>
+        <li>APEX</li>
+        <li>エルデンリング</li>
+        <li>デュエルマスターズプレイス</li>
+        <li>崩壊3rd</li>
+        <li>崩壊スターレイル</li>
+        <li>ゼンゼロ</li>
+      </ul>
+      <div style="margin-top:0.7em;font-size:0.97em;color:#34799e;opacity:0.82;">（どれをやるかはランダム！）</div>
+    </div>
+  </div>
 </body>
 </html>
