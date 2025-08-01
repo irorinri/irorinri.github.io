@@ -56,12 +56,12 @@ header {
   margin-bottom: 0;
   display: inline-block;
   /* ここ追加してみて！ */
-  width: 200px;      /* 画像サイズ＋paddingぶん、確実に広くする */
-  height: 200px;
+  width: 150px;      /* 画像サイズ＋paddingぶん、確実に広くする */
+  height: 150px;
 }
 .avatar {
-  width: 188px;      /* wrapのwidth−padding*2（padding:6pxの場合） */
-  height: 188px;
+  width: 150px;      /* wrapのwidth−padding*2（padding:6pxの場合） */
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #fff;
