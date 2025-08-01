@@ -13,10 +13,13 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      /* ここで変な縮み防止 */
+      font-stretch: normal;
+      letter-spacing: normal;
     }
     .schedule-card {
       background: #fff;
-      max-width: 420px;
+      max-width: 430px;
       margin: 54px auto 32px auto;
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(50,60,100,0.07);
@@ -24,20 +27,21 @@
       font-family: inherit;
     }
     .schedule-title {
-      font-size: 1.28rem;
+      font-size: 1.32rem;
       font-weight: 600;
       text-align: center;
       margin-bottom: 1.0rem;
-      letter-spacing: 0.06em;
+      /* letter-spacing削除 */
       font-family: 'Montserrat', sans-serif;
     }
     .schedule-note {
       text-align: center;
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       color: #888da3;
       margin-bottom: 1.15rem;
       font-weight: 400;
       font-family: 'Montserrat', sans-serif;
+      /* letter-spacing削除 */
     }
     .week-list {
       list-style: none;
@@ -48,23 +52,24 @@
       display: flex;
       align-items: center;
       margin-bottom: 0.63rem;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 400;
       font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      /* letter-spacing削除 */
     }
     .day-label {
       min-width: 54px;
       display: inline-block;
       font-weight: 600;
-      padding: 0.22em 0.6em;
+      padding: 0.22em 0.75em;
       border-radius: 7px;
       margin-right: 0.8em;
-      font-size: 0.96rem;
+      font-size: 0.99rem;
       background: #f2f3f8;
       color: #546e7a;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.03em;
+      /* letter-spacing削除 */
     }
     .mon { background: #e3edfa; }
     .tue { background: #e9f7ea; }
@@ -82,40 +87,42 @@
       text-align: center;
     }
     .games-section h2 {
-      font-size: 1.06rem;
+      font-size: 1.11rem;
       font-weight: 600;
       margin: 0 0 0.5em 0;
       color: #427fa6;
-      letter-spacing: 0.07em;
+      /* letter-spacing削除 */
       font-family: 'Montserrat', sans-serif;
     }
     .game-note {
-      font-size: 0.96rem;
+      font-size: 0.99rem;
       color: #8ea2be;
       margin: 0 0 0.5em 0;
       font-weight: 400;
       font-family: 'Montserrat', sans-serif;
+      /* letter-spacing削除 */
     }
     .game-list {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.62em;
+      gap: 0.7em;
       padding: 0;
       margin: 0;
     }
     .game-list li {
       background: #fff;
       border-radius: 6px;
-      padding: 0.2em 0.72em;
+      padding: 0.26em 1em;
       border: 1px solid #e0e6ef;
-      font-size: 1.01rem;
-      min-width: 128px;
+      font-size: 1.02rem;
+      min-width: 140px;
       text-align: center;
       box-shadow: 0 1px 2px rgba(100,130,200,0.03);
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
+      /* letter-spacing削除 */
     }
     /* Back to home button style */
     .home-btn-wrap {
@@ -135,7 +142,7 @@
       transition: background 0.2s, color 0.2s;
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
-      letter-spacing: 0.03em;
+      /* letter-spacing削除 */
     }
     .home-btn:hover,
     .home-btn:active {
@@ -144,13 +151,11 @@
     }
     @media (max-width: 600px) {
       .schedule-card { padding: 1.1rem 0.2rem 1.1rem 0.2rem; }
-      .schedule-title { font-size: 1.06rem; }
-      .week-list li { font-size: 0.93rem; }
-      .games-section h2 { font-size: 0.97rem; }
-      .home-btn-wrap {
-        margin: 0.7em 0 0.7em 0;
-      }
-      .game-list li { min-width: 100px; font-size: 0.93rem; }
+      .schedule-title { font-size: 1.08rem; }
+      .week-list li { font-size: 0.97rem; }
+      .games-section h2 { font-size: 1rem; }
+      .home-btn-wrap { margin: 0.7em 0 0.7em 0; }
+      .game-list li { min-width: 110px; font-size: 0.93rem; }
     }
   </style>
 </head>
