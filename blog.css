@@ -72,9 +72,16 @@ header {
 }
 
 main {
-  max-width: 540px;
-  margin: 0 auto;
-  padding: 1.2rem 0.7rem 2.2rem 0.7rem;
+  max-width: 540px;         /* 横幅の最大値を540pxに制限 */
+  margin: 0 auto;           /* 上下マージン0、左右は自動（中央寄せ） */
+  padding: 0.2rem 0.7rem 2.2rem 0.7rem;
+  /*     ↑     ↑     ↑     ↑
+         |     |     |     |
+         |     |     |     └─ 左側の余白（0.7rem）
+         |     |     └────── 下側の余白（2.2rem）
+         |     └────────── 右側の余白（0.7rem）
+         └────────────── 上側の余白（1.2rem）
+  */
 }
 
 .blog-list {
