@@ -63,8 +63,8 @@ header {
 }
 
 .avatar {
-  width: 120% !important;
-  height: 120% !important;
+  width: 115% !important;
+  height: 115% !important;
   object-fit: cover !important;
   border-radius: 50% !important;
   border: 3px solid #fff !important;
