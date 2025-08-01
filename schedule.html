@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huelin | Stream Schedule</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background: #f5f6fa;
@@ -24,18 +24,20 @@
       font-family: inherit;
     }
     .schedule-title {
-      font-size: 1.32rem;
-      font-weight: 700;
+      font-size: 1.28rem;
+      font-weight: 600;
       text-align: center;
       margin-bottom: 1.0rem;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
+      font-family: 'Montserrat', sans-serif;
     }
     .schedule-note {
       text-align: center;
-      font-size: 1.01rem;
+      font-size: 1.02rem;
       color: #888da3;
-      margin-bottom: 1.2rem;
-      font-weight: 500;
+      margin-bottom: 1.15rem;
+      font-weight: 400;
+      font-family: 'Montserrat', sans-serif;
     }
     .week-list {
       list-style: none;
@@ -45,20 +47,24 @@
     .week-list li {
       display: flex;
       align-items: center;
-      margin-bottom: 0.65rem;
-      font-size: 1.06rem;
+      margin-bottom: 0.63rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
     }
     .day-label {
-      min-width: 78px;
+      min-width: 54px;
       display: inline-block;
       font-weight: 600;
-      padding: 0.25em 0.85em;
+      padding: 0.22em 0.6em;
       border-radius: 7px;
       margin-right: 0.8em;
-      font-size: 0.97rem;
+      font-size: 0.96rem;
       background: #f2f3f8;
       color: #546e7a;
       text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.03em;
     }
     .mon { background: #e3edfa; }
     .tue { background: #e9f7ea; }
@@ -71,38 +77,45 @@
       background: #f7faff;
       border-radius: 10px;
       padding: 1em 1em 0.9em 1em;
-      margin-top: 0.7em;
-      box-shadow: 0 1px 4px rgba(150,180,220,0.06);
+      margin-top: 0.65em;
+      box-shadow: 0 1px 4px rgba(150,180,220,0.05);
       text-align: center;
     }
     .games-section h2 {
-      font-size: 1.07rem;
+      font-size: 1.06rem;
       font-weight: 600;
-      margin: 0 0 0.6em 0;
+      margin: 0 0 0.5em 0;
       color: #427fa6;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
+      font-family: 'Montserrat', sans-serif;
     }
     .game-note {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: #8ea2be;
-      margin: 0 0 0.6em 0;
+      margin: 0 0 0.5em 0;
+      font-weight: 400;
+      font-family: 'Montserrat', sans-serif;
     }
     .game-list {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6em;
+      gap: 0.62em;
       padding: 0;
       margin: 0;
     }
     .game-list li {
       background: #fff;
       border-radius: 6px;
-      padding: 0.23em 0.7em;
+      padding: 0.2em 0.72em;
       border: 1px solid #e0e6ef;
       font-size: 1.01rem;
+      min-width: 128px;
+      text-align: center;
       box-shadow: 0 1px 2px rgba(100,130,200,0.03);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
     }
     /* Back to home button style */
     .home-btn-wrap {
@@ -114,12 +127,15 @@
       background: #eceff3;
       color: #767b8c;
       font-size: 1em;               
-      padding: 0.55em 1.3em;        
+      padding: 0.48em 1.25em;        
       border-radius: 0.7em;       
       text-decoration: none;
       box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
       border: 1px solid #d7dbe2;
       transition: background 0.2s, color 0.2s;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
     }
     .home-btn:hover,
     .home-btn:active {
@@ -128,37 +144,38 @@
     }
     @media (max-width: 600px) {
       .schedule-card { padding: 1.1rem 0.2rem 1.1rem 0.2rem; }
-      .schedule-title { font-size: 1.07rem; }
-      .week-list li { font-size: 0.95rem; }
-      .games-section h2 { font-size: 0.98rem; }
+      .schedule-title { font-size: 1.06rem; }
+      .week-list li { font-size: 0.93rem; }
+      .games-section h2 { font-size: 0.97rem; }
       .home-btn-wrap {
         margin: 0.7em 0 0.7em 0;
       }
+      .game-list li { min-width: 100px; font-size: 0.93rem; }
     }
   </style>
 </head>
 <body>
   <section class="schedule-card">
     <div class="home-btn-wrap">
-      <a href="index.html" class="home-btn">Back to home</a>
+      <a href="profile.html" class="home-btn">Back to home</a>
     </div>
     <h1 class="schedule-title">Weekly Stream Schedule</h1>
     <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
     <ul class="week-list">
-      <li><span class="day-label mon">Monday</span> Study</li>
-      <li><span class="day-label tue">Tuesday</span> Music</li>
-      <li><span class="day-label wed">Wednesday</span> Drawing</li>
-      <li><span class="day-label thu">Thursday</span> Shogi Software</li>
-      <li><span class="day-label fri">Friday</span> 3D Modeling</li>
-      <li><span class="day-label sat">Saturday</span> Manga</li>
-      <li><span class="day-label sun">Sunday</span> Animation</li>
+      <li><span class="day-label mon">Mon</span> Study</li>
+      <li><span class="day-label tue">Tue</span> Music</li>
+      <li><span class="day-label wed">Wed</span> Drawing</li>
+      <li><span class="day-label thu">Thu</span> Shogi Software</li>
+      <li><span class="day-label fri">Fri</span> 3D Modeling</li>
+      <li><span class="day-label sat">Sat</span> Manga</li>
+      <li><span class="day-label sun">Sun</span> Animation</li>
     </ul>
     <div class="games-section">
       <h2>Daily Game Streams</h2>
       <div class="game-note">One of these at random:</div>
       <ul class="game-list">
         <li>Genshin Impact</li>
-        <li>APEX</li>
+        <li>Apex Legends</li>
         <li>Elden Ring</li>
         <li>Duel Masters Play's</li>
         <li>Honkai Impact 3rd</li>
