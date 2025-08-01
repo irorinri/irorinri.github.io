@@ -4,18 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huelin | Stream Schedule</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background: #f5f6fa;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
       color: #35374b;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      /* ここで変な縮み防止 */
-      font-stretch: normal;
-      letter-spacing: normal;
     }
     .schedule-card {
       background: #fff;
@@ -27,13 +24,11 @@
       font-family: inherit;
     }
     .schedule-title {
-      color: #427fa6;
       font-size: 1.32rem;
       font-weight: 600;
       text-align: center;
       margin-bottom: 1.0rem;
-      /* letter-spacing削除 */
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
     .schedule-note {
       text-align: center;
@@ -41,8 +36,7 @@
       color: #888da3;
       margin-bottom: 1.15rem;
       font-weight: 400;
-      font-family: 'Montserrat', sans-serif;
-      /* letter-spacing削除 */
+      font-family: 'Inter', sans-serif;
     }
     .week-list {
       list-style: none;
@@ -55,8 +49,7 @@
       margin-bottom: 0.63rem;
       font-size: 1.08rem;
       font-weight: 400;
-      font-family: 'Montserrat', 'Inter', 'Noto Sans JP', sans-serif;
-      /* letter-spacing削除 */
+      font-family: inherit;
     }
     .day-label {
       min-width: 54px;
@@ -69,8 +62,7 @@
       background: #f2f3f8;
       color: #546e7a;
       text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      /* letter-spacing削除 */
+      font-family: inherit;
     }
     .mon { background: #e3edfa; }
     .tue { background: #e9f7ea; }
@@ -92,16 +84,14 @@
       font-weight: 600;
       margin: 0 0 0.5em 0;
       color: #427fa6;
-      /* letter-spacing削除 */
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
     .game-note {
       font-size: 0.99rem;
       color: #8ea2be;
       margin: 0 0 0.5em 0;
       font-weight: 400;
-      font-family: 'Montserrat', sans-serif;
-      /* letter-spacing削除 */
+      font-family: 'Inter', sans-serif;
     }
     .game-list {
       list-style: none;
@@ -121,9 +111,8 @@
       min-width: 140px;
       text-align: center;
       box-shadow: 0 1px 2px rgba(100,130,200,0.03);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 400;
-      /* letter-spacing削除 */
     }
     /* Back to home button style */
     .home-btn-wrap {
@@ -141,9 +130,8 @@
       box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
       border: 1px solid #d7dbe2;
       transition: background 0.2s, color 0.2s;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 400;
-      /* letter-spacing削除 */
     }
     .home-btn:hover,
     .home-btn:active {
