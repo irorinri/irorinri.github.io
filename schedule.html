@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #fff;  /* ← ここを純白に */
+      background: #fff;
       font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
       color: #35374b;
       margin: 0;
@@ -15,34 +15,58 @@
       min-height: 100vh;
     }
     .schedule-card {
-      background: #fff;
-      max-width: 430px;
-      margin: 54px auto 32px auto;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(50,60,100,0.07);
-      padding: 2rem 1.4rem 1.3rem 1.4rem;
-      font-family: inherit;
+      /* 見た目上「カード」感をなくす */
+      background: none;
+      max-width: none;
+      margin: 0 auto;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
     }
     .schedule-title {
       color: #427fa6;
       font-size: 1.32rem;
       font-weight: 600;
       text-align: center;
-      margin-bottom: 1.0rem;
+      margin: 54px 0 1.0rem 0;
       font-family: 'Inter', sans-serif;
+    }
+    .home-btn-wrap {
+      text-align: center;
+      margin: 2.2em 0 1.2em 0;
+    }
+    .home-btn {
+      display: inline-block;
+      background: #eceff3;
+      color: #767b8c;
+      font-size: 1em;
+      padding: 0.48em 1.25em;
+      border-radius: 0.7em;
+      text-decoration: none;
+      box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
+      border: 1px solid #d7dbe2;
+      transition: background 0.2s, color 0.2s;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+    .home-btn:hover,
+    .home-btn:active {
+      background: #d7dbe2; 
+      color: #5174a0;
     }
     .schedule-note {
       text-align: center;
       font-size: 1.05rem;
       color: #427fa6;
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.2rem;
       font-weight: 400;
       font-family: 'Inter', sans-serif;
     }
     .week-list {
       list-style: none;
-      margin: 0 0 1.5rem 0;
+      margin: 0 auto 1.6rem auto;
       padding: 0;
+      max-width: 480px;
     }
     .week-list li {
       display: flex;
@@ -51,6 +75,7 @@
       font-size: 1.08rem;
       font-weight: 400;
       font-family: inherit;
+      justify-content: center;
     }
     .day-label {
       min-width: 54px;
@@ -76,9 +101,10 @@
       background: #f7faff;
       border-radius: 10px;
       padding: 1em 1em 0.9em 1em;
-      margin-top: 0.65em;
+      margin: 0 auto 2.5em auto;
       box-shadow: 0 1px 4px rgba(150,180,220,0.05);
       text-align: center;
+      max-width: 480px;
     }
     .games-section h2 {
       font-size: 1.11rem;
@@ -115,42 +141,17 @@
       font-family: 'Inter', sans-serif;
       font-weight: 400;
     }
-    /* Back to home button style */
-    .home-btn-wrap {
-      text-align: center;
-      margin: 0.5em 0 0.7em 0;
-    }
-    .home-btn {
-      display: inline-block;
-      background: #eceff3;
-      color: #767b8c;
-      font-size: 1em;               
-      padding: 0.48em 1.25em;        
-      border-radius: 0.7em;       
-      text-decoration: none;
-      box-shadow: 0 2px 14px 0 rgba(80,110,150,0.07);
-      border: 1px solid #d7dbe2;
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-    }
-    .home-btn:hover,
-    .home-btn:active {
-      background: #d7dbe2; 
-      color: #5174a0;
-    }
     @media (max-width: 600px) {
-      .schedule-card { padding: 1.1rem 0.2rem 1.1rem 0.2rem; }
-      .schedule-title { font-size: 1.08rem; }
+      .schedule-title { font-size: 1.08rem; margin-top: 24px; }
       .week-list li { font-size: 0.97rem; }
       .games-section h2 { font-size: 1rem; }
-      .home-btn-wrap { margin: 0.7em 0 0.7em 0; }
       .game-list li { min-width: 110px; font-size: 0.93rem; }
+      .games-section, .week-list { max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <section class="schedule-card">
+  <div class="schedule-card">
     <div class="home-btn-wrap">
       <a href="profile.html" class="home-btn">Back to home</a>
     </div>
@@ -178,6 +179,6 @@
         <li>Zenless Zone Zero</li>
       </ul>
     </div>
-  </section>
+  </div>
 </body>
 </html>
