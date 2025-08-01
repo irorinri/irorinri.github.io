@@ -60,8 +60,9 @@ header {
   height: 150px;
 }
 .avatar {
-  width: 150px;      /* wrapのwidth−padding*2（padding:6pxの場合） */
-  height: 150px;
+  width: 150px;  !important;
+  height: 150px !important;    /* wrapのwidth−padding*2（padding:6pxの場合） */
+  
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #fff;
