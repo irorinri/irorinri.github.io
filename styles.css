@@ -4,11 +4,11 @@ body {
   font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントに変更 */
   margin: 0;
   padding-bottom: 120vh;
-  background-color: #f8f8f8; /* ページ全体の背景色を薄い灰色に */
+  background-color: #f8f8f8; 
   overflow: visible; /* スクロールを許可 */
 }
 main {
-  position: relative; /* 親要素が相対的な位置を基準にする */
+  position: relative; 
 }
 nav {
   display: flex;
@@ -35,12 +35,12 @@ nav a {
   border-radius: 5px; /* 角を丸める */
   font-size: 16px;
   font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントを適用 */
-  background-color: transparent; /* 背景を透明に設定 */
+  background-color: transparent; 
   transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
 }
 
 nav a:hover {
-  background-color: #f0f0f0; /* ホバー時の背景色を薄い灰色に変更 */
+  background-color: #f0f0f0; 
   transform: scale(1.05); /* ホバー時に少し拡大 */
 }
 
@@ -52,7 +52,7 @@ nav a:hover {
   }
 
   nav a {
-    padding: 5px 15px; /* スマホでも同じサイズを維持 */
+    padding: 5px 15px; 
     font-size: 14px; /* フォントサイズを小さめに調整 */
   }
 }
@@ -60,7 +60,7 @@ footer {
   position: fixed; /* 常に固定 */
   bottom: 0; /* 画面の一番下に配置 */
   width: 100%; /* 横幅を全画面に広げる */
-  text-align: center; /* テキストを中央揃え */
+  text-align: center; 
   color: black; /* 白文字 */
   font-size: 11px; /* 小さめの文字サイズ */
   padding: 2px 0; /* 上下の余白 */
