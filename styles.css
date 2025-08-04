@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding-bottom: 120vh;
   
-  background-color: #fcfcfc; 
+  background-color: #f1f1f1; 
   overflow: visible; /* スクロールを許可 */
 }
 main {
@@ -15,7 +15,7 @@ nav {
   display: flex;
   justify-content: center;
   gap: 0px; /* メニュー間のスペース */
-  background-color: #f1f1f1; /* 背景色を白に変更 */
+  background-color: #fcfcfc; /* 背景色を白に変更 */
   padding: 10px 10px; /* 上下10pxの余白 */
   margin-left: -10px;
   position: fixed; /* スクロールしても上部に固定 */
