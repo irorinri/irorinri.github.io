@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding-bottom: 120vh;
   
-  background-color: #f8f8f8; 
+  background-color: #fcfcfc; 
   overflow: visible; /* スクロールを許可 */
 }
 main {
