@@ -4,6 +4,7 @@ body {
   font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントに変更 */
   margin: 0;
   padding-bottom: 120vh;
+  padding-top: -40vh;
   background-color: #f8f8f8; 
   overflow: visible; /* スクロールを許可 */
 }
