@@ -55,8 +55,8 @@ header {
 
 .avatar-wrap {
   display: inline-block;
-  width: min(32vw, 120px);      /* スマホでも最大160px、それ以下なら画面幅の32% */
-  height: min(32vw, 120px);
+  width: min(24vw, 120px);      /* スマホでも最大160px、それ以下なら画面幅の32% */
+  height: min(24vw, 120px);
   padding: 0;
   border-radius: 50%;
   background: conic-gradient(
