@@ -68,14 +68,14 @@
   font-size: 16px; 
   white-space: pre-wrap; 
   padding: 0 20px;
-  margin-top: 405px;
+  margin-top: 40px;
   box-sizing: border-box; 
 }
     .novel-title {
     font-size: 16px;
-    font-weight: normal; /* タイトルを強調する場合 */
-    text-align: left; /* 中央揃えにする場合 */
-    margin-bottom: 15px; /* 本文との間隔を調整 */
+    font-weight: normal; 
+    text-align: left;
+    margin-bottom: 15px;
   }
 
 
@@ -178,7 +178,6 @@
     gallery.style.display = 'none';
     backButton.style.display = 'block';
 
-    // 小説を取得して表示
     fetch(`data/n${novelId}.json`)
     .then(response => response.json())
     .then(data => {
