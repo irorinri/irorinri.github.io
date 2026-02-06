@@ -2,394 +2,532 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <!-- スマホなどでの表示倍率を調整 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
   <title>Tweets</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <style>
-  body.blog-page {
-  font-size: 12px;
-  margin-top: 300px;
-  line-height: 1.6;
-}
-main {
-  padding: 20px;
-}
-.blog-e {
-  margin-bottom: 20px;
-}
-.blog-e h2 {
-  font-weight: normal;
-  font-size: inherit;
-  margin: 0;
-}
-.blog-e p {
-  margin: 0;
-}
-footer {
-  text-align: center;
-}
-.hidden {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-.toggle-link {
-  display: block;
-  text-decoration: none;
-  color: #000000;
-  font-size: inherit;
-  font-weight: normal;
-  margin-bottom: 16px;
-  cursor: pointer;
-}
-.diary-buttons {
-  display: grid;
-  grid-template-columns: repeat(10, 28px);
-  grid-template-rows: repeat(2, 28px);
-  gap: 0;
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-.diary-button {
-  width: 30px;
-  height: 30px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  text-align: center;
-  line-height: 30px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.diary-button:hover {
-  background-color: #d0d0d0;
-}
-.diary-button.selected {
-  background-color: #dfdfdf;
-  color: white;
-  font-weight: bold;
-}
-#diary-content {
-  display: none;
-}
-#toggle-diary-bottom,
-#toggle-diary-bottom2 {
-  display: none;
-}
-#toggle-diary-confirm-row,
-#toggle-snapshot-confirm-row {
-  gap: 0px;
-  align-items: center;
-  margin-bottom: 0px;
-}
-#snapshot-main {
-  display: none;
-}
-.uses-toggle-wrap .toggle-link {
-  margin-bottom: 14px;
-}
-.uses-toggle-wrap {
-  margin-bottom: 14px;
-}
-</style>
+    /* ===== ページ全体レイアウト ===== */
+    body.blog-page {
+      font-size: 12px;
+      margin-top: 300px;
+      line-height: 1.6;
+    }
+    main {
+      padding: 20px;
+    }
+
+    /* 記事ブロックの間隔 */
+    .blog-e {
+      margin-bottom: 20px;
+    }
+    .blog-e h2 {
+      font-weight: normal;
+      font-size: inherit;
+      margin: 0;
+    }
+    .blog-e p {
+      margin: 0;
+    }
+    footer {
+      text-align: center;
+    }
+
+    /* 完全非表示用クラス（displayだけでなく余白も消す） */
+    .hidden {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+
+    /* トグル（show/hideリンク）見た目 */
+    .toggle-link {
+      display: block;
+      text-decoration: none;
+      color: #000000;
+      font-size: inherit;
+      font-weight: normal;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    /* 日記ボタン（20個）を10x2で並べる */
+    .diary-buttons {
+      display: grid;
+      grid-template-columns: repeat(10, 28px);
+      grid-template-rows: repeat(2, 28px);
+      gap: 0;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .diary-button {
+      width: 30px;
+      height: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .diary-button:hover {
+      background-color: #d0d0d0;
+    }
+
+    /* 選択中ボタン */
+    .diary-button.selected {
+      background-color: #dfdfdf;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* 初期状態で非表示にしておく要素 */
+    #diary-content {
+      display: none;
+    }
+    #toggle-diary-bottom,
+    #toggle-diary-bottom2 {
+      display: none;
+    }
+
+    /* 確認行（Enter?/Back）の見た目 */
+    #toggle-diary-confirm-row,
+    #toggle-snapshot-confirm-row {
+      gap: 0px;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+
+    /* snapshot本体は初期非表示 */
+    #snapshot-main {
+      display: none;
+    }
+
+    /* usesのトグル行の余白調整 */
+    .uses-toggle-wrap .toggle-link {
+      margin-bottom: 14px;
+    }
+    .uses-toggle-wrap {
+      margin-bottom: 14px;
+    }
+  </style>
 </head>
+
 <body class="blog-page">
 
-<nav>
-  <a href="index.html">folks</a>
-  <a href="illustrations.html">draws</a>
-  
-  <a href="gallery.html">comix</a>
-  <a href="story.html">tales</a>
-  <a href="blog.html">stuff</a>
-</nav>
-<div class="nav-bottom-space"></div>
-<main>
+  <!-- サイト内ナビ -->
+  <nav>
+    <a href="index.html">folks</a>
+    <a href="illustrations.html">draws</a>
+    <a href="gallery.html">comix</a>
+    <a href="story.html">tales</a>
+    <a href="blog.html">stuff</a>
+  </nav>
 
-  <div class="blog-e">
-    <p style="margin-bottom: 0px;">
+  <div class="nav-bottom-space"></div>
 
-<div class="uses-toggle-wrap" style="position: relative; min-height: 24px;">
-  <a id="toggle-uses" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0;">→ show uses</a>
-  <a id="toggle-uses-hide-top" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0; display: none;">↓ hide uses</a>
-</div>
-<div id="uses-main" class="hidden">
-  <div id="uses-inner"></div>
-  <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
-</div>
-<a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
-<div id="toggle-snapshot-confirm-row" style="display: none; gap: 18px;">
-  <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
-  <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
-</div>
-<div id="snapshot-main" class="hidden">
-  <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
-  <div id="snapshot-inner"></div>  <!-- ここにfetchした内容を直貼りする -->
-  <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
-</div>
-  </div>
+  <main>
+    <div class="blog-e">
+      <p style="margin-bottom: 0px;">
 
-  <!-- 日記 -->
-  <a id="toggle-diary" class="toggle-link">→ show diary</a>
-  <div id="toggle-diary-confirm-row" style="display: none; gap: 18px;">
-    <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
-    <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
-  </div>
-  <div id="toggle-diary-confirm-gap" style="display: none; height: 20px;"></div>
-  <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
-  <div id="diary-buttons" class="diary-buttons hidden"></div>
-  <div id="diary-content" class="hidden">
-    <div id="diary-text"></div> 
-    <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
-  </div>
+        <!-- ===== usesセクション ===== -->
+        <!-- 上段のshow/hideを同じ位置に重ね、表示切替で見せる -->
+        <div class="uses-toggle-wrap" style="position: relative; min-height: 24px;">
+          <a id="toggle-uses" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0;">→ show uses</a>
+          <a id="toggle-uses-hide-top" class="toggle-link" style="position: absolute; left: 0; top: 0; right: 0; display: none;">↓ hide uses</a>
+        </div>
+        <div id="uses-main" class="hidden">
+          <div id="uses-inner"></div>
+          <a id="toggle-uses-hide-bottom" class="toggle-link">↑ hide uses</a>
+        </div>
 
-  <!-- chatter -->
-  <a id="toggle-diary2" class="toggle-link">→ show chatter</a>
-  <div id="diary-buttons2" class="diary-buttons hidden"></div>
-  <div id="diary-content2" class="hidden">
-    <div id="diary-text2"></div>
-    <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
-  </div>
+        <!-- ===== snapshotセクション ===== -->
+        <a id="toggle-snapshot" class="toggle-link">→ show snapshot</a>
+        <!-- いきなり開かず、一段確認を挟む -->
+        <div id="toggle-snapshot-confirm-row" style="display: none; gap: 18px;">
+          <a id="toggle-snapshot-confirm" class="toggle-link" style="margin-bottom: 0;">→ Cringe Zone! Continue?</a>
+          <a id="toggle-snapshot-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+        </div>
+        <div id="snapshot-main" class="hidden">
+          <a id="toggle-snapshot-hide-top" class="toggle-link">↓ hide snapshot</a>
+          <!-- icon.html の内容（mainの中身）をここに差し込む -->
+          <div id="snapshot-inner"></div>
+          <a id="toggle-snapshot-hide-bottom" class="toggle-link">↑ hide snapshot</a>
+        </div>
+      </p>
+    </div>
 
-</main>
+    <!-- ===== diaryセクション（確認あり） ===== -->
+    <a id="toggle-diary" class="toggle-link">→ show diary</a>
+    <div id="toggle-diary-confirm-row" style="display: none; gap: 18px;">
+      <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
+      <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+    </div>
+    <div id="toggle-diary-confirm-gap" style="display: none; height: 20px;"></div>
 
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
+    <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
+    <div id="diary-buttons" class="diary-buttons hidden"></div>
 
-<script>
+    <div id="diary-content" class="hidden">
+      <div id="diary-text"></div>
+      <a id="toggle-diary-bottom" class="toggle-link">↑ hide diary</a>
+    </div>
 
-document.getElementById("toggle-snapshot").addEventListener("click", function () {
-  this.style.display = "none";
-  document.getElementById("toggle-snapshot-confirm-row").style.display = "flex";
-  
-});
-document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
-  // 本体表示
-  document.getElementById("snapshot-main").style.display = "block";
-  document.getElementById("snapshot-main").classList.remove("hidden");
-  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
-  
-  document.getElementById("toggle-snapshot").style.display = "none";
+    <!-- ===== chatterセクション（確認なし） ===== -->
+    <a id="toggle-diary2" class="toggle-link">→ show chatter</a>
+    <div id="diary-buttons2" class="diary-buttons hidden"></div>
+    <div id="diary-content2" class="hidden">
+      <div id="diary-text2"></div>
+      <a id="toggle-diary-bottom2" class="toggle-link">↑ hide chatter</a>
+    </div>
 
-  fetch("icon.html")
-    .then(res => res.text())
-    .then(html => {
+  </main>
 
-      const div = document.createElement("div");
-      div.innerHTML = html;
-      const main = div.querySelector("main") || div;
-      document.getElementById("snapshot-inner").innerHTML = main.innerHTML;
+  <footer>
+    © irorinri. All Rights Reserved.
+  </footer>
+
+  <script>
+    // =========================================================
+    // snapshot
+    // =========================================================
+
+    // 「show snapshot」クリック時:
+    // 1) showリンクを隠す
+    // 2) confirm行(Continue?/Back)を表示
+    document.getElementById("toggle-snapshot").addEventListener("click", function () {
+      this.style.display = "none";
+      document.getElementById("toggle-snapshot-confirm-row").style.display = "flex";
     });
-});
-document.getElementById("toggle-snapshot-back").addEventListener("click", function () {
-  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
-  document.getElementById("toggle-snapshot").style.display = "block";
-});
-function hideSnapshot() {
-  document.getElementById("snapshot-main").style.display = "none";
-  document.getElementById("snapshot-main").classList.add("hidden");
-  document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
-  document.getElementById("toggle-snapshot").style.display = "block";
-  if (hideSnapshot.scrollToTop) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    hideSnapshot.scrollToTop = false;
-  }
-}
-document.getElementById("toggle-snapshot-hide-top").addEventListener("click", hideSnapshot);
-document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click", function(){
-  hideSnapshot.scrollToTop = true;
-  hideSnapshot();
-});
 
-// --- diary ---
-document.getElementById("toggle-diary").addEventListener("click", function () {
-  document.getElementById("toggle-diary").style.display = "none";
-  document.getElementById("toggle-diary-confirm-row").style.display = "flex";
-  document.getElementById("toggle-diary-confirm-gap").style.display = "block";
-});
-document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
-  var diaryContent = document.getElementById("diary-content");
-  var diaryButtons = document.getElementById("diary-buttons");
-  diaryContent.style.display = "block";
-  diaryContent.classList.remove("hidden");
-  diaryButtons.innerHTML = "";
-  diaryButtons.style.display = "grid";
-  diaryButtons.classList.remove("hidden");
-  document.getElementById("toggle-diary-bottom").style.display = "block";
-  document.getElementById("toggle-diary-top").style.display = "block";
-  if (diaryButtons.innerHTML.trim() === "") {
-    generateDiaryButtons();
-  }
-  setTimeout(() => {
-    loadDiaryEntry(1);
-    let defaultButton = document.querySelector('.diary-button[data-id="1"]');
-    if (defaultButton) defaultButton.classList.add("selected");
-  }, 200);
-  document.getElementById("toggle-diary-confirm-row").style.display = "none";
-  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
-  document.getElementById("toggle-diary").style.display = "none";
-});
-document.getElementById("toggle-diary-back").addEventListener("click", function () {
-  document.getElementById("toggle-diary-confirm-row").style.display = "none";
-  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
-  document.getElementById("toggle-diary").style.display = "block";
-});
-document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
-  document.getElementById("diary-content").style.display = "none";
-  document.getElementById("diary-content").classList.add("hidden");
-  document.getElementById("diary-buttons").style.display = "none";
-  document.getElementById("diary-buttons").classList.add("hidden");
-  document.getElementById("toggle-diary-bottom").style.display = "none";
-  document.getElementById("toggle-diary-top").style.display = "none";
-  document.getElementById("toggle-diary-confirm-row").style.display = "none";
-  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
-  document.getElementById("toggle-diary").style.display = "block";
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-document.getElementById("toggle-diary-top").addEventListener("click", function () {
-  document.getElementById("diary-content").style.display = "none";
-  document.getElementById("diary-content").classList.add("hidden");
-  document.getElementById("diary-buttons").style.display = "none";
-  document.getElementById("diary-buttons").classList.add("hidden");
-  document.getElementById("toggle-diary-bottom").style.display = "none";
-  document.getElementById("toggle-diary-top").style.display = "none";
-  document.getElementById("toggle-diary-confirm-row").style.display = "none";
-  document.getElementById("toggle-diary-confirm-gap").style.display = "none";
-  document.getElementById("toggle-diary").style.display = "block";
-});
-// diaryボタン
-function generateDiaryButtons() {
-  var diaryButtons = document.getElementById("diary-buttons");
-  diaryButtons.innerHTML = "";
-  for (let i = 1; i <= 20; i++) {
-    let button = document.createElement("div");
-    button.classList.add("diary-button");
-    button.dataset.id = i;
-    button.textContent = i <= 3 ? i : "";
-    button.addEventListener("click", function () {
-      loadDiaryEntry(this.dataset.id);
-      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      this.classList.add("selected");
+    // confirmで実際にsnapshotを開く
+    document.getElementById("toggle-snapshot-confirm").addEventListener("click", function () {
+      // 本体を表示
+      document.getElementById("snapshot-main").style.display = "block";
+      document.getElementById("snapshot-main").classList.remove("hidden");
+
+      // confirm行を隠す
+      document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+      document.getElementById("toggle-snapshot").style.display = "none";
+
+      // icon.htmlを読み込み、<main>があればその中身だけをsnapshot-innerへ差し込む
+      fetch("icon.html")
+        .then(res => res.text())
+        .then(html => {
+          const div = document.createElement("div");
+          div.innerHTML = html;
+          const main = div.querySelector("main") || div;
+          document.getElementById("snapshot-inner").innerHTML = main.innerHTML;
+        });
     });
-    diaryButtons.appendChild(button);
-  }
-  setTimeout(() => {
-    let defaultButton = document.querySelector('.diary-button[data-id="1"]');
-    if (defaultButton) defaultButton.classList.add("selected");
-  }, 100);
-}
-function loadDiaryEntry(id) {
-  fetch(`https://irorinri.github.io/diary/${id}.html`)
-    .then(response => response.text())
-    .then(html => {
-      let diaryTextContainer = document.getElementById("diary-text");
-      if (diaryTextContainer) {
-        diaryTextContainer.innerHTML = html;
-      }
-      document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
-      let selectedButton = document.querySelector(`.diary-button[data-id="${id}"]`);
-      if (selectedButton) {
-        selectedButton.classList.add("selected");
-      }
-    })
-    .catch(error => console.error("Error fetching diary entry:", error));
-}
 
-// --- chatter ---
-document.getElementById("toggle-diary2").addEventListener("click", function () {
-  const content = document.getElementById("diary-content2");
-  const buttons = document.getElementById("diary-buttons2");
-  if (content.classList.contains("hidden")) {
-    content.classList.remove("hidden");
-    content.style.display = "block";
-    buttons.classList.remove("hidden");
-    buttons.style.display = "grid";
-    this.textContent = "↓ hide chatter";
-    document.getElementById("toggle-diary-bottom2").style.display = "block";
-    if (buttons.innerHTML.trim() === "") {
-      generateDiaryButtons2();
+    // confirmでBackを押したら元に戻す
+    document.getElementById("toggle-snapshot-back").addEventListener("click", function () {
+      document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+      document.getElementById("toggle-snapshot").style.display = "block";
+    });
+
+    // snapshotを閉じる共通処理
+    function hideSnapshot() {
+      document.getElementById("snapshot-main").style.display = "none";
+      document.getElementById("snapshot-main").classList.add("hidden");
+      document.getElementById("toggle-snapshot-confirm-row").style.display = "none";
+      document.getElementById("toggle-snapshot").style.display = "block";
+
+      // hideSnapshot.scrollToTop が true のときだけページ先頭へスクロール
+      // （関数オブジェクトにフラグを生やすテクニック）
+      if (hideSnapshot.scrollToTop) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        hideSnapshot.scrollToTop = false;
+      }
     }
-    setTimeout(() => {
-      loadDiaryEntry2(1);
-    }, 200);
-  } else {
-    content.classList.add("hidden");
-    content.style.display = "none";
-    buttons.classList.add("hidden");
-    buttons.style.display = "none";
-    this.textContent = "→ show chatter";
-    document.getElementById("toggle-diary-bottom2").style.display = "none";
-  }
-});
-function generateDiaryButtons2() {
-  const container = document.getElementById("diary-buttons2");
-  container.innerHTML = "";
-  for (let i = 1; i <= 20; i++) {
-    const btn = document.createElement("div");
-    btn.classList.add("diary-button", "diary-button2");
-    btn.dataset.id = i;
-    btn.textContent = i <= 1 ? i : "";
-    btn.addEventListener("click", function () {
-      loadDiaryEntry2(this.dataset.id);
-      document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
-      this.classList.add("selected");
-    });
-    container.appendChild(btn);
-  }
-}
-function loadDiaryEntry2(id) {
-  fetch(`https://irorinri.github.io/diary2/${id}.html`)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("diary-text2").innerHTML = html;
-      document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
-      const selected = document.querySelector(`.diary-button2[data-id="${id}"]`);
-      if (selected) selected.classList.add("selected");
-    })
-    .catch(err => {
-      document.getElementById("diary-text2").innerHTML = "<p>読み込み失敗</p>";
-      console.error(err);
-    });
-}
-document.getElementById("toggle-diary-bottom2").addEventListener("click", function () {
-  document.getElementById("toggle-diary2").click();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 
-document.getElementById("toggle-uses").addEventListener("click", function () {
-  this.style.display = "none";
-  document.getElementById("toggle-uses-hide-top").style.display = "block";
-  document.getElementById("uses-main").style.display = "block";
-  document.getElementById("uses-main").classList.remove("hidden");
+    // 上側のhideは閉じるだけ
+    document.getElementById("toggle-snapshot-hide-top").addEventListener("click", hideSnapshot);
 
-  fetch("soft.html")
-    .then(res => res.text())
-    .then(html => {
-      const div = document.createElement("div");
-      div.innerHTML = html;
-      const main = div.querySelector("main") || div;
-      document.getElementById("uses-inner").innerHTML = main.innerHTML;
+    // 下側のhideは閉じたあと先頭へスクロール
+    document.getElementById("toggle-snapshot-hide-bottom").addEventListener("click", function () {
+      hideSnapshot.scrollToTop = true;
+      hideSnapshot();
     });
-});
 
-function hideUses() {
-  document.getElementById("uses-main").style.display = "none";
-  document.getElementById("uses-main").classList.add("hidden");
-  document.getElementById("toggle-uses").style.display = "block";
-  document.getElementById("toggle-uses-hide-top").style.display = "none";
-}
-document.getElementById("toggle-uses-hide-top").addEventListener("click", hideUses);
-document.getElementById("toggle-uses-hide-bottom").addEventListener("click", function(){
-  hideUses();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-  
-</script>
+    // =========================================================
+    // diary
+    // =========================================================
+
+    // 「show diary」押下で確認行を表示
+    document.getElementById("toggle-diary").addEventListener("click", function () {
+      document.getElementById("toggle-diary").style.display = "none";
+      document.getElementById("toggle-diary-confirm-row").style.display = "flex";
+      document.getElementById("toggle-diary-confirm-gap").style.display = "block";
+    });
+
+    // confirmでdiary本体を開く
+    document.getElementById("toggle-diary-confirm").addEventListener("click", function () {
+      var diaryContent = document.getElementById("diary-content");
+      var diaryButtons = document.getElementById("diary-buttons");
+
+      // コンテンツ表示
+      diaryContent.style.display = "block";
+      diaryContent.classList.remove("hidden");
+
+      // ボタンコンテナ表示
+      diaryButtons.innerHTML = "";
+      diaryButtons.style.display = "grid";
+      diaryButtons.classList.remove("hidden");
+
+      // 上下hideリンク表示
+      document.getElementById("toggle-diary-bottom").style.display = "block";
+      document.getElementById("toggle-diary-top").style.display = "block";
+
+      // ボタン未生成なら生成
+      if (diaryButtons.innerHTML.trim() === "") {
+        generateDiaryButtons();
+      }
+
+      // 少し待ってから初期ページ(1)を読み込む
+      setTimeout(() => {
+        loadDiaryEntry(1);
+        let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+        if (defaultButton) defaultButton.classList.add("selected");
+      }, 200);
+
+      // 確認UIを閉じる
+      document.getElementById("toggle-diary-confirm-row").style.display = "none";
+      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
+      document.getElementById("toggle-diary").style.display = "none";
+    });
+
+    // confirmでBackしたら元に戻す
+    document.getElementById("toggle-diary-back").addEventListener("click", function () {
+      document.getElementById("toggle-diary-confirm-row").style.display = "none";
+      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
+      document.getElementById("toggle-diary").style.display = "block";
+    });
+
+    // 下側hide（閉じて先頭へスクロール）
+    document.getElementById("toggle-diary-bottom").addEventListener("click", function () {
+      document.getElementById("diary-content").style.display = "none";
+      document.getElementById("diary-content").classList.add("hidden");
+
+      document.getElementById("diary-buttons").style.display = "none";
+      document.getElementById("diary-buttons").classList.add("hidden");
+
+      document.getElementById("toggle-diary-bottom").style.display = "none";
+      document.getElementById("toggle-diary-top").style.display = "none";
+
+      document.getElementById("toggle-diary-confirm-row").style.display = "none";
+      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
+
+      document.getElementById("toggle-diary").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // 上側hide（閉じるだけ。スクロールしない）
+    document.getElementById("toggle-diary-top").addEventListener("click", function () {
+      document.getElementById("diary-content").style.display = "none";
+      document.getElementById("diary-content").classList.add("hidden");
+
+      document.getElementById("diary-buttons").style.display = "none";
+      document.getElementById("diary-buttons").classList.add("hidden");
+
+      document.getElementById("toggle-diary-bottom").style.display = "none";
+      document.getElementById("toggle-diary-top").style.display = "none";
+
+      document.getElementById("toggle-diary-confirm-row").style.display = "none";
+      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
+
+      document.getElementById("toggle-diary").style.display = "block";
+    });
+
+    // diaryボタン(1〜20)生成
+    function generateDiaryButtons() {
+      var diaryButtons = document.getElementById("diary-buttons");
+      diaryButtons.innerHTML = "";
+
+      for (let i = 1; i <= 20; i++) {
+        let button = document.createElement("div");
+        button.classList.add("diary-button");
+        button.dataset.id = i;
+
+        // 見た目上は1〜3だけ数字表示（4以降は空文字）
+        button.textContent = i <= 3 ? i : "";
+
+        // ボタンクリックで該当日記を読み込み＋選択状態更新
+        button.addEventListener("click", function () {
+          loadDiaryEntry(this.dataset.id);
+          document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
+          this.classList.add("selected");
+        });
+
+        diaryButtons.appendChild(button);
+      }
+
+      // 初期選択を1に
+      setTimeout(() => {
+        let defaultButton = document.querySelector('.diary-button[data-id="1"]');
+        if (defaultButton) defaultButton.classList.add("selected");
+      }, 100);
+    }
+
+    // diary本文を外部URLから取得して差し込む
+    function loadDiaryEntry(id) {
+      fetch(`https://irorinri.github.io/diary/${id}.html`)
+        .then(response => response.text())
+        .then(html => {
+          let diaryTextContainer = document.getElementById("diary-text");
+          if (diaryTextContainer) {
+            diaryTextContainer.innerHTML = html;
+          }
+
+          // 選択状態を更新
+          document.querySelectorAll(".diary-button").forEach(btn => btn.classList.remove("selected"));
+          let selectedButton = document.querySelector(`.diary-button[data-id="${id}"]`);
+          if (selectedButton) {
+            selectedButton.classList.add("selected");
+          }
+        })
+        .catch(error => console.error("Error fetching diary entry:", error));
+    }
+
+    // =========================================================
+    // chatter (diary2)
+    // =========================================================
+
+    // show/hide chatter のトグル
+    document.getElementById("toggle-diary2").addEventListener("click", function () {
+      const content = document.getElementById("diary-content2");
+      const buttons = document.getElementById("diary-buttons2");
+
+      // 現在hiddenなら開く、そうでなければ閉じる
+      if (content.classList.contains("hidden")) {
+        content.classList.remove("hidden");
+        content.style.display = "block";
+
+        buttons.classList.remove("hidden");
+        buttons.style.display = "grid";
+
+        this.textContent = "↓ hide chatter";
+        document.getElementById("toggle-diary-bottom2").style.display = "block";
+
+        // 初回のみボタン生成
+        if (buttons.innerHTML.trim() === "") {
+          generateDiaryButtons2();
+        }
+
+        // 少し待ってから1番を読み込み
+        setTimeout(() => {
+          loadDiaryEntry2(1);
+        }, 200);
+      } else {
+        // 閉じる
+        content.classList.add("hidden");
+        content.style.display = "none";
+
+        buttons.classList.add("hidden");
+        buttons.style.display = "none";
+
+        this.textContent = "→ show chatter";
+        document.getElementById("toggle-diary-bottom2").style.display = "none";
+      }
+    });
+
+    // chatter用ボタン生成（1〜20、見た目数字は1のみ）
+    function generateDiaryButtons2() {
+      const container = document.getElementById("diary-buttons2");
+      container.innerHTML = "";
+
+      for (let i = 1; i <= 20; i++) {
+        const btn = document.createElement("div");
+        btn.classList.add("diary-button", "diary-button2");
+        btn.dataset.id = i;
+
+        // 見た目上は1だけ数字表示
+        btn.textContent = i <= 1 ? i : "";
+
+        btn.addEventListener("click", function () {
+          loadDiaryEntry2(this.dataset.id);
+          document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
+          this.classList.add("selected");
+        });
+
+        container.appendChild(btn);
+      }
+    }
+
+    // chatter本文を外部URLから取得して差し込む
+    function loadDiaryEntry2(id) {
+      fetch(`https://irorinri.github.io/diary2/${id}.html`)
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("diary-text2").innerHTML = html;
+
+          // 選択状態更新
+          document.querySelectorAll(".diary-button2").forEach(b => b.classList.remove("selected"));
+          const selected = document.querySelector(`.diary-button2[data-id="${id}"]`);
+          if (selected) selected.classList.add("selected");
+        })
+        .catch(err => {
+          document.getElementById("diary-text2").innerHTML = "<p>読み込み失敗</p>";
+          console.error(err);
+        });
+    }
+
+    // chatter下側hideは「toggle-diary2をもう一回押す」処理で閉じる
+    document.getElementById("toggle-diary-bottom2").addEventListener("click", function () {
+      document.getElementById("toggle-diary2").click();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // =========================================================
+    // uses
+    // =========================================================
+
+    // show uses押下でuses表示＋soft.html読込
+    document.getElementById("toggle-uses").addEventListener("click", function () {
+      this.style.display = "none";
+      document.getElementById("toggle-uses-hide-top").style.display = "block";
+
+      document.getElementById("uses-main").style.display = "block";
+      document.getElementById("uses-main").classList.remove("hidden");
+
+      fetch("soft.html")
+        .then(res => res.text())
+        .then(html => {
+          const div = document.createElement("div");
+          div.innerHTML = html;
+
+          // soft.htmlにmainがあれば中身だけ使う
+          const main = div.querySelector("main") || div;
+          document.getElementById("uses-inner").innerHTML = main.innerHTML;
+        });
+    });
+
+    // usesを閉じる共通処理
+    function hideUses() {
+      document.getElementById("uses-main").style.display = "none";
+      document.getElementById("uses-main").classList.add("hidden");
+
+      document.getElementById("toggle-uses").style.display = "block";
+      document.getElementById("toggle-uses-hide-top").style.display = "none";
+    }
+
+    // 上側hide
+    document.getElementById("toggle-uses-hide-top").addEventListener("click", hideUses);
+
+    // 下側hide（閉じて先頭へ）
+    document.getElementById("toggle-uses-hide-bottom").addEventListener("click", function () {
+      hideUses();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
