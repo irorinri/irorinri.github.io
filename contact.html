@@ -3,22 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conact | hueryn</title>
+  <meta name="description" content="Contact links for irorinri: YouTube, GitHub, Itch.io, Bandcamp, and Sketchfab.">
+  <title>Contact | hueryn</title>
   <link rel="stylesheet" href="effect.css">
+  <style>
+    .contact-links {
+      list-style: none;
+      margin: 0.7rem 0 1rem;
+      padding: 0;
+      text-align: left;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .contact-links a {
+      color: #5f7795;
+      text-decoration: none;
+      border-bottom: 1px dotted #90a4be;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    .home-btn-group {
+      margin-bottom: 0.8rem;
+    }
+
+    .home-btn-group .home-btn {
+      margin: 0 0.2em;
+    }
+
+    .contact-note {
+      margin: 0.5rem 0 0;
+      font-size: 0.92rem;
+      color: #4c5a6f;
+    }
+  </style>
 </head>
-  
+
 <body>
   <main class="schedule-main">
     <section class="card" style="text-align: center;">
-      <a href="profile.html" class="home-btn">Home</a>
-<div style="height:1.2em"></div>
-     <!-- <h1 class="schedule-title">Contact</h1> -->
-      <p class="schedule-coming">Coming soon!（If I ever get my studio up and running, this will be your letterbox!</p>
-      
+      <div class="home-btn-group">
+        <a href="profile.html" class="home-btn">Home</a>
+        <a href="archive.html" class="home-btn">Archive</a>
+      </div>
+
+      <p class="schedule-coming" style="margin-bottom: 0.9rem;">Find me here:</p>
+      <ul class="contact-links" aria-label="External links">
+        <li><a href="https://www.youtube.com/@irorinri" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://github.com/irorinri" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://irorinri.itch.io" target="_blank" rel="noopener">Itch.io</a></li>
+        <li><a href="https://irorinri.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a></li>
+        <li><a href="https://sketchfab.com/irorinri" target="_blank" rel="noopener">Sketchfab</a></li>
+      </ul>
+      <p class="contact-note">For messages, please use DM on YouTube or contact me via GitHub profile.</p>
     </section>
   </main>
   <footer>
-    &copy; 2025 irorinri
-  </footer>
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+</footer>
 </body>
 </html>

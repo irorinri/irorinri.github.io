@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Story archive and serialized tales by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
-  <title>Stories</title>
+  <title>Tales | irorinri</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,7 +12,7 @@
     
     .thumbnail-gallery {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 1行に3列を設定 */
+      grid-template-columns: repeat(2, 1fr); /* 1鬯ｯ・ｮ繝ｻ・ｯ郢晢ｽｻ繝ｻ・ｦ鬮ｯ貅ｷ萓帙・・ｨ繝ｻ・ｯ驛｢譎｢・ｽ・ｻ3鬯ｮ・ｯ陷茨ｽｷ繝ｻ・ｽ繝ｻ・ｻ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ髯晢ｽｶ隴惹ｹ怜℡驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｮ・ｯ隶厄ｽｸ繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ*/
       row-gap: 20px; !important;
       gap: 8px;
       padding: 25px;
@@ -125,10 +125,10 @@
 <nav>
   <a href="index.html">folks</a>
   <a href="illustrations.html">draws</a>
-
   <a href="gallery.html">comix</a>
-  <a href="story.html">tales</a>
+  <a href="story.html" class="active" aria-current="page">tales</a>
   <a href="blog.html">stuff</a>
+  <a href="archive.html">archive</a>
 </nav>
 
 <main>
@@ -136,21 +136,21 @@
     <a href="?id=3">
       <picture>
         <source srcset="comics/a3.webp" type="image/webp">
-        <img src="comics/a3.png" alt="第3章" loading="lazy">
+        <img src="comics/a3.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ3鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
       </picture>
       <p>2024-09-09</p>
     </a>
     <a href="?id=2">
       <picture>
         <source srcset="comics/a2.webp" type="image/webp">
-        <img src="comics/a2.png" alt="第2章" loading="lazy">
+        <img src="comics/a2.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ2鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
       </picture>
       <p>2024-08-20</p>
     </a>
     <a href="?id=1">
       <picture>
         <source srcset="comics/a1.webp" type="image/webp">
-        <img src="comics/a1.png" alt="第1章" loading="lazy">
+        <img src="comics/a1.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ1鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
       </picture>
       <p>2024-07-23</p>
     </a>
@@ -174,7 +174,7 @@
   }
 
   if (novelId) {
-    // サムネイルを非表示にする
+    // 鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｵ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・｣郢晢ｽｻ繝ｻ・ｰ鬯ｩ蟷｢・ｽ・｢髫ｴ蜿厄ｽｨ雋ｻ・ｽ・ｺ郢ｧ莨夲ｽｽ・ｸ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｫ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ譎｢・ｽ・ｶ髫ｴ蠑ｱ繝ｻ陝ｲ・ｩ鬯ｯ・ｮ繝ｻ・ｯ郢晢ｽｻ繝ｻ・ｦ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｨ鬯ｯ・ｩ驕ｨ繧托ｽｽ・ｼ陞滂ｽｲ繝ｻ・ｽ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｺ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬮ｯ・ｷ繝ｻ・ｷ郢晢ｽｻ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ
     gallery.style.display = 'none';
     backButton.style.display = 'block';
 
@@ -188,19 +188,19 @@
     })
     .catch(error => {
       console.error(error);
-      container.innerHTML = '<p>小説データの読み込みに失敗しました。</p>';
+      container.innerHTML = '<p>鬯ｮ・ｯ隴擾ｽｴ郢晢ｽｻ鬮｢・ｾ郢晢ｽｻ郢晢ｽｻ郢晢ｽｻ繝ｻ・ｪ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ鬯ｩ蟷｢・ｽ・｢髫ｴ謫ｾ・ｽ・ｴ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｯ・ｮ繝ｻ・ｴ鬮ｮ諛ｶ・ｽ・｣郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｯ隶灘･・ｽｽ・ｻ郢ｧ謇假ｽｽ・ｽ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｱ鬯ｮ・ｫ繝ｻ・ｰ郢晢ｽｻ繝ｻ・ｨ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｾ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ鬮ｫ・ｨ繝ｻ・ｳ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｲ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ/p>';
     });
 }
 
 
 backButton.addEventListener('click', () => {
   showGallery();
-  window.scrollTo(0, 0); // ページのスクロール位置をトップに設定
+  window.scrollTo(0, 0); // 鬯ｩ蟷｢・ｽ・｢髫ｴ蜿門ｾ励・・ｽ繝ｻ・｣郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｸ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｯ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｭ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・｣陷ｴ繝ｻ・ｽ・ｽ繝ｻ・ｴ鬮ｯ・ｷ繝ｻ・･郢晢ｽｻ繝ｻ・ｲ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｽ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｵ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｨ鬯ｩ蟷｢・ｽ・｢髫ｴ謫ｾ・ｽ・ｴ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｪ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｮ・ｯ隶厄ｽｸ繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ
 });
 </script>
 
 <footer>
-  © irorinri. All Rights Reserved.
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
 </footer>
 
 </body>
