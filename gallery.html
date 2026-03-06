@@ -2,177 +2,158 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Comix archive and visual story pages by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
-  <title>Comics</title>
+  <title>Comix | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    /* 画像ギャラリーのスタイル */
-    .image-gallery {
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .page-actions {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      gap: 0.75rem;
+      margin: 1.25rem 0 0.75rem;
+    }
+
+    .page-actions a {
+      display: inline-block;
+      padding: 0.4em 1.2em;
+      border-radius: 0;
+      background: #dddddd;
+      color: #878787;
+      font-size: 0.8em;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .page-actions a:hover {
+      background: #cfcfcf;
+      color: #666;
+    }
+
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 20px;
-      margin-top: 5px;
-      margin-bottom: 1000px;
+      padding: 0.75rem 0 0;
     }
 
     .image-gallery a {
+      color: inherit;
+      text-align: center;
       text-decoration: none;
     }
 
     .image-gallery img {
       width: 100%;
-      max-width: 300px; /* 画像の最大幅を設定 */
+      max-width: 300px;
       height: auto;
-      border-radius: 10px; /* 角を丸める */
-      
+      border-radius: 10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .image-gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時に影を強調 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .image-gallery .date {
-      text-align: center;
       margin-top: 5px;
-      font-size: 14px;
       color: #444;
+      font-size: 14px;
+      text-align: center;
     }
-
-    /* スマホ対応 */
-    @media (max-width: 768px) {
-      .image-gallery img {
-        max-width: 100%; /* 画面幅に合わせて拡大縮小 */
-      }
-    }
-
-
-.suzuri-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
-
-.suzuri-btn,
-.suzuri-btn:hover,
-.suzuri-btn:active,
-.suzuri-btn:focus,
-.suzuri-btn:focus-visible {
-  background: #dddddd !important;   /* 少しだけ暗いオレンジピンク系 */
-  color: #878787 !important;        /* ほんの少し暗いグレー */
-  border: none !important;
-  border-radius: 0px !important;    /* 22px → 7px：丸みをグッと減らす */
-  font-weight: bold !important;
-  font-size: 0.8em !important;
-  padding: 0.4em 1.2em !important;
-  text-decoration: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  cursor: pointer !important;
-  transition: none !important;
-  transform: none !important;
-  letter-spacing: 0.05em !important;
-}
-
-    
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">folks</a>
+    <a href="illustrations.html">draws</a>
+    <a href="gallery.html" class="active" aria-current="page">comix</a>
+    <a href="story.html">tales</a>
+    <a href="blog.html">stuff</a>
+    <a href="archive.html">archive</a>
+  </nav>
 
-<div class="suzuri-btn-wrapper">
-  <a class="suzuri-btn" href="https://irorinri.booth.pm/items/7206655" target="_blank" rel="noopener">Buy Print</a>
-</div>
-  
-<nav>
-  <a href="index.html">folks</a>
-  <a href="illustrations.html">draws</a>
+  <main>
+    <div class="page-actions">
+      <a href="https://irorinri.booth.pm/items/7206655" target="_blank" rel="noopener">Buy Print</a>
+      <a href="profile.html">Profile</a>
+    </div>
 
-  <a href="gallery.html">comix</a>
-  <a href="story.html">tales</a>
-  <a href="blog.html">stuff</a>
-</nav>
+    <div class="image-gallery">
+      <a href="comics/2.webp">
+        <picture>
+          <source srcset="comics/2.webp" type="image/webp">
+          <img src="comics/2.webp" alt="Comic page posted on 2024-06-15" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-06-15</div>
+      </a>
+      <a href="comics/3.webp">
+        <picture>
+          <source srcset="comics/3.webp" type="image/webp">
+          <img src="comics/3.webp" alt="Comic page posted on 2024-06-15" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-06-15</div>
+      </a>
+      <a href="comics/4.webp">
+        <picture>
+          <source srcset="comics/4.webp" type="image/webp">
+          <img src="comics/4.webp" alt="Comic page posted on 2024-06-15" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-06-15</div>
+      </a>
+      <a href="comics/1.webp">
+        <picture>
+          <source srcset="comics/1.webp" type="image/webp">
+          <img src="comics/1.webp" alt="Comic page posted on 2023-07-11" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2023-07-11</div>
+      </a>
+    </div>
+  </main>
 
-<main>
-  <div class="image-gallery">
-    <a href="comics/2.webp">
-      <picture>
-        <source srcset="comics/2.webp" type="image/webp">
-        <img src="comics/2.webp" alt="画像1" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-06-15</div>
-    </a>
-    <a href="comics/3.webp">
-      <picture>
-        <source srcset="comics/3.webp" type="image/webp">
-        <img src="comics/3.webp" alt="画像2" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-06-15</div>
-    </a>
-    <a href="comics/4.webp">
-      <picture>
-        <source srcset="comics/4.webp" type="image/webp">
-        <img src="comics/4.webp" alt="画像3" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-06-15</div>
-    </a>
-    <a href="comics/1.webp">
-      <picture>
-        <source srcset="comics/1.webp" type="image/webp">
-        <img src="comics/1.webp" alt="画像4" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2023-07-11</div>
-    </a>
-  </div>
-</main>
+  <footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-<!-- PhotoSwipe Scripts -->
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+    const photoSwipeStyle = document.createElement('style');
+    photoSwipeStyle.textContent = '.pswp__bg { background-color: #add8e6 !important; }';
+    document.head.appendChild(photoSwipeStyle);
 
-  const gallery = document.querySelector('.image-gallery');
-  const links = gallery.querySelectorAll('a');
+    const gallery = document.querySelector('.image-gallery');
+    const links = gallery.querySelectorAll('a');
 
-  // 元画像から比率を取得して設定
-  links.forEach(link => {
-    const img = link.querySelector('img');
-    const image = new Image();
-    image.src = img.src;
-    image.onload = () => {
-      link.dataset.pswpWidth = image.width;
-      link.dataset.pswpHeight = image.height;
-    };
-  });
+    links.forEach((link) => {
+      const img = link.querySelector('img');
+      const image = new Image();
+      image.src = img.src;
+      image.onload = () => {
+        link.dataset.pswpWidth = image.width;
+        link.dataset.pswpHeight = image.height;
+      };
+    });
 
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '.image-gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-  });
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.image-gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+    });
 
-  // フォトスワイプの背景色を変更
-  lightbox.on('uiRegister', () => {
-    const style = document.createElement('style');
-    style.innerHTML = `
-      .pswp__bg {
-        background-color: #ADD8E6 !important; /* 水色 */
-      }
-    `;
-    document.head.appendChild(style);
-  });
-
-  lightbox.init();
-</script>
-
+    lightbox.init();
+  </script>
 </body>
 </html>

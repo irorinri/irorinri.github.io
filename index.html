@@ -2,200 +2,192 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Character archive, illustrations, comix, blog, and profile links for irorinri.">
+  <meta property="og:title" content="irorinri archive">
+  <meta property="og:description" content="Character archive, illustrations, comix, blog, and profile links.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://irorinri.github.io/index.html">
+  <meta property="og:image" content="https://irorinri.github.io/header-image.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
-  <title>Characters</title>
+  <title>Characters | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-
-
-
-
     :root {
-  --accent: #b3d7ff;
-  --accent2: #eec3ff;
-  --text-main: #23263a;
-}
-    
-  .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    justify-content: center;
-    padding: 20px;
-    margin-top: 5px;
-    margin-bottom: 1000px;
-    row-gap: 20px;
-  }
-
-  .image-gallery a {
-    text-decoration: none;
-    max-width: 200px;
-    
-  }
-
-  .image-gallery img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 5px;
-    
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .image-gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .image-gallery .date {
-    text-align: center;
-    margin-top: 5px;
-    font-size: 14px;
-    color: #444;
-  }
-
-  @media (max-width: 768px) {
-    .image-gallery a {
-      max-width: 163px;
+      --accent: #b3d7ff;
+      --accent2: #eec3ff;
+      --text-main: #23263a;
     }
-  }
 
-  @media (max-width: 480px) {
-    .image-gallery a {
-      max-width: 163px;
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
     }
-  }
 
+    .start-here {
+      margin: 0 auto 1.2rem;
+      max-width: 780px;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid #e6e6e6;
+      border-radius: 6px;
+      background: #f8f8f8;
+      text-align: center;
+    }
 
+    .start-here-copy {
+      margin: 0 0 0.15rem;
+      color: #444;
+      font-size: 0.9rem;
+    }
 
-    .back-home-wrap {
-   
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
-}
+    .start-here-links {
+      margin: 0;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
 
+    .start-here-links a {
+      color: inherit;
+    }
 
-   
+    .profile-link-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 4rem 0 1rem;
+    }
 
-.back-home-btn {
-  display: inline-block;
-  background: var(--accent);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5em 1.4em;
-  border-radius: 0.2em;
-  
-  transition: background .2s;
-  font-size: 0.95em;
-}
-.back-home-btn:hover {
-  background: var(--accent2);
-  color: var(--text-main);
-}
+    .profile-link {
+      display: inline-block;
+      padding: 0.5em 1.4em;
+      border-radius: 0.2em;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95em;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
 
+    .profile-link:hover {
+      background: var(--accent2);
+      color: var(--text-main);
+    }
 
-</style>
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+      justify-content: center;
+      gap: 20px 10px;
+      padding: 1rem 0 0;
+    }
+
+    .image-gallery a {
+      text-decoration: none;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 5px;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-gallery .date {
+      margin-top: 5px;
+      color: #444;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html" class="active" aria-current="page">folks</a>
+    <a href="illustrations.html">draws</a>
+    <a href="gallery.html">comix</a>
+    <a href="story.html">tales</a>
+    <a href="blog.html">stuff</a>
+    <a href="archive.html">archive</a>
+  </nav>
 
-<nav>
-  <a href="index.html">folks</a>
-  <a href="illustrations.html">draws</a>
-  <a href="gallery.html">comix</a>
+  <main>
+    <section class="start-here" aria-label="Start here">
+      <p class="start-here-copy">New here? Start from Archive.</p>
+      <p class="start-here-links">
+        <a href="archive.html">Archive</a> |
+        <a href="illustrations.html">Illustrations</a> |
+        <a href="gallery.html">Comix</a> |
+        <a href="blog.html">Blog</a> |
+        <a href="schedule.html">Schedule</a> |
+        <a href="profile.html">Profile</a>
+      </p>
+    </section>
 
-  <a href="story.html">tales</a>
-  <a href="blog.html">stuff</a>
-</nav>
+    <div class="profile-link-wrap">
+      <a class="profile-link" href="profile.html">Profile</a>
+    </div>
 
-  
-  
-<main>
+    <div class="image-gallery">
+      <a href="images/d.webp" data-pswp-width="1920" data-pswp-height="1920">
+        <picture>
+          <source srcset="images/d.webp" type="image/webp">
+          <img src="images/d.webp" alt="Character illustration posted on 2024-09-13" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-09-13</div>
+      </a>
+      <a href="images/c.webp" data-pswp-width="1920" data-pswp-height="1920">
+        <picture>
+          <source srcset="images/c.webp" type="image/webp">
+          <img src="images/c.webp" alt="Character illustration posted on 2024-08-14" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-08-14</div>
+      </a>
+      <a href="images/b.webp" data-pswp-width="1920" data-pswp-height="1920">
+        <picture>
+          <source srcset="images/b.webp" type="image/webp">
+          <img src="images/b.webp" alt="Character illustration posted on 2024-07-30" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-07-30</div>
+      </a>
+      <a href="images/a.webp" data-pswp-width="1920" data-pswp-height="1920">
+        <picture>
+          <source srcset="images/a.webp" type="image/webp">
+          <img src="images/a.webp" alt="Character illustration posted on 2024-01-03" loading="lazy" width="500" height="500">
+        </picture>
+        <div class="date">2024-01-03</div>
+      </a>
+    </div>
+  </main>
 
-  
-<div class="back-home-wrap">
-  <a class="back-home-btn" href="profile.html">Back to Home</a>
-</div>
-  <!-- 画像ギャラリー -->
-  <div class="image-gallery">
-    <a href="images/d.webp" data-pswp-width="1920" data-pswp-height="1920">
-      <picture>
-        <source srcset="images/d.webp" type="image/webp">
-        <img src="images/d.jpg" alt="画像D" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-09-13</div>
-    </a>
-    <a href="images/c.webp" data-pswp-width="1920" data-pswp-height="1920">
-      <picture>
-        <source srcset="images/c.webp" type="image/webp">
-        <img src="images/c.jpg" alt="画像C" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-08-14</div>
-    </a>
-    <a href="images/b.webp" data-pswp-width="1920" data-pswp-height="1920">
-      <picture>
-        <source srcset="images/b.webp" type="image/webp">
-        <img src="images/b.jpg" alt="画像B" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-07-30</div>
-    </a>
-    <a href="images/a.webp" data-pswp-width="1920" data-pswp-height="1920">
-      <picture>
-        <source srcset="images/a.webp" type="image/webp">
-        <img src="images/a.jpg" alt="画像A" loading="lazy" width="500" height="500">
-      </picture>
-      <div class="date">2024-01-03</div>
-    </a>
-  </div>
+  <footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
+    const photoSwipeStyle = document.createElement('style');
+    photoSwipeStyle.textContent = '.pswp__bg { background-color: #add8e6 !important; }';
+    document.head.appendChild(photoSwipeStyle);
 
-  
-</main>
-
-
-
-  
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
-
-<!-- PhotoSwipe Scripts -->
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '.image-gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    bgOpacity: 0.9, /* 背景の不透明度 */
-  });
-
-  // フォトスワイプの背景を水色に
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-bg',
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          document.querySelector('.pswp__bg').style.backgroundColor = '#ADD8E6'; // 水色
-        });
-      },
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.image-gallery',
+      children: 'a',
+      bgOpacity: 0.9,
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
     });
-  });
 
-  lightbox.init();
-</script>
-
+    lightbox.init();
+  </script>
 </body>
 </html>
-
-

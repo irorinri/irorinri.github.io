@@ -2,309 +2,245 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Illustration archive and recent works by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
-  <title>illustrations</title>
+  <title>Illustrations | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-
-  
-  .gallery {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 10px; 
-    padding: 20px; 
-    margin-top: 5px; 
-    margin-bottom: 1000px; 
-  }
-
-  /* ギャラリー内のリンク要素のスタイル */
-  .gallery a {
-    width: 18%; 
-    max-width: 100px; 
-    text-decoration: none; 
-  }
-
-  /* ギャラリー内の画像のスタイル */
-  .gallery img {
-    width: 100%; /* 親要素の幅に合わせる */
-    height: auto; /* アスペクト比を維持して高さを自動調整 */
-    border-radius: 5px; /* 角を丸める */
-    
-    transition: transform 0.3s, box-shadow 0.3s; /* ホバー時のアニメーション */
-  }
-
-  /* 画像ホバー時のスタイル */
-  .gallery img:hover {
-    transform: scale(1.1); /* 拡大 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 影を強調 */
-  }
-
-  /* 全体ギャラリー要素の追加スタイル */
-  .image-gallery {
-    display: block; /* 子要素をブロック要素として表示 */
-    overflow: auto; /* スクロール可能にする */
-    margin-bottom: 1000px; /* 下部の余白を大きく確保 */
-  }
-
-  @media (max-width: 768px) {
-    .gallery a {
-      width: 24%; /* 横幅を親要素の24%に設定 */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
     }
-  }
 
-  /* メディアクエリ：画面幅480px以下の場合 */
-  @media (max-width: 480px) {
-    .gallery a {
-      width: 30%; /* 横幅を親要素の30%に設定 */
+    .page-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 1.25rem 0 0.75rem;
     }
-  }
 
-  /* PhotoSwipeカスタムキャプションのスタイル */
-  .pswp__custom-caption {
-    color: #000000 !important; /* キャプションのテキスト色を白に設定 */
-    text-align: center !important; /* キャプションを中央揃え */
-    padding: 5px; /* キャプションの内側の余白 */
-    position: absolute; /* 親要素に相対的に配置 */
-    bottom: 30px; /* 親要素の下部から30pxの位置 */
-    width: 100%; /* キャプションの幅を全幅に設定 */
-    z-index: 1000; /* 他の要素より前面に表示 */
-    visibility: visible; /* 常に表示 */
-  }
+    .page-actions a {
+      display: inline-block;
+      padding: 0.35em 1.3em;
+      border-radius: 0.2em;
+      background: #dddddd;
+      color: #8a8a8a;
+      font-size: 0.8em;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
 
-  /* PhotoSwipeカウンターを非表示にする */
-  .pswp__counter {
-    display: none; 
-  }
+    .page-actions a:hover {
+      background: #cfcfcf;
+      color: #666;
+    }
 
-    .back-home-btn {
-  display: flex;
-  align-items: flex-end;
-  background: #b3d7ff;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5em 1.4em;
-  border-radius: 0.2em;
-  margin-left: 1rem; /* ← 追加：隣との間隔 */
-  transition: background 0.2s;
-  font-size: 0.95em;
-}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      padding: 0.75rem 0 0;
+    }
 
-.suzuri-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
+    .gallery a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.suzuri-btn {
-  font-weight: bold;
-  border: none;
-  border-radius: 0em;       
-  font-size: 0.8em !important;
-  padding: 0.2em 1.4em !important;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-}
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-    
-.suzuri-btn,
-.suzuri-btn:hover,
-.suzuri-btn:active,
-.suzuri-btn:focus,
-.suzuri-btn:focus-visible {
-  background: #dddddd !important;
-  color: #a3a3a3 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  transition: none !important;
-  transform: none !important;
-}
+    .gallery img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-    
-</style>
+    .hidden-caption-content {
+      display: none;
+    }
+
+    .pswp__counter {
+      display: none;
+    }
+
+    .pswp__custom-caption {
+      position: absolute;
+      right: 0;
+      bottom: 30px;
+      left: 0;
+      z-index: 1000;
+      padding: 5px;
+      color: #000;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">folks</a>
+    <a href="illustrations.html" class="active" aria-current="page">draws</a>
+    <a href="gallery.html">comix</a>
+    <a href="story.html">tales</a>
+    <a href="blog.html">stuff</a>
+    <a href="archive.html">archive</a>
+  </nav>
 
+  <main>
+    <div class="page-actions">
+      <a href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
+      <a href="profile.html">Profile</a>
+    </div>
 
-<div class="suzuri-btn-wrapper">
-  <a class="suzuri-btn" href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
-  <a class="back-home-btn" href="profile.html">Back to Home</a>
-</div>
-  
-<nav>
-  <a href="index.html">folks</a>
-  <a href="illustrations.html">draws</a>
+    <div class="gallery" aria-label="Illustration gallery"></div>
+  </main>
 
-  <a href="gallery.html">comix</a>
-  <a href="story.html">tales</a>
-  <a href="blog.html">stuff</a>
-</nav>
+  <footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 
-<div class="gallery"></div>
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+    const images = [
+      { src: 'images/1.webp', width: 1000, height: 1000, date: '2024-11-10' },
+      { src: 'images/2.webp', width: 1000, height: 1000, date: '2024-11-11' },
+      { src: 'images/3.webp', width: 1000, height: 1000, date: '2024-11-13' },
+      { src: 'images/4.webp', width: 1000, height: 1000, date: '2024-11-14' },
+      { src: 'images/5.webp', width: 1000, height: 1000, date: '2024-11-15' },
+      { src: 'images/6.webp', width: 1000, height: 1000, date: '2024-11-23' },
+      { src: 'images/7.webp', width: 1000, height: 1000, date: '2024-11-26' },
+      { src: 'images/8.webp', width: 1000, height: 1000, date: '2024-11-30' },
+      { src: 'images/9.webp', width: 1000, height: 1000, date: '2024-12-08' },
+      { src: 'images/10.webp', width: 1000, height: 1000, date: '2024-12-21' },
+      { src: 'images/11.webp', width: 1000, height: 1000, date: '2024-12-22' },
+      { src: 'images/12.webp', width: 1000, height: 1000, date: '2025-01-28' },
+      { src: 'images/14.webp', width: 1000, height: 1000, date: '2025-01-30' },
+      { src: 'images/15.webp', width: 1000, height: 1000, date: '2025-03-05' },
+      { src: 'images/16.webp', width: 1000, height: 1000, date: '2025-04-10' },
+      { src: 'images/17.webp', width: 1000, height: 1000, date: '2025-05-14' },
+      { src: 'images/18.webp', width: 1000, height: 1000, date: '2025-05-16' },
+      { src: 'images/19.webp', width: 1000, height: 1000, date: '2025-06-20' },
+      { src: 'images/20.webp', width: 1000, height: 1000, date: '2025-06-23' },
+      { src: 'images/21.webp', width: 1000, height: 1000, date: '2025-06-25' },
+      { src: 'images/22.webp', width: 1000, height: 1000, date: '2025-07-12' },
+      { src: 'images/23.webp', width: 1000, height: 1000, date: '2025-07-20' },
+      { src: 'images/24.webp', width: 1000, height: 1000, date: '2025-08-03' },
+      { src: 'images/25.webp', width: 1000, height: 1000, date: '2026-02-28' }
+    ];
 
-  const images = [
-    { src: 'images/1.webp', width: 1000, height: 1000, date: '2024-11-10' },
-    { src: 'images/2.webp', width: 1000, height: 1000, date: '2024-11-11' },
-    { src: 'images/3.webp', width: 1000, height: 1000, date: '2024-11-13' },
-    { src: 'images/4.webp', width: 1000, height: 1000, date: '2024-11-14' },
-    { src: 'images/5.webp', width: 1000, height: 1000, date: '2024-11-15' },
-    { src: 'images/6.webp', width: 1000, height: 1000, date: '2024-11-23' },
-    { src: 'images/7.webp', width: 1000, height: 1000, date: '2024-11-26' },
-    { src: 'images/8.webp', width: 1000, height: 1000, date: '2024-11-30' },
-    { src: 'images/9.webp', width: 1000, height: 1000, date: '2024-12-08' },
-    { src: 'images/10.webp', width: 1000, height: 1000, date: '2024-12-21' },
-    { src: 'images/11.webp', width: 1000, height: 1000, date: '2024-12-22' },
-    { src: 'images/12.webp', width: 1000, height: 1000, date: '2025-01-28' },
-    { src: 'images/14.webp', width: 1000, height: 1000, date: '2025-01-30' },
-    { src: 'images/15.webp', width: 1000, height: 1000, date: '2025-03-05' },
-    { src: 'images/16.webp', width: 1000, height: 1000, date: '2025-04-10' },
-    { src: 'images/17.webp', width: 1000, height: 1000, date: '2025-05-14' },
-    { src: 'images/18.webp', width: 1000, height: 1000, date: '2025-05-16' },
-    { src: 'images/19.webp', width: 1000, height: 1000, date: '2025-06-20' },
-    { src: 'images/20.webp', width: 1000, height: 1000, date: '2025-06-23' },
-    { src: 'images/21.webp', width: 1000, height: 1000, date: '2025-06-25' },
-    { src: 'images/22.webp', width: 1000, height: 1000, date: '2025-07-12' },
-    { src: 'images/23.webp', width: 1000, height: 1000, date: '2025-07-20' },
-    { src: 'images/24.webp', width: 1000, height: 1000, date: '2025-08-03' },
-    { src: 'images/25.webp', width: 1000, height: 1000, date: '2026-02-28' },
+    const galleryElement = document.querySelector('.gallery');
+    const fragment = document.createDocumentFragment();
 
+    images.slice().reverse().forEach(({ src, width, height, date }) => {
+      const link = document.createElement('a');
+      link.href = src;
+      link.dataset.pswpWidth = String(width);
+      link.dataset.pswpHeight = String(height);
 
+      const image = document.createElement('img');
+      image.src = src;
+      image.alt = `Illustration posted on ${date}`;
+      image.loading = 'lazy';
 
+      const caption = document.createElement('span');
+      caption.className = 'hidden-caption-content';
+      caption.textContent = date;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-  ];
-
-  const galleryElement = document.querySelector('.gallery');
-  images.reverse().forEach(({ src, width, height, date }) => {
-    galleryElement.innerHTML += `
-      <a href="${src}" data-pswp-width="${width}" data-pswp-height="${height}">
-        <img src="${src}" alt="イラスト">
-        <span class="hidden-caption-content" style="display:none;">${date}</span>
-      </a>`;
-  });
-
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '.gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    loop: false, 
-  });
-
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-counter',
-      order: 5,
-      isButton: false,
-      appendTo: 'bar',
-      html: '',
-      onInit: (el, pswp) => {
-        Object.assign(el.style, {
-          color: 'white', fontSize: '15px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold',
-          position: 'relative', top: '20px', left: '30px', padding: '2px',
-          webkitTextStroke: '1px rgba(128, 128, 128, 0.8)', textStroke: '1px rgba(128, 128, 128, 0.8)',
-        });
-        pswp.on('change', () => {
-          const total = pswp.getNumItems();
-          const index = total - pswp.currIndex;
-          el.innerHTML = `${index} / ${total}`;
-        });
-      },
+      link.append(image, caption);
+      fragment.appendChild(link);
     });
 
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-caption',
-      order: 9,
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          el.innerHTML = caption ? caption.textContent : 'キャプションなし';
-        });
-      },
+    galleryElement.appendChild(fragment);
+
+    const photoSwipeStyle = document.createElement('style');
+    photoSwipeStyle.textContent = '.pswp__bg { background-color: #add8e6 !important; }';
+    document.head.appendChild(photoSwipeStyle);
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a',
+      loop: false,
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
     });
 
-    const style = document.createElement('style');
-    style.innerHTML = `.pswp__bg { background-color: #ADD8E6 !important; }`;
-    document.head.appendChild(style);
-  });
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-counter',
+        order: 5,
+        isButton: false,
+        appendTo: 'bar',
+        html: '',
+        onInit: (element, pswp) => {
+          Object.assign(element.style, {
+            color: 'white',
+            fontSize: '15px',
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            position: 'relative',
+            top: '20px',
+            left: '30px',
+            padding: '2px',
+            webkitTextStroke: '1px rgba(128, 128, 128, 0.8)',
+            textStroke: '1px rgba(128, 128, 128, 0.8)',
+          });
 
-  lightbox.init();
+          pswp.on('change', () => {
+            const total = pswp.getNumItems();
+            const index = total - pswp.currIndex;
+            element.textContent = `${index} / ${total}`;
+          });
+        },
+      });
 
-
-
-// ページ復元（戻る・進む）時にもblurさせる
-window.addEventListener('pageshow', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.blur();
-  });
-});
-  
-// 念のため、クリック時にもblur
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.addEventListener('mouseup', function() {
-      btn.blur();
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'wrapper',
+        html: '',
+        onInit: (element, pswp) => {
+          element.className = 'pswp__custom-caption';
+          pswp.on('change', () => {
+            const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+            element.textContent = caption ? caption.textContent : '';
+          });
+        },
+      });
     });
-  });
-});
-  
 
-</script>
+    lightbox.init();
 
+    window.addEventListener('pageshow', () => {
+      document.querySelectorAll('.page-actions a').forEach((link) => link.blur());
+    });
 
-
-  
-<footer>
-  © irorinri. All Rights Reserved.
-</footer>
-
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.page-actions a').forEach((link) => {
+        link.addEventListener('mouseup', () => link.blur());
+      });
+    });
+  </script>
 </body>
 </html>
