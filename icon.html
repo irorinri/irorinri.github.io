@@ -8,125 +8,79 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      font-family: 'Yomogi', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: #f8f8f8;
-      margin-top: 20px;
-      margin-bottom: 1000px;
     }
 
-    .icon-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2鬮ｯ蜈ｷ・ｽ・ｻ驛｢譎｢・ｽ・ｻ*/
-      gap: 20px;
-      justify-content: center;
-      padding: 20px;
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem 3rem;
     }
 
-    .icon-column,
-    .image-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+    nav {
+      margin-bottom: 10px;
     }
-
-    .icon-item img,
-    .image-item img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .icon-item img { border-radius: 50%; }
-    .image-item img { border-radius: 0; }
-
-    .date {
-      text-align: center;
-      font-size: 14px;
-      color: #444;
-      margin-top: 5px;
-    }
-    nav { margin-bottom: 10px; }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="blog.html">Stuff</a>
+    <a href="archive.html">Archive</a>
+  </nav>
 
-<nav>
-  <a href="blog.html">back</a>
-  <a href="archive.html">archive</a>
-</nav>
-
-<main>
-  <div class="icon-gallery">
-    <!-- 鬮ｯ譎｢・ｽ・ｾ郢晢ｽｻ繝ｻ・ｦ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｴ驛｢譎｢・ｽ・ｻ髣費｣ｰ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｸ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ-->
-    <div class="icon-column">
-
-
-
-      <div class="icon-item"><img src="icon/25.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2026-01-09</div></div>
-      <div class="icon-item"><img src="icon/24.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-08-02</div></div>
-      <div class="icon-item"><img src="icon/23.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-07-30</div></div>
-      <div class="icon-item"><img src="icon/22.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-07-09</div></div>
-      <div class="icon-item"><img src="icon/21.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-06-24</div></div>
-      
-      <div class="icon-item"><img src="icon/i16.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-03-10</div></div>
-      <div class="icon-item"><img src="icon/17.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-02-02</div></div>
-      <div class="icon-item"><img src="icon/15.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2025-01-24</div></div>
-      <div class="icon-item"><img src="icon/i4.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-12-26</div></div>
-      <div class="icon-item"><img src="icon/16.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-11-12</div></div>
-      <div class="icon-item"><img src="icon/i8.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-10-15</div></div>
-      <div class="icon-item"><img src="icon/i7.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-08-23</div></div>
-      <div class="icon-item"><img src="icon/i9.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-08-13</div></div>
-      <div class="icon-item"><img src="icon/i10.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-05-02</div></div>
-      <div class="icon-item"><img src="icon/i2.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ1"><div class="date">2024-02-14</div></div>
-      <div class="icon-item"><img src="icon/i5.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-12-11</div></div>
-      <div class="icon-item"><img src="icon/i3.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ2"><div class="date">2024-02-01</div></div>
-      <div class="icon-item"><img src="icon/i17.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ3"><div class="date">2024-01-25</div></div>
-      <div class="icon-item"><img src="icon/i6.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ3"><div class="date">2023-10-05</div></div>
-      <div class="icon-item"><img src="icon/i11.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ3"><div class="date">2023-5-25</div></div>
-      <div class="icon-item"><img src="icon/i1.webp" alt="鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ4"><div class="date">2023-03-21</div></div>
+  <main>
+    <div class="icon-gallery">
+      <div class="icon-column">
+        <div class="icon-item"><img src="icon/25.webp" alt="Icon dated 2026-01-09" loading="lazy"><div class="date">2026-01-09</div></div>
+        <div class="icon-item"><img src="icon/24.webp" alt="Icon dated 2025-08-02" loading="lazy"><div class="date">2025-08-02</div></div>
+        <div class="icon-item"><img src="icon/23.webp" alt="Icon dated 2025-07-30" loading="lazy"><div class="date">2025-07-30</div></div>
+        <div class="icon-item"><img src="icon/22.webp" alt="Icon dated 2025-07-09" loading="lazy"><div class="date">2025-07-09</div></div>
+        <div class="icon-item"><img src="icon/21.webp" alt="Icon dated 2025-06-24" loading="lazy"><div class="date">2025-06-24</div></div>
+        <div class="icon-item"><img src="icon/i16.webp" alt="Icon dated 2025-03-10" loading="lazy"><div class="date">2025-03-10</div></div>
+        <div class="icon-item"><img src="icon/17.webp" alt="Icon dated 2025-02-02" loading="lazy"><div class="date">2025-02-02</div></div>
+        <div class="icon-item"><img src="icon/15.webp" alt="Icon dated 2025-01-24" loading="lazy"><div class="date">2025-01-24</div></div>
+        <div class="icon-item"><img src="icon/i4.webp" alt="Icon dated 2024-12-26" loading="lazy"><div class="date">2024-12-26</div></div>
+        <div class="icon-item"><img src="icon/i5.webp" alt="Icon dated 2024-12-11" loading="lazy"><div class="date">2024-12-11</div></div>
+        <div class="icon-item"><img src="icon/16.webp" alt="Icon dated 2024-11-12" loading="lazy"><div class="date">2024-11-12</div></div>
+        <div class="icon-item"><img src="icon/i8.webp" alt="Icon dated 2024-10-15" loading="lazy"><div class="date">2024-10-15</div></div>
+        <div class="icon-item"><img src="icon/i7.webp" alt="Icon dated 2024-08-23" loading="lazy"><div class="date">2024-08-23</div></div>
+        <div class="icon-item"><img src="icon/i9.webp" alt="Icon dated 2024-08-13" loading="lazy"><div class="date">2024-08-13</div></div>
+        <div class="icon-item"><img src="icon/i10.webp" alt="Icon dated 2024-05-02" loading="lazy"><div class="date">2024-05-02</div></div>
+        <div class="icon-item"><img src="icon/i2.webp" alt="Icon dated 2024-02-14" loading="lazy"><div class="date">2024-02-14</div></div>
+        <div class="icon-item"><img src="icon/i3.webp" alt="Icon dated 2024-02-01" loading="lazy"><div class="date">2024-02-01</div></div>
+        <div class="icon-item"><img src="icon/i17.webp" alt="Icon dated 2024-01-25" loading="lazy"><div class="date">2024-01-25</div></div>
+        <div class="icon-item"><img src="icon/i6.webp" alt="Icon dated 2023-10-05" loading="lazy"><div class="date">2023-10-05</div></div>
+        <div class="icon-item"><img src="icon/i11.webp" alt="Icon dated 2023-05-25" loading="lazy"><div class="date">2023-05-25</div></div>
+        <div class="icon-item"><img src="icon/i1.webp" alt="Icon dated 2023-03-21" loading="lazy"><div class="date">2023-03-21</div></div>
+      </div>
+      <div class="image-column">
+        <div class="image-item"><img src="icon/p21.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p20.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p19.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p18.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p17.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p16.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p15.webp" alt="Snapshot dated 2025-07-11" loading="lazy"><div class="date">2025-07-11</div></div>
+        <div class="image-item"><img src="icon/p14.webp" alt="Snapshot dated 2025-07-09" loading="lazy"><div class="date">2025-07-09</div></div>
+        <div class="image-item"><img src="icon/p13.webp" alt="Snapshot dated 2025-07-04" loading="lazy"><div class="date">2025-07-04</div></div>
+        <div class="image-item"><img src="icon/p12.webp" alt="Snapshot dated 2025-06-20" loading="lazy"><div class="date">2025-06-20</div></div>
+        <div class="image-item"><img src="icon/p8.webp" alt="Snapshot dated 2025-05-28" loading="lazy"><div class="date">2025-05-28</div></div>
+        <div class="image-item"><img src="icon/p11.webp" alt="Snapshot dated 2025-04-09" loading="lazy"><div class="date">2025-04-09</div></div>
+        <div class="image-item"><img src="icon/p10.webp" alt="Snapshot dated 2025-04-08" loading="lazy"><div class="date">2025-04-08</div></div>
+        <div class="image-item"><img src="icon/p9.webp" alt="Snapshot dated 2025-04-07" loading="lazy"><div class="date">2025-04-07</div></div>
+        <div class="image-item"><img src="icon/p7.webp" alt="Snapshot dated 2025-03-07" loading="lazy"><div class="date">2025-03-07</div></div>
+        <div class="image-item"><img src="icon/p5.webp" alt="Snapshot dated 2025-01-01" loading="lazy"><div class="date">2025-01-01</div></div>
+        <div class="image-item"><img src="icon/p3.webp" alt="Snapshot dated 2024-10-01" loading="lazy"><div class="date">2024-10-01</div></div>
+        <div class="image-item"><img src="icon/p6.webp" alt="Snapshot dated 2024-08-01" loading="lazy"><div class="date">2024-08-01</div></div>
+        <div class="image-item"><img src="icon/p4.webp" alt="Snapshot dated 2024-08-01" loading="lazy"><div class="date">2024-08-01</div></div>
+        <div class="image-item"><img src="icon/p2.webp" alt="Snapshot dated 2024-06-03" loading="lazy"><div class="date">2024-06-03</div></div>
+        <div class="image-item"><img src="icon/p1.webp" alt="Snapshot dated 2024-03-30" loading="lazy"><div class="date">2024-03-30</div></div>
+      </div>
     </div>
-    <!-- 鬮ｯ・ｷ繝ｻ・ｿ郢晢ｽｻ繝ｻ・ｳ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｴ驛｢譎｢・ｽ・ｻ髣費｣ｰ繝ｻ・･髯橸ｽｻ郢晢ｽｻ陜玲･｢謦ｻ繝ｻ・､髯具ｽｻ繝ｻ・､鬮ｯ・ｷ陷ｻ莠･・ｾ蜉ｱ繝ｻ繝ｻ・ｼ驛｢譎｢・ｽ・ｻ-->
-    <div class="image-column">
-      <div class="image-item"><img src="icon/p21.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p20.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p19.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p18.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p17.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p16.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p15.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-11</div></div>
-      <div class="image-item"><img src="icon/p14.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-09</div></div>
-      <div class="image-item"><img src="icon/p13.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-07-04</div></div>
-      <div class="image-item"><img src="icon/p12.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-06-20</div></div>
-      <div class="image-item"><img src="icon/p8.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-05-28</div></div>
-      <div class="image-item"><img src="icon/p11.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-04-09</div></div>
-      <div class="image-item"><img src="icon/p10.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-04-08</div></div>
-      <div class="image-item"><img src="icon/p9.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-04-07</div></div>
-      <div class="image-item"><img src="icon/p7.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-03-07</div></div>
-      <div class="image-item"><img src="icon/p5.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2025-01-01</div></div>
-      <div class="image-item"><img src="icon/p3.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2024-10-01</div></div>
-      <div class="image-item"><img src="icon/p6.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2024-08-01</div></div>
-      <div class="image-item"><img src="icon/p4.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2024-08-01</div></div>
-      <div class="image-item"><img src="icon/p2.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2024-06-03</div></div>
-      <div class="image-item"><img src="icon/p1.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ"><div class="date">2024-03-30</div></div>
-    </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
-</footer>
-
-<script>
-  document.querySelectorAll('img').forEach((img) => {
-    if (!img.loading) {
-      img.loading = "lazy";
-    }
-  });
-</script>
+  <footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 </body>
 </html>

@@ -7,96 +7,105 @@
   <title>Schedule | irorinri</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --text-main: #427fa6;
+      --text-sub: #767b8c;
+      --surface: #f7faff;
+    }
+
     body {
-      padding: 40px 0 0 0;  
-      background: #fff;
-      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
-      color: #767b8c;
       margin: 0;
-      padding: 0;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      color: var(--text-sub);
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
     }
+
+    main {
+      flex: 1;
+    }
+
     .schedule-card {
-      /* 鬯ｯ・ｮ繝ｻ・ｫ鬩包ｽｨ郢ｧ謇假ｽｽ・ｽ繝ｻ・ｹ髫ｴ謫ｾ・ｽ・ｶ鬮ｯ讖ｸ・ｽ・ｺ鬯ｯ・ｨ繝ｻ・ｾ郢晢ｽｻ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｮ・｣陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｳ鬯ｩ諤憺●繝ｻ・ｽ繝ｻ・ｫ郢晢ｽｻ邵ｺ・､・つ鬮ｯ貅ｷ萓帙・・ｾ陞ｽ・ｯ・つ繝ｻ・ｳ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ蟷｢・ｽ・｢髫ｴ蜿門ｾ励・・ｽ繝ｻ・ｳ郢晢ｽｻ繝ｻ・ｨ郢晢ｽｻ邵ｺ・､・つ鬯ｮ・｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｴ鬮ｫ・ｨ雋ょ庄ﾂ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｵ鬩包ｽｶ闔ｨ竏壹・郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｺ鬮｣蛹・ｽｽ・ｳ髯晢ｽｯ繝ｻ・ｩ驛｢譎｢・ｽ・ｻ */
-      background: none;
-      max-width: none;
+      max-width: 560px;
       margin: 0 auto;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 0;
-      margin-top: 70px; 
+      padding: 3rem 1rem 2rem;
     }
+
     .schedule-title {
-      color: #427fa6;
+      margin: 2rem 0 1rem;
+      color: var(--text-main);
       font-size: 1.32rem;
       font-weight: 600;
       text-align: center;
-      margin: 54px 0 1.0rem 0;
-      font-family: 'Inter', sans-serif;
     }
+
     .home-btn-wrap {
+      margin: 0 0 1.2rem;
       text-align: center;
-      margin: 2.2em 0 1.2em 0;
     }
+
     .home-btn {
       display: inline-block;
-      background: #eceff3;
-      color: #767b8c;
-      font-size: 1em;
       padding: 0.48em 1.25em;
       border-radius: 0.7em;
-      text-decoration: none;
-      
-      
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Inter', sans-serif;
+      background: #eceff3;
+      color: var(--text-sub);
+      font-size: 1em;
       font-weight: 400;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
     }
+
     .home-btn:hover,
     .home-btn:active {
-      background: #d7dbe2; 
+      background: #d7dbe2;
       color: #5174a0;
     }
+
     .home-btn + .home-btn {
       margin-left: 0.35em;
     }
+
     .schedule-note {
-      text-align: center;
-      font-size: 1.05rem;
-      color: #427fa6;
       margin-bottom: 1.2rem;
+      color: var(--text-main);
+      font-size: 1.05rem;
       font-weight: 400;
-      font-family: 'Inter', sans-serif;
+      text-align: center;
     }
+
     .week-list {
-      list-style: none;
-      margin: 0 auto 1.6rem auto;
-      padding: 0;
       max-width: 480px;
+      margin: 0 auto 1.6rem;
+      padding: 0;
+      list-style: none;
     }
+
     .week-list li {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       margin-bottom: 0.63rem;
+      padding-left: 1.5em;
       font-size: 1.08rem;
-      padding: 0 0 0 1.5em;
       font-weight: 400;
-      font-family: inherit;
-      justify-content: flex-start; /* 鬯ｩ蛹・ｽｽ・ｶ鬩怜遜・ｽ・ｫ驛｢譎｢・ｽ・ｻ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬯ｮ・ｦ繝ｻ・ｮ髯ｷ・ｻ繝ｻ・ｻ郢晢ｽｻ繝ｻ・ｼ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ郢晢ｽｻ繝ｻ・ｧ鬯ｮ・ｮ陋ｹ・ｺ繝ｻ・ｩ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・､鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ譎｢・ｽ・ｲ郢晢ｽｻ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ*/
     }
+
     .day-label {
-      min-width: 54px;
       display: inline-block;
-      font-weight: 600;
+      min-width: 54px;
+      margin-right: 0.8em;
       padding: 0.22em 0.75em;
       border-radius: 7px;
-      margin-right: 0.8em;
-      font-size: 0.99rem;
       background: #f2f3f8;
       color: #546e7a;
+      font-size: 0.99rem;
+      font-weight: 600;
       text-align: center;
-      font-family: inherit;
     }
+
     .mon { background: #e3edfa; }
     .tue { background: #e9f7ea; }
     .wed { background: #fdf3e7; }
@@ -104,104 +113,129 @@
     .fri { background: #e9eafd; }
     .sat { background: #fceeea; }
     .sun { background: #faeaf2; }
+
     .games-section {
-      background: #f7faff;
-      border-radius: 10px;
-      padding: 1em 1em 0.9em 1em;
-      margin: 0 auto 2.5em auto;
-      box-shadow: 0 1px 4px rgba(150,180,220,0.05);
-      text-align: center;
       max-width: 480px;
+      margin: 0 auto 2.5em;
+      padding: 1em 1em 0.9em;
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 1px 4px rgba(150, 180, 220, 0.05);
+      text-align: center;
     }
+
     .games-section h2 {
+      margin: 0 0 0.5em;
+      color: var(--text-main);
       font-size: 1.11rem;
       font-weight: 600;
-      margin: 0 0 0.5em 0;
-      color: #427fa6;
-      font-family: 'Inter', sans-serif;
     }
+
     .game-note {
-      font-size: 0.99rem;
+      margin: 0 0 0.5em;
       color: #8ea2be;
-      margin: 0 0 0.5em 0;
+      font-size: 0.99rem;
       font-weight: 400;
-      font-family: 'Inter', sans-serif;
     }
+
     .game-list {
-      list-style: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.7em;
-      padding: 0;
       margin: 0;
+      padding: 0;
+      list-style: none;
     }
+
     .game-list li {
-      background: #fff;
-      border-radius: 6px;
+      min-width: 140px;
       padding: 0.26em 1em;
       border: 1px solid #e0e6ef;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(100, 130, 200, 0.03);
       font-size: 1.02rem;
-      min-width: 140px;
-      text-align: center;
-      box-shadow: 0 1px 2px rgba(100,130,200,0.03);
-      font-family: 'Inter', sans-serif;
       font-weight: 400;
+      text-align: center;
     }
+
     footer {
-  text-align: center;
-  color: var(--text-sub);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  z-index: 1;
-  position: relative;
-}
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
     footer a {
       color: inherit;
     }
+
     @media (max-width: 600px) {
-      .schedule-title { font-size: 1.08rem; margin-top: 24px; }
-      .week-list li { font-size: 0.97rem; }
-      .games-section h2 { font-size: 1rem; }
-      .game-list li { min-width: 110px; font-size: 0.93rem; }
-      .games-section, .week-list { max-width: 100%; }
+      .schedule-card {
+        padding: 2.4rem 1rem 1.8rem;
+      }
+
+      .schedule-title {
+        margin-top: 1.4rem;
+        font-size: 1.08rem;
+      }
+
+      .week-list li {
+        font-size: 0.97rem;
+      }
+
+      .games-section,
+      .week-list {
+        max-width: 100%;
+      }
+
+      .games-section h2 {
+        font-size: 1rem;
+      }
+
+      .game-list li {
+        min-width: 110px;
+        font-size: 0.93rem;
+      }
     }
   </style>
 </head>
-  
 <body>
-  <div class="schedule-card">
-    <div class="home-btn-wrap">
-      <a href="profile.html" class="home-btn">Home</a>
-      <a href="archive.html" class="home-btn">Archive</a>
-    </div>
-    <h1 class="schedule-title">Weekly Stream Schedule</h1>
-    <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
-    <ul class="week-list">
-      <li><span class="day-label mon">Mon</span> Study</li>
-      <li><span class="day-label tue">Tue</span> Music</li>
-      <li><span class="day-label wed">Wed</span> Drawing</li>
-      <li><span class="day-label thu">Thu</span> Shogi Software</li>
-      <li><span class="day-label fri">Fri</span> 3D Modeling</li>
-      <li><span class="day-label sat">Sat</span> Manga</li>
-      <li><span class="day-label sun">Sun</span> Animation</li>
-    </ul>
-    <div class="games-section">
-      <h2>Daily Game Streams</h2>
-      <div class="game-note">One of these at random:</div>
-      <ul class="game-list">
-        <li>Genshin Impact</li>
-        <li>Apex Legends</li>
-        <li>Elden Ring</li>
-        <li>Duel Masters Play's</li>
-        <li>Honkai Impact 3rd</li>
-        <li>Honkai: Star Rail</li>
-        <li>Zenless Zone Zero</li>
+  <main>
+    <div class="schedule-card">
+      <div class="home-btn-wrap">
+        <a href="profile.html" class="home-btn">Home</a>
+        <a href="archive.html" class="home-btn">Archive</a>
+      </div>
+      <h1 class="schedule-title">Weekly Stream Schedule</h1>
+      <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
+      <ul class="week-list">
+        <li><span class="day-label mon">Mon</span> Study</li>
+        <li><span class="day-label tue">Tue</span> Music</li>
+        <li><span class="day-label wed">Wed</span> Drawing</li>
+        <li><span class="day-label thu">Thu</span> Shogi Software</li>
+        <li><span class="day-label fri">Fri</span> 3D Modeling</li>
+        <li><span class="day-label sat">Sat</span> Manga</li>
+        <li><span class="day-label sun">Sun</span> Animation</li>
       </ul>
+      <div class="games-section">
+        <h2>Daily Game Streams</h2>
+        <div class="game-note">One of these at random:</div>
+        <ul class="game-list">
+          <li>Genshin Impact</li>
+          <li>Apex Legends</li>
+          <li>Elden Ring</li>
+          <li>Duel Masters Play's</li>
+          <li>Honkai Impact 3rd</li>
+          <li>Honkai: Star Rail</li>
+          <li>Zenless Zone Zero</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </main>
   <footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
-</footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 </body>
 </html>

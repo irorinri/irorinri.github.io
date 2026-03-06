@@ -1,88 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 
+:root {
+  --page-bg: #f1f1f1;
+  --surface: rgba(252, 252, 252, 0.96);
+  --surface-hover: #f0f0f0;
+  --text-main: #111111;
+  --text-sub: #444444;
+  --nav-offset: 58px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
-  font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントに変更 */
   margin: 0;
-  padding-bottom: 120vh;
-  
-  background-color: #f1f1f1; 
-  overflow: visible; /* スクロールを許可 */
-}
-main {
-  position: relative; 
-}
-nav {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  gap: 0px; /* メニュー間のスペース */
-  background-color: #fcfcfc; /* 背景色を白に変更 */
-  padding: 10px 10px; /* 上下10pxの余白 */
-  margin-left: -10px;
-  position: fixed; /* スクロールしても上部に固定 */
+  flex-direction: column;
+  padding-top: var(--nav-offset);
+  background-color: var(--page-bg);
+  color: var(--text-main);
+  font-family: 'Yomogi', Arial, sans-serif;
+}
+
+main {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+nav {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 2000;
- /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
-  flex-wrap: nowrap; /* 折り返さないようにする */
-  width: 100vw;
-  text-align: center; /* セーフティ設定 */
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  padding: 10px 12px;
+  background-color: var(--surface);
+  backdrop-filter: blur(8px);
+  text-align: center;
 }
 
 nav a {
-  color: #000000; /* 文字色を黒に変更 */
-  text-decoration: none; /* 下線を消す */
-  padding: 5px 8px; /* 上下5px、左右15pxの余白 */
-  border: none;
-  border-radius: 5px; /* 角を丸める */
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: var(--text-main);
+  background-color: transparent;
   font-size: 16px;
-  font-family: 'Yomogi', Arial, sans-serif; /* 手描き風フォントを適用 */
-  background-color: transparent; 
-  transition: background-color 0.3s ease, transform 0.2s ease; /* アニメーション */
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-  background-color: #f0f0f0; 
-  transform: scale(1.05); /* ホバー時に少し拡大 */
+  background-color: var(--surface-hover);
+  transform: scale(1.05);
 }
+
 nav a.active {
-  background-color: #f0f0f0;
+  background-color: var(--surface-hover);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 
-/* スマホ対応: ナビゲーションを横一列に */
-@media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap; /* 折り返しを許可 */
-    justify-content: center; /* 中央揃え */
-  }
-
-  nav a {
-    padding: 5px 15px; 
-    font-size: 14px; /* フォントサイズを小さめに調整 */
-  }
-}
 footer {
-  position: fixed; /* 常に固定 */
-  bottom: 0; /* 画面の一番下に配置 */
-  width: 100%; /* 横幅を全画面に広げる */
-  text-align: center; 
-  color: black; /* 白文字 */
-  font-size: 11px; /* 小さめの文字サイズ */
-  padding: 2px 0; /* 上下の余白 */
-  z-index: 1000; /* 他の要素の上に表示 */
+  width: 100%;
+  padding: 0.85rem 0 1rem;
+  color: var(--text-main);
+  font-size: 11px;
+  text-align: center;
 }
+
 footer a {
   color: inherit;
 }
 
 .icon-gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2列 */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   justify-content: center;
   padding: 20px;
 }
+
 .icon-column,
 .image-column {
   display: flex;
@@ -90,6 +101,7 @@ footer a {
   align-items: center;
   gap: 20px;
 }
+
 .icon-item img,
 .image-item img {
   width: 100px;
@@ -98,12 +110,29 @@ footer a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.icon-item img { border-radius: 50%; }
-.image-item img { border-radius: 0; }
+
+.icon-item img {
+  border-radius: 50%;
+}
+
+.image-item img {
+  border-radius: 0;
+}
+
 .date {
-  text-align: center;
+  margin-top: 5px;
+  color: var(--text-sub);
   font-size: 14px;
-  color: #444;
-  margin-top: 5px;}
+  text-align: center;
+}
 
+@media (max-width: 768px) {
+  :root {
+    --nav-offset: 94px;
+  }
 
+  nav a {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+}

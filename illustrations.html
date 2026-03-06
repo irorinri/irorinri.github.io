@@ -10,301 +10,237 @@
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-
-  
-  .gallery {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 10px; 
-    padding: 20px; 
-    margin-top: 5px; 
-    margin-bottom: 1000px; 
-  }
-
-  /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬮ｯ・ｷ・つ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｯ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
-  .gallery a {
-    width: 18%; 
-    max-width: 100px; 
-    text-decoration: none; 
-  }
-
-  /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬮ｯ・ｷ・つ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陷代・・ｽ・ｸ驗呻ｽｫ郢晢ｽｻ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
-  .gallery img {
-    width: 100%; /* 鬯ｮ・ｫ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｪ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ驕ｶ鬆托ｽ･・｢隲・ｺ髯具ｽｹ繝ｻ・ｻ郢晢ｽｻ陷證ｦ・ｽ・ｸ繝ｻ・ｺ髯晢ｽｶ陷ｻ・ｻ繝ｻ・ｽ郢晢ｽｻ*/
-    height: auto; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢隴取得・ｽ・｣繝ｻ・ｹ驍ｵ・ｺ鬩｢謳ｾ・ｽ・ｹ隴惹ｹ暦ｽｲ・ｺ郢晢ｽｻ繝ｻ・ｯ髫ｴ竏ｵ閻ｸ繝ｻ・ｽ陝ｶ譏ｴ・郢晢ｽｻ繝ｻ・ｭ鬮ｫ・ｰ陜荳翫・郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｦ鬯ｯ・ｯ繝ｻ・ｮ髯区ｻゑｽｽ・･郢晢ｽｻ郢晢ｽｻ繝ｻ・ｹ繝ｻ・ｧ髯橸ｽｳ陞｢・ｹ郢晢ｽｻ鬮ｯ・ｷ髢ｧ・ｴ郢晢ｽｻ郢晢ｽｻ繝ｻ・ｪ郢晢ｽｻ繝ｻ・ｿ鬮ｫ・ｰ繝ｻ・ｨ郢晢ｽｻ繝ｻ・ｴ */
-    border-radius: 5px; /* 鬯ｮ・ｫ隲､諛翫・郢晢ｽｻ陞ｳ螢ｼ蛻晉ｹ晢ｽｻ繝ｻ・ｸ鬩幢ｽ｢繝ｻ・ｧ驕ｶ荳橸ｽ､・ｲ繝ｻ・ｽ郢晢ｽｻ*/
-    
-    transition: transform 0.3s, box-shadow 0.3s; /* 鬩幢ｽ｢隴取得・ｽ・ｸ陷ｷ・ｶ・趣ｽ｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬮ｫ・ｴ陟托ｽｱ繝ｻ繝ｻ・ｹ譎｢・ｽ・ｻ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢隴乗・・ｽ・ｹ隴∵ｻ・ｱｪ繝ｻ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｷ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ */
-  }
-
-  /* 鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陷代・・ｽ・ｸ驗呻ｽｫ郢晢ｽｻ鬩幢ｽ｢隴寂・繝ｻ驛｢譎｢・ｽ・ｻ鬮ｫ・ｴ陟托ｽｱ繝ｻ繝ｻ・ｹ譎｢・ｽ・ｻ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
-  .gallery img:hover {
-    transform: scale(1.1); /* 鬮ｫ・ｲ繝ｻ・｡郢晢ｽｻ繝ｻ・｡鬮ｯ讓奇ｽｻ繧托ｽｽ・ｽ繝ｻ・ｧ */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 鬮ｯ貅ｷ遘√・・ｽ繝ｻ・ｱ鬩幢ｽ｢繝ｻ・ｧ鬮ｮ蛹ｺ・ｩ・ｸ繝ｻ・ｽ繝ｻ・ｼ郢晢ｽｻ繝ｻ・ｷ鬯ｮ・ｫ繝ｻ・ｱ郢晢ｽｻ繝ｻ・ｿ */
-  }
-
-  /* 鬮ｯ・ｷ髣鯉ｽｨ繝ｻ・ｽ繝ｻ・ｨ鬮｣蜴・ｽｽ・ｴ鬮ｦ・ｮ陷ｷ・ｶ繝ｻ繝ｻﾎ碑ｭ趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬯ｮ・ｴ隰・∞・ｽ・ｽ繝ｻ・ｽ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・｣繝ｻ・ｰ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
-  .image-gallery {
-    display: block; /* 鬮ｯ譏ｴ繝ｻ鬯・・繝ｻ繝ｻ・ｦ驕ｶ謫ｾ・ｽ・ｫ郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩幢ｽ｢繝ｻ・ｧ髯句ｹ｢・ｽ・ｵ驛｢譎｢・ｽ・ｶ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｭ鬩幢ｽ｢隴擾ｽｴ郢晢ｽｻ驍ｵ・ｺ魄・ｽｹ陜怜ｮ茨ｽｫ謫ｾ・ｽ・ｫ郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｨ鬩搾ｽｵ繝ｻ・ｺ髯ｷ莨夲ｽｽ・ｱ驕ｯ・ｶ繝ｻ・ｻ鬯ｮ・ｯ繝ｻ・ｦ郢晢ｽｻ繝ｻ・ｨ鬯ｩ遨ゑｽｼ螟ｲ・ｽ・ｽ繝ｻ・ｺ */
-    overflow: auto; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｯ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ鬮ｯ・ｷ繝ｻ・ｿ郢晢ｽｻ繝ｻ・ｯ鬯ｮ・｢繝ｻ・ｭ郢晢ｽｻ繝ｻ・ｽ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬩搾ｽｵ繝ｻ・ｺ髯ｷ・ｷ繝ｻ・ｶ郢晢ｽｻ郢晢ｽｻ*/
-    margin-bottom: 1000px; /* 鬮｣蛹・ｽｽ・ｳ鬩墓得・ｽ・ｩ繝ｻ荳ｻ・､繧托ｽｽ・ｸ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮｣蜴・ｽｽ・ｴ髯ｷ・･闕ｳ讓｣・ｰ繝ｻﾎ斐・・ｧ鬮ｮ蛹ｺ・ｩ・ｸ繝ｻ・ｽ繝ｻ・､郢晢ｽｻ繝ｻ・ｧ鬩搾ｽｵ繝ｻ・ｺ鬯ｮ・ｦ繝ｻ・ｪ郢晢ｽｻ繝ｻ・･鬯ｩ蠅捺・繝ｻ・ｽ繝ｻ・ｺ鬮｣蜴・ｽｽ・ｫ驛｢譎｢・ｽ・ｻ*/
-  }
-
-  @media (max-width: 768px) {
-    .gallery a {
-      width: 24%; /* 鬮ｫ・ｶ鬮ｮ・｣繝ｻ・ｽ繝ｻ・ｪ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ郢晢ｽｻ陝ｶ譎丞ｯｰ郢晢ｽｻ繝ｻ・ｪ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ24%鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｫ繝ｻ・ｪ郢晢ｽｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ*/
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
     }
-  }
 
-  /* 鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｡鬩幢ｽ｢隴擾ｽｴ郢晢ｽｻ驍ｵ・ｺ郢晢ｽｻ繝ｻ・ｹ繝ｻ・ｧ郢晢ｽｻ繝ｻ・｢鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｯ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｨ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ驛｢譎｢・ｽ・ｻ髯樊ｺ假ｽ・ｫ｢蟷・ｽｬ・ｮ繝ｻ・ｱ郢晢ｽｻ繝ｻ・｢鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ80px鬮｣豈費ｽｼ螟ｲ・ｽ・ｽ繝ｻ・･鬮｣蛹・ｽｽ・ｳ髣包ｽｵ隴擾ｽｴ郢晢ｽｻ鬮ｯ諛ｶ・ｽ・｣郢晢ｽｻ繝ｻ・ｴ鬮ｯ・ｷ繝ｻ・ｷ驛｢譎｢・ｽ・ｻ*/
-  @media (max-width: 480px) {
-    .gallery a {
-      width: 30%; /* 鬮ｫ・ｶ鬮ｮ・｣繝ｻ・ｽ繝ｻ・ｪ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ郢晢ｽｻ陝ｶ譎丞ｯｰ郢晢ｽｻ繝ｻ・ｪ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ30%鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｫ繝ｻ・ｪ郢晢ｽｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ*/
+    .page-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 1.25rem 0 0.75rem;
     }
-  }
 
-  /* PhotoSwipe鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｫ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢隴趣ｽ｢繝ｻ・｣繝ｻ・ｰ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
-  .pswp__custom-caption {
-    color: #000000 !important; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢隴擾ｽｴ郢晢ｽｻ驍ｵ・ｺ陷證ｦ・ｽ・ｹ繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢隴取ｧｭﾎ馴恆螟ｲ・ｽ・｡鬩幢ｽ｢繝ｻ・ｧ髯懶ｽ｣繝ｻ・､髯ｷ迺ｰﾂ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｫ繝ｻ・ｪ郢晢ｽｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ*/
-    text-align: center !important; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢繝ｻ・ｧ髯ｷ莉｣繝ｻ繝ｻ・ｽ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｭ鬮ｯ讓奇ｽｻ繧托ｽｽ・ｽ繝ｻ・ｮ鬮ｫ・ｰ繝ｻ・ｰ驛｢譎｢・ｽ・ｻ驕ｶ謫ｾ・ｽ・ｴ */
-    padding: 5px; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮ｯ・ｷ・つ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮｣蜴・ｽｽ・ｴ髯ｷ・･闕ｳ讓｣・ｰ繝ｻ*/
-    position: absolute; /* 鬯ｮ・ｫ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｪ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｨ・ｾ繝ｻ・ｶ郢晢ｽｻ繝ｻ・ｸ鬮ｯ譏ｴ繝ｻ繝ｻ・ｽ繝ｻ・ｾ鬯ｨ・ｾ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ驕ｶ莨・ｽｦ・ｴ繝ｻ・ｩ雋・ｽｷ髫ｱ・ｿ郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｮ */
-    bottom: 30px; /* 鬯ｮ・ｫ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｪ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮｣蛹・ｽｽ・ｳ鬩墓得・ｽ・ｩ繝ｻ荳ｻ・､繧托ｽｽ・ｸ繝ｻ・ｺ髣包ｽｵ隴趣ｽ｢繝ｻ・ｽ郢晢ｽｻ0px鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮｣蜴・ｽｽ・ｴ髯ｷ・･繝ｻ・ｲ郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｮ */
-    width: 100%; /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ郢晢ｽｻ陞ｳ螢ｽﾂ・ｦ郢晢ｽｻ繝ｻ・ｨ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ驕ｶ莨・ｽｦ・ｴ陜ｮ蠑ｱ繝ｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ*/
-    z-index: 1000; /* 鬮｣逧ｮ蛻､邵ｺ蛟｡・ｹ譎｢・ｽ・ｻ鬯ｮ・ｫ髯ｬ諛医′郢晢ｽｻ繝ｻ・ｴ郢晢ｽｻ繝ｻ・ｰ鬩幢ｽ｢繝ｻ・ｧ髯具ｽｹ繝ｻ・ｻ郢晢ｽｻ鬯倅ｿｶ竕ｧ髯憺屮・ｽ・ｼ髫ｰ・ｫ郢晢ｽｻ繝ｻ・ｸ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｯ繝ｻ・ｦ郢晢ｽｻ繝ｻ・ｨ鬯ｩ遨ゑｽｼ螟ｲ・ｽ・ｽ繝ｻ・ｺ */
-    visibility: visible; /* 鬮ｯ譎｢・ｽ・ｶ郢晢ｽｻ繝ｻ・ｸ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｯ繝ｻ・ｦ郢晢ｽｻ繝ｻ・ｨ鬯ｩ遨ゑｽｼ螟ｲ・ｽ・ｽ繝ｻ・ｺ */
-  }
+    .page-actions a {
+      display: inline-block;
+      padding: 0.35em 1.3em;
+      border-radius: 0.2em;
+      background: #dddddd;
+      color: #8a8a8a;
+      font-size: 0.8em;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
 
-  /* PhotoSwipe鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｫ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｦ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬩幢ｽ｢繝ｻ・ｧ髯晢ｽｶ隴弱・蟲ｩ鬯ｮ・ｯ繝ｻ・ｦ郢晢ｽｻ繝ｻ・ｨ鬯ｩ遨ゑｽｼ螟ｲ・ｽ・ｽ繝ｻ・ｺ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬩搾ｽｵ繝ｻ・ｺ髯ｷ・ｷ繝ｻ・ｶ郢晢ｽｻ郢晢ｽｻ*/
-  .pswp__counter {
-    display: none; 
-  }
+    .page-actions a:hover {
+      background: #cfcfcf;
+      color: #666;
+    }
 
-    .back-home-btn {
-  display: flex;
-  align-items: flex-end;
-  background: #b3d7ff;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5em 1.4em;
-  border-radius: 0.2em;
-  margin-left: 1rem; /* 鬩包ｽｶ驗呻ｽｫ郢晢ｽｻ鬯ｮ・ｴ隰・∞・ｽ・ｽ繝ｻ・ｽ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・｣繝ｻ・ｰ驛｢譎｢・ｽ・ｻ髯樊ｻ会ｽｻ蜻寂・鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｨ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬯ｯ・ｮ繝ｻ・｢鬯ｯ・･繝ｻ・ｴ髯懷干繝ｻ*/
-  transition: background 0.2s;
-  font-size: 0.95em;
-}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      padding: 0.75rem 0 0;
+    }
 
-.suzuri-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
+    .gallery a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.suzuri-btn {
-  font-weight: bold;
-  border: none;
-  border-radius: 0em;       
-  font-size: 0.8em !important;
-  padding: 0.2em 1.4em !important;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-}
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-    
-.suzuri-btn,
-.suzuri-btn:hover,
-.suzuri-btn:active,
-.suzuri-btn:focus,
-.suzuri-btn:focus-visible {
-  background: #dddddd !important;
-  color: #a3a3a3 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  transition: none !important;
-  transform: none !important;
-}
+    .gallery img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-    
-</style>
+    .hidden-caption-content {
+      display: none;
+    }
+
+    .pswp__counter {
+      display: none;
+    }
+
+    .pswp__custom-caption {
+      position: absolute;
+      right: 0;
+      bottom: 30px;
+      left: 0;
+      z-index: 1000;
+      padding: 5px;
+      color: #000;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">folks</a>
+    <a href="illustrations.html" class="active" aria-current="page">draws</a>
+    <a href="gallery.html">comix</a>
+    <a href="story.html">tales</a>
+    <a href="blog.html">stuff</a>
+    <a href="archive.html">archive</a>
+  </nav>
 
+  <main>
+    <div class="page-actions">
+      <a href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
+      <a href="profile.html">Profile</a>
+    </div>
 
-<div class="suzuri-btn-wrapper">
-  <a class="suzuri-btn" href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
-  <a class="back-home-btn" href="profile.html">Back to Home</a>
-</div>
-  
-<nav>
-  <a href="index.html">folks</a>
-  <a href="illustrations.html" class="active" aria-current="page">draws</a>
-  <a href="gallery.html">comix</a>
-  <a href="story.html">tales</a>
-  <a href="blog.html">stuff</a>
-  <a href="archive.html">archive</a>
-</nav>
+    <div class="gallery" aria-label="Illustration gallery"></div>
+  </main>
 
-<div class="gallery"></div>
+  <footer>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  </footer>
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
 
-  const images = [
-    { src: 'images/1.webp', width: 1000, height: 1000, date: '2024-11-10' },
-    { src: 'images/2.webp', width: 1000, height: 1000, date: '2024-11-11' },
-    { src: 'images/3.webp', width: 1000, height: 1000, date: '2024-11-13' },
-    { src: 'images/4.webp', width: 1000, height: 1000, date: '2024-11-14' },
-    { src: 'images/5.webp', width: 1000, height: 1000, date: '2024-11-15' },
-    { src: 'images/6.webp', width: 1000, height: 1000, date: '2024-11-23' },
-    { src: 'images/7.webp', width: 1000, height: 1000, date: '2024-11-26' },
-    { src: 'images/8.webp', width: 1000, height: 1000, date: '2024-11-30' },
-    { src: 'images/9.webp', width: 1000, height: 1000, date: '2024-12-08' },
-    { src: 'images/10.webp', width: 1000, height: 1000, date: '2024-12-21' },
-    { src: 'images/11.webp', width: 1000, height: 1000, date: '2024-12-22' },
-    { src: 'images/12.webp', width: 1000, height: 1000, date: '2025-01-28' },
-    { src: 'images/14.webp', width: 1000, height: 1000, date: '2025-01-30' },
-    { src: 'images/15.webp', width: 1000, height: 1000, date: '2025-03-05' },
-    { src: 'images/16.webp', width: 1000, height: 1000, date: '2025-04-10' },
-    { src: 'images/17.webp', width: 1000, height: 1000, date: '2025-05-14' },
-    { src: 'images/18.webp', width: 1000, height: 1000, date: '2025-05-16' },
-    { src: 'images/19.webp', width: 1000, height: 1000, date: '2025-06-20' },
-    { src: 'images/20.webp', width: 1000, height: 1000, date: '2025-06-23' },
-    { src: 'images/21.webp', width: 1000, height: 1000, date: '2025-06-25' },
-    { src: 'images/22.webp', width: 1000, height: 1000, date: '2025-07-12' },
-    { src: 'images/23.webp', width: 1000, height: 1000, date: '2025-07-20' },
-    { src: 'images/24.webp', width: 1000, height: 1000, date: '2025-08-03' },
-    { src: 'images/25.webp', width: 1000, height: 1000, date: '2026-02-28' },
+    const images = [
+      { src: 'images/1.webp', width: 1000, height: 1000, date: '2024-11-10' },
+      { src: 'images/2.webp', width: 1000, height: 1000, date: '2024-11-11' },
+      { src: 'images/3.webp', width: 1000, height: 1000, date: '2024-11-13' },
+      { src: 'images/4.webp', width: 1000, height: 1000, date: '2024-11-14' },
+      { src: 'images/5.webp', width: 1000, height: 1000, date: '2024-11-15' },
+      { src: 'images/6.webp', width: 1000, height: 1000, date: '2024-11-23' },
+      { src: 'images/7.webp', width: 1000, height: 1000, date: '2024-11-26' },
+      { src: 'images/8.webp', width: 1000, height: 1000, date: '2024-11-30' },
+      { src: 'images/9.webp', width: 1000, height: 1000, date: '2024-12-08' },
+      { src: 'images/10.webp', width: 1000, height: 1000, date: '2024-12-21' },
+      { src: 'images/11.webp', width: 1000, height: 1000, date: '2024-12-22' },
+      { src: 'images/12.webp', width: 1000, height: 1000, date: '2025-01-28' },
+      { src: 'images/14.webp', width: 1000, height: 1000, date: '2025-01-30' },
+      { src: 'images/15.webp', width: 1000, height: 1000, date: '2025-03-05' },
+      { src: 'images/16.webp', width: 1000, height: 1000, date: '2025-04-10' },
+      { src: 'images/17.webp', width: 1000, height: 1000, date: '2025-05-14' },
+      { src: 'images/18.webp', width: 1000, height: 1000, date: '2025-05-16' },
+      { src: 'images/19.webp', width: 1000, height: 1000, date: '2025-06-20' },
+      { src: 'images/20.webp', width: 1000, height: 1000, date: '2025-06-23' },
+      { src: 'images/21.webp', width: 1000, height: 1000, date: '2025-06-25' },
+      { src: 'images/22.webp', width: 1000, height: 1000, date: '2025-07-12' },
+      { src: 'images/23.webp', width: 1000, height: 1000, date: '2025-07-20' },
+      { src: 'images/24.webp', width: 1000, height: 1000, date: '2025-08-03' },
+      { src: 'images/25.webp', width: 1000, height: 1000, date: '2026-02-28' }
+    ];
 
+    const galleryElement = document.querySelector('.gallery');
+    const fragment = document.createDocumentFragment();
 
+    images.slice().reverse().forEach(({ src, width, height, date }) => {
+      const link = document.createElement('a');
+      link.href = src;
+      link.dataset.pswpWidth = String(width);
+      link.dataset.pswpHeight = String(height);
 
+      const image = document.createElement('img');
+      image.src = src;
+      image.alt = `Illustration posted on ${date}`;
+      image.loading = 'lazy';
 
+      const caption = document.createElement('span');
+      caption.className = 'hidden-caption-content';
+      caption.textContent = date;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-  ];
-
-  const galleryElement = document.querySelector('.gallery');
-  images.reverse().forEach(({ src, width, height, date }) => {
-    galleryElement.innerHTML += `
-      <a href="${src}" data-pswp-width="${width}" data-pswp-height="${height}">
-        <img src="${src}" alt="illustration" loading="lazy">
-        <span class="hidden-caption-content" style="display:none;">${date}</span>
-      </a>`;
-  });
-
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '.gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    loop: false, 
-  });
-
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-counter',
-      order: 5,
-      isButton: false,
-      appendTo: 'bar',
-      html: '',
-      onInit: (el, pswp) => {
-        Object.assign(el.style, {
-          color: 'white', fontSize: '15px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold',
-          position: 'relative', top: '20px', left: '30px', padding: '2px',
-          webkitTextStroke: '1px rgba(128, 128, 128, 0.8)', textStroke: '1px rgba(128, 128, 128, 0.8)',
-        });
-        pswp.on('change', () => {
-          const total = pswp.getNumItems();
-          const index = total - pswp.currIndex;
-          el.innerHTML = `${index} / ${total}`;
-        });
-      },
+      link.append(image, caption);
+      fragment.appendChild(link);
     });
 
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-caption',
-      order: 9,
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          el.innerHTML = caption ? caption.textContent : '鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｭ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驍ｵ・ｺ陷･謫ｾ・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｧ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｪ鬩搾ｽｵ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ;
-        });
-      },
+    galleryElement.appendChild(fragment);
+
+    const photoSwipeStyle = document.createElement('style');
+    photoSwipeStyle.textContent = '.pswp__bg { background-color: #add8e6 !important; }';
+    document.head.appendChild(photoSwipeStyle);
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery',
+      children: 'a',
+      loop: false,
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
     });
 
-    const style = document.createElement('style');
-    style.innerHTML = `.pswp__bg { background-color: #ADD8E6 !important; }`;
-    document.head.appendChild(style);
-  });
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-counter',
+        order: 5,
+        isButton: false,
+        appendTo: 'bar',
+        html: '',
+        onInit: (element, pswp) => {
+          Object.assign(element.style, {
+            color: 'white',
+            fontSize: '15px',
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            position: 'relative',
+            top: '20px',
+            left: '30px',
+            padding: '2px',
+            webkitTextStroke: '1px rgba(128, 128, 128, 0.8)',
+            textStroke: '1px rgba(128, 128, 128, 0.8)',
+          });
 
-  lightbox.init();
+          pswp.on('change', () => {
+            const total = pswp.getNumItems();
+            const index = total - pswp.currIndex;
+            element.textContent = `${index} / ${total}`;
+          });
+        },
+      });
 
-
-
-// 鬩幢ｽ｢隴取得・ｽ・｣繝ｻ・ｹ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｸ鬮ｯ貅ｷ譯√・・ｽ繝ｻ・ｩ鬮ｯ・ｷ陋ｹ・ｻ郢晢ｽｻ郢晢ｽｻ繝ｻ・ｼ髯懈瑳・ｺ・ｽ繝ｻ・ｶ繝ｻ・ｾ鬩幢ｽ｢繝ｻ・ｧ髣包ｽｵ隴擾ｽｴ郢晢ｽｻ鬯ｯ・ｨ繝ｻ・ｾ郢晢ｽｻ繝ｻ・ｲ鬩幢ｽ｢繝ｻ・ｧ繝ｻ縺､ﾂ驛｢譎｢・ｽ・ｻ鬨ｾ蛹・ｽｽ・ｻ髯ｷ繝ｻ・ｽ・ｾ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｫ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・｣lur鬩搾ｽｵ繝ｻ・ｺ鬮ｴ蝓溷繭鬮ｮ・ｷ鬩幢ｽ｢繝ｻ・ｧ驛｢譎｢・ｽ・ｻ
-window.addEventListener('pageshow', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.blur();
-  });
-});
-  
-// 鬮ｯ貊ゑｽｽ・｢郢晢ｽｻ繝ｻ・ｵ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬩搾ｽｵ繝ｻ・ｺ髮九・竏槭・・ｽ遶擾ｽｫ繝ｻ・ｸ繝ｻ・ｲ驕ｶ荳橸ｽ｣・ｹ繝ｻ・ｰ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴擾ｽｴ郢晢ｽｻ驍ｵ・ｺ鬯倬ｯ会ｽｽ・ｭ陟托ｽｱ繝ｻ繝ｻ・ｫ莨∬ｱｪ繝ｻ・ｹ繝ｻ・ｧ郢晢ｽｻ繝ｻ・｣lur
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.addEventListener('mouseup', function() {
-      btn.blur();
+      lightbox.pswp.ui.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'wrapper',
+        html: '',
+        onInit: (element, pswp) => {
+          element.className = 'pswp__custom-caption';
+          pswp.on('change', () => {
+            const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+            element.textContent = caption ? caption.textContent : '';
+          });
+        },
+      });
     });
-  });
-});
-  
 
-</script>
+    lightbox.init();
 
+    window.addEventListener('pageshow', () => {
+      document.querySelectorAll('.page-actions a').forEach((link) => link.blur());
+    });
 
-
-  
-<footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
-</footer>
-
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.page-actions a').forEach((link) => {
+        link.addEventListener('mouseup', () => link.blur());
+      });
+    });
+  </script>
 </body>
 </html>
