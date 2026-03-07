@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
     body.blog-page {
       font-size: 10px;
       line-height: 1.6;
@@ -171,7 +176,7 @@
     <a href="gallery.html">comix</a>
     <a href="story.html">tales</a>
     <a href="blog.html" class="active" aria-current="page">stuff</a>
-    <a href="archive.html">archive</a>
+    <a href="profile.html#archive">archive</a>
   </nav>
 
   <main>
@@ -247,7 +252,7 @@
   </main>
 
   <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
   </footer>
 
   <script>
@@ -258,20 +263,31 @@
     const visibleChatterLabels = 1;
 
     async function loadRecentEntries() {
-      const entries = document.querySelectorAll('[data-entry-file]');
+      const entries = Array.from(document.querySelectorAll('[data-entry-file]'));
 
-      for (const entry of entries) {
+      const results = await Promise.all(entries.map(async (entry) => {
         try {
           const response = await fetch(entry.dataset.entryFile);
           if (!response.ok) {
             throw new Error(`Failed to load ${entry.dataset.entryFile}`);
           }
-          entry.innerHTML = await response.text();
+
+          return {
+            entry,
+            html: await response.text(),
+          };
         } catch (error) {
-          entry.innerHTML = '<p>Failed to load this entry.</p>';
           console.error(error);
+          return {
+            entry,
+            html: '<p>Failed to load this entry.</p>',
+          };
         }
-      }
+      }));
+
+      results.forEach(({ entry, html }) => {
+        entry.innerHTML = html;
+      });
     }
 
     async function loadEmbeddedMain(url, target, fallbackText) {
