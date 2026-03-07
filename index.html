@@ -27,42 +27,34 @@
       padding: 0 1rem 3rem;
     }
 
-    .start-here {
-      margin: 0 auto 1.2rem;
+    .page-intro {
+      margin: 0 auto 1.25rem;
       max-width: 780px;
-      padding: 0.55rem 0.8rem;
-      border: 1px solid #e6e6e6;
-      border-radius: 6px;
-      background: #f8f8f8;
+      padding: 1rem 1.1rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      background: #f9f9f9;
       text-align: center;
     }
 
-    .start-here-copy {
-      margin: 0 0 0.15rem;
-      color: #444;
-      font-size: 0.9rem;
+    .page-intro h1 {
+      margin: 0 0 0.45rem;
+      color: var(--text-main);
+      font-size: 1.2rem;
     }
 
-    .start-here-links {
+    .page-intro p {
       margin: 0;
-      font-size: 0.86rem;
-      line-height: 1.5;
+      color: #4b4b4b;
+      font-size: 0.92rem;
+      line-height: 1.65;
     }
 
-    .start-here-links a {
-      color: inherit;
-    }
-
-    .profile-link-wrap {
-      display: flex;
-      justify-content: center;
-      margin: 4rem 0 1rem;
-    }
-
-    .profile-link {
+    .page-intro-link {
       display: inline-block;
-      padding: 0.5em 1.4em;
-      border-radius: 0.2em;
+      margin-top: 0.9rem;
+      padding: 0.55em 1.35em;
+      border-radius: 999px;
       background: var(--accent);
       color: #fff;
       font-size: 0.95em;
@@ -71,7 +63,7 @@
       transition: background 0.2s, color 0.2s;
     }
 
-    .profile-link:hover {
+    .page-intro-link:hover {
       background: var(--accent2);
       color: var(--text-main);
     }
@@ -117,25 +109,15 @@
     <a href="gallery.html">comix</a>
     <a href="story.html">tales</a>
     <a href="blog.html">stuff</a>
-    <a href="archive.html">archive</a>
+    <a href="profile.html#archive">archive</a>
   </nav>
 
   <main>
-    <section class="start-here" aria-label="Start here">
-      <p class="start-here-copy">New here? Start from Archive.</p>
-      <p class="start-here-links">
-        <a href="archive.html">Archive</a> |
-        <a href="illustrations.html">Illustrations</a> |
-        <a href="gallery.html">Comix</a> |
-        <a href="blog.html">Blog</a> |
-        <a href="schedule.html">Schedule</a> |
-        <a href="profile.html">Profile</a>
-      </p>
+    <section class="page-intro" aria-label="Page intro">
+      <h1>Folks archive</h1>
+      <p>This page is now focused on the character posts only. The main archive hub lives on the profile page, so use that when you want the full site map.</p>
+      <a class="page-intro-link" href="profile.html#archive">Open Profile Hub</a>
     </section>
-
-    <div class="profile-link-wrap">
-      <a class="profile-link" href="profile.html">Profile</a>
-    </div>
 
     <div class="image-gallery">
       <a href="images/d.webp" data-pswp-width="1920" data-pswp-height="1920">
@@ -170,7 +152,7 @@
   </main>
 
   <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
   </footer>
 
   <script type="module">
