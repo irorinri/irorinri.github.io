@@ -3,50 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="Blog index for irorinri.">
-  <title>Index | irorinri</title>
+  <meta name="description" content="Quick blog index with one-click links to each blog entry.">
+  <title>Blog Index | irorinri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
+  <style>
+    .blog-list {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 2rem 1rem 2.5rem 1rem;
+    }
+
+    .home-btn-wrap {
+      text-align: center;
+      margin: 0.8em 0 0.6em;
+    }
+
+    .home-btn-wrap .home-btn {
+      margin: 0 0.25em;
+      display: inline-block;
+      background: #eceff3;
+      color: #767b8c;
+      font-size: 1em;
+      padding: 0.55em 1.3em;
+      border-radius: 0.7em;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .home-btn-wrap .home-btn:hover,
+    .home-btn-wrap .home-btn:active {
+      background: #d7dbe2;
+      color: #5174a0;
+    }
+
+    .month-nav {
+      margin: 0 0 0.9rem;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #767b8c;
+    }
+
+    .month-nav a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted #9aa4b0;
+    }
+
+    .entry-link {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      text-decoration: none;
+      color: inherit;
+      background: #eceff3;
+      border-radius: 0;
+      margin: 1rem 0;
+      box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07);
+      padding: 1rem 1.4rem;
+      transition: box-shadow 0.2s, background-color 0.2s;
+    }
+
+    .entry-link:hover {
+      background: #e5e9ee;
+      box-shadow: 0 6px 24px 0 rgba(140,80,230,0.12);
+    }
+
+    .entry-link .date {
+      color: #767b8c;
+      font-size: 0.97em;
+      min-width: 7em;
+    }
+
+    .entry-link .title {
+      color: #5174a0;
+      font-weight: 700;
+    }
+
+    header {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .header-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      padding: 0;
+      vertical-align: bottom;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <img src="header-image.png" alt="header" class="header-img">
+  </header>
+
+  <div class="home-btn-wrap">
+    <a href="profile.html" class="home-btn">Home</a>
+    <a href="profile.html#archive" class="home-btn">Archive</a>
+  </div>
+
   <main>
-    <section class="blog2-head">
-      <div>
-        <p class="blog2-label">stuff</p>
-        <h1 class="blog2-title">index</h1>
-      </div>
-      <div class="blog2-actions">
-        <a href="profile.html">profile</a>
-        <a href="profile.html#archive">archive</a>
-      </div>
+    <section class="blog-list" aria-label="Blog index">
+      <p class="month-nav">
+        <a href="blog.html#202507">2025-07</a> | <a href="blog.html#202506">2025-06</a>
+      </p>
+
+      <a class="entry-link" href="blog.html#20250728">
+        <span class="date">2025-07-28</span>
+        <span class="title">The Ocean AItuber</span>
+      </a>
+
+      <a class="entry-link" href="blog.html#20250720">
+        <span class="date">2025-07-20</span>
+        <span class="title">First print of my doujinshi</span>
+      </a>
+
+      <a class="entry-link" href="blog.html#20250625">
+        <span class="date">2025-06-25</span>
+        <span class="title">AItuber Kachess Design</span>
+      </a>
+
+      <a class="entry-link" href="blog.html#20250621">
+        <span class="date">2025-06-21</span>
+        <span class="title">Shogi in Unity</span>
+      </a>
     </section>
-
-    <p class="month-nav">
-      <a href="blog.html#202507">2025-07</a> | <a href="blog.html#202506">2025-06</a>
-    </p>
-
-    <a class="entry-link" href="blog.html#20250728">
-      <span class="date">2025-07-28</span>
-      <span class="title">The Ocean AItuber</span>
-    </a>
-
-    <a class="entry-link" href="blog.html#20250720">
-      <span class="date">2025-07-20</span>
-      <span class="title">First print of my doujinshi</span>
-    </a>
-
-    <a class="entry-link" href="blog.html#20250625">
-      <span class="date">2025-06-25</span>
-      <span class="title">AItuber Kachess Design</span>
-    </a>
-
-    <a class="entry-link" href="blog.html#20250621">
-      <span class="date">2025-06-21</span>
-      <span class="title">Shogi in Unity</span>
-    </a>
   </main>
 
   <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
-  </footer>
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
+</footer>
 </body>
 </html>
