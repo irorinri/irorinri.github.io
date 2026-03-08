@@ -3,32 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Main profile and archive hub for irorinri with direct links to folks, illustrations, comix, tales, blog, schedule, and contact.">
-  <meta property="og:title" content="Profile & Archive | irorinri">
-  <meta property="og:description" content="Main profile and archive hub with direct paths to every section of the site.">
+  <meta name="description" content="Profile and archive hub for irorinri.">
+  <meta property="og:title" content="Profile | irorinri">
+  <meta property="og:description" content="Profile and archive hub.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://irorinri.github.io/profile.html">
   <meta property="og:image" content="https://irorinri.github.io/profile.webp">
-  <title>Profile & Archive | irorinri</title>
+  <title>Profile | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="effect.css">
 </head>
 <body class="profile-hub">
-  <div class="glow-bg"></div>
-
   <header class="profile-hero">
-    <p class="hero-kicker">Profile / Archive Hub</p>
     <div class="avatar-wrap">
       <img src="profile.webp" alt="Huelin avatar" class="avatar">
     </div>
-    <h1 class="username">Huelin!</h1>
-    <div class="subtitle">
-      streamer / developer<br>
-      <span class="location">Based in Japan</span>
-    </div>
-    <p class="hero-summary">This page is now the front door for the whole site: archive, posts, gallery, schedule, and contact.</p>
+    <h1 class="username">Huelin</h1>
+    <p class="subtitle">streamer / developer</p>
     <nav class="socials" aria-label="Social links">
       <a href="https://irorinri.bandcamp.com/"><img src="bandcamp.svg" alt="Bandcamp"></a>
       <a href="https://sketchfab.com/irorinri"><img src="sketchfab.svg" alt="Sketchfab"></a>
@@ -39,95 +31,25 @@
   </header>
 
   <main class="profile-main">
-    <section class="card intro-card">
-      <div>
-        <p class="section-kicker">Start here</p>
-        <h2>Everything is linked from this page now.</h2>
-        <p class="intro-copy">Use the archive section below to move through folks, drawings, comix, tales, blog posts, and the utility pages without bouncing between duplicate menus.</p>
-      </div>
-      <div class="hero-actions">
-        <a href="#archive" class="home-btn primary-btn">Browse Archive</a>
-        <a href="blog.html#20250728" class="home-btn">Latest Note</a>
-      </div>
+    <p class="section-label">archive</p>
+    <section id="archive" class="hub-grid" aria-label="Archive links">
+      <a class="hub-link" href="index.html"><strong>folks</strong><small>2024-09-13</small></a>
+      <a class="hub-link" href="illustrations.html"><strong>draws</strong><small>2026-02-28</small></a>
+      <a class="hub-link" href="gallery.html"><strong>comix</strong><small>4 pages</small></a>
+      <a class="hub-link" href="story.html"><strong>tales</strong><small>3 entries</small></a>
+      <a class="hub-link" href="blog.html"><strong>stuff</strong><small>latest note</small></a>
+      <a class="hub-link" href="blog2.html"><strong>index</strong><small>4 posts</small></a>
+      <a class="hub-link" href="schedule.html"><strong>schedule</strong><small>weekly</small></a>
+      <a class="hub-link" href="contact.html"><strong>contact</strong><small>links</small></a>
+      <a class="hub-link" href="icon.html"><strong>icons</strong><small>archive</small></a>
     </section>
 
-    <section id="archive" class="card hub-section">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Archive</p>
-          <h2>Explore the site</h2>
-        </div>
-        <p class="section-note">Major sections first, then the smaller support pages.</p>
-      </div>
-      <div class="hub-grid" aria-label="Archive links">
-        <a class="hub-link" href="index.html">
-          <span class="hub-link-title">Folks</span>
-          <span class="hub-link-copy">Character archive and the newest profile-focused posts.</span>
-        </a>
-        <a class="hub-link" href="illustrations.html">
-          <span class="hub-link-title">Illustrations</span>
-          <span class="hub-link-copy">Main drawing archive with the latest work first.</span>
-        </a>
-        <a class="hub-link" href="gallery.html">
-          <span class="hub-link-title">Comix</span>
-          <span class="hub-link-copy">Short comic pages and print-oriented pieces.</span>
-        </a>
-        <a class="hub-link" href="story.html">
-          <span class="hub-link-title">Tales</span>
-          <span class="hub-link-copy">Serialized text stories and visual previews.</span>
-        </a>
-        <a class="hub-link" href="blog.html">
-          <span class="hub-link-title">Stuff</span>
-          <span class="hub-link-copy">Recent notes, diary, chatter, and embedded side pages.</span>
-        </a>
-        <a class="hub-link" href="blog2.html">
-          <span class="hub-link-title">Blog Index</span>
-          <span class="hub-link-copy">A compact list of blog entries when you want direct jumps.</span>
-        </a>
-        <a class="hub-link" href="schedule.html">
-          <span class="hub-link-title">Schedule</span>
-          <span class="hub-link-copy">Weekly creation and streaming rhythm.</span>
-        </a>
-        <a class="hub-link" href="contact.html">
-          <span class="hub-link-title">Contact</span>
-          <span class="hub-link-copy">External links and the best places to reach me.</span>
-        </a>
-        <a class="hub-link" href="icon.html">
-          <span class="hub-link-title">Icons & Snapshot</span>
-          <span class="hub-link-copy">Past icons, cropped visuals, and snapshot archive.</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="card updates-section">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Latest</p>
-          <h2>Recent updates</h2>
-        </div>
-      </div>
-      <ul class="update-list">
-        <li><a href="illustrations.html">2026-02-28: illustration archive update</a></li>
-        <li><a href="icon.html">2026-01-09: icon archive update</a></li>
-        <li><a href="blog.html#20250728">2025-07-28: latest note, The Ocean AItuber</a></li>
-        <li><a href="index.html">2024-09-13: newest folks page character post</a></li>
-      </ul>
-    </section>
-
-    <section class="card shortcut-section">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">Quick paths</p>
-          <h2>Useful jumps</h2>
-        </div>
-      </div>
-      <div class="shortcut-grid" aria-label="Quick links">
-        <a class="shortcut-link" href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
-        <a class="shortcut-link" href="https://irorinri.booth.pm/items/7206655" target="_blank" rel="noopener">Buy Print</a>
-        <a class="shortcut-link" href="https://irorinri.booth.pm/items/7156017" target="_blank" rel="noopener">Read Tales in print</a>
-        <a class="shortcut-link" href="https://github.com/irorinri" target="_blank" rel="noopener">GitHub profile</a>
-      </div>
-    </section>
+    <div class="link-strip" aria-label="Quick links">
+      <a class="chip-link" href="blog.html#20250728">latest</a>
+      <a class="chip-link" href="schedule.html">schedule</a>
+      <a class="chip-link" href="contact.html">contact</a>
+      <a class="chip-link" href="blog2.html">index</a>
+    </div>
   </main>
 
   <footer>

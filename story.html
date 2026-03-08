@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Story archive and serialized tales by irorinri.">
+  <meta name="description" content="Story archive by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tales | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -15,37 +15,12 @@
       padding: 0 1rem 3rem;
     }
 
-    .page-actions {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      margin: 1.25rem 0 0.75rem;
-    }
-
-    .page-actions a {
-      display: inline-block;
-      padding: 0.4em 1.2em;
-      border-radius: 0;
-      background: #dddddd;
-      color: #8a8a8a;
-      font-size: 0.8em;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .page-actions a:hover {
-      background: #cfcfcf;
-      color: #666;
-    }
-
     .thumbnail-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px 8px;
+      gap: 18px 10px;
       justify-items: center;
-      padding: 0.75rem 0 0;
+      padding: 0.5rem 0 0;
     }
 
     .thumbnail-gallery a {
@@ -57,26 +32,26 @@
     .thumbnail-gallery img {
       width: 130px;
       height: auto;
-      border-radius: 5px;
+      border-radius: 18px;
       transition: transform 0.2s ease;
     }
 
     .thumbnail-gallery img:hover {
-      transform: scale(1.08);
+      transform: scale(1.04);
     }
 
     .thumbnail-gallery p {
-      margin: 2px 0 0;
-      color: #444;
-      font-size: 14px;
+      margin: 0.45rem 0 0;
+      color: var(--text-sub);
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
     }
 
     #novel-container {
       margin-top: 1rem;
-      padding: 0;
       font-family: 'KaiTi', serif;
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.9;
       white-space: pre-wrap;
     }
 
@@ -87,18 +62,13 @@
     .back-button {
       display: none;
       margin: 1.25rem auto 0;
-      padding: 0.65rem 1.2rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #7991ff;
-      color: white;
-      font-size: 16px;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-main);
+      font: inherit;
       cursor: pointer;
-      text-align: center;
-    }
-
-    .back-button:hover {
-      background-color: #5a73f0;
     }
   </style>
 </head>
@@ -112,11 +82,17 @@
     <a href="profile.html#archive">archive</a>
   </nav>
 
-  <main>
-    <div class="page-actions">
-      <a href="https://irorinri.booth.pm/items/7156017" target="_blank" rel="noopener">Buy Print</a>
-      <a href="profile.html">Profile</a>
-    </div>
+  <main class="page-shell">
+    <section class="page-head">
+      <div>
+        <p class="page-label">archive</p>
+        <h1 class="page-title">tales</h1>
+      </div>
+      <div class="page-actions">
+        <a href="https://irorinri.booth.pm/items/7156017" target="_blank" rel="noopener">print</a>
+        <a href="profile.html">profile</a>
+      </div>
+    </section>
 
     <div id="thumbnail-gallery" class="thumbnail-gallery">
       <a href="?id=3">
@@ -143,7 +119,7 @@
     </div>
 
     <div id="novel-container" aria-live="polite"></div>
-    <button id="back-button" class="back-button" type="button">Back to list</button>
+    <button id="back-button" class="back-button" type="button">list</button>
   </main>
 
   <footer>
@@ -165,7 +141,7 @@
     }
 
     function showError() {
-      container.innerHTML = '<p>Failed to load this story. Please try again later.</p>';
+      container.innerHTML = '<p>Failed to load this story.</p>';
     }
 
     if (novelId) {
