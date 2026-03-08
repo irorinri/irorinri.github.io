@@ -7,17 +7,13 @@
   <title>Contact | hueryn</title>
   <link rel="stylesheet" href="effect.css">
   <style>
-    .contact-card {
-      text-align: center;
-    }
-
     .contact-links {
-      display: grid;
-      gap: 0.35rem;
+      list-style: none;
       margin: 0.7rem 0 1rem;
       padding: 0;
-      list-style: none;
       text-align: left;
+      display: grid;
+      gap: 0.35rem;
     }
 
     .contact-links a {
@@ -38,26 +34,23 @@
       margin: 0 0.2em;
     }
 
-    .contact-heading {
-      margin-bottom: 0.9rem;
-    }
-
     .contact-note {
       margin: 0.5rem 0 0;
-      color: #4c5a6f;
       font-size: 0.92rem;
+      color: #4c5a6f;
     }
   </style>
 </head>
+
 <body>
   <main class="schedule-main">
-    <section class="card contact-card">
+    <section class="card" style="text-align: center;">
       <div class="home-btn-group">
         <a href="profile.html" class="home-btn">Home</a>
-        <a href="profile.html#archive" class="home-btn">Archive</a>
+        <a href="archive.html" class="home-btn">Archive</a>
       </div>
 
-      <p class="schedule-coming contact-heading">Find me here:</p>
+      <p class="schedule-coming" style="margin-bottom: 0.9rem;">Find me here:</p>
       <ul class="contact-links" aria-label="External links">
         <li><a href="https://www.youtube.com/@irorinri" target="_blank" rel="noopener">YouTube</a></li>
         <li><a href="https://github.com/irorinri" target="_blank" rel="noopener">GitHub</a></li>
@@ -69,7 +62,7 @@
     </section>
   </main>
   <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
-  </footer>
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+</footer>
 </body>
 </html>

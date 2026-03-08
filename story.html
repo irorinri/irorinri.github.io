@@ -5,193 +5,203 @@
   <meta name="description" content="Story archive and serialized tales by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tales | irorinri</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-    }
-
-    .page-actions {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      margin: 1.25rem 0 0.75rem;
-    }
-
-    .page-actions a {
-      display: inline-block;
-      padding: 0.4em 1.2em;
-      border-radius: 0;
-      background: #dddddd;
-      color: #8a8a8a;
-      font-size: 0.8em;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .page-actions a:hover {
-      background: #cfcfcf;
-      color: #666;
-    }
-
+    
     .thumbnail-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px 8px;
+      grid-template-columns: repeat(2, 1fr); /* 1鬯ｯ・ｮ繝ｻ・ｯ郢晢ｽｻ繝ｻ・ｦ鬮ｯ貅ｷ萓帙・・ｨ繝ｻ・ｯ驛｢譎｢・ｽ・ｻ3鬯ｮ・ｯ陷茨ｽｷ繝ｻ・ｽ繝ｻ・ｻ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ髯晢ｽｶ隴惹ｹ怜℡驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｮ・ｯ隶厄ｽｸ繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ*/
+      row-gap: 20px; !important;
+      gap: 8px;
+      padding: 25px;
       justify-items: center;
-      padding: 0.75rem 0 0;
+      margin-top: 5px;
+      margin-bottom: 1000px;
     }
-
     .thumbnail-gallery a {
-      color: inherit;
       text-align: center;
       text-decoration: none;
+      color: inherit;
     }
-
     .thumbnail-gallery img {
       width: 130px;
       height: auto;
       border-radius: 5px;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s;
     }
-
     .thumbnail-gallery img:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
-
     .thumbnail-gallery p {
+      font-size: 14px;
       margin: 2px 0 0;
       color: #444;
-      font-size: 14px;
     }
-
-    #novel-container {
-      margin-top: 1rem;
-      padding: 0;
-      font-family: 'KaiTi', serif;
-      font-size: 16px;
-      line-height: 1.8;
-      white-space: pre-wrap;
-    }
-
-    #novel-container p {
-      margin: 0;
-    }
-
     .back-button {
       display: none;
-      margin: 1.25rem auto 0;
-      padding: 0.65rem 1.2rem;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #7991ff;
       border: none;
       border-radius: 5px;
-      background-color: #7991ff;
-      color: white;
-      font-size: 16px;
       cursor: pointer;
       text-align: center;
     }
-
     .back-button:hover {
-      background-color: #5a73f0;
+      background-color: #0056b3;
     }
+    .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  
+}
+    #novel-container {
+  font-family: 'KaiTi', serif; 
+  line-height: 1.6; 
+  font-size: 16px; 
+  white-space: pre-wrap; 
+  padding: 0 20px;
+  margin-top: 205px;
+  box-sizing: border-box; 
+}
+    .novel-title {
+    font-size: 16px;
+    font-weight: normal; 
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+
+
+    .suzuri-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.suzuri-btn,
+.suzuri-btn:hover,
+.suzuri-btn:active,
+.suzuri-btn:focus,
+.suzuri-btn:focus-visible {
+  background: #dddddd !important;
+  color: #a3a3a3 !important;
+  border: none !important;
+  border-radius: 0px !important;
+  font-weight: bold !important;
+  font-size: 0.8em !important;
+  padding: 0.4em 1.2em !important;
+  text-decoration: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: none !important;
+  transform: none !important;
+  letter-spacing: 0.05em !important;
+}
+    
+
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">folks</a>
-    <a href="illustrations.html">draws</a>
-    <a href="gallery.html">comix</a>
-    <a href="story.html" class="active" aria-current="page">tales</a>
-    <a href="blog.html">stuff</a>
-    <a href="profile.html#archive">archive</a>
-  </nav>
 
-  <main>
-    <div class="page-actions">
-      <a href="https://irorinri.booth.pm/items/7156017" target="_blank" rel="noopener">Buy Print</a>
-      <a href="profile.html">Profile</a>
-    </div>
 
-    <div id="thumbnail-gallery" class="thumbnail-gallery">
-      <a href="?id=3">
-        <picture>
-          <source srcset="comics/a3.webp" type="image/webp">
-          <img src="comics/a3.webp" alt="Story preview posted on 2024-09-09" loading="lazy">
-        </picture>
-        <p>2024-09-09</p>
-      </a>
-      <a href="?id=2">
-        <picture>
-          <source srcset="comics/a2.webp" type="image/webp">
-          <img src="comics/a2.webp" alt="Story preview posted on 2024-08-20" loading="lazy">
-        </picture>
-        <p>2024-08-20</p>
-      </a>
-      <a href="?id=1">
-        <picture>
-          <source srcset="comics/a1.webp" type="image/webp">
-          <img src="comics/a1.webp" alt="Story preview posted on 2024-07-23" loading="lazy">
-        </picture>
-        <p>2024-07-23</p>
-      </a>
-    </div>
+  
 
-    <div id="novel-container" aria-live="polite"></div>
-    <button id="back-button" class="back-button" type="button">Back to list</button>
-  </main>
 
-  <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
-  </footer>
+  <div class="suzuri-btn-wrapper">
+  <a class="suzuri-btn" href="https://irorinri.booth.pm/items/7156017" target="_blank" rel="noopener">Buy Print</a>
+</div>
+  
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const novelId = params.get('id');
-    const container = document.getElementById('novel-container');
-    const gallery = document.getElementById('thumbnail-gallery');
-    const backButton = document.getElementById('back-button');
 
-    function showGallery() {
-      gallery.style.display = 'grid';
-      container.innerHTML = '';
-      backButton.style.display = 'none';
-      window.history.replaceState({}, '', 'story.html');
-    }
+<nav>
+  <a href="index.html">folks</a>
+  <a href="illustrations.html">draws</a>
+  <a href="gallery.html">comix</a>
+  <a href="story.html" class="active" aria-current="page">tales</a>
+  <a href="blog.html">stuff</a>
+  <a href="archive.html">archive</a>
+</nav>
 
-    function showError() {
-      container.innerHTML = '<p>Failed to load this story. Please try again later.</p>';
-    }
+<main>
+  <div id="thumbnail-gallery" class="thumbnail-gallery">
+    <a href="?id=3">
+      <picture>
+        <source srcset="comics/a3.webp" type="image/webp">
+        <img src="comics/a3.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ3鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
+      </picture>
+      <p>2024-09-09</p>
+    </a>
+    <a href="?id=2">
+      <picture>
+        <source srcset="comics/a2.webp" type="image/webp">
+        <img src="comics/a2.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ2鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
+      </picture>
+      <p>2024-08-20</p>
+    </a>
+    <a href="?id=1">
+      <picture>
+        <source srcset="comics/a1.webp" type="image/webp">
+        <img src="comics/a1.webp" alt="鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｨ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ1鬯ｯ・ｩ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ" loading="lazy">
+      </picture>
+      <p>2024-07-23</p>
+    </a>
+  </div>
+  <div id="novel-container"></div>
+  <button id="back-button" class="back-button">back</button>
+</main>
 
-    if (novelId) {
-      gallery.style.display = 'none';
-      backButton.style.display = 'block';
 
-      fetch(`data/n${novelId}.json`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('load failed');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          container.innerHTML = `<p>${data.content}</p>`;
-        })
-        .catch((error) => {
-          console.error(error);
-          showError();
-        });
-    }
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const novelId = params.get('id');
+  const container = document.getElementById('novel-container');
+  const gallery = document.getElementById('thumbnail-gallery');
+  const backButton = document.getElementById('back-button');
 
-    backButton.addEventListener('click', () => {
-      showGallery();
-      window.scrollTo({ top: 0, behavior: 'auto' });
+  function showGallery() {
+    gallery.style.display = 'grid';
+    container.innerHTML = '';
+    backButton.style.display = 'none';
+  }
+
+  if (novelId) {
+    // 鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｵ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・｣郢晢ｽｻ繝ｻ・ｰ鬯ｩ蟷｢・ｽ・｢髫ｴ蜿厄ｽｨ雋ｻ・ｽ・ｺ郢ｧ莨夲ｽｽ・ｸ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｫ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ譎｢・ｽ・ｶ髫ｴ蠑ｱ繝ｻ陝ｲ・ｩ鬯ｯ・ｮ繝ｻ・ｯ郢晢ｽｻ繝ｻ・ｦ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｨ鬯ｯ・ｩ驕ｨ繧托ｽｽ・ｼ陞滂ｽｲ繝ｻ・ｽ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｺ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬮ｯ・ｷ繝ｻ・ｷ郢晢ｽｻ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ驛｢譎｢・ｽ・ｻ
+    gallery.style.display = 'none';
+    backButton.style.display = 'block';
+
+    fetch(`data/n${novelId}.json`)
+    .then(response => response.json())
+    .then(data => {
+      container.innerHTML = `
+     
+        <p>${data.content}</p>
+      `;
+    })
+    .catch(error => {
+      console.error(error);
+      container.innerHTML = '<p>鬯ｮ・ｯ隴擾ｽｴ郢晢ｽｻ鬮｢・ｾ郢晢ｽｻ郢晢ｽｻ郢晢ｽｻ繝ｻ・ｪ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｬ鬯ｩ蟷｢・ｽ・｢髫ｴ謫ｾ・ｽ・ｴ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｯ・ｮ繝ｻ・ｴ鬮ｮ諛ｶ・ｽ・｣郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｿ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・ｯ隶灘･・ｽｽ・ｻ郢ｧ謇假ｽｽ・ｽ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｱ鬯ｮ・ｫ繝ｻ・ｰ郢晢ｽｻ繝ｻ・ｨ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｰ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｾ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬮ｯ・ｷ闔ｨ螟ｲ・ｽ・ｽ繝ｻ・ｱ鬮ｫ・ｨ繝ｻ・ｳ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｲ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ/p>';
     });
-  </script>
+}
+
+
+backButton.addEventListener('click', () => {
+  showGallery();
+  window.scrollTo(0, 0); // 鬯ｩ蟷｢・ｽ・｢髫ｴ蜿門ｾ励・・ｽ繝ｻ・｣郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｸ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｯ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｭ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｫ鬯ｮ・｣陷ｴ繝ｻ・ｽ・ｽ繝ｻ・ｴ鬮ｯ・ｷ繝ｻ・･郢晢ｽｻ繝ｻ・ｲ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｽ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｵ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｨ鬯ｩ蟷｢・ｽ・｢髫ｴ謫ｾ・ｽ・ｴ驛｢譎｢・ｽ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｫ鬯ｯ・ｮ繝ｻ・ｫ郢晢ｽｻ繝ｻ・ｪ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｭ鬯ｮ・ｯ隶厄ｽｸ繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ
+});
+</script>
+
+<footer>
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+</footer>
+
 </body>
 </html>

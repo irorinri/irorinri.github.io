@@ -4,13 +4,13 @@
   --accent2: #b0b0b0;  
   --text-main: #23263a;
   --text-sub: #767b8c;
-  --card-bg: #eceff3; 
+  --card-bg: #eceff3; /* 遶雁・蠕矩坎蛟･縺咲ｹ晢ｽｼ郢晁・逡鷹舒繝ｻ・樒ｹｧ・ｰ郢晢ｽｬ郢晢ｽｼ */
   --radius: 1.35rem;
   --shadow: 0 1.5px 18px 0 rgba(60,70,140,0.06);
 }
 
 html {
-  font-size: 15px; 
+  font-size: 15px; /* 遶贋ｻ吶・闖ｴ阮呻ｽ堤ｹｧ繝ｻ・・氣荳奇ｼ・ｸｺ繝ｻ*/
 }
 
 body {
@@ -72,10 +72,16 @@ header {
 }
 
 main {
-  max-width: 540px;         
-  margin: 0 auto;           
+  max-width: 540px;         /* 隶難ｽｪ陝ｷ繝ｻ繝ｻ隴崢陞滂ｽｧ陋滂ｽ､郢ｧ繝ｻ40px邵ｺ・ｫ陋ｻ・ｶ鬮ｯ繝ｻ*/
+  margin: 0 auto;           /* 闕ｳ雍具ｽｸ荵昴・郢晢ｽｼ郢ｧ・ｸ郢晢ｽｳ0邵ｲ竏晢ｽｷ・ｦ陷ｿ・ｳ邵ｺ・ｯ髢ｾ・ｪ陷榊桁・ｼ莠包ｽｸ・ｭ陞滂ｽｮ陝・・笳九・繝ｻ*/
   padding: 0.2rem 0.7rem 2.2rem 0.7rem;
-  
+  /*     遶翫・    遶翫・    遶翫・    遶翫・
+         |     |     |     |
+         |     |     |     隨乗喚讌ｳ 陝ｾ・ｦ陋幢ｽｴ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.7rem繝ｻ繝ｻ
+         |     |     隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉 闕ｳ蜿･繝ｻ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.2rem繝ｻ繝ｻ
+         |     隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉 陷ｿ・ｳ陋幢ｽｴ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.7rem繝ｻ繝ｻ
+         隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉 闕ｳ髮√・邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.2rem繝ｻ繝ｻ
+  */
 }
 
 .blog-list {
@@ -96,7 +102,7 @@ details {
   transition: box-shadow .15s, border .12s;
   position: relative;
   overflow: hidden;
-  font-size: 0.97rem; 
+  font-size: 0.97rem; /* 隴幢ｽｬ隴√・・・ｹｧ蟲ｨ竊楢氣莉｣・陝・ｸ奇ｼ・ｸｺ繝ｻ*/
 }
 details[open] {
   box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10);
@@ -172,7 +178,7 @@ footer a {
   color: inherit;
 }
 
-
+/* 郢晢ｽ｢郢晁・縺・ｹ晢ｽｫ陝・ｽｾ陟｢繝ｻ*/
 @media (max-width: 600px) {
   main { padding: 1.0rem 0.2rem; }
   .header-img { max-height: 120px; }
@@ -191,4 +197,3 @@ footer a {
   from { opacity: 0; transform: translateY(20px);}
   to { opacity: 1; transform: translateY(0);}
 }
-
