@@ -2,70 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Character archive, illustrations, comix, blog, and profile links for irorinri.">
-  <meta property="og:title" content="irorinri archive">
-  <meta property="og:description" content="Character archive, illustrations, comix, blog, and profile links.">
+  <meta name="description" content="Character archive by irorinri.">
+  <meta property="og:title" content="Folks | irorinri">
+  <meta property="og:description" content="Character archive.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://irorinri.github.io/index.html">
   <meta property="og:image" content="https://irorinri.github.io/header-image.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Characters | irorinri</title>
+  <title>Folks | irorinri</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    :root {
-      --accent: #b3d7ff;
-      --accent2: #eec3ff;
-      --text-main: #23263a;
-    }
-
     main {
       max-width: 920px;
       margin: 0 auto;
       padding: 0 1rem 3rem;
-    }
-
-    .page-intro {
-      margin: 0 auto 1.25rem;
-      max-width: 780px;
-      padding: 1rem 1.1rem;
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      background: #f9f9f9;
-      text-align: center;
-    }
-
-    .page-intro h1 {
-      margin: 0 0 0.45rem;
-      color: var(--text-main);
-      font-size: 1.2rem;
-    }
-
-    .page-intro p {
-      margin: 0;
-      color: #4b4b4b;
-      font-size: 0.92rem;
-      line-height: 1.65;
-    }
-
-    .page-intro-link {
-      display: inline-block;
-      margin-top: 0.9rem;
-      padding: 0.55em 1.35em;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.95em;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .page-intro-link:hover {
-      background: var(--accent2);
-      color: var(--text-main);
     }
 
     .image-gallery {
@@ -73,7 +26,7 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
       justify-content: center;
       gap: 20px 10px;
-      padding: 1rem 0 0;
+      padding: 0.5rem 0 0;
     }
 
     .image-gallery a {
@@ -84,21 +37,14 @@
       width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;
-      border-radius: 5px;
+      border-radius: 18px;
       object-fit: cover;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .image-gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .image-gallery .date {
-      margin-top: 5px;
-      color: #444;
-      font-size: 14px;
-      text-align: center;
+      transform: scale(1.03);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     }
   </style>
 </head>
@@ -112,11 +58,15 @@
     <a href="profile.html#archive">archive</a>
   </nav>
 
-  <main>
-    <section class="page-intro" aria-label="Page intro">
-      <h1>Folks archive</h1>
-      <p>This page is now focused on the character posts only. The main archive hub lives on the profile page, so use that when you want the full site map.</p>
-      <a class="page-intro-link" href="profile.html#archive">Open Profile Hub</a>
+  <main class="page-shell">
+    <section class="page-head" aria-label="Page intro">
+      <div>
+        <p class="page-label">archive</p>
+        <h1 class="page-title">folks</h1>
+      </div>
+      <div class="page-actions">
+        <a href="profile.html#archive">hub</a>
+      </div>
     </section>
 
     <div class="image-gallery">
@@ -157,10 +107,6 @@
 
   <script type="module">
     import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-
-    const photoSwipeStyle = document.createElement('style');
-    photoSwipeStyle.textContent = '.pswp__bg { background-color: #add8e6 !important; }';
-    document.head.appendChild(photoSwipeStyle);
 
     const lightbox = new PhotoSwipeLightbox({
       gallery: '.image-gallery',

@@ -51,20 +51,23 @@
     }
 
     .toggle-link {
-      display: block;
-      width: 100%;
-      margin-bottom: 16px;
-      padding: 0;
-      border: 0;
-      background: none;
-      color: #000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      margin: 0 0.5rem 0.6rem 0;
+      padding: 0.42rem 0.9rem;
+      border: 1px solid #ddd7cc;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #1f1f1b;
       font: inherit;
-      text-align: left;
+      text-align: center;
       cursor: pointer;
     }
 
     .toggle-link:hover {
-      color: #555;
+      border-color: #c9bfaf;
     }
 
     .toggle-link--tight {
@@ -179,9 +182,19 @@
     <a href="profile.html#archive">archive</a>
   </nav>
 
-  <main>
+    <main>
+    <section class="page-head">
+      <div>
+        <p class="page-label">archive</p>
+        <h1 class="page-title">stuff</h1>
+      </div>
+      <div class="page-actions">
+        <a href="blog2.html">index</a>
+        <a href="profile.html">profile</a>
+      </div>
+    </section>
     <section class="recent-entry-section" aria-label="Recent entries">
-      <h2 class="recent-entry-head">recent notes</h2>
+      <h2 class="recent-entry-head">recent</h2>
       <p class="month-jump">
         <a href="#202507">2025-07</a> | <a href="#202506">2025-06</a>
       </p>
@@ -209,45 +222,45 @@
 
     <section class="blog-section" aria-label="Embedded sections">
       <div class="toggle-group">
-        <button id="toggle-uses" class="toggle-link" type="button" aria-expanded="false" aria-controls="uses-main">show uses</button>
-        <button id="toggle-uses-hide-top" class="toggle-link" type="button" hidden>hide uses</button>
+        <button id="toggle-uses" class="toggle-link" type="button" aria-expanded="false" aria-controls="uses-main">uses</button>
+        <button id="toggle-uses-hide-top" class="toggle-link" type="button" hidden>close</button>
       </div>
       <div id="uses-main" hidden>
         <div id="uses-inner"></div>
-        <button id="toggle-uses-hide-bottom" class="toggle-link" type="button">hide uses</button>
+        <button id="toggle-uses-hide-bottom" class="toggle-link" type="button">close</button>
       </div>
 
-      <button id="toggle-snapshot" class="toggle-link" type="button" aria-expanded="false" aria-controls="snapshot-main">show snapshot</button>
+      <button id="toggle-snapshot" class="toggle-link" type="button" aria-expanded="false" aria-controls="snapshot-main">snapshot</button>
       <div id="toggle-snapshot-confirm-row" class="toggle-confirm-row" hidden>
-        <button id="toggle-snapshot-confirm" class="toggle-link toggle-link--tight" type="button">Cringe Zone! Continue?</button>
-        <button id="toggle-snapshot-back" class="toggle-link toggle-link--tight" type="button">Back</button>
+        <button id="toggle-snapshot-confirm" class="toggle-link toggle-link--tight" type="button">open snapshot?</button>
+        <button id="toggle-snapshot-back" class="toggle-link toggle-link--tight" type="button">back</button>
       </div>
       <div id="snapshot-main" hidden>
-        <button id="toggle-snapshot-hide-top" class="toggle-link" type="button">hide snapshot</button>
+        <button id="toggle-snapshot-hide-top" class="toggle-link" type="button">close</button>
         <div id="snapshot-inner"></div>
-        <button id="toggle-snapshot-hide-bottom" class="toggle-link" type="button">hide snapshot</button>
+        <button id="toggle-snapshot-hide-bottom" class="toggle-link" type="button">close</button>
       </div>
     </section>
 
-    <button id="toggle-diary" class="toggle-link" type="button" aria-expanded="false" aria-controls="diary-content">show diary</button>
+    <button id="toggle-diary" class="toggle-link" type="button" aria-expanded="false" aria-controls="diary-content">diary</button>
     <div id="toggle-diary-confirm-row" class="toggle-confirm-row" hidden>
-      <button id="toggle-diary-confirm" class="toggle-link toggle-link--tight" type="button">Private Room. Enter?</button>
-      <button id="toggle-diary-back" class="toggle-link toggle-link--tight" type="button">Back</button>
+      <button id="toggle-diary-confirm" class="toggle-link toggle-link--tight" type="button">open diary?</button>
+      <button id="toggle-diary-back" class="toggle-link toggle-link--tight" type="button">back</button>
     </div>
     <div id="toggle-diary-confirm-gap" class="toggle-gap" hidden></div>
 
-    <button id="toggle-diary-top" class="toggle-link" type="button" hidden>hide diary</button>
+    <button id="toggle-diary-top" class="toggle-link" type="button" hidden>close</button>
     <div id="diary-buttons" class="diary-buttons" hidden></div>
     <div id="diary-content" hidden>
       <div id="diary-text"></div>
-      <button id="toggle-diary-bottom" class="toggle-link" type="button">hide diary</button>
+      <button id="toggle-diary-bottom" class="toggle-link" type="button">close</button>
     </div>
 
-    <button id="toggle-diary2" class="toggle-link" type="button" aria-expanded="false" aria-controls="diary-content2">show chatter</button>
+    <button id="toggle-diary2" class="toggle-link" type="button" aria-expanded="false" aria-controls="diary-content2">chatter</button>
     <div id="diary-buttons2" class="diary-buttons" hidden></div>
     <div id="diary-content2" hidden>
       <div id="diary-text2"></div>
-      <button id="toggle-diary-bottom2" class="toggle-link" type="button">hide chatter</button>
+      <button id="toggle-diary-bottom2" class="toggle-link" type="button">close</button>
     </div>
   </main>
 
@@ -458,7 +471,7 @@
     function hideChatter(scrollToTop = false) {
       $('diary-content2').hidden = true;
       $('diary-buttons2').hidden = true;
-      $('toggle-diary2').textContent = 'show chatter';
+      $('toggle-diary2').textContent = 'chatter';
       $('toggle-diary2').setAttribute('aria-expanded', 'false');
 
       if (scrollToTop) {
