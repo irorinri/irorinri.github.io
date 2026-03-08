@@ -1,139 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap');
-
 :root {
-  --page-bg: #f3f1eb;
-  --surface: #ffffff;
-  --line: #ddd7cc;
-  --line-strong: #c9bfaf;
-  --text-main: #1f1f1b;
-  --text-sub: #666158;
+  --main-bg: #f7f8fa;
+  --accent: #9dc4f6;
+  --accent2: #b0b0b0;  
+  --text-main: #23263a;
+  --text-sub: #767b8c;
+  --card-bg: #eceff3; /* 遶雁・蠕矩坎蛟･縺咲ｹ晢ｽｼ郢晁・逡鷹舒繝ｻ・樒ｹｧ・ｰ郢晢ｽｬ郢晢ｽｼ */
+  --radius: 1.35rem;
+  --shadow: 0 1.5px 18px 0 rgba(60,70,140,0.06);
+}
+
+html {
+  font-size: 15px; /* 遶贋ｻ吶・闖ｴ阮呻ｽ堤ｹｧ繝ｻ・・氣荳奇ｼ・ｸｺ繝ｻ*/
 }
 
 body {
   margin: 0;
-  background: var(--page-bg);
+  font-family: "Noto Sans JP", "Inter", sans-serif;
+  background: linear-gradient(110deg, var(--accent) 0%, var(--main-bg) 85%, var(--accent2) 100%);
   color: var(--text-main);
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  position: relative;
+  margin-bottom: 2.1rem;
+  background: #f9fafd;
+  box-shadow: 0 1px 16px 0 rgba(120,120,180,0.05);
+}
+
+.header-img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid var(--accent);
+}
+
+.header-text {
+  position: absolute;
+  left: 2rem;
+  bottom: 1.1rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 0.75em;
+  padding: 0.6em 1.3em 0.4em 1.3em;
+  box-shadow: 0 2px 12px 0 rgba(180,160,220,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-text h1 {
+  margin: 0 0 0.3em 0;
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 1px 6px #fff8;
+}
+.header-text nav a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-size: 1.03rem;
+  font-weight: 600;
+  margin-right: 1em;
+  transition: color .16s;
+}
+.header-text nav a:hover {
+  color: #5174a0;
 }
 
 main {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
+  max-width: 540px;         /* 隶難ｽｪ陝ｷ繝ｻ繝ｻ隴崢陞滂ｽｧ陋滂ｽ､郢ｧ繝ｻ40px邵ｺ・ｫ陋ｻ・ｶ鬮ｯ繝ｻ*/
+  margin: 0 auto;           /* 闕ｳ雍具ｽｸ荵昴・郢晢ｽｼ郢ｧ・ｸ郢晢ｽｳ0邵ｲ竏晢ｽｷ・ｦ陷ｿ・ｳ邵ｺ・ｯ髢ｾ・ｪ陷榊桁・ｼ莠包ｽｸ・ｭ陞滂ｽｮ陝・・笳九・繝ｻ*/
+  padding: 0.2rem 0.7rem 2.2rem 0.7rem;
+  /*     遶翫・    遶翫・    遶翫・    遶翫・
+         |     |     |     |
+         |     |     |     隨乗喚讌ｳ 陝ｾ・ｦ陋幢ｽｴ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.7rem繝ｻ繝ｻ
+         |     |     隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉 闕ｳ蜿･繝ｻ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.2rem繝ｻ繝ｻ
+         |     隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉 陷ｿ・ｳ陋幢ｽｴ邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.7rem繝ｻ繝ｻ
+         隨乗喚讌ｳ隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉隨渉 闕ｳ髮√・邵ｺ・ｮ闖ｴ蜥丞項繝ｻ繝ｻ.2rem繝ｻ繝ｻ
+  */
 }
 
-.blog2-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.blog2-label {
-  margin: 0 0 0.3rem;
-  color: var(--text-sub);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.blog2-title {
+.blog-list {
   margin: 0;
-  font-size: 1.3rem;
-  font-weight: 600;
+  padding: 0;
+  padding-top: 0.5em !important;
 }
 
-.blog2-actions {
+
+
+details {
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  border-radius: 0;
+  margin: 1.15rem 0;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid #e5e7ef;
+  transition: box-shadow .15s, border .12s;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.97rem; /* 隴幢ｽｬ隴√・・・ｹｧ蟲ｨ竊楢氣莉｣・陝・ｸ奇ｼ・ｸｺ繝ｻ*/
+}
+details[open] {
+  box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10);
+  border-color: var(--accent2);
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.blog2-actions a {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 0.45rem 0.95rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
+  gap: 1.0em;
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding: 0.65em 0;
   color: var(--text-main);
-  font-size: 0.82rem;
-  text-decoration: none;
+  transition: color .14s;
+  user-select: none;
+}
+summary::-webkit-details-marker,
+summary::marker {
+  display: none;
 }
 
-.month-nav {
-  margin: 0 0 1rem;
+.date {
   color: var(--text-sub);
-  font-size: 0.8rem;
+  font-size: 0.95em;
+  min-width: 7.1em;
+  letter-spacing: 0.06em;
+}
+.title {
+  font-size: 1em;
+  font-weight: 200;
+  color: var(--accent2);
+  letter-spacing: 0.05em;
 }
 
-.month-nav a {
-  color: inherit;
-  text-decoration: none;
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.0em 0 0.5em 0;
+  gap: 0.7em;
+  animation: fadein 0.5s;
 }
 
-.entry-link {
-  display: grid;
-  grid-template-columns: 7.2rem 1fr;
-  gap: 0.8rem;
-  align-items: center;
-  margin-bottom: 0.6rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  color: inherit;
-  text-decoration: none;
+.blog-content img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5px 10px 0 rgba(160,120,240,0.10);
+  margin-bottom: 0.2em;
 }
 
-.entry-link:hover {
-  border-color: var(--line-strong);
-}
 
-.entry-link .date {
-  color: var(--text-sub);
-  font-size: 0.8rem;
-}
-
-.entry-link .title {
-  font-size: 0.92rem;
-  font-weight: 500;
+.blog-content p {
+  color: var(--text-main);
+  font-size: 0.98em;
+  margin: 0;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 footer {
-  padding: 0 1rem 1.5rem;
-  color: var(--text-sub);
-  font-size: 0.75rem;
   text-align: center;
+  color: var(--text-sub);
+  font-size: 0.90rem;
+  margin-bottom: 1.3rem;
+  margin-top: 2rem;
 }
 
 footer a {
   color: inherit;
-  text-decoration: none;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
+/* 郢晢ｽ｢郢晁・縺・ｹ晢ｽｫ陝・ｽｾ陟｢繝ｻ*/
 @media (max-width: 600px) {
-  main {
-    padding: 2.2rem 1rem;
-  }
-
-  .blog2-head {
-    flex-direction: column;
+  main { padding: 1.0rem 0.2rem; }
+  .header-img { max-height: 120px; }
+  .header-text {
+    position: static;
+    margin: 0.7em 0 0 0;
+    padding: 0.4em 0.7em 0.2em 0.7em;
+    border-radius: 0.45em;
+    box-shadow: none;
+    background: #fff9;
     align-items: flex-start;
   }
+}
 
-  .entry-link {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
 }

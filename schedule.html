@@ -1,164 +1,207 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Weekly schedule for irorinri.">
+  <meta name="description" content="Weekly stream schedule and activity plan for irorinri.">
   <title>Schedule | irorinri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --page-bg: #f3f1eb;
-      --surface: #ffffff;
-      --line: #ddd7cc;
-      --line-strong: #c9bfaf;
-      --text-main: #1f1f1b;
-      --text-sub: #666158;
-    }
-
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: var(--page-bg);
-      color: var(--text-main);
-      font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .schedule-card {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 3rem 1rem 2rem;
-    }
-
-    .top-actions {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .top-actions a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 38px;
-      padding: 0.45rem 0.95rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--text-main);
-      font-size: 0.82rem;
-      text-decoration: none;
-    }
-
-    .schedule-title,
-    .games-section h2 {
-      margin: 0 0 0.9rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .week-list,
-    .game-list {
+      padding: 40px 0 0 0;  
+      background: #fff;
+      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+      color: #767b8c;
       margin: 0;
       padding: 0;
-      list-style: none;
+      min-height: 100vh;
     }
-
+    .schedule-card {
+      /* 鬯ｯ・ｮ繝ｻ・ｫ鬩包ｽｨ郢ｧ謇假ｽｽ・ｽ繝ｻ・ｹ髫ｴ謫ｾ・ｽ・ｶ鬮ｯ讖ｸ・ｽ・ｺ鬯ｯ・ｨ繝ｻ・ｾ郢晢ｽｻ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｮ・｣陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｳ鬯ｩ諤憺●繝ｻ・ｽ繝ｻ・ｫ郢晢ｽｻ邵ｺ・､・つ鬮ｯ貅ｷ萓帙・・ｾ陞ｽ・ｯ・つ繝ｻ・ｳ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ蟷｢・ｽ・｢髫ｴ蜿門ｾ励・・ｽ繝ｻ・ｳ郢晢ｽｻ繝ｻ・ｨ郢晢ｽｻ邵ｺ・､・つ鬯ｮ・｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｴ鬮ｫ・ｨ雋ょ庄ﾂ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｵ鬩包ｽｶ闔ｨ竏壹・郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｺ鬮｣蛹・ｽｽ・ｳ髯晢ｽｯ繝ｻ・ｩ驛｢譎｢・ｽ・ｻ */
+      background: none;
+      max-width: none;
+      margin: 0 auto;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin-top: 70px; 
+    }
+    .schedule-title {
+      color: #427fa6;
+      font-size: 1.32rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 54px 0 1.0rem 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .home-btn-wrap {
+      text-align: center;
+      margin: 2.2em 0 1.2em 0;
+    }
+    .home-btn {
+      display: inline-block;
+      background: #eceff3;
+      color: #767b8c;
+      font-size: 1em;
+      padding: 0.48em 1.25em;
+      border-radius: 0.7em;
+      text-decoration: none;
+      
+      
+      transition: background 0.2s, color 0.2s;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+    .home-btn:hover,
+    .home-btn:active {
+      background: #d7dbe2; 
+      color: #5174a0;
+    }
+    .home-btn + .home-btn {
+      margin-left: 0.35em;
+    }
+    .schedule-note {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #427fa6;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+    }
     .week-list {
-      display: grid;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
+      list-style: none;
+      margin: 0 auto 1.6rem auto;
+      padding: 0;
+      max-width: 480px;
     }
-
-    .week-list li,
-    .game-list li {
-      padding: 0.85rem 1rem;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--surface);
-    }
-
     .week-list li {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      margin-bottom: 0.63rem;
+      font-size: 1.08rem;
+      padding: 0 0 0 1.5em;
+      font-weight: 400;
+      font-family: inherit;
+      justify-content: flex-start; /* 鬯ｩ蛹・ｽｽ・ｶ鬩怜遜・ｽ・ｫ驛｢譎｢・ｽ・ｻ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬯ｮ・ｦ繝ｻ・ｮ髯ｷ・ｻ繝ｻ・ｻ郢晢ｽｻ繝ｻ・ｼ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ郢晢ｽｻ繝ｻ・ｧ鬯ｮ・ｮ陋ｹ・ｺ繝ｻ・ｩ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・､鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ譎｢・ｽ・ｲ郢晢ｽｻ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ*/
     }
-
     .day-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 56px;
-      padding: 0.28rem 0.8rem;
-      border-radius: 999px;
-      background: #f1ece4;
-      color: var(--text-sub);
-      font-size: 0.78rem;
+      min-width: 54px;
+      display: inline-block;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .game-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.6rem;
-    }
-
-    footer {
-      padding: 0 1rem 1.5rem;
-      color: var(--text-sub);
-      font-size: 0.75rem;
+      padding: 0.22em 0.75em;
+      border-radius: 7px;
+      margin-right: 0.8em;
+      font-size: 0.99rem;
+      background: #f2f3f8;
+      color: #546e7a;
       text-align: center;
+      font-family: inherit;
     }
-
+    .mon { background: #e3edfa; }
+    .tue { background: #e9f7ea; }
+    .wed { background: #fdf3e7; }
+    .thu { background: #f7e9ef; }
+    .fri { background: #e9eafd; }
+    .sat { background: #fceeea; }
+    .sun { background: #faeaf2; }
+    .games-section {
+      background: #f7faff;
+      border-radius: 10px;
+      padding: 1em 1em 0.9em 1em;
+      margin: 0 auto 2.5em auto;
+      box-shadow: 0 1px 4px rgba(150,180,220,0.05);
+      text-align: center;
+      max-width: 480px;
+    }
+    .games-section h2 {
+      font-size: 1.11rem;
+      font-weight: 600;
+      margin: 0 0 0.5em 0;
+      color: #427fa6;
+      font-family: 'Inter', sans-serif;
+    }
+    .game-note {
+      font-size: 0.99rem;
+      color: #8ea2be;
+      margin: 0 0 0.5em 0;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+    }
+    .game-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7em;
+      padding: 0;
+      margin: 0;
+    }
+    .game-list li {
+      background: #fff;
+      border-radius: 6px;
+      padding: 0.26em 1em;
+      border: 1px solid #e0e6ef;
+      font-size: 1.02rem;
+      min-width: 140px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(100,130,200,0.03);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+    footer {
+  text-align: center;
+  color: var(--text-sub);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
     footer a {
       color: inherit;
-      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .schedule-title { font-size: 1.08rem; margin-top: 24px; }
+      .week-list li { font-size: 0.97rem; }
+      .games-section h2 { font-size: 1rem; }
+      .game-list li { min-width: 110px; font-size: 0.93rem; }
+      .games-section, .week-list { max-width: 100%; }
     }
   </style>
 </head>
+  
 <body>
-  <main>
-    <div class="schedule-card">
-      <div class="top-actions">
-        <a href="profile.html">profile</a>
-        <a href="profile.html#archive">archive</a>
-      </div>
-      <h1 class="schedule-title">schedule</h1>
-      <ul class="week-list">
-        <li><span class="day-label">Mon</span> Study</li>
-        <li><span class="day-label">Tue</span> Music</li>
-        <li><span class="day-label">Wed</span> Drawing</li>
-        <li><span class="day-label">Thu</span> Shogi Software</li>
-        <li><span class="day-label">Fri</span> 3D Modeling</li>
-        <li><span class="day-label">Sat</span> Manga</li>
-        <li><span class="day-label">Sun</span> Animation</li>
-      </ul>
-      <section class="games-section">
-        <h2>games</h2>
-        <ul class="game-list">
-          <li>Genshin Impact</li>
-          <li>Apex Legends</li>
-          <li>Elden Ring</li>
-          <li>Duel Masters Play's</li>
-          <li>Honkai Impact 3rd</li>
-          <li>Honkai: Star Rail</li>
-          <li>Zenless Zone Zero</li>
-        </ul>
-      </section>
+  <div class="schedule-card">
+    <div class="home-btn-wrap">
+      <a href="profile.html" class="home-btn">Home</a>
+      <a href="archive.html" class="home-btn">Archive</a>
     </div>
-  </main>
+    <h1 class="schedule-title">Weekly Stream Schedule</h1>
+    <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
+    <ul class="week-list">
+      <li><span class="day-label mon">Mon</span> Study</li>
+      <li><span class="day-label tue">Tue</span> Music</li>
+      <li><span class="day-label wed">Wed</span> Drawing</li>
+      <li><span class="day-label thu">Thu</span> Shogi Software</li>
+      <li><span class="day-label fri">Fri</span> 3D Modeling</li>
+      <li><span class="day-label sat">Sat</span> Manga</li>
+      <li><span class="day-label sun">Sun</span> Animation</li>
+    </ul>
+    <div class="games-section">
+      <h2>Daily Game Streams</h2>
+      <div class="game-note">One of these at random:</div>
+      <ul class="game-list">
+        <li>Genshin Impact</li>
+        <li>Apex Legends</li>
+        <li>Elden Ring</li>
+        <li>Duel Masters Play's</li>
+        <li>Honkai Impact 3rd</li>
+        <li>Honkai: Star Rail</li>
+        <li>Zenless Zone Zero</li>
+      </ul>
+    </div>
+  </div>
   <footer>
-    &copy; irorinri | <a href="profile.html">Profile</a> | <a href="profile.html#archive">Archive</a>
-  </footer>
+  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+</footer>
 </body>
 </html>
