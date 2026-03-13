@@ -2,141 +2,135 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <title>Hueryn Blog</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="Quick blog index with one-click links to each blog entry.">
-  <title>Blog Index | irorinri</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <style>
-    .blog-list {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 2rem 1rem 2.5rem 1rem;
-    }
+    .blog-list { max-width: 540px; margin: 0 auto; padding: 2rem 1rem 2.5rem 1rem; }
+    .accordion { background: #eceff3; border-radius: 0; margin: 1rem 0; box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07); }
+    .accordion summary { cursor: pointer; padding: 1rem 1.4rem; font-size: 1.07rem; font-weight: 600; outline: none; display: flex; align-items: center; gap: 1em;}
+    .accordion .date { color: #767b8c; font-size: 0.97em; min-width: 7em; }
+    .accordion .title { color: #5174a0; font-weight: 700; }
+    .accordion[open] { box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10); }
+    .accordion-content { padding: 1.1em 2.1em 1.2em 2.1em; display: none; font-size: 0.97em; animation: fadein .5s; }
+    .accordion.opened .accordion-content { display: block; }
+    @keyframes fadein { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
 
     .home-btn-wrap {
-      text-align: center;
-      margin: 0.8em 0 0.6em;
-    }
+  text-align: center;
+  margin: 0.5em 0 0.7em 0;
+      margin-bottom: 0.3em;
+}
+.home-btn {
+  display: inline-block;
+  background: #eceff3;
+  color: #767b8c;
+  font-size: 1em;               
+  padding: 0.55em 1.3em;        
+  border-radius: 0.7em;       
+  text-decoration: none;
+  margin-bottom: -8.3em;
+  margin-top: 2em;
+  transition: background 0.2s, color 0.2s;
+}
+.home-btn:hover,
+.home-btn:active {
+  background: #d7dbe2; 
+  color: #5174a0;
+}
 
-    .home-btn-wrap .home-btn {
-      margin: 0 0.25em;
-      display: inline-block;
-      background: #eceff3;
-      color: #767b8c;
-      font-size: 1em;
-      padding: 0.55em 1.3em;
-      border-radius: 0.7em;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .home-btn-wrap .home-btn:hover,
-    .home-btn-wrap .home-btn:active {
-      background: #d7dbe2;
-      color: #5174a0;
-    }
-
-    .month-nav {
-      margin: 0 0 0.9rem;
-      text-align: center;
-      font-size: 0.92rem;
-      color: #767b8c;
-    }
-
-    .month-nav a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dotted #9aa4b0;
-    }
-
-    .entry-link {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      text-decoration: none;
-      color: inherit;
-      background: #eceff3;
-      border-radius: 0;
-      margin: 1rem 0;
-      box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07);
-      padding: 1rem 1.4rem;
-      transition: box-shadow 0.2s, background-color 0.2s;
-    }
-
-    .entry-link:hover {
-      background: #e5e9ee;
-      box-shadow: 0 6px 24px 0 rgba(140,80,230,0.12);
-    }
-
-    .entry-link .date {
-      color: #767b8c;
-      font-size: 0.97em;
-      min-width: 7em;
-    }
-
-    .entry-link .title {
-      color: #5174a0;
-      font-weight: 700;
-    }
-
-    header {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .header-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0;
-      padding: 0;
-      vertical-align: bottom;
-    }
+@media (max-width: 600px) {
+  .home-btn-wrap {
+    margin: 0.7em 0 0.7em 0;
+  }
+}
+header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  /* 追加: */
+  vertical-align: bottom;
+}
+.header-text {
+  /* 空欄なら高さ0 */
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+    
+    
   </style>
 </head>
 <body>
   <header>
     <img src="header-image.png" alt="header" class="header-img">
+    <div class="header-text">
+      
+      
+    </div>
   </header>
 
-  <div class="home-btn-wrap">
-    <a href="profile.html" class="home-btn">Home</a>
-    <a href="archive.html" class="home-btn">Archive</a>
-  </div>
-
+  <!-- ここに追加 -->
+<div class="home-btn-wrap">
+  <a href="profile.html" class="home-btn">Home</a>
+</div>
   <main>
-    <section class="blog-list" aria-label="Blog index">
-      <p class="month-nav">
-        <a href="blog.html#202507">2025-07</a> | <a href="blog.html#202506">2025-06</a>
-      </p>
+    <section class="blog-list">
 
-      <a class="entry-link" href="blog.html#20250728">
-        <span class="date">2025-07-28</span>
-        <span class="title">The Ocean AItuber</span>
-      </a>
 
-      <a class="entry-link" href="blog.html#20250720">
-        <span class="date">2025-07-20</span>
-        <span class="title">First print of my doujinshi</span>
-      </a>
 
-      <a class="entry-link" href="blog.html#20250625">
-        <span class="date">2025-06-25</span>
-        <span class="title">AItuber Kachess Design</span>
-      </a>
+<div class="accordion" data-file="blog/2025-07-28.html"><summary><span class="date">2025-07-28</span><span class="title">The Ocean AItuber</span></summary><div class="accordion-content"></div></div>
+<div class="accordion" data-file="blog/2025-07-20.html"><summary><span class="date">2025-07-20</span><span class="title">First print of my doujinshi</span></summary><div class="accordion-content"></div></div>
+<div class="accordion" data-file="blog/2025-06-25.html"><summary><span class="date">2025-06-25</span><span class="title">AItuber Kachess Design</span></summary><div class="accordion-content"></div></div>
+<div class="accordion" data-file="blog/2025-06-21.html"><summary><span class="date">2025-06-21</span><span class="title">Shogi in Unity</span></summary><div class="accordion-content"></div></div>
+      
 
-      <a class="entry-link" href="blog.html#20250621">
-        <span class="date">2025-06-21</span>
-        <span class="title">Shogi in Unity</span>
-      </a>
     </section>
   </main>
-
   <footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
-</footer>
+    &copy; 2025 irorinri
+  </footer>
+  <script>
+    // JSアコーディオン＋外部ファイル読み込み
+    document.querySelectorAll('.accordion').forEach(acc => {
+      const summary = acc.querySelector('summary');
+      summary.addEventListener('click', async function(e) {
+        e.preventDefault();
+        // すでに開いていたら閉じる
+        if(acc.classList.contains('opened')) {
+          acc.classList.remove('opened');
+          acc.querySelector('.accordion-content').innerHTML = '';
+          return;
+        }
+        // 他のアコーディオンを閉じる
+        document.querySelectorAll('.accordion.opened').forEach(a => {
+          a.classList.remove('opened');
+          a.querySelector('.accordion-content').innerHTML = '';
+        });
+        // 外部HTML/TXTを取得・挿入
+        const file = acc.dataset.file;
+        const content = acc.querySelector('.accordion-content');
+        content.innerHTML = 'Loading...';
+        acc.classList.add('opened');
+        try {
+          const res = await fetch(file);
+          if(!res.ok) throw new Error('Not Found');
+          const text = await res.text();
+          content.innerHTML = text;
+        } catch {
+          content.innerHTML = '<p style="color:#c22;">記事の読み込みに失敗しました。</p>';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

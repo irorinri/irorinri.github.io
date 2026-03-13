@@ -44,11 +44,6 @@ nav a:hover {
   background-color: #f0f0f0; 
   transform: scale(1.05); /* ホバー時に少し拡大 */
 }
-nav a.active {
-  background-color: #f0f0f0;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
 
 /* スマホ対応: ナビゲーションを横一列に */
 @media (max-width: 768px) {
@@ -71,9 +66,6 @@ footer {
   font-size: 11px; /* 小さめの文字サイズ */
   padding: 2px 0; /* 上下の余白 */
   z-index: 1000; /* 他の要素の上に表示 */
-}
-footer a {
-  color: inherit;
 }
 
 .icon-gallery {

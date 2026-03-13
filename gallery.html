@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Comix archive and visual story pages by irorinri.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comix | irorinri</title>
+  <meta name="description" content="このサイトは、キャラクター、絵、漫画、小説など、多彩なコンテンツを提供する色倫理の個人ブログです。">
+  <title>Comics</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    /* 鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陷代・・ｽ・ｸ驗呻ｽｫ繝ｻ繝ｻﾎ碑ｭ趣ｽ｢繝ｻ・ｽ繝ｻ・｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｪ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｮ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｫ */
+    /* 画像ギャラリーのスタイル */
     .image-gallery {
       display: flex;
       flex-wrap: wrap;
@@ -27,16 +27,16 @@
 
     .image-gallery img {
       width: 100%;
-      max-width: 300px; /* 鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陷代・・ｽ・ｸ驗呻ｽｫ郢晢ｽｻ鬮ｫ・ｴ陝・｢・つ鬮ｯ讓奇ｽｻ繧托ｽｽ・ｽ繝ｻ・ｧ鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ郢晢ｽｻ陝ｶ譎乗凄郢晢ｽｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ*/
+      max-width: 300px; /* 画像の最大幅を設定 */
       height: auto;
-      border-radius: 10px; /* 鬯ｮ・ｫ隲､諛翫・郢晢ｽｻ陞ｳ螢ｼ蛻晉ｹ晢ｽｻ繝ｻ・ｸ鬩幢ｽ｢繝ｻ・ｧ驕ｶ荳橸ｽ､・ｲ繝ｻ・ｽ郢晢ｽｻ*/
+      border-radius: 10px; /* 角を丸める */
       
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .image-gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 鬩幢ｽ｢隴取得・ｽ・ｸ陷ｷ・ｶ・趣ｽ｣鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ鬮ｫ・ｴ陟托ｽｱ繝ｻ繝ｻ・ｫ鬆托ｽ･・｢繝ｻ・ｰ陷ｴ繝ｻ・ｽ・ｽ繝ｻ・ｱ鬩幢ｽ｢繝ｻ・ｧ鬮ｮ蛹ｺ・ｩ・ｸ繝ｻ・ｽ繝ｻ・ｼ郢晢ｽｻ繝ｻ・ｷ鬯ｮ・ｫ繝ｻ・ｱ郢晢ｽｻ繝ｻ・ｿ */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ホバー時に影を強調 */
     }
 
     .image-gallery .date {
@@ -46,10 +46,10 @@
       color: #444;
     }
 
-    /* 鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｹ鬩幢ｽ｢隴弱・・ｽ・ｧ繝ｻ・ｭ驛｢譎｢・ｽ・ｻ鬮ｯ譏ｴ繝ｻ繝ｻ・ｽ繝ｻ・ｾ鬮ｯ貊ゑｽｽ・｢驛｢譎｢・ｽ・ｻ*/
+    /* スマホ対応 */
     @media (max-width: 768px) {
       .image-gallery img {
-        max-width: 100%; /* 鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬯ｯ・ｮ繝ｻ・ｱ郢晢ｽｻ繝ｻ・｢鬮ｯ譎｢・ｽ・ｷ驛｢譎｢・ｽ・ｻ驕ｶ鬆托ｽ･・｢隲・ｺ髯具ｽｹ繝ｻ・ｻ郢晢ｽｻ陷證ｦ・ｽ・ｸ繝ｻ・ｺ髯晢ｽｶ陷ｷ・ｮ・つ繝ｻ・ｻ鬮ｫ・ｲ繝ｻ・｡郢晢ｽｻ繝ｻ・｡鬮ｯ讓奇ｽｻ繧托ｽｽ・ｽ繝ｻ・ｧ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｮ鬮ｯ譏ｴ繝ｻ郢晢ｽｻ*/
+        max-width: 100%; /* 画面幅に合わせて拡大縮小 */
       }
     }
 
@@ -65,10 +65,10 @@
 .suzuri-btn:active,
 .suzuri-btn:focus,
 .suzuri-btn:focus-visible {
-  background: #dddddd !important;   /* 鬮ｯ譏ｴ繝ｻ繝ｻ・ｻ繝ｻ・｣郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ鬮ｫ・ｨ繝ｻ・ｬ髯憺斡雎ｪ繝ｻ・ｸ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ驍ｵ・ｺ隶呵ｶ｣・ｽ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｬ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｳ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｸ鬩幢ｽ｢隴弱・・ｱ謚ｵ・ｾ雜｣・ｽ・ｦ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｯ鬯ｩ蝣ｺ・ｼ螟ｲ・ｽ・ｽ繝ｻ・ｻ */
-  color: #878787 !important;        /* 鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｻ鬩幢ｽ｢繝ｻ・ｧ鬮ｦ・ｮ陷ｷ・ｶ郢晢ｽｻ鬮ｯ譏ｴ繝ｻ繝ｻ・ｻ繝ｻ・｣郢晢ｽｻ繝ｻ・ｰ鬮ｫ・ｴ霑壼雀・ｹ・ｲ郢晢ｽｻ隶捺慣・ｽ・ｹ繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｰ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｬ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｼ */
+  background: #dddddd !important;   /* 少しだけ暗いオレンジピンク系 */
+  color: #878787 !important;        /* ほんの少し暗いグレー */
   border: none !important;
-  border-radius: 0px !important;    /* 22px 鬩包ｽｶ驗呻ｽｫ郢晢ｽｻ7px驛｢譎｢・ｽ・ｻ髯橸ｽ｢繝ｻ・ｻ郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｸ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｿ鬩幢ｽ｢繝ｻ・ｧ髯句ｹ｢・ｽ・ｵ驍ｵ・ｺ陜｣・､繝ｻ・ｹ隴擾ｽｴ郢晢ｽｻ驕ｶ髮・ｽｮ螟ｲ・ｽ・ｲ郢ｧ繝ｻ・ｽ・ｸ陷ｻ・ｻ繝ｻ・ｽ髢ｾ・･繝ｻ・ｸ繝ｻ・ｺ驛｢譎｢・ｽ・ｻ*/
+  border-radius: 0px !important;    /* 22px → 7px：丸みをグッと減らす */
   font-weight: bold !important;
   font-size: 0.8em !important;
   padding: 0.4em 1.2em !important;
@@ -93,10 +93,10 @@
 <nav>
   <a href="index.html">folks</a>
   <a href="illustrations.html">draws</a>
-  <a href="gallery.html" class="active" aria-current="page">comix</a>
+
+  <a href="gallery.html">comix</a>
   <a href="story.html">tales</a>
   <a href="blog.html">stuff</a>
-  <a href="archive.html">archive</a>
 </nav>
 
 <main>
@@ -104,28 +104,28 @@
     <a href="comics/2.webp">
       <picture>
         <source srcset="comics/2.webp" type="image/webp">
-        <img src="comics/2.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ" loading="lazy" width="500" height="500">
+        <img src="comics/2.webp" alt="画像1" loading="lazy" width="500" height="500">
       </picture>
       <div class="date">2024-06-15</div>
     </a>
     <a href="comics/3.webp">
       <picture>
         <source srcset="comics/3.webp" type="image/webp">
-        <img src="comics/3.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ" loading="lazy" width="500" height="500">
+        <img src="comics/3.webp" alt="画像2" loading="lazy" width="500" height="500">
       </picture>
       <div class="date">2024-06-15</div>
     </a>
     <a href="comics/4.webp">
       <picture>
         <source srcset="comics/4.webp" type="image/webp">
-        <img src="comics/4.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ" loading="lazy" width="500" height="500">
+        <img src="comics/4.webp" alt="画像3" loading="lazy" width="500" height="500">
       </picture>
       <div class="date">2024-06-15</div>
     </a>
     <a href="comics/1.webp">
       <picture>
         <source srcset="comics/1.webp" type="image/webp">
-        <img src="comics/1.webp" alt="鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ・ｷ陋幢ｽｵ郢晢ｽｻ" loading="lazy" width="500" height="500">
+        <img src="comics/1.webp" alt="画像4" loading="lazy" width="500" height="500">
       </picture>
       <div class="date">2023-07-11</div>
     </a>
@@ -133,7 +133,7 @@
 </main>
 
 <footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
+  © irorinri. All Rights Reserved.
 </footer>
 
 <!-- PhotoSwipe Scripts -->
@@ -143,7 +143,7 @@
   const gallery = document.querySelector('.image-gallery');
   const links = gallery.querySelectorAll('a');
 
-  // 鬮ｯ・ｷ陋ｹ・ｻ郢晢ｽｻ髯具ｽｻ繝ｻ・､鬮ｯ・ｷ陷代・・ｽ・ｸ霑ｺ・ｰ繝ｻ・ｰ鬩幢ｽ｢繝ｻ・ｧ鬨ｾ蛹・ｽｽ・ｻ郢晢ｽｻ繝ｻ・ｯ鬨ｾ・ｧ繝ｻ・ｮ鬩肴得・ｽ・ｫ鬩幢ｽ｢繝ｻ・ｧ鬮ｮ蛹ｺ・ｧ・ｫ陟募ｮ｣霎ｧ陷肴ｺｷ・ｹ・ｲ郢晢ｽｻ繝ｻ・ｰ鬩搾ｽｵ繝ｻ・ｺ郢晢ｽｻ繝ｻ・ｦ鬯ｮ・ｫ繝ｻ・ｪ郢晢ｽｻ繝ｻ・ｭ鬮ｯ讖ｸ・ｽ・ｳ驛｢譎｢・ｽ・ｻ
+  // 元画像から比率を取得して設定
   links.forEach(link => {
     const img = link.querySelector('img');
     const image = new Image();
@@ -160,12 +160,12 @@
     pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
   });
 
-  // 鬩幢ｽ｢隴弱・・ｽ・ｼ隴・搨・ｰ鬩幢ｽ｢隴主・讓滄し・ｺ陝ｶ・ｷ繝ｻ・ｹ隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｯ鬩幢ｽ｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・､鬩幢ｽ｢隴惹ｸ橸ｽｹ・ｲ驛｢譎｢・ｽ・ｻ鬯ｮ・｢繝ｻ・ｭ髫ｴ・ｴ繝ｻ・ｧ髯ｷ謳ｾ・ｽ・ｹ髮趣ｽｼ繝ｻ・ｶ郢晢ｽｻ繝ｻ・ｲ鬩幢ｽ｢繝ｻ・ｧ鬮ｮ蛹ｺ・ｩ・ｸ繝ｻ・ｽ繝ｻ・､鬨ｾ蛹・ｽｽ・ｻ髯晢ｽｲ繝ｻ・ｩ
+  // フォトスワイプの背景色を変更
   lightbox.on('uiRegister', () => {
     const style = document.createElement('style');
     style.innerHTML = `
       .pswp__bg {
-        background-color: #ADD8E6 !important; /* 鬮ｮ譛ｱ・ｯ莨夲ｽｽ・ｽ繝ｻ・ｴ髮趣ｽｼ繝ｻ・ｶ郢晢ｽｻ繝ｻ・ｲ */
+        background-color: #ADD8E6 !important; /* 水色 */
       }
     `;
     document.head.appendChild(style);

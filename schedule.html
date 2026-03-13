@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Weekly stream schedule and activity plan for irorinri.">
-  <title>Schedule | irorinri</title>
+  <title>Huelin | Stream Schedule</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -17,7 +16,7 @@
       min-height: 100vh;
     }
     .schedule-card {
-      /* 鬯ｯ・ｮ繝ｻ・ｫ鬩包ｽｨ郢ｧ謇假ｽｽ・ｽ繝ｻ・ｹ髫ｴ謫ｾ・ｽ・ｶ鬮ｯ讖ｸ・ｽ・ｺ鬯ｯ・ｨ繝ｻ・ｾ郢晢ｽｻ繝ｻ・ｶ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｮ鬯ｮ・｣陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｳ鬯ｩ諤憺●繝ｻ・ｽ繝ｻ・ｫ郢晢ｽｻ邵ｺ・､・つ鬮ｯ貅ｷ萓帙・・ｾ陞ｽ・ｯ・つ繝ｻ・ｳ鬯ｩ蟷｢・ｽ・｢髫ｴ雜｣・ｽ・｢郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・ｼ鬯ｩ蟷｢・ｽ・｢髫ｴ蜿門ｾ励・・ｽ繝ｻ・ｳ郢晢ｽｻ繝ｻ・ｨ郢晢ｽｻ邵ｺ・､・つ鬯ｮ・｢繝ｻ・ｧ郢晢ｽｻ繝ｻ・ｴ鬮ｫ・ｨ雋ょ庄ﾂ鬯ｩ蟷｢・ｽ・｢郢晢ｽｻ繝ｻ・ｧ鬮ｯ蜿･・ｹ・｢繝ｻ・ｽ繝ｻ・ｵ鬩包ｽｶ闔ｨ竏壹・郢晢ｽｻ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｺ鬮｣蛹・ｽｽ・ｳ髯晢ｽｯ繝ｻ・ｩ驛｢譎｢・ｽ・ｻ */
+      /* 見た目上「カード」感をなくす */
       background: none;
       max-width: none;
       margin: 0 auto;
@@ -57,9 +56,6 @@
       background: #d7dbe2; 
       color: #5174a0;
     }
-    .home-btn + .home-btn {
-      margin-left: 0.35em;
-    }
     .schedule-note {
       text-align: center;
       font-size: 1.05rem;
@@ -82,7 +78,7 @@
       padding: 0 0 0 1.5em;
       font-weight: 400;
       font-family: inherit;
-      justify-content: flex-start; /* 鬯ｩ蛹・ｽｽ・ｶ鬩怜遜・ｽ・ｫ驛｢譎｢・ｽ・ｻ鬯ｩ謳ｾ・ｽ・ｵ郢晢ｽｻ繝ｻ・ｺ鬯ｮ・ｦ繝ｻ・ｮ髯ｷ・ｻ繝ｻ・ｻ郢晢ｽｻ繝ｻ・ｼ驛｢譎｢・ｽ・ｻ郢晢ｽｻ繝ｻ・ｹ郢晢ｽｻ繝ｻ・ｧ鬯ｮ・ｮ陋ｹ・ｺ繝ｻ・ｩ繝ｻ・ｸ郢晢ｽｻ繝ｻ・ｽ郢晢ｽｻ繝ｻ・､鬯ｨ・ｾ陋ｹ繝ｻ・ｽ・ｽ繝ｻ・ｻ鬮ｯ譎｢・ｽ・ｲ郢晢ｽｻ繝ｻ・ｩ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ鬩幢ｽ｢隴趣ｽ｢繝ｻ・ｽ繝ｻ・ｻ*/
+      justify-content: flex-start; /* ← ここを変更！ */
     }
     .day-label {
       min-width: 54px;
@@ -156,9 +152,6 @@
   z-index: 1;
   position: relative;
 }
-    footer a {
-      color: inherit;
-    }
     @media (max-width: 600px) {
       .schedule-title { font-size: 1.08rem; margin-top: 24px; }
       .week-list li { font-size: 0.97rem; }
@@ -173,7 +166,6 @@
   <div class="schedule-card">
     <div class="home-btn-wrap">
       <a href="profile.html" class="home-btn">Home</a>
-      <a href="archive.html" class="home-btn">Archive</a>
     </div>
     <h1 class="schedule-title">Weekly Stream Schedule</h1>
     <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
@@ -201,7 +193,7 @@
     </div>
   </div>
   <footer>
-  &copy; irorinri | <a href="profile.html">Profile</a> | <a href="archive.html">Archive</a>
-</footer>
+    &copy; 2025 irorinri
+  </footer>
 </body>
 </html>
