@@ -99,11 +99,16 @@
     }
 
     /* 確認行（Enter?/Back）の見た目 */
-    #toggle-diary-confirm-row,
     #toggle-snapshot-confirm-row {
       gap: 0px;
       align-items: center;
       margin-bottom: 0px;
+    }
+
+    #toggle-diary-confirm-row {
+      gap: 0px;
+      align-items: center;
+      margin-bottom: 24px;
     }
 
     /* snapshot本体は初期非表示 */
@@ -120,9 +125,9 @@
     }
 
     /* show diary と show chatter の間隔を広げる */
-#toggle-diary {
-  margin-bottom: 24px;
-}
+    #toggle-diary {
+      margin-bottom: 24px;
+    }
 
   </style>
 </head>
@@ -177,8 +182,6 @@
       <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
       <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
     </div>
-    <div id="toggle-diary-confirm-gap" style="display: none; height: 20px;"></div>
-
     <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
     <div id="diary-buttons" class="diary-buttons hidden"></div>
 
@@ -273,7 +276,6 @@
     document.getElementById("toggle-diary").addEventListener("click", function () {
       document.getElementById("toggle-diary").style.display = "none";
       document.getElementById("toggle-diary-confirm-row").style.display = "flex";
-      document.getElementById("toggle-diary-confirm-gap").style.display = "block";
     });
 
     // confirmでdiary本体を開く
@@ -308,14 +310,12 @@
 
       // 確認UIを閉じる
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
       document.getElementById("toggle-diary").style.display = "none";
     });
 
     // confirmでBackしたら元に戻す
     document.getElementById("toggle-diary-back").addEventListener("click", function () {
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
       document.getElementById("toggle-diary").style.display = "block";
     });
 
@@ -331,7 +331,6 @@
       document.getElementById("toggle-diary-top").style.display = "none";
 
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
 
       document.getElementById("toggle-diary").style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -349,7 +348,6 @@
       document.getElementById("toggle-diary-top").style.display = "none";
 
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary-confirm-gap").style.display = "none";
 
       document.getElementById("toggle-diary").style.display = "block";
     });
