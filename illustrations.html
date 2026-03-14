@@ -10,137 +10,122 @@
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-
-  
   .gallery {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 10px; 
-    padding: 20px; 
-    margin-top: 5px; 
-    margin-bottom: 1000px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 1000px;
   }
 
-  /* ギャラリー内のリンク要素のスタイル */
   .gallery a {
-    width: 18%; 
-    max-width: 100px; 
-    text-decoration: none; 
+    width: 18%;
+    max-width: 100px;
+    text-decoration: none;
   }
 
-  /* ギャラリー内の画像のスタイル */
   .gallery img {
-    width: 100%; /* 親要素の幅に合わせる */
-    height: auto; /* アスペクト比を維持して高さを自動調整 */
-    border-radius: 5px; /* 角を丸める */
-    
-    transition: transform 0.3s, box-shadow 0.3s; /* ホバー時のアニメーション */
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  /* 画像ホバー時のスタイル */
   .gallery img:hover {
-    transform: scale(1.1); /* 拡大 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 影を強調 */
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
-  /* 全体ギャラリー要素の追加スタイル */
   .image-gallery {
-    display: block; /* 子要素をブロック要素として表示 */
-    overflow: auto; /* スクロール可能にする */
-    margin-bottom: 1000px; /* 下部の余白を大きく確保 */
+    display: block;
+    overflow: auto;
+    margin-bottom: 1000px;
   }
 
   @media (max-width: 768px) {
     .gallery a {
-      width: 24%; /* 横幅を親要素の24%に設定 */
+      width: 24%;
     }
   }
 
-  /* メディアクエリ：画面幅480px以下の場合 */
   @media (max-width: 480px) {
     .gallery a {
-      width: 30%; /* 横幅を親要素の30%に設定 */
+      width: 30%;
     }
   }
 
-  /* PhotoSwipeカスタムキャプションのスタイル */
   .pswp__custom-caption {
-    color: #000000 !important; /* キャプションのテキスト色を白に設定 */
-    text-align: center !important; /* キャプションを中央揃え */
-    padding: 5px; /* キャプションの内側の余白 */
-    position: absolute; /* 親要素に相対的に配置 */
-    bottom: 30px; /* 親要素の下部から30pxの位置 */
-    width: 100%; /* キャプションの幅を全幅に設定 */
-    z-index: 1000; /* 他の要素より前面に表示 */
-    visibility: visible; /* 常に表示 */
+    color: #000000 !important;
+    text-align: center !important;
+    padding: 5px;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    z-index: 1000;
+    visibility: visible;
   }
 
-  /* PhotoSwipeカウンターを非表示にする */
   .pswp__counter {
-    display: none; 
+    display: none;
   }
 
-    .back-home-btn {
-  display: flex;
-  align-items: flex-end;
-  background: #b3d7ff;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5em 1.4em;
-  border-radius: 0.2em;
-  margin-left: 1rem; /* ← 追加：隣との間隔 */
-  transition: background 0.2s;
-  font-size: 0.95em;
-}
+  .back-home-btn {
+    display: flex;
+    align-items: flex-end;
+    background: #b3d7ff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5em 1.4em;
+    border-radius: 0.2em;
+    margin-left: 1rem;
+    transition: background 0.2s;
+    font-size: 0.95em;
+  }
 
-.suzuri-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
+  .suzuri-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+  }
 
-.suzuri-btn {
-  font-weight: bold;
-  border: none;
-  border-radius: 0em;       
-  font-size: 0.8em !important;
-  padding: 0.2em 1.4em !important;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-}
+  .suzuri-btn {
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    font-size: 0.8em !important;
+    padding: 0.2em 1.4em !important;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
 
-    
-.suzuri-btn,
-.suzuri-btn:hover,
-.suzuri-btn:active,
-.suzuri-btn:focus,
-.suzuri-btn:focus-visible {
-  background: #dddddd !important;
-  color: #a3a3a3 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  transition: none !important;
-  transform: none !important;
-}
-
-    
-</style>
+  .suzuri-btn,
+  .suzuri-btn:hover,
+  .suzuri-btn:active,
+  .suzuri-btn:focus,
+  .suzuri-btn:focus-visible {
+    background: #dddddd !important;
+    color: #a3a3a3 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  </style>
 </head>
 <body>
-
 
 <div class="suzuri-btn-wrapper">
   <a class="suzuri-btn" href="https://suzuri.jp/Irorinri" target="_blank" rel="noopener">Buy Stickers</a>
   <a class="back-home-btn" href="profile.html">Back to Home</a>
 </div>
-  
+
 <nav>
   <a href="index.html">folks</a>
   <a href="illustrations.html">draws</a>
-
   <a href="gallery.html">comix</a>
   <a href="story.html">tales</a>
   <a href="blog.html">stuff</a>
@@ -148,9 +133,7 @@
 
 <div class="gallery"></div>
 
-<script type="module">
-  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-
+<script>
   const images = [
     { src: 'images/1.webp', width: 1000, height: 1000, date: '2024-11-10' },
     { src: 'images/2.webp', width: 1000, height: 1000, date: '2024-11-11' },
@@ -178,142 +161,118 @@
     { src: 'images/25.webp', width: 1000, height: 1000, date: '2026-02-28' },
     { src: 'images/26.webp', width: 1000, height: 1000, date: '2026-02-28' },
     { src: 'images/27.webp', width: 1000, height: 1000, date: '2026-02-28' },
-
-
-
-
-
-
     { src: 'images/28.webp', width: 1000, height: 1000, date: '2026-02-28' },
-    { src: 'images/29.webp', width: 1000, height: 1000, date: '2026-02-28' },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
+    { src: 'images/29.webp', width: 1000, height: 1000, date: '2026-02-28' }
   ];
 
   const galleryElement = document.querySelector('.gallery');
-  images.reverse().forEach(({ src, width, height, date }) => {
-    galleryElement.innerHTML += `
-      <a href="${src}" data-pswp-width="${width}" data-pswp-height="${height}">
-        <img src="${src}" alt="イラスト">
-        <span class="hidden-caption-content" style="display:none;">${date}</span>
-      </a>`;
+  const fragment = document.createDocumentFragment();
+
+  images.slice().reverse().forEach(({ src, width, height, date }) => {
+    const link = document.createElement('a');
+    link.href = src;
+    link.dataset.pswpWidth = String(width);
+    link.dataset.pswpHeight = String(height);
+
+    const image = document.createElement('img');
+    image.src = src;
+    image.alt = 'イラスト';
+    image.loading = 'lazy';
+
+    const caption = document.createElement('span');
+    caption.className = 'hidden-caption-content';
+    caption.style.display = 'none';
+    caption.textContent = date;
+
+    link.append(image, caption);
+    fragment.appendChild(link);
   });
 
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '.gallery',
-    children: 'a',
-    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
-    loop: false, 
-  });
+  galleryElement.appendChild(fragment);
 
-  lightbox.on('uiRegister', () => {
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-counter',
-      order: 5,
-      isButton: false,
-      appendTo: 'bar',
-      html: '',
-      onInit: (el, pswp) => {
-        Object.assign(el.style, {
-          color: 'white', fontSize: '15px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold',
-          position: 'relative', top: '20px', left: '30px', padding: '2px',
-          webkitTextStroke: '1px rgba(128, 128, 128, 0.8)', textStroke: '1px rgba(128, 128, 128, 0.8)',
-        });
-        pswp.on('change', () => {
-          const total = pswp.getNumItems();
-          const index = total - pswp.currIndex;
-          el.innerHTML = `${index} / ${total}`;
-        });
-      },
-    });
-
-    lightbox.pswp.ui.registerElement({
-      name: 'custom-caption',
-      order: 9,
-      isButton: false,
-      appendTo: 'wrapper',
-      html: '',
-      onInit: (el, pswp) => {
-        pswp.on('change', () => {
-          const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
-          el.innerHTML = caption ? caption.textContent : 'キャプションなし';
-        });
-      },
-    });
-
-    const style = document.createElement('style');
-    style.innerHTML = `.pswp__bg { background-color: #ADD8E6 !important; }`;
-    document.head.appendChild(style);
-  });
-
-  lightbox.init();
-
-
-
-// ページ復元（戻る・進む）時にもblurさせる
-window.addEventListener('pageshow', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.blur();
-  });
-});
-  
-// 念のため、クリック時にもblur
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
-    btn.addEventListener('mouseup', function() {
+  window.addEventListener('pageshow', function() {
+    document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
       btn.blur();
     });
   });
-});
-  
 
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.suzuri-btn').forEach(function(btn) {
+      btn.addEventListener('mouseup', function() {
+        btn.blur();
+      });
+    });
+  });
 </script>
 
+<script type="module">
+  async function initLightbox() {
+    try {
+      const { default: PhotoSwipeLightbox } = await import('https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js');
 
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '.gallery',
+        children: 'a',
+        pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+        loop: false,
+      });
 
-  
+      lightbox.on('uiRegister', () => {
+        lightbox.pswp.ui.registerElement({
+          name: 'custom-counter',
+          order: 5,
+          isButton: false,
+          appendTo: 'bar',
+          html: '',
+          onInit: (el, pswp) => {
+            Object.assign(el.style, {
+              color: 'white',
+              fontSize: '15px',
+              fontFamily: 'Arial, sans-serif',
+              fontWeight: 'bold',
+              position: 'relative',
+              top: '20px',
+              left: '30px',
+              padding: '2px',
+              webkitTextStroke: '1px rgba(128, 128, 128, 0.8)',
+              textStroke: '1px rgba(128, 128, 128, 0.8)',
+            });
+            pswp.on('change', () => {
+              const total = pswp.getNumItems();
+              const index = total - pswp.currIndex;
+              el.innerHTML = `${index} / ${total}`;
+            });
+          },
+        });
+
+        lightbox.pswp.ui.registerElement({
+          name: 'custom-caption',
+          order: 9,
+          isButton: false,
+          appendTo: 'wrapper',
+          html: '',
+          onInit: (el, pswp) => {
+            pswp.on('change', () => {
+              const caption = pswp.currSlide?.data.element.querySelector('.hidden-caption-content');
+              el.innerHTML = caption ? caption.textContent : 'キャプションなし';
+            });
+          },
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = '.pswp__bg { background-color: #ADD8E6 !important; }';
+        document.head.appendChild(style);
+      });
+
+      lightbox.init();
+    } catch (error) {
+      console.warn('PhotoSwipe could not be loaded. Gallery remains available without lightbox.', error);
+    }
+  }
+
+  initLightbox();
+</script>
+
 <footer>
   © irorinri. All Rights Reserved.
 </footer>
