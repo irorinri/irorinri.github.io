@@ -105,10 +105,28 @@
       margin-bottom: 0px;
     }
 
+    #toggle-diary-entry {
+      position: relative;
+      min-height: 1.6em;
+      margin-bottom: 24px;
+    }
+
+    #toggle-diary {
+      margin-bottom: 0;
+    }
+
     #toggle-diary-confirm-row {
       gap: 0px;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    #toggle-diary-entry.confirming #toggle-diary {
+      visibility: hidden;
     }
 
     /* snapshot本体は初期非表示 */
@@ -122,11 +140,6 @@
     }
     .uses-toggle-wrap {
       margin-bottom: 14px;
-    }
-
-    /* show diary と show chatter の間隔を広げる */
-    #toggle-diary {
-      margin-bottom: 24px;
     }
 
   </style>
@@ -177,10 +190,12 @@
     </div>
 
     <!-- ===== diaryセクション（確認あり） ===== -->
-    <a id="toggle-diary" class="toggle-link">→ show diary</a>
-    <div id="toggle-diary-confirm-row" style="display: none; gap: 18px;">
-      <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
-      <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+    <div id="toggle-diary-entry">
+      <a id="toggle-diary" class="toggle-link">→ show diary</a>
+      <div id="toggle-diary-confirm-row" style="display: none; gap: 18px;">
+        <a id="toggle-diary-confirm" class="toggle-link" style="margin-bottom: 0;">→ Private Room. Enter?</a>
+        <a id="toggle-diary-back" class="toggle-link" style="margin-bottom: 0;">→ Back</a>
+      </div>
     </div>
     <a id="toggle-diary-top" class="toggle-link" style="display: none;">↓ hide diary</a>
     <div id="diary-buttons" class="diary-buttons hidden"></div>
@@ -274,7 +289,7 @@
 
     // 「show diary」押下で確認行を表示
     document.getElementById("toggle-diary").addEventListener("click", function () {
-      document.getElementById("toggle-diary").style.display = "none";
+      document.getElementById("toggle-diary-entry").classList.add("confirming");
       document.getElementById("toggle-diary-confirm-row").style.display = "flex";
     });
 
@@ -309,14 +324,15 @@
       }, 200);
 
       // 確認UIを閉じる
+      document.getElementById("toggle-diary-entry").classList.remove("confirming");
+      document.getElementById("toggle-diary-entry").style.display = "none";
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary").style.display = "none";
     });
 
     // confirmでBackしたら元に戻す
     document.getElementById("toggle-diary-back").addEventListener("click", function () {
+      document.getElementById("toggle-diary-entry").classList.remove("confirming");
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
-      document.getElementById("toggle-diary").style.display = "block";
     });
 
     // 下側hide（閉じて先頭へスクロール）
@@ -330,6 +346,8 @@
       document.getElementById("toggle-diary-bottom").style.display = "none";
       document.getElementById("toggle-diary-top").style.display = "none";
 
+      document.getElementById("toggle-diary-entry").classList.remove("confirming");
+      document.getElementById("toggle-diary-entry").style.display = "block";
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
 
       document.getElementById("toggle-diary").style.display = "block";
@@ -347,6 +365,8 @@
       document.getElementById("toggle-diary-bottom").style.display = "none";
       document.getElementById("toggle-diary-top").style.display = "none";
 
+      document.getElementById("toggle-diary-entry").classList.remove("confirming");
+      document.getElementById("toggle-diary-entry").style.display = "block";
       document.getElementById("toggle-diary-confirm-row").style.display = "none";
 
       document.getElementById("toggle-diary").style.display = "block";
