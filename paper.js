@@ -79,7 +79,18 @@ document.querySelectorAll('[data-nudge]').forEach((el) => {
     if (points.length) frame = requestAnimationFrame(draw);
   }
 
+  // 指やペンは、紙の空白からなぞり始めたときだけ鉛筆になる。
+  // 文字や絵の上から始めたときは、いつも通りスクロールできる
+  const CONTENT = 'a, button, summary, img, p, h1, h2, li, time, footer, input, textarea, .post-body, .letter';
+  let drawing = false;
+
+  const onContent = (target) => {
+    const el = target instanceof Element ? target : target && target.parentElement;
+    return !el || !!el.closest(CONTENT);
+  };
+
   addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse' && !drawing) return;
     const now = performance.now();
     const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
     for (const ev of events) {
@@ -89,12 +100,29 @@ document.querySelectorAll('[data-nudge]').forEach((el) => {
     if (!frame) frame = requestAnimationFrame(draw);
   }, { passive: true });
 
-  const lift = () => { stroke++; };
-  addEventListener('pointerdown', lift, { passive: true });
+  addEventListener('pointerdown', (e) => {
+    stroke++;
+    if (e.pointerType !== 'mouse') drawing = e.isPrimary && !onContent(e.target);
+  }, { passive: true });
+
+  const lift = (e) => {
+    stroke++;
+    if (e && e.pointerType && e.pointerType !== 'mouse') drawing = false;
+  };
   addEventListener('pointerup', lift, { passive: true });
   addEventListener('pointercancel', lift, { passive: true });
-  addEventListener('scroll', lift, { passive: true });
-  document.documentElement.addEventListener('pointerleave', lift);
+  addEventListener('scroll', () => { stroke++; }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', () => { stroke++; });
+
+  // 空白で描いている間は、指の動きでページがスクロールしないようにする（二本指のズームは止めない）
+  addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) drawing = false;
+  }, { passive: true });
+  addEventListener('touchmove', (e) => {
+    if (!drawing) return;
+    if (e.touches.length > 1) { drawing = false; return; }
+    if (e.cancelable) e.preventDefault();
+  }, { passive: false });
 
   addEventListener('resize', resize);
   resize();
