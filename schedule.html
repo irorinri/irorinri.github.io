@@ -1,186 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huelin | Stream Schedule</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      padding: 40px 0 0 0;  
-      background: #fff;
-      font-family: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
-      color: #767b8c;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-    }
-    .schedule-card {
-      /* 見た目上「カード」感をなくす */
-      background: none;
-      max-width: none;
-      margin: 0 auto;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 0;
-      margin-top: 70px; 
-    }
-    .schedule-title {
-      color: #427fa6;
-      font-size: 1.32rem;
-      font-weight: 600;
-      text-align: center;
-      margin: 54px 0 1.0rem 0;
-      font-family: 'Inter', sans-serif;
-    }
-    .home-btn-wrap {
-      text-align: center;
-      margin: 2.2em 0 1.2em 0;
-    }
-    .home-btn {
-      display: inline-block;
-      background: #eceff3;
-      color: #767b8c;
-      font-size: 1em;
-      padding: 0.48em 1.25em;
-      border-radius: 0.7em;
-      text-decoration: none;
-      
-      
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-    }
-    .home-btn:hover,
-    .home-btn:active {
-      background: #d7dbe2; 
-      color: #5174a0;
-    }
-    .schedule-note {
-      text-align: center;
-      font-size: 1.05rem;
-      color: #427fa6;
-      margin-bottom: 1.2rem;
-      font-weight: 400;
-      font-family: 'Inter', sans-serif;
-    }
-    .week-list {
-      list-style: none;
-      margin: 0 auto 1.6rem auto;
-      padding: 0;
-      max-width: 480px;
-    }
-    .week-list li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.63rem;
-      font-size: 1.08rem;
-      padding: 0 0 0 1.5em;
-      font-weight: 400;
-      font-family: inherit;
-      justify-content: flex-start; /* ← ここを変更！ */
-    }
-    .day-label {
-      min-width: 54px;
-      display: inline-block;
-      font-weight: 600;
-      padding: 0.22em 0.75em;
-      border-radius: 7px;
-      margin-right: 0.8em;
-      font-size: 0.99rem;
-      background: #f2f3f8;
-      color: #546e7a;
-      text-align: center;
-      font-family: inherit;
-    }
-    .mon { background: #e3edfa; }
-    .tue { background: #e9f7ea; }
-    .wed { background: #fdf3e7; }
-    .thu { background: #f7e9ef; }
-    .fri { background: #e9eafd; }
-    .sat { background: #fceeea; }
-    .sun { background: #faeaf2; }
-    .games-section {
-      background: #f7faff;
-      border-radius: 10px;
-      padding: 1em 1em 0.9em 1em;
-      margin: 0 auto 2.5em auto;
-      box-shadow: 0 1px 4px rgba(150,180,220,0.05);
-      text-align: center;
-      max-width: 480px;
-    }
-    .games-section h2 {
-      font-size: 1.11rem;
-      font-weight: 600;
-      margin: 0 0 0.5em 0;
-      color: #427fa6;
-      font-family: 'Inter', sans-serif;
-    }
-    .game-note {
-      font-size: 0.99rem;
-      color: #8ea2be;
-      margin: 0 0 0.5em 0;
-      font-weight: 400;
-      font-family: 'Inter', sans-serif;
-    }
-    .game-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7em;
-      padding: 0;
-      margin: 0;
-    }
-    .game-list li {
-      background: #fff;
-      border-radius: 6px;
-      padding: 0.26em 1em;
-      border: 1px solid #e0e6ef;
-      font-size: 1.02rem;
-      min-width: 140px;
-      text-align: center;
-      box-shadow: 0 1px 2px rgba(100,130,200,0.03);
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-    }
-    footer {
-  text-align: center;
-  color: var(--text-sub);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  z-index: 1;
-  position: relative;
-}
-    @media (max-width: 600px) {
-      .schedule-title { font-size: 1.08rem; margin-top: 24px; }
-      .week-list li { font-size: 0.97rem; }
-      .games-section h2 { font-size: 1rem; }
-      .game-list li { min-width: 110px; font-size: 0.93rem; }
-      .games-section, .week-list { max-width: 100%; }
-    }
-  </style>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
 </head>
-  
 <body>
-  <div class="schedule-card">
-    <div class="home-btn-wrap">
-      <a href="profile.html" class="home-btn">Home</a>
-    </div>
-    <h1 class="schedule-title">Weekly Stream Schedule</h1>
-    <p class="schedule-note">Streaming and creating about 2 hours a day!</p>
-    <ul class="week-list">
-      <li><span class="day-label mon">Mon</span> Study</li>
-      <li><span class="day-label tue">Tue</span> Music</li>
-      <li><span class="day-label wed">Wed</span> Drawing</li>
-      <li><span class="day-label thu">Thu</span> Shogi Software</li>
-      <li><span class="day-label fri">Fri</span> 3D Modeling</li>
-      <li><span class="day-label sat">Sat</span> Manga</li>
-      <li><span class="day-label sun">Sun</span> Animation</li>
-    </ul>
-    <div class="games-section">
-      <h2>Daily Game Streams</h2>
-      <div class="game-note">One of these at random:</div>
+  <main class="page">
+    <a class="back scribble rise" href="profile.html" style="--i:0">&larr; home</a>
+
+    <h1 class="page-title rise" style="--i:1">weekly stream schedule</h1>
+    <p class="page-note rise" style="--i:2">Streaming and creating about 2 hours a day!</p>
+
+    <svg class="rule" viewBox="0 0 84 12" aria-hidden="true">
+      <path pathLength="1" d="M2 7C14 3 24 10 38 6S62 3 82 7"/>
+    </svg>
+
+    <ol class="week rise" style="--i:3">
+      <li data-day="mon"><span class="day" style="--dot:#9fbfe8">mon</span><span class="what">Study</span></li>
+      <li data-day="tue"><span class="day" style="--dot:#9ccfa3">tue</span><span class="what">Music</span></li>
+      <li data-day="wed"><span class="day" style="--dot:#eec28c">wed</span><span class="what">Drawing</span></li>
+      <li data-day="thu"><span class="day" style="--dot:#e3a3bc">thu</span><span class="what">Shogi Software</span></li>
+      <li data-day="fri"><span class="day" style="--dot:#a9aeea">fri</span><span class="what">3D Modeling</span></li>
+      <li data-day="sat"><span class="day" style="--dot:#eda998">sat</span><span class="what">Manga</span></li>
+      <li data-day="sun"><span class="day" style="--dot:#e4a4c6">sun</span><span class="what">Animation</span></li>
+    </ol>
+
+    <section class="games rise" style="--i:4">
+      <h2 class="sub-title">daily game streams</h2>
+      <p class="page-note">One of these at random:</p>
       <ul class="game-list">
         <li>Genshin Impact</li>
         <li>Apex Legends</li>
@@ -190,10 +44,28 @@
         <li>Honkai: Star Rail</li>
         <li>Zenless Zone Zero</li>
       </ul>
-    </div>
-  </div>
-  <footer>
-    &copy; 2025 irorinri
-  </footer>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 irorinri</footer>
+
+  <script>
+    // 今日（日本時間）の曜日を鉛筆でぐるっと囲む
+    (() => {
+      const today = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Tokyo', weekday: 'short' })
+        .format(new Date())
+        .toLowerCase();
+      const row = document.querySelector(`.week li[data-day="${today}"]`);
+      if (!row) return;
+
+      row.classList.add('today');
+      row.setAttribute('aria-current', 'date');
+      row.querySelector('.day').insertAdjacentHTML('beforeend',
+        '<svg class="circle" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">' +
+        '<path pathLength="1" d="M14 9C34 2 76 3 91 13S88 35 56 37 6 34 5 21 22 6 40 5"/></svg>');
+      row.insertAdjacentHTML('beforeend', '<span class="today-tag">today</span>');
+    })();
+  </script>
+  <script src="paper.js"></script>
 </body>
 </html>

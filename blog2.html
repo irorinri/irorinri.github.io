@@ -2,135 +2,67 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Hueryn Blog</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="blog.css">
-  <style>
-    .blog-list { max-width: 540px; margin: 0 auto; padding: 2rem 1rem 2.5rem 1rem; }
-    .accordion { background: #eceff3; border-radius: 0; margin: 1rem 0; box-shadow: 0 1.5px 10px 0 rgba(100,120,160,0.07); }
-    .accordion summary { cursor: pointer; padding: 1rem 1.4rem; font-size: 1.07rem; font-weight: 600; outline: none; display: flex; align-items: center; gap: 1em;}
-    .accordion .date { color: #767b8c; font-size: 0.97em; min-width: 7em; }
-    .accordion .title { color: #5174a0; font-weight: 700; }
-    .accordion[open] { box-shadow: 0 6px 28px 0 rgba(140,80,230,0.10); }
-    .accordion-content { padding: 1.1em 2.1em 1.2em 2.1em; display: none; font-size: 0.97em; animation: fadein .5s; }
-    .accordion.opened .accordion-content { display: block; }
-    @keyframes fadein { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
-
-    .home-btn-wrap {
-  text-align: center;
-  margin: 0.5em 0 0.7em 0;
-      margin-bottom: 0.3em;
-}
-.home-btn {
-  display: inline-block;
-  background: #eceff3;
-  color: #767b8c;
-  font-size: 1em;               
-  padding: 0.55em 1.3em;        
-  border-radius: 0.7em;       
-  text-decoration: none;
-  margin-bottom: -8.3em;
-  margin-top: 2em;
-  transition: background 0.2s, color 0.2s;
-}
-.home-btn:hover,
-.home-btn:active {
-  background: #d7dbe2; 
-  color: #5174a0;
-}
-
-@media (max-width: 600px) {
-  .home-btn-wrap {
-    margin: 0.7em 0 0.7em 0;
-  }
-}
-header {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-.header-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0;
-  padding: 0;
-  /* 追加: */
-  vertical-align: bottom;
-}
-.header-text {
-  /* 空欄なら高さ0 */
-  margin: 0;
-  padding: 0;
-  height: 0;
-}
-    
-    
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huelin | Blog</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <header>
-    <img src="header-image.png" alt="header" class="header-img">
-    <div class="header-text">
-      
-      
-    </div>
-  </header>
+  <main class="page">
+    <a class="back scribble rise" href="profile.html" style="--i:0">&larr; home</a>
 
-  <!-- ここに追加 -->
-<div class="home-btn-wrap">
-  <a href="profile.html" class="home-btn">Home</a>
-</div>
-  <main>
-    <section class="blog-list">
+    <h1 class="banner rise" style="--i:1">
+      <img src="header-image.png" alt="Huelin's Blog" width="1600" height="400">
+    </h1>
 
-
-
-<div class="accordion" data-file="blog/2025-07-28.html"><summary><span class="date">2025-07-28</span><span class="title">The Ocean AItuber</span></summary><div class="accordion-content"></div></div>
-<div class="accordion" data-file="blog/2025-07-20.html"><summary><span class="date">2025-07-20</span><span class="title">First print of my doujinshi</span></summary><div class="accordion-content"></div></div>
-<div class="accordion" data-file="blog/2025-06-25.html"><summary><span class="date">2025-06-25</span><span class="title">AItuber Kachess Design</span></summary><div class="accordion-content"></div></div>
-<div class="accordion" data-file="blog/2025-06-21.html"><summary><span class="date">2025-06-21</span><span class="title">Shogi in Unity</span></summary><div class="accordion-content"></div></div>
-      
-
+    <section class="posts rise" style="--i:2" aria-label="Posts">
+      <details class="post" data-file="blog/2025-07-28.html">
+        <summary><time datetime="2025-07-28">2025-07-28</time><span class="post-title scribble">The Ocean AItuber</span><span class="post-mark" aria-hidden="true">+</span></summary>
+        <div class="post-body"></div>
+      </details>
+      <details class="post" data-file="blog/2025-07-20.html">
+        <summary><time datetime="2025-07-20">2025-07-20</time><span class="post-title scribble alt">First print of my doujinshi</span><span class="post-mark" aria-hidden="true">+</span></summary>
+        <div class="post-body"></div>
+      </details>
+      <details class="post" data-file="blog/2025-06-25.html">
+        <summary><time datetime="2025-06-25">2025-06-25</time><span class="post-title scribble">AItuber Kachess Design</span><span class="post-mark" aria-hidden="true">+</span></summary>
+        <div class="post-body"></div>
+      </details>
+      <details class="post" data-file="blog/2025-06-21.html">
+        <summary><time datetime="2025-06-21">2025-06-21</time><span class="post-title scribble alt">Shogi in Unity</span><span class="post-mark" aria-hidden="true">+</span></summary>
+        <div class="post-body"></div>
+      </details>
     </section>
   </main>
-  <footer>
-    &copy; 2025 irorinri
-  </footer>
+
+  <footer>&copy; 2025 irorinri</footer>
+
   <script>
-    // JSアコーディオン＋外部ファイル読み込み
-    document.querySelectorAll('.accordion').forEach(acc => {
-      const summary = acc.querySelector('summary');
-      summary.addEventListener('click', async function(e) {
-        e.preventDefault();
-        // すでに開いていたら閉じる
-        if(acc.classList.contains('opened')) {
-          acc.classList.remove('opened');
-          acc.querySelector('.accordion-content').innerHTML = '';
-          return;
-        }
-        // 他のアコーディオンを閉じる
-        document.querySelectorAll('.accordion.opened').forEach(a => {
-          a.classList.remove('opened');
-          a.querySelector('.accordion-content').innerHTML = '';
-        });
-        // 外部HTML/TXTを取得・挿入
-        const file = acc.dataset.file;
-        const content = acc.querySelector('.accordion-content');
-        content.innerHTML = 'Loading...';
-        acc.classList.add('opened');
+    // 開いた記事だけ読み込む。開けるのは一度にひとつ
+    const posts = document.querySelectorAll('.post');
+    posts.forEach((post) => {
+      post.addEventListener('toggle', async () => {
+        if (!post.open) return;
+        posts.forEach((other) => { if (other !== post) other.open = false; });
+
+        const body = post.querySelector('.post-body');
+        if (body.dataset.loaded) return;
+        body.textContent = 'loading…';
         try {
-          const res = await fetch(file);
-          if(!res.ok) throw new Error('Not Found');
-          const text = await res.text();
-          content.innerHTML = text;
+          const res = await fetch(post.dataset.file);
+          if (!res.ok) throw new Error(res.status);
+          body.innerHTML = await res.text();
+          body.dataset.loaded = '1';
         } catch {
-          content.innerHTML = '<p style="color:#c22;">記事の読み込みに失敗しました。</p>';
+          body.textContent = '記事の読み込みに失敗しました。';
         }
       });
     });
   </script>
+  <script src="paper.js"></script>
 </body>
 </html>
