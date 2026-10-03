@@ -195,7 +195,7 @@ html.pressing * {
   to { stroke-dashoffset: 0; }
 }
 
-/* ページへのリンク：触れると鉛筆で下線が引かれる */
+/* ページへのリンク：触れると、ギャラリーのサムネと同じ白い紙がそっと敷かれる */
 .links {
   display: flex;
   flex-direction: column;
@@ -204,8 +204,9 @@ html.pressing * {
 }
 
 .links a,
-.scribble {
+.slip {
   position: relative;
+  isolation: isolate;
   display: inline-block;
   color: var(--ink-soft);
   text-decoration: none;
@@ -223,41 +224,42 @@ html.pressing * {
 .links a:nth-child(3) { rotate: -.4deg; }
 .links a:nth-child(4) { rotate: 1deg; }
 
-.links a::after,
-.scribble::after {
+.links a::before,
+.slip::before {
   content: "";
   position: absolute;
-  left: .3rem;
-  right: .3rem;
-  bottom: .2rem;
-  height: 9px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 9' preserveAspectRatio='none'%3E%3Cpath d='M1 5.5C18 2.5 34 7.5 54 4.5S92 2.8 119 5.2' fill='none' stroke='%23666' stroke-width='1.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path .5s cubic-bezier(.65, .05, .36, 1);
-}
-
-.links a:nth-child(2n)::after,
-.scribble.alt::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 9' preserveAspectRatio='none'%3E%3Cpath d='M1 4C22 6.8 40 2.2 62 4.8S100 6.5 119 3.6' fill='none' stroke='%23666' stroke-width='1.4' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  inset: 0;
+  z-index: -1;
+  background: var(--tile);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .09);
+  opacity: 0;
+  scale: .9;
+  transition: opacity .3s ease, scale .45s var(--spring), box-shadow .3s ease;
 }
 
 .links a:hover,
 .links a:focus-visible,
-a.scribble:hover,
-a.scribble:focus-visible {
+a.slip:hover,
+a.slip:focus-visible {
   color: var(--ink);
   outline: none;
 }
 
-.links a:hover::after,
-.links a:focus-visible::after,
-a.scribble:hover::after,
-a.scribble:focus-visible::after {
-  clip-path: inset(0 0 0 0);
+.links a:hover::before,
+.links a:focus-visible::before,
+a.slip:hover::before,
+a.slip:focus-visible::before {
+  opacity: 1;
+  scale: 1;
 }
 
+/* キーボードで選んだときは、紙のふちを鉛筆でなぞる */
+.links a:focus-visible::before,
+a.slip:focus-visible::before { box-shadow: 0 0 0 1px var(--ink-faint); }
+
 .links a:active,
-a.scribble:active { scale: .95; }
+a.slip:active { scale: .95; }
 
 footer {
   position: relative;
@@ -365,7 +367,8 @@ footer {
 }
 
 .post-title {
-  padding-bottom: .35rem;
+  margin: -.2rem 0 -.2rem -.5rem;
+  padding: .2rem .5rem;
   font-size: 1.15rem;
   line-height: 1.4;
 }
@@ -374,9 +377,14 @@ footer {
 .post summary:focus-visible .post-title,
 .post[open] .post-title { color: var(--ink); }
 
-.post summary:hover .post-title::after,
-.post summary:focus-visible .post-title::after,
-.post[open] .post-title::after { clip-path: inset(0 0 0 0); }
+.post summary:hover .post-title::before,
+.post summary:focus-visible .post-title::before,
+.post[open] .post-title::before {
+  opacity: 1;
+  scale: 1;
+}
+
+.post summary:focus-visible .post-title::before { box-shadow: 0 0 0 1px var(--ink-faint); }
 
 .post-mark {
   margin-left: auto;
