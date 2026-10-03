@@ -32,13 +32,21 @@ document.querySelectorAll('[data-nudge]').forEach((el) => {
   let stroke = 0;
   let frame = 0;
 
+  let W = 0;
+  let H = 0;
+
+  // キャンバスは実際に見えている大きさに合わせる（スクロールバーの幅を含めると、マウスと線がずれる）
   function resize() {
+    W = canvas.clientWidth;
+    H = canvas.clientHeight;
+    if (!W || !H) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = innerWidth * dpr;
-    canvas.height = innerHeight * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(canvas.width / W, 0, 0, canvas.height / H, 0, 0);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    if (points.length || wave) kick();
   }
 
   function add(x, y, now) {
@@ -99,7 +107,7 @@ document.querySelectorAll('[data-nudge]').forEach((el) => {
     frame = 0;
     const now = performance.now();
     points = points.filter((p) => now - p.t < LIFE);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ctx.clearRect(0, 0, W, H);
 
     if (wave && !drawWave(wave, now)) wave = null;
 
@@ -218,6 +226,8 @@ document.querySelectorAll('[data-nudge]').forEach((el) => {
     if (e.cancelable) e.preventDefault();
   }, { passive: false });
 
+  // 記事を開いてスクロールバーが出たときなど、ウインドウの大きさが変わらなくても合わせ直す
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
   addEventListener('resize', resize);
   resize();
 })();
