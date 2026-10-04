@@ -491,27 +491,27 @@ footer {
 
 .work-ja {
   display: block;
-  margin-top: .1rem;
+  margin-top: .05rem;
   color: var(--ink-faint);
-  font-size: .85rem;
+  font-size: .76rem;
 }
 
 .work-lead {
-  margin: .4rem 0 0;
+  margin: .3rem 0 0;
   color: var(--ink);
-  font-size: .92rem;
-  line-height: 1.75;
+  font-size: .82rem;
+  line-height: 1.65;
 }
 
 .work-tags {
   display: flex;
   flex-wrap: wrap;
   gap: .1rem 0;
-  margin: .7rem 0 0;
+  margin: .4rem 0 0;
   padding: 0;
   list-style: none;
   color: var(--ink-faint);
-  font-size: .85rem;
+  font-size: .75rem;
 }
 
 /* 区切りの点は前の語にくっつけて、折り返しても行頭に来ないようにする */
@@ -522,10 +522,10 @@ footer {
 
 .work-link {
   display: inline-block;
-  margin-top: .7rem;
+  margin-top: .45rem;
   padding: .1rem 0;
   color: var(--ink-soft);
-  font-size: .95rem;
+  font-size: .82rem;
   text-decoration: none;
 }
 
