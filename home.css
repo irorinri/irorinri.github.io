@@ -351,10 +351,8 @@ footer {
 .post[open] .post-mark { rotate: 45deg; }
 
 .post-body {
-  margin: 0 0 1.2rem;
-  padding: 1.1rem 1.2rem 1.2rem;
-  background: var(--tile);
-  border-radius: 5px;
+  margin: 0;
+  padding: .2rem .3rem 1.4rem;
   color: var(--ink-soft);
   font-size: .9rem;
   line-height: 1.9;
@@ -463,26 +461,10 @@ footer {
   list-style: none;
 }
 
-/* ギャラリーのサムネと同じ白いタイル */
 .game-list li {
-  padding: .45rem .8rem .5rem;
-  background: var(--tile);
-  border-radius: 5px;
+  padding: .2rem .55rem;
   color: var(--ink-soft);
   font-size: 1rem;
-  rotate: var(--t, 0deg);
-  transition: rotate .5s var(--spring), scale .5s var(--spring), box-shadow .3s ease, color .25s ease;
-}
-
-.game-list li:nth-child(3n+1) { --t: -1.2deg; }
-.game-list li:nth-child(3n+2) { --t: .8deg; }
-.game-list li:nth-child(3n) { --t: -.4deg; }
-
-.game-list li:hover {
-  rotate: 0deg;
-  scale: 1.05;
-  color: var(--ink);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
 /* ===== oss / tools ===== */
@@ -490,18 +472,15 @@ footer {
 .works {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
 }
 
-/* ギャラリーのサムネと同じ白いタイルに、作品をひとつずつ */
+/* 作品ごとに、鉛筆の線で区切る */
 .work {
-  padding: 1.15rem 1.25rem 1.1rem;
-  background: var(--tile);
-  border-radius: 5px;
-  rotate: -.35deg;
+  padding: 1.1rem .3rem 1.2rem;
+  background: var(--pencil-line) no-repeat left bottom / 100% 6px;
 }
 
-.work:nth-child(2n) { rotate: .3deg; }
+.work:last-child { background: none; }
 
 .work-title {
   margin: 0;
