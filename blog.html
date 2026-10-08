@@ -247,7 +247,7 @@
       document.getElementById("toggle-snapshot").style.display = "none";
 
       // icon.htmlを読み込み、<main>があればその中身だけをsnapshot-innerへ差し込む
-      fetch("icon.html?v=thumbs-200-20261009")
+      fetch("icon.html?v=zoom-20261009")
         .then(res => res.text())
         .then(html => {
           const div = document.createElement("div");
@@ -557,5 +557,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+  <script type="module" src="snapshot-viewer.js?v=20261009-zoom"></script>
 </body>
 </html>
